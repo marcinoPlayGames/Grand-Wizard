@@ -12572,7 +12572,11 @@ MonoBehaviour:
   fireballSpeed: 5
   fireballPrefab: {fileID: 2162139648471965464, guid: 255dfa21b636c824783edc510f74994e, type: 3}
   fireballCooldown: 1.5
-  fireballDamage: 50
+  fireballDamage: 100
+  strongerFireballDamage: 200
+  strongerFireballCooldown: 2.5
+  strongerFireballSpeed: 10
+  strongerFireballPrefab: {fileID: 2162139648471965464, guid: 82f532209c7e25a4d870818f88838e88, type: 3}
   Fireball: {fileID: 2030152768}
 --- !u!95 &2030152771
 Animator:

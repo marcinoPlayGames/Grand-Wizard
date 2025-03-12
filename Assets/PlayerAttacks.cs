@@ -9,10 +9,18 @@ public class PlayerAttacks : MonoBehaviour
     private bool isFacingRight = true;
 
     private GameObject lastSpawnedFireball;
+    private GameObject lastSpawnedStrongerFireball;
 
     private bool canCastFireball = true;
     public float fireballCooldown = 1.5f; // Adjust the cooldown duration as needed
     public float fireballDamage = 50;
+
+    public float strongerFireballDamage = 200;
+    public float strongerFireballCooldown = 2.5f;
+    public float strongerFireballSpeed = 10f;
+    public GameObject strongerFireballPrefab;
+
+    private bool canCastStrongerFireball = true;
 
     private PlayerMove playerMove;
 
@@ -36,6 +44,11 @@ public class PlayerAttacks : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha1) && canCastFireball)
         {
             CastFireball();
+        }
+
+        if (Input.GetKey(KeyCode.Alpha2) && canCastStrongerFireball)
+        {
+            CastStrongerFireball();
         }
 
         /*if (lastSpawnedFireball != null)
@@ -97,6 +110,45 @@ public class PlayerAttacks : MonoBehaviour
         StartCoroutine(FireballCooldown());
     }
 
+    void CastStrongerFireball()
+    {
+        // Determine the direction to cast the fireball
+        isFacingRight = playerMove.IsFacingRight();
+        Vector2 fireballDirection = isFacingRight ? Vector2.right : Vector2.left;
+        Vector2 fireballFacing = isFacingRight ? Vector2.right : Vector2.left;
+
+        Debug.Log("fireballFacing = " + fireballFacing);
+
+        // Adjust the instantiation position based on the player's facing direction
+        float spawnOffset = isFacingRight ? 1.5f : -1.5f;
+        Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.8f, 0f);
+
+        // Create a new fireball instance using the actual fireball prefab
+        lastSpawnedStrongerFireball = Instantiate(strongerFireballPrefab, spawnPosition, Quaternion.identity);
+
+        Fireball.Play();
+
+        // Set the fireball's velocity based on the direction and speed
+        Rigidbody2D fireballRb = lastSpawnedStrongerFireball.GetComponent<Rigidbody2D>();
+        fireballRb.velocity = fireballDirection * fireballSpeed;
+        fireballRb.gravityScale = 0f;
+        FireballController fireballController = lastSpawnedStrongerFireball.GetComponent<FireballController>();
+
+        if (fireballFacing == new Vector2(-1.00f, 0.00f))
+            lastSpawnedStrongerFireball.GetComponent<SpriteRenderer>().flipX = true;
+        else
+            lastSpawnedStrongerFireball.GetComponent<SpriteRenderer>().flipX = false;
+        // Destroy the fireball after a certain time to prevent cluttering the scene
+        if (fireballController != null)
+        {
+            fireballController.SetDamage(strongerFireballDamage);
+        }
+
+        Destroy(lastSpawnedStrongerFireball, 2f);
+
+        StartCoroutine(StrongerFireballCooldown());
+    }
+
     IEnumerator FireballCooldown()
     {
         // Set canCastFireball to false during the cooldown
@@ -112,5 +164,22 @@ public class PlayerAttacks : MonoBehaviour
     public float GetFireballDamage()
     {
         return fireballDamage;
+    }
+
+    IEnumerator StrongerFireballCooldown()
+    {
+        // Set canCastFireball to false during the cooldown
+        canCastStrongerFireball = false;
+
+        // Wait for the cooldown duration
+        yield return new WaitForSeconds(strongerFireballCooldown);
+
+        // Set canCastFireball to true to allow casting again
+        canCastStrongerFireball = true;
+    }
+
+    public float GetStrongerFireballDamage()
+    {
+        return strongerFireballDamage;
     }
 }
