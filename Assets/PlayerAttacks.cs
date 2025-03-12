@@ -27,6 +27,9 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField]
     AudioSource Fireball;
 
+    [SerializeField]
+    AudioSource StrongerFireball;
+
 
     // Start is called before the first frame update
     void Start()
@@ -126,7 +129,7 @@ public class PlayerAttacks : MonoBehaviour
         // Create a new fireball instance using the actual fireball prefab
         lastSpawnedStrongerFireball = Instantiate(strongerFireballPrefab, spawnPosition, Quaternion.identity);
 
-        Fireball.Play();
+        StrongerFireball.Play();
 
         // Set the fireball's velocity based on the direction and speed
         Rigidbody2D fireballRb = lastSpawnedStrongerFireball.GetComponent<Rigidbody2D>();
