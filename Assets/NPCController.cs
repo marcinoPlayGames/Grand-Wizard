@@ -18,6 +18,8 @@ public class NPCController : MonoBehaviour
     public float NPC_Damage;
     private float NPC_KillCount;
 
+    private bool isFacingRight = true;
+
     bool isHit = false;
 
     [SerializeField]
@@ -35,7 +37,9 @@ public class NPCController : MonoBehaviour
         {
             MoveNPC();
         }
-        
+
+        CheckForEdge();
+
         //CheckGround();
 
         float horX = GetComponent<Rigidbody2D>().velocity.x;
@@ -128,5 +132,39 @@ public class NPCController : MonoBehaviour
 
         isHit = false;
     }
+
+    public bool IsFacingRight()
+    {
+        return GetComponent<SpriteRenderer>().flipX == false;
+    }
+
+    void CheckForEdge()
+    {
+        float edgeCheckDistance = 1.0f; // Distance to check ahead of NPC
+        Vector2 rayOrigin = new Vector2(transform.position.x + (isFacingRight ? edgeCheckDistance : -edgeCheckDistance), transform.position.y);
+
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3.0f, groundLayer);
+        Debug.DrawRay(rayOrigin, Vector2.down * 3.0f, Color.blue);
+
+        Debug.Log(hit.collider);
+        if (hit.collider == null)
+        {
+            // No ground detected, turn around
+            //Debug.Log("hit.collider = " + hit.collider);
+            Debug.Log("Ground not detected!");
+            isFacingRight = !isFacingRight;
+            Flip();
+        }
+    }
+
+    void Flip()
+    {
+        //Vector3 localScale = transform.localScale;
+        //localScale.x *= -1;
+        //transform.localScale = localScale;
+
+        direction *= -1;
+    }
+
 
 }

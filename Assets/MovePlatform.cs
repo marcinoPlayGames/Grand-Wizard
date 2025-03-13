@@ -23,7 +23,7 @@ public class MovePlatform : MonoBehaviour
 
         moveCounter++;
 
-        Debug.Log(moveCounter);
+        //Debug.Log(moveCounter);
 
         if (moveCounter >= 2 * platformMovingDistance * (1 / platformMovingSpeed))
         {
