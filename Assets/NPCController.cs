@@ -110,7 +110,7 @@ public class NPCController : MonoBehaviour
     public void DamageNPC(float damage)
     {
         NPC_Health -= damage;
-        //npcHit.Play();
+        npcHit.Play();
         StartCoroutine(HitAnimation());
 
         if (NPC_Health <= 0)

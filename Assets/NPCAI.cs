@@ -16,6 +16,9 @@ public class NPCAI : MonoBehaviour
     private NPCController npcController;
     private bool isFacingRight = true;
 
+    [SerializeField]
+    AudioSource swordThrowSound;
+
     void Start()
     {
         // Find the PlayerMove script attached to the same GameObject
@@ -62,6 +65,8 @@ public class NPCAI : MonoBehaviour
 
         GameObject sword = Instantiate(swordPrefab, spawnPosition, Quaternion.identity);
         Debug.Log("Sword throwed");
+
+        swordThrowSound.Play();
 
         // Add force to make it move toward the player
         Rigidbody2D rb = sword.GetComponent<Rigidbody2D>();
