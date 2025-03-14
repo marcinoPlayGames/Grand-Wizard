@@ -146,12 +146,9 @@ public class NPCController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3.0f, groundLayer);
         Debug.DrawRay(rayOrigin, Vector2.down * 3.0f, Color.blue);
 
-        Debug.Log(hit.collider);
         if (hit.collider == null)
         {
             // No ground detected, turn around
-            //Debug.Log("hit.collider = " + hit.collider);
-            Debug.Log("Ground not detected!");
             isFacingRight = !isFacingRight;
             Flip();
         }
