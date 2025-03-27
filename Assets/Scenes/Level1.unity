@@ -12670,8 +12670,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.050616305, y: -0.20245668}
-  m_Size: {x: 1.9164383, y: 3.0356803}
+  m_Offset: {x: -0.1431582, y: -0.047085047}
+  m_Size: {x: 0.6931977, y: 1.2100625}
   m_Direction: 0
 --- !u!82 &2030152768
 AudioSource:
@@ -12976,7 +12976,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 6fc66c021eec74942b4e71a3fde4dc04, type: 3}
+  m_Sprite: {fileID: 335379161, guid: 90cca9323d026da4ba92d73cb3a499b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12996,8 +12996,8 @@ Transform:
   m_GameObject: {fileID: 2030152763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.28, y: 1.86, z: 0}
-  m_LocalScale: {x: 0.9395, y: 1.0202, z: 1}
+  m_LocalPosition: {x: 11.35, y: -7.8, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2102652492}

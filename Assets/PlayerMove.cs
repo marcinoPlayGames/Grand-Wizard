@@ -10,12 +10,15 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
 
     private Rigidbody2D rb;
+    private PlayerAttacks playerAttacks;
     void Start()
     {
         Debug.Log("Start in PlayerMovement");
         rb = GetComponent<Rigidbody2D>();
         Player_Health = Player_MaxHealth;
         Debug.Log(healthBar.healthBarImage.fillAmount);
+
+        playerAttacks = GetComponent<PlayerAttacks>();
     }
 
     [SerializeField]
@@ -36,6 +39,8 @@ public class PlayerMove : MonoBehaviour
     public float Player_MaxHealth;
     private float Player_Health;
     bool isHit = false;
+
+    bool isCasting = false;
 
     public HealthBar healthBar;
 
@@ -90,9 +95,9 @@ public class PlayerMove : MonoBehaviour
         //Debug.Log($"horY = {rb.velocity.y}, horX = {rb.velocity.x}");
         //Debug.Log($"positionY = {rb.position.y}, horY = {Input.GetAxisRaw("Vertical")}");
         //Debug.Log($"Is grounded? {isGrounded}");
+        isCasting = GetIsCasting();
 
-
-        if (!isHit)
+        if (!isHit && !isCasting)
         {
             if (!isGrounded && veloY > 0) // If moving upward (jumping)
             {
@@ -186,5 +191,10 @@ public class PlayerMove : MonoBehaviour
 
         Destroy(gameObject, 1f);
         SceneManager.LoadScene("GameOverScene");
+    }
+
+    private bool GetIsCasting()
+    {
+        return playerAttacks.IsCasting();
     }
 }

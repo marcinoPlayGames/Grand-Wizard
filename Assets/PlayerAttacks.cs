@@ -24,6 +24,8 @@ public class PlayerAttacks : MonoBehaviour
 
     private PlayerMove playerMove;
 
+    bool isCasting = false;
+
     [SerializeField]
     AudioSource Fireball;
 
@@ -95,6 +97,8 @@ public class PlayerAttacks : MonoBehaviour
         // Create a new fireball instance using the actual fireball prefab
         lastSpawnedFireball = Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
 
+        StartCoroutine(CastAnimationCooldown());
+
         Fireball.Play();
 
         // Set the fireball's velocity based on the direction and speed
@@ -128,6 +132,8 @@ public class PlayerAttacks : MonoBehaviour
 
         // Create a new fireball instance using the actual fireball prefab
         lastSpawnedStrongerFireball = Instantiate(strongerFireballPrefab, spawnPosition, Quaternion.identity);
+
+        StartCoroutine(CastAnimationCooldown());
 
         StrongerFireball.Play();
 
@@ -164,6 +170,17 @@ public class PlayerAttacks : MonoBehaviour
         canCastFireball = true;
     }
 
+    IEnumerator CastAnimationCooldown()
+    {
+        isCasting = true;
+
+        GetComponent<Animator>().SetInteger("moveState", 5);
+        // Wait for the cooldown duration
+        yield return new WaitForSeconds(1f);
+
+        isCasting = false;
+    }
+
     public float GetFireballDamage()
     {
         return fireballDamage;
@@ -184,5 +201,10 @@ public class PlayerAttacks : MonoBehaviour
     public float GetStrongerFireballDamage()
     {
         return strongerFireballDamage;
+    }
+
+    public bool IsCasting()
+    {
+        return isCasting;
     }
 }

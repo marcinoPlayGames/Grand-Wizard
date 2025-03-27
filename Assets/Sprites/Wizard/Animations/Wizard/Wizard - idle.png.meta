@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0663bd8fed603944cb61f6e5159a9ad5
+guid: 90cca9323d026da4ba92d73cb3a499b8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wizard - take hit_0
+      name: Wizard - idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 86
-        height: 117
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b89aa4429eeaae40a7ff6ea8be3f63e
-      internalID: -392495783
+      spriteID: 9471632b8fa699e4c99441bb8a505c05
+      internalID: 335379161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wizard - take hit_1
+      name: Wizard - idle_1
       rect:
         serializedVersion: 2
-        x: 86
+        x: 150
         y: 0
-        width: 86
-        height: 117
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0db1193eb3592e94ea8f9179bb9d0557
-      internalID: 1359134902
+      spriteID: 690ee934016931f428bb872b792a70b9
+      internalID: 1627651763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wizard - take hit_2
+      name: Wizard - idle_2
       rect:
         serializedVersion: 2
-        x: 172
+        x: 300
         y: 0
-        width: 86
-        height: 117
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efd4b5062299020488ba6f900ee67de0
-      internalID: -954589268
+      spriteID: 1e4ef406eee3c5a419e79191fe3f0ffd
+      internalID: -1385204655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wizard - take hit_3
+      name: Wizard - idle_3
       rect:
         serializedVersion: 2
-        x: 258
+        x: 450
         y: 0
-        width: 86
-        height: 117
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f99d971601f860d4f934dad71a36fe90
-      internalID: 1679424249
+      spriteID: ce4c6e8d948eaec4f8acb1661a0b9b4e
+      internalID: -270611577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wizard - idle_4
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a370072c7fc43e418ddd6ced4623682
+      internalID: -925197512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wizard - idle_5
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e38db61cfe5ee04ebb15affdc4e82b3
+      internalID: 758075465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wizard - idle_6
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d7e8a6c6440fa043b3b4a67e4226124
+      internalID: 1402128077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wizard - idle_7
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f057829eed66e3f49bcace72e90eaaa8
+      internalID: 64547422
       vertices: []
       indices: 
       edges: []
@@ -204,10 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Wizard - take hit_0: -392495783
-      Wizard - take hit_1: 1359134902
-      Wizard - take hit_2: -954589268
-      Wizard - take hit_3: 1679424249
+      Wizard - idle_0: 335379161
+      Wizard - idle_1: 1627651763
+      Wizard - idle_2: -1385204655
+      Wizard - idle_3: -270611577
+      Wizard - idle_4: -925197512
+      Wizard - idle_5: 758075465
+      Wizard - idle_6: 1402128077
+      Wizard - idle_7: 64547422
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
