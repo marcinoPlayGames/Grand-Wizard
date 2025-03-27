@@ -21,6 +21,9 @@ public class NPCController : MonoBehaviour
     private bool isFacingRight = true;
 
     bool isHit = false;
+    bool isThrowing = false;
+
+    private NPCAI npcAI;
 
     [SerializeField]
     AudioSource npcHit;
@@ -29,6 +32,8 @@ public class NPCController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         NPC_Health = NPC_MaxHealth;
+
+        npcAI = GetComponent<NPCAI>();
     }
 
     void Update()
@@ -45,7 +50,9 @@ public class NPCController : MonoBehaviour
         float horX = GetComponent<Rigidbody2D>().velocity.x;
         float verY = GetComponent<Rigidbody2D>().velocity.y; // Get the vertical velocity
 
-        if (!isHit)
+        isThrowing = npcAI.IsThrowing();
+
+        if (!isHit && !isThrowing)
         {
             if (!isGrounded && verY > 0) // If moving upward (jumping)
             {

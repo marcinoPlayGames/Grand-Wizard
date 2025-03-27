@@ -16,6 +16,8 @@ public class NPCAI : MonoBehaviour
     private NPCController npcController;
     private bool isFacingRight = true;
 
+    bool isThrowing = false;
+
     [SerializeField]
     AudioSource swordThrowSound;
 
@@ -66,6 +68,8 @@ public class NPCAI : MonoBehaviour
         GameObject sword = Instantiate(swordPrefab, spawnPosition, Quaternion.identity);
         Debug.Log("Sword throwed");
 
+        StartCoroutine(ThrowSwordCooldown());
+
         swordThrowSound.Play();
 
         // Add force to make it move toward the player
@@ -98,5 +102,21 @@ public class NPCAI : MonoBehaviour
 
         // Set canCastFireball to true to allow casting again
         canThrowSword = true;
+    }
+
+    IEnumerator ThrowSwordCooldown()
+    {
+        isThrowing = true;
+
+        GetComponent<Animator>().SetInteger("moveState", 6);
+        // Wait for the cooldown duration
+        yield return new WaitForSeconds(1f);
+
+        isThrowing = false;
+    }
+
+    public bool IsThrowing()
+    {
+        return isThrowing;
     }
 }
