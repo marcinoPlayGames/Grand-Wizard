@@ -55,7 +55,7 @@ public class PlayerMove : MonoBehaviour
         }
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)) && !jumpState)
         {
-            rb.velocity = new Vector3(rb.velocity.x, 9, 0);
+            rb.velocity = new Vector3(rb.velocity.x, 10, 0);
             playerJump.Play();
             jumpState = true;
         }
