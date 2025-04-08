@@ -25,6 +25,8 @@ public class NPCController : MonoBehaviour
 
     private NPCAI npcAI;
 
+    private bool isDead = false;
+
     [SerializeField]
     AudioSource npcHit;
 
@@ -118,14 +120,17 @@ public class NPCController : MonoBehaviour
 
     public void DamageNPC(float damage)
     {
+        if (isDead) return;
+        
         NPC_Health -= damage;
         npcHit.Play();
         StartCoroutine(HitAnimation());
 
         if (NPC_Health <= 0)
         {
+            isDead = true;
             Destroy(gameObject, 1f);
-            NPCDeathCounter.IncrementDeathCount();
+            npcDeathCounter.IncrementDeathCount();
             npcDeathCounter.CheckEndingCondition();
             Debug.Log(NPC_KillCount);
         }

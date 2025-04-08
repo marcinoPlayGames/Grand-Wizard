@@ -256,6 +256,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (14)
@@ -685,7 +693,7 @@ PrefabInstance:
     - target: {fileID: 1469436738414549991, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: terrainObject
       value: 
-      objectReference: {fileID: 1317993784}
+      objectReference: {fileID: 0}
     - target: {fileID: 1531472122689653466, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: player
       value: 
@@ -694,6 +702,10 @@ PrefabInstance:
       propertyPath: npcDeathCounter
       value: 
       objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (1)
@@ -875,6 +887,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (16)
@@ -1034,6 +1054,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (11)
@@ -1490,6 +1518,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (8)
@@ -1550,7 +1586,7 @@ PrefabInstance:
     - target: {fileID: 1469436738414549991, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: terrainObject
       value: 
-      objectReference: {fileID: 1317993784}
+      objectReference: {fileID: 0}
     - target: {fileID: 1531472122689653466, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: player
       value: 
@@ -1559,6 +1595,10 @@ PrefabInstance:
       propertyPath: npcDeathCounter
       value: 
       objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (2)
@@ -2073,6 +2113,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (6)
@@ -2130,6 +2178,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (17)
@@ -2358,6 +2414,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (10)
@@ -3334,6 +3398,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (13)
@@ -3391,6 +3463,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (15)
@@ -3626,7 +3706,7 @@ GameObject:
   - component: {fileID: 1317993787}
   - component: {fileID: 1317993786}
   - component: {fileID: 1317993785}
-  - component: {fileID: 1317993784}
+  - component: {fileID: 1317993791}
   m_Layer: 0
   m_Name: Blokada
   m_TagString: Wall
@@ -3649,21 +3729,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 410839065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1317993784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317993782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edca6578d5c117b44b9002c49d0ecfb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrainObject: {fileID: 1317993782}
-  deathsThreshold: 18
-  NPCLeft: {fileID: 332136466}
 --- !u!114 &1317993785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3676,7 +3741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4c76a9c00a03242b1678225688fd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainObject: {fileID: 1317993784}
+  terrainObject: {fileID: 1317993791}
+  NPCLeft: {fileID: 0}
 --- !u!66 &1317993786
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -4010,6 +4076,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1317993791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317993782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edca6578d5c117b44b9002c49d0ecfb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainObject: {fileID: 1317993782}
+  deathsThreshold: 1
 --- !u!1001 &1347060108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19830,7 +19910,7 @@ PrefabInstance:
     - target: {fileID: 1469436738414549991, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: terrainObject
       value: 
-      objectReference: {fileID: 1317993784}
+      objectReference: {fileID: 0}
     - target: {fileID: 1531472122689653466, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: player
       value: 
@@ -19839,6 +19919,10 @@ PrefabInstance:
       propertyPath: npcDeathCounter
       value: 
       objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (3)
@@ -20238,6 +20322,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (5)
@@ -20466,6 +20558,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (7)
@@ -20523,6 +20623,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (12)
@@ -21093,6 +21201,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: npcDeathCounter
+      value: 
+      objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (9)
@@ -21677,7 +21793,7 @@ PrefabInstance:
     - target: {fileID: 1469436738414549991, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: terrainObject
       value: 
-      objectReference: {fileID: 1317993784}
+      objectReference: {fileID: 0}
     - target: {fileID: 1531472122689653466, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: player
       value: 
@@ -21686,6 +21802,10 @@ PrefabInstance:
       propertyPath: npcDeathCounter
       value: 
       objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (4)
@@ -22444,7 +22564,7 @@ Transform:
   m_GameObject: {fileID: 2030152763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.35, y: -7.8, z: 0}
+  m_LocalPosition: {x: -21.6, y: -6.6, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22917,7 +23037,7 @@ PrefabInstance:
     - target: {fileID: 1469436738414549991, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: terrainObject
       value: 
-      objectReference: {fileID: 1317993784}
+      objectReference: {fileID: 0}
     - target: {fileID: 1531472122689653466, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: player
       value: 
@@ -23052,6 +23172,10 @@ PrefabInstance:
       propertyPath: terrainObject
       value: 
       objectReference: {fileID: 1317993782}
+    - target: {fileID: 3433230021191776749, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: deathsThreshold
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3750605368295189198, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -23141,14 +23265,19 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 8203366889846473077, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: NPCLeft
+      value: 
+      objectReference: {fileID: 332136466}
+    - target: {fileID: 8203366889846473077, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
       propertyPath: terrainObject
       value: 
-      objectReference: {fileID: 1317993784}
+      objectReference: {fileID: 1317993791}
     - target: {fileID: 8444561678958798725, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
       propertyPath: terrainObject
       value: 
-      objectReference: {fileID: 1317993784}
-    m_RemovedComponents: []
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3433230021191776749, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

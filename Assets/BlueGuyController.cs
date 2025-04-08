@@ -17,6 +17,8 @@ public class BlueGuyController : MonoBehaviour
     public float NPC_Damage;
     private float NPC_KillCount;
 
+    public NPCDeathCounter npcDeathCounter;
+
     bool isHit = false;
 
     [SerializeField]
@@ -111,7 +113,7 @@ public class BlueGuyController : MonoBehaviour
         if (NPC_Health <= 0)
         {
             Destroy(gameObject, 1f);
-            NPCDeathCounter.IncrementDeathCount();
+            npcDeathCounter.IncrementDeathCount();
             Debug.Log(NPC_KillCount);
         }
     }

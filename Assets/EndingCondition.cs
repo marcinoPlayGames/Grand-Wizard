@@ -11,11 +11,9 @@ public class EndingCondition : MonoBehaviour
 
     // Number of NPC deaths required to hide the terrain
     public int deathsThreshold = 5;
-    public TMP_Text NPCLeft;
     // Start is called before the first frame update
     void Start()
     {
-        NPCLeft.text = $"Enemies left: {deathsThreshold}";
         CheckAndHideTerrain();
     }
 
@@ -27,7 +25,6 @@ public class EndingCondition : MonoBehaviour
 
     public void CheckAndHideTerrain()
     {
-        NPCLeft.text = $"Enemies left: {deathsThreshold - NPCDeathCounter.TotalDeaths}";
         if (NPCDeathCounter.TotalDeaths >= deathsThreshold)
         {
             terrainObject.SetActive(false);
