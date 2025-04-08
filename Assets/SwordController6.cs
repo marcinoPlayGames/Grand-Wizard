@@ -27,20 +27,7 @@ public class SwordController6 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("NPC"))
-        {
-            NPCController npcController = collision.gameObject.GetComponent<NPCController>();
-
-            if (npcController != null)
-            {
-                Debug.Log("Collided!");
-                npcController.DamageNPC(swordDamage);
-            }
-
-            Debug.Log(gameObject.name);
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerMove playerMove = collision.gameObject.GetComponent<PlayerMove>();
 

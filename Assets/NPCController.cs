@@ -38,7 +38,7 @@ public class NPCController : MonoBehaviour
 
     void Update()
     {
-        if (!isHit)
+        if (!isHit && !isThrowing)
         {
             MoveNPC();
         }
@@ -98,6 +98,7 @@ public class NPCController : MonoBehaviour
         if (velocity2 == velocity3)
         {
             direction *= -1;
+            isFacingRight = !isFacingRight;
         }
     }
     void OnCollisionEnter2D(Collision2D collision)
@@ -105,6 +106,7 @@ public class NPCController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             direction *= -1;
+            isFacingRight = !isFacingRight;
         }
         isGrounded = true;
     }

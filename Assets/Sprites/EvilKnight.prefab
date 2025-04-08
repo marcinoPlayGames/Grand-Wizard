@@ -330,11 +330,11 @@ MonoBehaviour:
   eyesPosition: {fileID: 8874980590586442325}
   swordPrefab: {fileID: 5255087296905525315, guid: d1b497cd8a396fc42a9eae38e67fec01, type: 3}
   detectionRange: 10
-  throwForce: 10
+  throwForce: 5
   visionMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  swordDamage: 100
+  swordDamage: 25
   swordCooldown: 1
   swordThrowSound: {fileID: 8917504192721961917}
 --- !u!82 &8917504192721961917

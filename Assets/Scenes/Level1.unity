@@ -2422,7 +2422,7 @@ GameObject:
   - component: {fileID: 993472761}
   - component: {fileID: 993472760}
   - component: {fileID: 993472765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platforma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3662,7 +3662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainObject: {fileID: 1317993782}
-  deathsThreshold: 4
+  deathsThreshold: 18
   NPCLeft: {fileID: 332136466}
 --- !u!114 &1317993785
 MonoBehaviour:
@@ -4252,7 +4252,7 @@ GameObject:
   - component: {fileID: 1460586976}
   - component: {fileID: 1460586978}
   - component: {fileID: 1460586977}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Teren
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -22926,6 +22926,10 @@ PrefabInstance:
       propertyPath: npcDeathCounter
       value: 
       objectReference: {fileID: 332136465}
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight

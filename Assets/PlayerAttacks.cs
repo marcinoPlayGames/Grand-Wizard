@@ -130,10 +130,10 @@ public class PlayerAttacks : MonoBehaviour
         float spawnOffset = isFacingRight ? 1.5f : -1.5f;
         Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.8f, 0f);
 
+        StartCoroutine(CastAnimationCooldown());
+
         // Create a new fireball instance using the actual fireball prefab
         lastSpawnedStrongerFireball = Instantiate(strongerFireballPrefab, spawnPosition, Quaternion.identity);
-
-        StartCoroutine(CastAnimationCooldown());
 
         StrongerFireball.Play();
 
@@ -176,7 +176,7 @@ public class PlayerAttacks : MonoBehaviour
 
         GetComponent<Animator>().SetInteger("moveState", 5);
         // Wait for the cooldown duration
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(16f / 60f);
 
         isCasting = false;
     }

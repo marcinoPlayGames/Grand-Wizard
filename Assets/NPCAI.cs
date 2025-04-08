@@ -62,7 +62,7 @@ public class NPCAI : MonoBehaviour
     void ThrowSword(Vector2 direction)
     {
         // Instantiate the sword at enemy's position
-        float spawnOffset = isFacingRight ? 1.5f : -1.5f;
+        float spawnOffset = isFacingRight ? 1.8f : -1.8f;
         Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.8f, 0f);
 
         GameObject sword = Instantiate(swordPrefab, spawnPosition, Quaternion.identity);
@@ -108,9 +108,9 @@ public class NPCAI : MonoBehaviour
     {
         isThrowing = true;
 
-        GetComponent<Animator>().SetInteger("moveState", 6);
+        GetComponent<Animator>().SetInteger("moveStateNPC", 6);
         // Wait for the cooldown duration
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
 
         isThrowing = false;
     }
