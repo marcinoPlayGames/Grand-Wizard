@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +25,12 @@ public class PlayerAttacks : MonoBehaviour
     private PlayerMove playerMove;
 
     bool isCasting = false;
+    bool hasPulled = false;
+    bool isHiding = false;
+    bool isPulling = false;
+    bool isCastAnimation = false;
+
+    private Coroutine castCoroutine;
 
     [SerializeField]
     AudioSource Fireball;
@@ -42,18 +48,34 @@ public class PlayerAttacks : MonoBehaviour
     }
 
     // Update is called once per frame
+
     void Update()
     {
 
         // Check if the "1" key is pressed and the player can cast a fireball
-        if (Input.GetKey(KeyCode.Alpha1) && canCastFireball)
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && canCastFireball)
         {
-            CastFireball();
+            if (!hasPulled && !isPulling)
+            {
+                StartCoroutine(PullStaffAnimation());
+            }
+            else if (hasPulled && !isPulling && !isCasting)
+            {
+                StartCoroutine(CastFireballAnimation());
+            }
         }
 
-        if (Input.GetKey(KeyCode.Alpha2) && canCastStrongerFireball)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && canCastStrongerFireball)
         {
-            CastStrongerFireball();
+            if (!hasPulled && !isPulling)
+            {
+                StartCoroutine(PullStaffAnimation());
+            }
+            else if (hasPulled && !isPulling && !isCasting)
+            {
+                StartCoroutine(CastStrongerFireballAnimation());
+            }
         }
 
         /*if (lastSpawnedFireball != null)
@@ -84,40 +106,77 @@ public class PlayerAttacks : MonoBehaviour
         }*/
     }
 
-    void CastFireball()
+    IEnumerator SpawnAndShootFireball()
     {
-        // Determine the direction to cast the fireball
+        Debug.Log("Fire casted!");
         isFacingRight = playerMove.IsFacingRight();
         Vector2 fireballDirection = isFacingRight ? Vector2.right : Vector2.left;
+        float spawnOffset = isFacingRight ? 2f : -2f;
+        Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.3f, 0f);
 
-        // Adjust the instantiation position based on the player's facing direction
-        float spawnOffset = isFacingRight ? 1.5f : -1.5f;
-        Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.8f, 0f);
-
-        // Create a new fireball instance using the actual fireball prefab
-        lastSpawnedFireball = Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
-
-        StartCoroutine(CastAnimationCooldown());
-
+        GameObject fireball = Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
         Fireball.Play();
 
-        // Set the fireball's velocity based on the direction and speed
-        Rigidbody2D fireballRb = lastSpawnedFireball.GetComponent<Rigidbody2D>();
-        fireballRb.velocity = fireballDirection * fireballSpeed;
-        fireballRb.gravityScale = 0f;
-        FireballController fireballController = lastSpawnedFireball.GetComponent<FireballController>();
-        // Destroy the fireball after a certain time to prevent cluttering the scene
-        if (fireballController != null)
-        {
-            fireballController.SetDamage(fireballDamage);
-        }
+        yield return null;
 
-        Destroy(lastSpawnedFireball, 2f);
+        if (fireball != null)
+        {
+            Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.gravityScale = 0f;
+                rb.velocity = fireballDirection * fireballSpeed;
+            }
+
+            FireballController controller = fireball.GetComponent<FireballController>();
+            if (controller != null)
+                controller.SetDamage(fireballDamage);
+
+            Destroy(fireball, 2f);
+        }
 
         StartCoroutine(FireballCooldown());
     }
 
-    void CastStrongerFireball()
+    IEnumerator SpawnAndShootStrongerFireball()
+    {
+        Debug.Log("Fire casted!");
+        isFacingRight = playerMove.IsFacingRight();
+        Vector2 fireballDirection = isFacingRight ? Vector2.right : Vector2.left;
+        float spawnOffset = isFacingRight ? 2f : -2f;
+        Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.3f, 0f);
+        Vector2 fireballFacing = isFacingRight ? Vector2.right : Vector2.left;
+
+        GameObject strongerFireball = Instantiate(strongerFireballPrefab, spawnPosition, Quaternion.identity);
+        Fireball.Play();
+
+        yield return null;
+
+        if (strongerFireball != null)
+        {
+            Rigidbody2D rb = strongerFireball.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.gravityScale = 0f;
+                rb.velocity = fireballDirection * strongerFireballSpeed;
+            }
+
+            FireballController controller = strongerFireball.GetComponent<FireballController>();
+            if (controller != null)
+                controller.SetDamage(strongerFireballDamage);
+
+            if (fireballFacing == new Vector2(-1.00f, 0.00f))
+                strongerFireball.GetComponent<SpriteRenderer>().flipX = true;
+            else
+                strongerFireball.GetComponent<SpriteRenderer>().flipX = false;
+
+            Destroy(strongerFireball, 2f);
+        }
+
+        StartCoroutine(StrongerFireballCooldown());
+    }
+
+    /*void CastStrongerFireball()
     {
         // Determine the direction to cast the fireball
         isFacingRight = playerMove.IsFacingRight();
@@ -127,10 +186,8 @@ public class PlayerAttacks : MonoBehaviour
         Debug.Log("fireballFacing = " + fireballFacing);
 
         // Adjust the instantiation position based on the player's facing direction
-        float spawnOffset = isFacingRight ? 1.5f : -1.5f;
+        float spawnOffset = isFacingRight ? 2f : -2f;
         Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.8f, 0f);
-
-        StartCoroutine(CastAnimationCooldown());
 
         // Create a new fireball instance using the actual fireball prefab
         lastSpawnedStrongerFireball = Instantiate(strongerFireballPrefab, spawnPosition, Quaternion.identity);
@@ -156,7 +213,7 @@ public class PlayerAttacks : MonoBehaviour
         Destroy(lastSpawnedStrongerFireball, 2f);
 
         StartCoroutine(StrongerFireballCooldown());
-    }
+    }*/
 
     IEnumerator FireballCooldown()
     {
@@ -170,15 +227,92 @@ public class PlayerAttacks : MonoBehaviour
         canCastFireball = true;
     }
 
-    IEnumerator CastAnimationCooldown()
+    IEnumerator PullStaffAnimation()
+    {
+        isPulling = true;
+
+        Debug.Log("Staff pulled!");
+        GetComponent<Animator>().SetInteger("moveState", 6);
+
+
+        // Wait for the cooldown duration
+
+        yield return new WaitForSeconds(9f / 10f);
+
+        StartCoroutine(CastFireballsAnimationCooldown());
+
+        hasPulled = true;
+        isPulling = false;
+    }
+
+    IEnumerator CastFireballAnimation()
     {
         isCasting = true;
 
-        GetComponent<Animator>().SetInteger("moveState", 5);
-        // Wait for the cooldown duration
-        yield return new WaitForSeconds(16f / 60f);
+        GetComponent<Animator>().SetTrigger("PlayerCastFireballs");
 
+        // Wait for the cooldown duration
+        yield return new WaitForSeconds(5f / 20f);
+
+        Debug.Log(IsCastAnimation());
         isCasting = false;
+        
+        StartCoroutine(SpawnAndShootFireball());
+    }
+
+    IEnumerator CastStrongerFireballAnimation()
+    {
+        isCasting = true;
+
+
+        GetComponent<Animator>().SetTrigger("PlayerCastFireballs");
+
+        // Wait for the cooldown duration
+        yield return new WaitForSeconds(5f / 20f);
+
+        Debug.Log(IsCastAnimation());
+        isCasting = false;
+
+        StartCoroutine(SpawnAndShootStrongerFireball());
+    }
+
+    IEnumerator CastFireballsAnimationCooldown()
+    {
+        float cooldownTime = 5f; // Czas oczekiwania przed możliwością ponownego strzału
+        float timeRemaining = cooldownTime;
+        Debug.Log("Cooldown animation!");
+
+        while (timeRemaining > 0)
+        {
+            yield return null; // Czekaj do następnej klatki
+
+            // Zmniejsz czas oczekiwania
+            timeRemaining -= Time.deltaTime;
+
+            // Sprawdź, czy strzał został oddany (reset czasu)
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                // Resetuj czas oczekiwania
+                timeRemaining = cooldownTime;
+                Debug.Log("Czas oczekiwania zresetowany!");
+            }
+        }
+
+        Debug.Log("Możesz ponownie strzelić!");
+        StartCoroutine(HideStaffAnimation());
+    }
+
+    IEnumerator HideStaffAnimation()
+    {
+        isHiding = true;
+
+        Debug.Log("Staff hidden!");
+        GetComponent<Animator>().SetInteger("moveState", 7);
+
+        yield return new WaitForSeconds(9f / 10f);
+
+        isHiding = false;
+        hasPulled = false;
     }
 
     public float GetFireballDamage()
@@ -206,5 +340,11 @@ public class PlayerAttacks : MonoBehaviour
     public bool IsCasting()
     {
         return isCasting;
+    }
+
+    public bool IsCastAnimation()
+    {
+        if (!isPulling && !isCasting && !isHiding) return isCastAnimation = false;
+        else return true;
     }
 }

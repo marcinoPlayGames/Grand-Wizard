@@ -41,6 +41,7 @@ public class PlayerMove : MonoBehaviour
     bool isHit = false;
 
     bool isCasting = false;
+    bool isCastAnimation = false;
 
     public HealthBar healthBar;
 
@@ -96,8 +97,9 @@ public class PlayerMove : MonoBehaviour
         //Debug.Log($"positionY = {rb.position.y}, horY = {Input.GetAxisRaw("Vertical")}");
         //Debug.Log($"Is grounded? {isGrounded}");
         isCasting = GetIsCasting();
+        isCastAnimation = playerAttacks.IsCastAnimation();
 
-        if (!isHit && !isCasting)
+        if (!isHit && !isCastAnimation && !isCasting)
         {
             if (!isGrounded && veloY > 0) // If moving upward (jumping)
             {
@@ -121,6 +123,7 @@ public class PlayerMove : MonoBehaviour
             {
                 GetComponent<Animator>().SetInteger("moveState", 0); // Set idle animation
             }
+            //Debug.Log("isCastAnimation: " + isCastAnimation);  // Dodaj to do debugowania
         }
         
     }
