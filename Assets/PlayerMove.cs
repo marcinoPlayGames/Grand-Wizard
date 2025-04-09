@@ -163,6 +163,7 @@ public class PlayerMove : MonoBehaviour
 
         Player_Health -= damage;
         healthBar.UpdateHealthBar();
+        Debug.Log("Damage = " + damage);
         StartCoroutine(HitAnimation());
 
         playerHit.Play();
