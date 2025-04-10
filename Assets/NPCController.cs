@@ -56,9 +56,9 @@ public class NPCController : MonoBehaviour
 
         if (!isHit && !isThrowing)
         {
-            if (!isGrounded && verY > 0) // If moving upward (jumping)
+            if (!isGrounded && verY > 0)
             {
-                GetComponent<Animator>().SetInteger("moveStateNPC", 2); // Set jump animation
+                GetComponent<Animator>().SetInteger("moveStateNPC", 3); // Set fall animation
             }
             else if (!isGrounded && verY < 0)
             {
