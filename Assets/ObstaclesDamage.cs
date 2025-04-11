@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstaclesDamage : MonoBehaviour
 {
+    bool canDamage = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,27 +19,53 @@ public class ObstaclesDamage : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided with something!");
+        //Debug.Log("Collided with something!");
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Collided with player!");
             PlayerMove playerMove = collision.gameObject.GetComponent<PlayerMove>();
 
-            playerMove.DamagePlayer(50);
+            // Sprawdź, gdzie znajdują się kolce
+            Vector3 spikePosition = collision.gameObject.transform.position;
 
-            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (rb != null && collision.contacts.Length > 0)
+            Debug.Log("spikePosition = " +  spikePosition);
+
+            // Użyj Raycast, aby sprawdzić, czy w tym miejscu znajduje się teren
+            RaycastHit2D hit = Physics2D.Raycast(spikePosition, Vector2.down, 2f, LayerMask.GetMask("Teren"));
+
+            Debug.DrawRay(spikePosition, Vector2.down * 0.1f, Color.yellow);
+
+            RaycastHit2D hit2 = Physics2D.Raycast(spikePosition, Vector2.down, 2f, LayerMask.GetMask("Obstacles"));
+
+            Debug.DrawRay(spikePosition, Vector2.down * 0.1f, Color.yellow);
+            if (hit.collider != null && hit2.collider != null && hit.collider.CompareTag("Wall") && hit2.collider.CompareTag("Obstacles"))
             {
-                // Pobierz normalną pierwszego kontaktu
-                Vector2 normal = collision.contacts[0].normal;
+                Debug.Log("Collided both!");
+                canDamage = false;
+            }
+            else canDamage = true;
+            if (canDamage)
+            {
+                Debug.Log("Collided with player!");
 
-                // Wektor przeciwny do normalnej, który może posłużyć jako kierunek wyrzutu
-                Vector2 knockbackDir = -normal.normalized;
+                playerMove.DamagePlayer(50);
 
-                // Skaluje siłę wyrzutu – można dostosować
-                float knockbackForce = 6f;
+                Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+                if (rb != null && collision.contacts.Length > 0)
+                {
+                    // Pobierz normalną pierwszego kontaktu
+                    Vector2 normal = collision.contacts[0].normal;
 
-                rb.velocity = knockbackDir * knockbackForce;
+                    // Wektor przeciwny do normalnej, który może posłużyć jako kierunek wyrzutu
+                    Vector2 knockbackDir = -normal.normalized;
+
+                    // Skaluje siłę wyrzutu – można dostosować
+                    float knockbackForce = 6f;
+
+                    if (normal.y < 0) // Normalna wskazuje na dolną stronę obiektu
+                    {
+                        rb.velocity = knockbackDir * knockbackForce;
+                    }
+                }
             }
         }
     }

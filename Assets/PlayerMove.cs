@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
@@ -43,7 +43,10 @@ public class PlayerMove : MonoBehaviour
     bool isCasting = false;
     bool isCastAnimation = false;
 
+    bool canObstacleDamage = true;
+
     public HealthBar healthBar;
+    int collisions = 0;
 
     void Update()
     {
@@ -132,11 +135,35 @@ public class PlayerMove : MonoBehaviour
     {
         isGrounded = true;
 
-        if (collision.gameObject.CompareTag("NPC"))
+        //Debug.Log($"Collided with: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
+        Debug.Log($"Collided with: {collision.gameObject.name}, Layer: {LayerMask.LayerToName(collision.gameObject.layer)}");
+
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            if (contact.normal.y > 0) // Normalna wskazuje na górną część obiektu
+            {
+                Debug.Log("Collided with top side of the platform!");
+                // Zastosuj logikę tylko wtedy, gdy gracz dotyka góry platformy
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Collided with Wall!");
+
+            //canObstacleDamage = false;
+        }
+        else if (collision.gameObject.CompareTag("NPC"))
         {
             NPCController npcController = collision.gameObject.GetComponent<NPCController>();
 
             DamagePlayer(npcController.NPC_Damage);
+        }
+        else if (collision.gameObject.CompareTag("Obstacles"))
+        {
+            Debug.Log("Collided with Obstacles!");
+
+            //canObstacleDamage = false;
         }
     }
     void OnCollisionStay2D(Collision2D collision)
@@ -200,5 +227,10 @@ public class PlayerMove : MonoBehaviour
     private bool GetIsCasting()
     {
         return playerAttacks.IsCasting();
+    }
+
+    public bool CanObstacleDamage()
+    {
+        return canObstacleDamage;
     }
 }
