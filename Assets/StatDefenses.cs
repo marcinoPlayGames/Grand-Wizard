@@ -5,6 +5,7 @@ using UnityEngine;
 public class StatDefenses : MonoBehaviour
 {
     public int Armor;
+    public int MagicResist;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +25,20 @@ public class StatDefenses : MonoBehaviour
         {
             return damage - Armor;
         }
+        else if (damageType == "Magic")
+        {
+            return damage - MagicResist;
+        }
         else return damage;
     }
 
     public void GetArmor()
     {
         return Armor;
+    }
+
+    public void GetMagicResist()
+    {
+        return MagicResist;
     }
 }
