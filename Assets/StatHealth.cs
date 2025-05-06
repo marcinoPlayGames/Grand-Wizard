@@ -5,6 +5,7 @@ using UnityEngine;
 public class StatHealth : MonoBehaviour
 {
     public int Health;
+    public int Healing_From_Damage_Percent;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,10 @@ public class StatHealth : MonoBehaviour
     public int GetHealth()
     {
         return Health;
+    }
+
+    public void HealFromDamage(int damage)
+    {
+        Health = damage * Healing_From_Damage_Percent;
     }
 }
