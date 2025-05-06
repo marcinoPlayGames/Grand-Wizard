@@ -6,7 +6,11 @@ public class StatCriticals : MonoBehaviour
 {
     public int Attack_Critical_Hit_Chance;
     public int Attack_Critical_Hit_Damage;
-    
+
+    public int Spell_Critical_Hit_Chance;
+    public int Spell_Critical_Hit_Damage;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,18 +23,30 @@ public class StatCriticals : MonoBehaviour
         
     }
 
-    public bool IsCriticalHit()
+    public bool IsAttackCriticalHit()
     {
         int critChance = Attack_Critical_Hit_Chance;
         int roll = UnityEngine.Random.Range(0, 100); // 0–99
         return roll < critChance;
     }
 
-    public void GetCriticalDamageByDamageType(int damage, int damageType)
+    public bool IsSpellCriticalHit()
     {
-        if (damageType == "Physical")
+        int critChance = Spell_Critical_Hit_Chance;
+        int roll = UnityEngine.Random.Range(0, 100); // 0–99
+        return roll < critChance;
+    }
+
+    public int GetCriticalDamageByAttackType(int damage, string attackType)
+    {
+        if (attackType == "Physical")
         {
             return damage * Attack_Critical_Hit_Damage;
         }
+        else if (attackType == "Ability" || attackType == "Spell")
+        {
+            return damage * Spell_Critical_Hit_Damage;
+        }
+        else return damage * Attack_Critical_Hit_Damage;
     }
 }
