@@ -19,7 +19,7 @@ public class StatDefenses : MonoBehaviour
         
     }
 
-    public void GetDamageByDamageType(int damage, int damageType)
+    public int GetDamageByDamageType(int damage, string damageType)
     {
         if (damageType == "Physical")
         {
@@ -32,12 +32,12 @@ public class StatDefenses : MonoBehaviour
         else return damage;
     }
 
-    public void GetArmor()
+    public int GetArmor()
     {
         return Armor;
     }
 
-    public void GetMagicResist()
+    public int GetMagicResist()
     {
         return MagicResist;
     }
