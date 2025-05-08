@@ -8,6 +8,7 @@ public class StatAttacks : MonoBehaviour
     public int Magic_Damage;
     public int Attack_Speed;
     public int Spell_Speed;
+    public int Attack_Range;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +44,10 @@ public class StatAttacks : MonoBehaviour
         {
             return Spell_Speed;
         }
+        else if (statisticType == "Attack_Range")
+        {
+            return Attack_Range;
+        }
+        else return 0;
     }
 }
