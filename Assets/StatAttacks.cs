@@ -5,6 +5,7 @@ using UnityEngine;
 public class StatAttacks : MonoBehaviour
 {
     public int Attack_Damage;
+    public int Magic_Damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,16 @@ public class StatAttacks : MonoBehaviour
         
     }
 
-    public int GetDamage(int damage, string statisticType)
+    public int GetDamageValue(int damagePercent, string statisticType)
     {
         if (statisticType == "Attack")
         {
             return Attack_Damage * damage;
         }
+        else if (statisticType == "Magic")
+        {
+            return Magic_Damage * damage;
+        }
+        else return 0;
     }
 }
