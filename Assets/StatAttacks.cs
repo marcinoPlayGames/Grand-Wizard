@@ -25,11 +25,11 @@ public class StatAttacks : MonoBehaviour
     {
         if (statisticType == "Attack")
         {
-            return Attack_Damage * damage;
+            return Attack_Damage * damagePercent;
         }
         else if (statisticType == "Magic")
         {
-            return Magic_Damage * damage;
+            return Magic_Damage * damagePercent;
         }
         else return 0;
     }
