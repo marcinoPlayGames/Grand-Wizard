@@ -32,7 +32,7 @@ public class StatHealth : MonoBehaviour
 
     public void HealFromDamage(int damage)
     {
-        Health = damage * Healing_From_Damage_Percent;
+        Health += damage * Healing_From_Damage_Percent;
     }
 
     IEnumerator RegenHealth()
