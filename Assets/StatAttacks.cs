@@ -6,6 +6,7 @@ public class StatAttacks : MonoBehaviour
 {
     public int Attack_Damage;
     public int Magic_Damage;
+    public int Attack_Speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +30,13 @@ public class StatAttacks : MonoBehaviour
             return Magic_Damage * damage;
         }
         else return 0;
+    }
+
+    public int GetDamageVariables(string statisticType)
+    {
+        if (statisticType == "Attack_Speed")
+        {
+            return Attack_Speed;
+        }
     }
 }
