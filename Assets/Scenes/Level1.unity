@@ -23812,6 +23812,7 @@ GameObject:
   - component: {fileID: 2030152778}
   - component: {fileID: 2030152777}
   - component: {fileID: 2030152780}
+  - component: {fileID: 2030152781}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -24642,6 +24643,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eed6abc11e307f4eae5eb2bf8eca271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Attack_Damage: 0
+  Magic_Damage: 0
+  Attack_Speed: 0
+  Spell_Speed: 0
+  Attack_Range: 0
+--- !u!114 &2030152781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030152763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be37983c772e1f142babd7527f370740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Max_Mana: 0
+  Mana_Regen: 0
 --- !u!1001 &2039922895
 PrefabInstance:
   m_ObjectHideFlags: 0
