@@ -5983,7 +5983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainObject: {fileID: 1317993782}
-  deathsThreshold: 1
+  deathsThreshold: 12
 --- !u!1001 &1347060108
 PrefabInstance:
   m_ObjectHideFlags: 0

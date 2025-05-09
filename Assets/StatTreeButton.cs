@@ -16,10 +16,10 @@ public class StatTreeButton : MonoBehaviour
         
     }
 
-    public string statId = Attack_Damage;
+    public string statId = "Attack_Damage";
 
     public void OnClick()
     {
-        StatUIController.Instance.ShowUpgradeWindow(statId);
+        //StatUIController.Instance.ShowUpgradeWindow(statId);
     }
 }
