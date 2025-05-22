@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1469436738414549991}
   - component: {fileID: 1531472122689653466}
   - component: {fileID: 8917504192721961917}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EvilKnight
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainObject: {fileID: 0}
+  NPCLeft: {fileID: 0}
 --- !u!114 &1531472122689653466
 MonoBehaviour:
   m_ObjectHideFlags: 0

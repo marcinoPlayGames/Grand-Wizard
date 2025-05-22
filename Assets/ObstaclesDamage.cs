@@ -22,6 +22,7 @@ public class ObstaclesDamage : MonoBehaviour
         //Debug.Log("Collided with something!");
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Collided with player!");
             PlayerMove playerMove = collision.gameObject.GetComponent<PlayerMove>();
 
             // Sprawdź, gdzie znajdują się kolce
