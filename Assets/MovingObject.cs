@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingSpikes : MonoBehaviour
+public class MovingObject : MonoBehaviour
 {
     public int trapMovingXDistance = -15;
     public int trapMovingYDistance = 0;
