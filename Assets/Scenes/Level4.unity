@@ -1852,9 +1852,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapMovingXDistance: 0
-  trapMovingYDistance: 4
-  trapMovingSpeed: 0.1
+  objectMovingXDistance: 0
+  objectMovingYDistance: 4
+  objectMovingSpeed: 0.1
 --- !u!1001 &339134880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17740,9 +17740,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapMovingXDistance: -36
-  trapMovingYDistance: 0
-  trapMovingSpeed: 0.1
+  objectMovingXDistance: -29
+  objectMovingYDistance: 0
+  objectMovingSpeed: 0.1
 --- !u!114 &805197176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19446,7 +19446,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -28, y: 11, z: 0}
@@ -22688,9 +22688,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapMovingXDistance: 0
-  trapMovingYDistance: 4
-  trapMovingSpeed: 0.1
+  objectMovingXDistance: 0
+  objectMovingYDistance: 4
+  objectMovingSpeed: 0.1
 --- !u!1 &1292985470
 GameObject:
   m_ObjectHideFlags: 0
@@ -23686,9 +23686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapMovingXDistance: 0
-  trapMovingYDistance: -2
-  trapMovingSpeed: 0.1
+  objectMovingXDistance: 0
+  objectMovingYDistance: -1
+  objectMovingSpeed: 0.1
 --- !u!114 &1455437334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24022,9 +24022,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapMovingXDistance: 0
-  trapMovingYDistance: -2
-  trapMovingSpeed: 0.1
+  objectMovingXDistance: 0
+  objectMovingYDistance: -1
+  objectMovingSpeed: 0.1
 --- !u!1 &1462950385
 GameObject:
   m_ObjectHideFlags: 0
@@ -74110,7 +74110,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -27, y: 51, z: 0}
@@ -74434,7 +74434,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 0, y: 51, z: 0}
@@ -74541,9 +74541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapMovingXDistance: 0
-  trapMovingYDistance: 30
-  trapMovingSpeed: 0.01
+  objectMovingXDistance: 0
+  objectMovingYDistance: 30
+  objectMovingSpeed: 0.1
 --- !u!1001 &1542266846
 PrefabInstance:
   m_ObjectHideFlags: 0

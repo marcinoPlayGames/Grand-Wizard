@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-    public int trapMovingXDistance = -15;
-    public int trapMovingYDistance = 0;
-    public float trapMovingSpeed = 0.1f;
+    public int objectMovingXDistance = -15;
+    public int objectMovingYDistance = 0;
+    public float objectMovingSpeed = 0.1f;
     Transform platform;
     private int moveCounter = 0;
     private bool doMove = false;
@@ -19,17 +19,17 @@ public class MovingObject : MonoBehaviour
         platform.position = new Vector3(0, 0, 0);
         Debug.Log($"rect y is {platform.position.y}");
 
-        if (trapMovingYDistance != 0  && trapMovingXDistance != 0)
+        if (objectMovingYDistance != 0  && objectMovingXDistance != 0)
         {
-            finishCount = (int)Mathf.Abs((trapMovingXDistance * trapMovingYDistance) / trapMovingSpeed);
+            finishCount = (int)Mathf.Abs((objectMovingXDistance * objectMovingYDistance) / objectMovingSpeed);
         }
-        else if (trapMovingYDistance == 0)
+        else if (objectMovingYDistance == 0)
         {
-            finishCount = (int)Mathf.Abs(trapMovingXDistance / trapMovingSpeed);
+            finishCount = (int)Mathf.Abs(objectMovingXDistance / objectMovingSpeed);
         }
         else
         {
-            finishCount = (int)Mathf.Abs(trapMovingYDistance / trapMovingSpeed);
+            finishCount = (int)Mathf.Abs(objectMovingYDistance / objectMovingSpeed);
         }
     }
 
@@ -47,13 +47,13 @@ public class MovingObject : MonoBehaviour
                 float newY = 0;
                 float newX = 0;
 
-                if (trapMovingYDistance != 0)
+                if (objectMovingYDistance != 0)
                 {
-                    newY = (float)platform.position.y + trapMovingSpeed * Mathf.Sign(trapMovingYDistance);
+                    newY = (float)platform.position.y + objectMovingSpeed * Mathf.Sign(objectMovingYDistance);
                 }
-                if (trapMovingXDistance != 0)
+                if (objectMovingXDistance != 0)
                 {
-                    newX = (float)platform.position.x + trapMovingSpeed * Mathf.Sign(trapMovingXDistance);
+                    newX = (float)platform.position.x + objectMovingSpeed * Mathf.Sign(objectMovingXDistance);
                 }
 
                 platform.position = new Vector3((float)newX, (float)newY, 0);
@@ -73,8 +73,8 @@ public class MovingObject : MonoBehaviour
             doMove = true;
             moveCounter = 0;
 
-            trapMovingXDistance *= -1;
-            trapMovingYDistance *= -1;
+            objectMovingXDistance *= -1;
+            objectMovingYDistance *= -1;
         }
     }
 
@@ -83,7 +83,7 @@ public class MovingObject : MonoBehaviour
         doMove = true;
         moveCounter = 0;
 
-        trapMovingXDistance *= -1;
-        trapMovingYDistance *= -1;
+        objectMovingXDistance *= -1;
+        objectMovingYDistance *= -1;
     }
 }
