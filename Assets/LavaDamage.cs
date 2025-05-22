@@ -41,6 +41,8 @@ public class LavaDamage : MonoBehaviour
 
             collision.gameObject.layer = LayerMask.NameToLayer("NoCollisions");
 
+            Debug.Log("Layer = "+ collision.gameObject.layer);
+
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
