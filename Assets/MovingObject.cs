@@ -11,6 +11,8 @@ public class MovingObject : MonoBehaviour
     private int moveCounter = 0;
     private bool doMove = false;
     private int finishCount = 0;
+
+    private bool activated = false;
     void Start()
     {
         platform = GetComponent<Transform>();
@@ -61,6 +63,27 @@ public class MovingObject : MonoBehaviour
 
     public void Activate()
     {
+        if (!activated)
+        {
+            doMove = true;
+            activated = true;
+        }
+        else
+        {
+            doMove = true;
+            moveCounter = 0;
+
+            trapMovingXDistance *= -1;
+            trapMovingYDistance *= -1;
+        }
+    }
+
+    public void Deactivate()
+    {
         doMove = true;
+        moveCounter = 0;
+
+        trapMovingXDistance *= -1;
+        trapMovingYDistance *= -1;
     }
 }
