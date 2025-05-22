@@ -32,5 +32,20 @@ public class LavaDamage : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, 8f);
             }
         }
+        else if (collision.gameObject.CompareTag("NPC"))
+        {
+            Debug.Log("Collided with enemy!");
+            NPCController nPCController = collision.gameObject.GetComponent<NPCController>();
+
+            nPCController.DamageNPC(5000);
+
+            collision.gameObject.layer = LayerMask.NameToLayer("NoCollisions");
+
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 8f);
+            }
+        }
     }
 }

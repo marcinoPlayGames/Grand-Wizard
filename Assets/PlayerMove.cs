@@ -76,6 +76,8 @@ public class PlayerMove : MonoBehaviour
         {
             float newYVelocity = rb.velocity.y;
 
+            Debug.Log(newYVelocity);
+
             rb.velocity = new Vector3(4, newYVelocity, 0);
         }
 
@@ -164,6 +166,19 @@ public class PlayerMove : MonoBehaviour
             Debug.Log("Collided with Obstacles!");
 
             //canObstacleDamage = false;
+        }
+
+        Debug.Log("Collidian = " + collision.gameObject.name);
+        if (collision.gameObject.name == "Teren")
+        {
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                // Sprawdzamy, czy normalna wskazuje w górę (czyli uderzamy od góry w coś)
+                if (contact.normal.y > 0)
+                {
+                    Debug.Log("Stoi na czymś (np. na terenie)");
+                }
+            }
         }
     }
     void OnCollisionStay2D(Collision2D collision)

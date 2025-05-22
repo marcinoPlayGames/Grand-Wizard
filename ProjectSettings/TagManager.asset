@@ -18,9 +18,9 @@ TagManager:
   - Lava
   - Obstacles
   - Blokada
-  - 
-  - 
-  - 
+  - MovingTraps
+  - Enemy
+  - NoCollisions
   - 
   - 
   - 
