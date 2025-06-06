@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class StatCriticals : MonoBehaviour
 {
-    public int Attack_Critical_Hit_Chance;
-    public int Attack_Critical_Hit_Damage;
+    public float Attack_Critical_Hit_Chance;
+    public float Attack_Critical_Hit_Damage;
 
-    public int Spell_Critical_Hit_Chance;
-    public int Spell_Critical_Hit_Damage;
+    public float Spell_Critical_Hit_Chance;
+    public float Spell_Critical_Hit_Damage;
 
 
     // Start is called before the first frame update
@@ -23,21 +23,45 @@ public class StatCriticals : MonoBehaviour
         
     }
 
+    public float GetStatValues(string statName)
+    {
+        if (statName == "Attack_Critical_Hit_Chance")
+        {
+            return Attack_Critical_Hit_Chance = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Attack_Critical_Hit_Damage")
+        {
+            return Attack_Critical_Hit_Damage = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Spell_Critical_Hit_Chance")
+        {
+            return Spell_Critical_Hit_Chance = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Spell_Critical_Hit_Damage")
+        {
+            return Spell_Critical_Hit_Damage = StatSystem.Instance.GetStatValue(statName);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     public bool IsAttackCriticalHit()
     {
-        int critChance = Attack_Critical_Hit_Chance;
-        int roll = UnityEngine.Random.Range(0, 100); // 0–99
+        float critChance = Attack_Critical_Hit_Chance;
+        float roll = UnityEngine.Random.Range(0, 100); // 0–99
         return roll < critChance;
     }
 
     public bool IsSpellCriticalHit()
     {
-        int critChance = Spell_Critical_Hit_Chance;
-        int roll = UnityEngine.Random.Range(0, 100); // 0–99
+        float critChance = Spell_Critical_Hit_Chance;
+        float roll = UnityEngine.Random.Range(0, 100); // 0–99
         return roll < critChance;
     }
 
-    public int GetCriticalDamageByAttackType(int damage, string attackType)
+    public float GetCriticalDamageByAttackType(float damage, string attackType)
     {
         if (attackType == "Physical")
         {

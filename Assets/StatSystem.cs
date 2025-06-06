@@ -9,7 +9,7 @@ public class StatSystem : MonoBehaviour
     [System.Serializable]
     public class StatData
     {
-        public Dictionary<int, int> values;
+        public Dictionary<int, float> values;
         public Dictionary<int, int> costs;
     }
 
@@ -45,7 +45,7 @@ public class StatSystem : MonoBehaviour
         return playerLevels.ContainsKey(statName) ? playerLevels[statName] : 1;
     }
 
-    public int GetStatValue(string statName)
+    public float GetStatValue(string statName)
     {
         int level = GetLevel(statName);
         return statTable[statName].values.ContainsKey(level) ? statTable[statName].values[level] : 0;
@@ -67,9 +67,9 @@ public class StatSystem : MonoBehaviour
         int cost = GetCost(statName, nextLevel);
         if (cost < 0) return false;
 
-        if (CurrencySystem.Instance.HasEnoughCoins(cost))
+        if (GameManager.Instance.HasEnoughCoins(cost))
         {
-            CurrencySystem.Instance.SpendCoins(cost);
+            GameManager.Instance.SpendCoins(cost);
             playerLevels[statName] = nextLevel;
             SavePlayerProgress();
             return true;

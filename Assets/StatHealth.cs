@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class StatHealth : MonoBehaviour
 {
-    public int Max_Health;
-    private int Health;
+    public float Max_Health;
+    private float Health;
 
-    public int Healing_From_Damage_Percent;
+    public float Healing_From_Damage_Percent;
 
-    public int Health_Regen;
+    public float Health_Regen;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +25,36 @@ public class StatHealth : MonoBehaviour
         }
     }
 
-    public int GetHealth()
+    public float GetStatValues(string statName)
+    {
+        if (statName == "Max_Health")
+        {
+            return Max_Health = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Health")
+        {
+            return Health = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Healing_From_Damage_Percent")
+        {
+            return Healing_From_Damage_Percent = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Health_Regen")
+        {
+            return Health_Regen = StatSystem.Instance.GetStatValue(statName);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetHealth()
     {
         return Health;
     }
 
-    public void HealFromDamage(int damage)
+    public void HealFromDamage(float damage)
     {
         Health += damage * Healing_From_Damage_Percent;
     }

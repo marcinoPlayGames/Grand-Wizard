@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class StatAttacks : MonoBehaviour
 {
-    public int Attack_Damage;
-    public int Magic_Damage;
-    public int Attack_Speed;
-    public int Spell_Speed;
-    public int Attack_Range;
+    public float Attack_Damage;
+    public float Magic_Damage;
+    public float Attack_Speed;
+    public float Spell_Speed;
+    public float Attack_Range;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,35 @@ public class StatAttacks : MonoBehaviour
         
     }
 
-    public int GetDamageValue(int damagePercent, string statisticType)
+    public float GetStatValues(string statName)
+    {
+        if (statName == "Attack_Damage")
+        {
+            return Attack_Damage = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Magic_Damage")
+        {
+            return Magic_Damage = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Attack_Speed")
+        {
+            return Attack_Speed = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Spell_Speed")
+        {
+            return Spell_Speed = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Attack_Range")
+        {
+            return Attack_Range = StatSystem.Instance.GetStatValue(statName);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public float GetDamageValue(int damagePercent, string statisticType)
     {
         if (statisticType == "Attack")
         {
@@ -34,7 +62,7 @@ public class StatAttacks : MonoBehaviour
         else return 0;
     }
 
-    public int GetDamageVariables(string statisticType)
+    public float GetDamageVariables(string statisticType)
     {
         if (statisticType == "Attack_Speed")
         {

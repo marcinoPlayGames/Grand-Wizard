@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StatDefenses : MonoBehaviour
 {
-    public int Armor;
-    public int MagicResist;
+    public float Armor;
+    public float Magic_Resist;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,23 @@ public class StatDefenses : MonoBehaviour
         
     }
 
-    public int GetDamageByDamageType(int damage, string damageType)
+    public float GetStatValues(string statName)
+    {
+        if (statName == "Armor")
+        {
+            return Armor = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Magic_Resist")
+        {
+            return Magic_Resist = StatSystem.Instance.GetStatValue(statName);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetDamageByDamageType(float damage, string damageType)
     {
         if (damageType == "Physical")
         {
@@ -27,18 +43,18 @@ public class StatDefenses : MonoBehaviour
         }
         else if (damageType == "Magic")
         {
-            return damage - MagicResist;
+            return damage - Magic_Resist;
         }
         else return damage;
     }
 
-    public int GetArmor()
+    public float GetArmor()
     {
         return Armor;
     }
 
-    public int GetMagicResist()
+    public float GetMagic_Resist()
     {
-        return MagicResist;
+        return Magic_Resist;
     }
 }

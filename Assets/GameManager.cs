@@ -58,4 +58,8 @@ public class GameManager : MonoBehaviour
     {
         UpdateUI();
     }
+
+    public bool HasEnoughCoins(int amount) => coins >= amount;
+    public void SpendCoins(int amount) => coins -= amount;
+    public int GetCoins() => coins;
 }

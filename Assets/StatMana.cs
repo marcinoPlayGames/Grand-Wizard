@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class StatMana : MonoBehaviour
 {
-    public int Max_Mana;
-    private int Mana;
+    public float Max_Mana;
+    private float Mana;
 
-    public int Mana_Regen;
+    public float Mana_Regen;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,23 @@ public class StatMana : MonoBehaviour
         }
     }
 
-    public int GetMana()
+    public float GetStatValues(string statName)
+    {
+        if (statName == "Max_Mana")
+        {
+            return Max_Mana = StatSystem.Instance.GetStatValue(statName);
+        }
+        else if (statName == "Mana_Regen")
+        {
+            return Mana_Regen = StatSystem.Instance.GetStatValue(statName);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetMana()
     {
         return Mana;
     }

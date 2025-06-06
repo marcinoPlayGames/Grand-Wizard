@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 94c2e54d6babd4b49b5d8ec02ac968f4
+  - enabled: 1
+    path: Assets/Scenes/StatisticTree.unity
+    guid: 06dbfc1b0f236dd4cbc8ac7c039b02ee
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: e3d35847f57e28842bdfd3f133b4bbdb
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 4747a246e7af4c846b559262888df00c
   m_configObjects: {}

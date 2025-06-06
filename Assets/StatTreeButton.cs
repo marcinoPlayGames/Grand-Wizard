@@ -20,6 +20,7 @@ public class StatTreeButton : MonoBehaviour
 
     public void OnClick()
     {
+        Debug.Log("Clicked!");
         StatUIController.Instance.ShowUpgradeWindow(statId);
     }
 }

@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 223703}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 223705}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &223703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,7 +621,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 74602023}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 74602025}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &74602023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,7 +768,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 82882884}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 82882886}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &82882884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,7 +915,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 95512954}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 95512956}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &95512954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,7 +1062,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 100254150}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 100254152}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &100254150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1556,7 +1616,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 212883639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 212883641}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &212883639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2802,7 +2874,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 610228520}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 658291565}
+        m_TargetAssemblyTypeName: StatUIController, Assembly-CSharp
+        m_MethodName: OnUpgradeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &610228520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2885,6 +2969,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa439e64521e29b4b96018aee03af338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treePanel: {fileID: 1193996096}
+  upgradePanel: {fileID: 1591002212}
+  statNameText: {fileID: 2002380889}
+  costText: {fileID: 297344655}
+  currentLevel: {fileID: 2139095222}
+  nextLevel: {fileID: 1542302395}
+  coinAmount: {fileID: 1137938846}
 --- !u!1 &691861382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,8 +3088,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 59.8}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -60.9642, y: 59.8}
+  m_SizeDelta: {x: 281.9283, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695175317
 MonoBehaviour:
@@ -3661,7 +3752,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 777201469}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 777201471}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &777201469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3930,7 +4033,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 805003441}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 805003443}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &805003441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4275,7 +4390,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 967173175}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 967173177}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &967173175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5339,7 +5466,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1237434534}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237434536}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1237434534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5934,6 +6073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1319756331}
   - component: {fileID: 1319756330}
+  - component: {fileID: 1319756332}
   m_Layer: 0
   m_Name: StatSystem
   m_TagString: Untagged
@@ -5968,6 +6108,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1319756332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319756329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0772b340378d1284f84ecce3bc5e0817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1359665250
 GameObject:
   m_ObjectHideFlags: 0
@@ -6247,7 +6399,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1442954238}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1442954240}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1442954238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6591,7 +6755,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1525986468}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1525986470}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1525986468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7550,7 +7726,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1890662050}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1890662052}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1890662050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7685,7 +7873,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1890834218}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1890834220}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1890834218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8106,7 +8306,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1944565201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1944565203}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1944565201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8375,7 +8587,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1969267748}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1969267750}
+        m_TargetAssemblyTypeName: StatTreeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1969267748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9082,7 +9306,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2055774841}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 658291565}
+        m_TargetAssemblyTypeName: StatUIController, Assembly-CSharp
+        m_MethodName: CloseUpgradeWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2055774841
 MonoBehaviour:
   m_ObjectHideFlags: 0

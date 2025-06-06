@@ -25,7 +25,7 @@
         "10": 46
     }
   },
-  "Magic_Attack": {
+  "Magic_Damage": {
     "values": {
         "1": 5,
         "2": 10,
@@ -103,7 +103,7 @@
         "10": 51
     }
   },
-  "Critical_%_Chance_Attack": {
+  "Critical_Chance_Attack": {
     "values": {
         "1": 10,
         "2": 20,
@@ -129,7 +129,7 @@
         "10": 59
     }
   },
-  "Critical_%_Chance_Spell": {
+  "Critical_Chance_Spell": {
     "values": {
         "1": 10,
         "2": 20,
@@ -155,7 +155,7 @@
         "10": 59
     }
   },
-  "Critical_%_Damage_Attack": {
+  "Critical_Damage_Attack": {
     "values": {
         "1": 165,
         "2": 180,
@@ -181,7 +181,7 @@
         "10": 71
     }
   },
-  "Critical_%_Damage_Spell": {
+  "Critical_Damage_Spell": {
     "values": {
         "1": 165,
         "2": 180,
@@ -259,7 +259,7 @@
         "10": 81
     }
   },
-  "Health_Regen": {
+  "HP_Regen": {
     "values": {
         "1": 7.5,
         "2": 10,
@@ -387,6 +387,32 @@
         "8": 78,
         "9": 82,
         "10": 86
+    }
+  },
+  "Healing": {
+    "values": {
+        "1": 4,
+        "2": 8,
+        "3": 12,
+        "4": 16,
+        "5": 20,
+        "6": 24,
+        "7": 28,
+        "8": 32,
+        "9": 36,
+        "10": 40
+    },
+    "costs": {
+        "1": 30,
+        "2": 34,
+        "3": 38,
+        "4": 42,
+        "5": 46,
+        "6": 50,
+        "7": 54,
+        "8": 58,
+        "9": 62,
+        "10": 66
     }
   },
 }

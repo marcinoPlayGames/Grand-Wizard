@@ -1761,7 +1761,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 2, y: -10, z: 0}
@@ -5983,7 +5983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainObject: {fileID: 1317993782}
-  deathsThreshold: 12
+  deathsThreshold: 0
 --- !u!1001 &1347060108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24387,7 +24387,7 @@ Transform:
   m_GameObject: {fileID: 2030152763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.9, y: -6.8, z: 0}
+  m_LocalPosition: {x: -25.4, y: 26.7, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24630,7 +24630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Armor: 0
-  MagicResist: 0
+  Magic_Resist: 0
 --- !u!114 &2030152780
 MonoBehaviour:
   m_ObjectHideFlags: 0
