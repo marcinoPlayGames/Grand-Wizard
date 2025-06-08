@@ -10,7 +10,8 @@ public class StatDefenses : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Armor = GetStatValues("Armor");
+        Magic_Resist = GetStatValues("Magic_Resist");
     }
 
     // Update is called once per frame

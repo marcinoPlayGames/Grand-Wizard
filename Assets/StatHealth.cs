@@ -13,6 +13,11 @@ public class StatHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Max_Health = GetStatValues("Max_Health");
+        Health = GetStatValues("Health");
+        Healing_From_Damage_Percent = GetStatValues("Healing_From_Damage_Percent");
+        Health_Regen = GetStatValues("Health_Regen");
+
         StartCoroutine(RegenHealth());
     }
 
@@ -29,19 +34,19 @@ public class StatHealth : MonoBehaviour
     {
         if (statName == "Max_Health")
         {
-            return Max_Health = StatSystem.Instance.GetStatValue(statName);
+            return Max_Health = StatSystem.Instance.GetStatValue("HP");
         }
         else if (statName == "Health")
         {
-            return Health = StatSystem.Instance.GetStatValue(statName);
+            return Health = StatSystem.Instance.GetStatValue("HP");
         }
         else if (statName == "Healing_From_Damage_Percent")
         {
-            return Healing_From_Damage_Percent = StatSystem.Instance.GetStatValue(statName);
+            return Healing_From_Damage_Percent = StatSystem.Instance.GetStatValue("Healing");
         }
         else if (statName == "Health_Regen")
         {
-            return Health_Regen = StatSystem.Instance.GetStatValue(statName);
+            return Health_Regen = StatSystem.Instance.GetStatValue("Health_Regen");
         }
         else
         {

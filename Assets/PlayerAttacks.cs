@@ -38,12 +38,21 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField]
     AudioSource StrongerFireball;
 
+    private StatAttacks statAttacks;
+
 
     // Start is called before the first frame update
     void Start()
     {
         // Find the PlayerMove script attached to the same GameObject
+        
+        
         playerMove = GetComponent<PlayerMove>();
+
+        statAttacks = GetComponent<StatAttacks>();
+
+        fireballSpeed = fireballSpeed * statAttacks.Attack_Speed;
+        strongerFireballSpeed = strongerFireballSpeed * statAttacks.Spell_Speed;
 
     }
 

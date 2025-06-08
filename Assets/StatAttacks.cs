@@ -12,7 +12,11 @@ public class StatAttacks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Attack_Damage = GetStatValues("Attack_Damage");
+        Magic_Damage = GetStatValues("Magic_Damage");
+        Attack_Speed = GetStatValues("Attack_Speed");
+        Spell_Speed = GetStatValues("Spell_Speed");
+        Attack_Range = GetStatValues("Attack_Range");
     }
 
     // Update is called once per frame

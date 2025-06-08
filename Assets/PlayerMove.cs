@@ -11,11 +11,16 @@ public class PlayerMove : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerAttacks playerAttacks;
+    private StatHealth statHealth;
+    private StatDefenses statDefenses;
     void Start()
     {
         Debug.Log("Start in PlayerMovement");
         rb = GetComponent<Rigidbody2D>();
-        Player_Health = Player_MaxHealth;
+
+        statHealth = GetComponent<StatHealth>();
+        statDefenses = GetComponent<StatDefenses>();
+        Player_Health = statHealth.GetStatValues("HP");
         Debug.Log(healthBar.healthBarImage.fillAmount);
 
         playerAttacks = GetComponent<PlayerAttacks>();
@@ -203,9 +208,9 @@ public class PlayerMove : MonoBehaviour
     {
         Debug.Log(Player_Health);
 
-        Player_Health -= damage;
+        Player_Health -= damage - statDefenses.Armor;
         healthBar.UpdateHealthBar();
-        Debug.Log("Damage = " + damage);
+        Debug.Log("Damage = " + (damage - statDefenses.Armor));
         StartCoroutine(HitAnimation());
 
         playerHit.Play();
