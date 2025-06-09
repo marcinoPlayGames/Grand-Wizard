@@ -87,6 +87,16 @@ public class StatSystem : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void SaveGame()
+    {
+        SavePlayerProgressToFile();
+    }
+    
+    void SavePlayerProgressToFile()
+    {
+        SavingSystem.SaveGame(playerLevels, GameManager.Instance.GetCoins());
+    }
+
     void LoadPlayerProgress()
     {
         if (PlayerPrefs.HasKey(SaveKey))
