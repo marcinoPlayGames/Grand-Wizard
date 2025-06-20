@@ -131,4 +131,17 @@ public class StatSystem : MonoBehaviour
             playerLevels = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
         }
     }
+
+    public void LoadFromData(Dictionary<string, int> levels)
+    {
+        playerLevels = levels;
+    }
+
+    public void LoadGameButton()
+    {
+        SavingSystem.LoadLatestGame();
+
+        // Przełącz scenę, np. do głównego huba/świata
+        UnityEngine.SceneManagement.SceneManager.LoadScene("NextLevel"); // lub "LevelSelect", jak wolisz
+    }
 }

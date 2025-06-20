@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int coins = 0;
     public TMP_Text coinText;
+
+    public int unlockedLevel = 1; // zaczynamy od Level 1
+
+    public int GetUnlockedLevel() => unlockedLevel;
+    public void SetUnlockedLevel(int value) => unlockedLevel = value;
+
 
     private void Awake()
     {

@@ -28,7 +28,8 @@ public static class SavingSystem
         SaveData data = new SaveData
         {
             playerLevels = stats,
-            coinCount = coins
+            coinCount = coins,
+            unlockedLevel = GameManager.Instance.GetUnlockedLevel()
         };
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
@@ -47,7 +48,16 @@ public static class SavingSystem
         }
 
         string json = File.ReadAllText(filePath);
-        return JsonConvert.DeserializeObject<SaveData>(json);
+        SaveData data = JsonConvert.DeserializeObject<SaveData>(json);
+
+        // Wczytanie danych do GameManager
+        GameManager.Instance.coins = data.coinCount;
+        GameManager.Instance.unlockedLevel = data.unlockedLevel;
+
+        // Wczytanie danych do StatSystem
+        StatSystem.Instance.LoadFromData(data.playerLevels);
+
+        return data;
     }
 
     [Serializable]
@@ -55,6 +65,7 @@ public static class SavingSystem
     {
         public Dictionary<string, int> playerLevels;
         public int coinCount;
+        public int unlockedLevel;
 
         public void LoadFromSaveFile(string filePath)
         {
@@ -63,6 +74,7 @@ public static class SavingSystem
             {
                 playerLevels = data.playerLevels;
                 GameManager.Instance.coins = data.coinCount;
+                GameManager.Instance.unlockedLevel = data.unlockedLevel;
             }
         }
     }  
@@ -70,5 +82,22 @@ public static class SavingSystem
     public static string[] GetAllSaveFiles()
     {
         return Directory.GetFiles(SavingSystem.GetSaveDirectory(), "*.json");
+    }
+
+    public static void LoadLatestGame()
+    {
+        string[] files = GetAllSaveFiles();
+        if (files.Length == 0)
+        {
+            Debug.LogWarning("Brak zapisanych plików.");
+            return;
+        }
+
+        // Posortuj pliki według daty (najbardziej aktualny jako ostatni)
+        Array.Sort(files);
+        string latestFile = files[files.Length - 1];
+
+        Debug.Log($"Ładowanie zapisu z pliku: {latestFile}");
+        LoadGame(latestFile);
     }
 }
