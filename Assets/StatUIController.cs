@@ -16,6 +16,7 @@ public class StatUIController : MonoBehaviour
     public TextMeshProUGUI currentLevel;
     public TextMeshProUGUI nextLevel;
     public TextMeshProUGUI coinAmount;
+    public Image statIconImage;
     private string currentStat;
 
     private void Awake() => Instance = this;
@@ -45,6 +46,16 @@ public class StatUIController : MonoBehaviour
         nextLevel.text = $"{level + 1}";
         currentLevel.text = $"{level}";
         coinAmount.text = $"{coins}";
+
+        Sprite icon = Resources.Load<Sprite>($"StatIcons/{currentStat}");
+        if (icon != null)
+        {
+            statIconImage.sprite = icon;
+        }
+        else
+        {
+            Debug.LogWarning($"Brak ikony dla: {currentStat}");
+        }
     }
 
     public void OnUpgradeButton()

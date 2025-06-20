@@ -20,10 +20,13 @@ public class PlayerMove : MonoBehaviour
 
         statHealth = GetComponent<StatHealth>();
         statDefenses = GetComponent<StatDefenses>();
-        Player_Health = statHealth.GetStatValues("HP");
+        Player_Health = statHealth.Max_Health;
         Debug.Log(healthBar.healthBarImage.fillAmount);
 
         playerAttacks = GetComponent<PlayerAttacks>();
+
+        Debug.Log("StatSystem.Instance = " + StatSystem.Instance);
+        Debug.Log("Max HP = " + Player_Health);
     }
 
     [SerializeField]

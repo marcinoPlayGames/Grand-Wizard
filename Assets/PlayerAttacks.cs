@@ -51,8 +51,8 @@ public class PlayerAttacks : MonoBehaviour
 
         statAttacks = GetComponent<StatAttacks>();
 
-        fireballSpeed = fireballSpeed * statAttacks.Attack_Speed;
-        strongerFireballSpeed = strongerFireballSpeed * statAttacks.Spell_Speed;
+        fireballSpeed = fireballSpeed * (1 + statAttacks.Attack_Speed);
+        strongerFireballSpeed = strongerFireballSpeed * (1 + statAttacks.Spell_Speed);
 
     }
 

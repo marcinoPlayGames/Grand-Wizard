@@ -9,8 +9,8 @@ public class StatSystem : MonoBehaviour
     [System.Serializable]
     public class StatData
     {
-        public Dictionary<int, float> values;
-        public Dictionary<int, int> costs;
+        public Dictionary<string, float> values;
+        public Dictionary<string, int> costs;
     }
 
     // Zawiera wszystkie statystyki np. Attack_Damage, Magic_Attack
@@ -37,23 +37,49 @@ public class StatSystem : MonoBehaviour
     void LoadStatsTable()
     {
         TextAsset json = Resources.Load<TextAsset>("stats");
+
+        Debug.Log("Stats file loaded: " + (json != null));
+        Debug.Log(json.text);
+
         statTable = JsonConvert.DeserializeObject<Dictionary<string, StatData>>(json.text);
+
+        if (statTable.ContainsKey("HP"))
+        {
+            Debug.Log("HP stat loaded.");
+            foreach (var kvp in statTable["HP"].values)
+            {
+                Debug.Log($"Level {kvp.Key}: Value {kvp.Value}");
+            }
+        }
     }
 
     public int GetLevel(string statName)
     {
-        return playerLevels.ContainsKey(statName) ? playerLevels[statName] : 1;
+        if (statName == "HP")
+        {
+            Debug.Log("HP lvl = ");
+            Debug.Log(playerLevels.ContainsKey(statName));
+            Debug.Log(statTable[statName].values.ContainsKey(0.ToString()));
+            Debug.Log(statTable[statName].values[0.ToString()]);
+        }
+        return playerLevels.ContainsKey(statName) ? playerLevels[statName] : 0;
     }
 
     public float GetStatValue(string statName)
     {
         int level = GetLevel(statName);
-        return statTable[statName].values.ContainsKey(level) ? statTable[statName].values[level] : 0;
+
+        Debug.Log("level = " + level);
+
+        Debug.Log(statTable[statName].values.ContainsKey(level.ToString()));
+        Debug.Log(statTable[statName].values[level.ToString()]);
+        Debug.Log(statTable[statName].values.ContainsKey(level.ToString()) ? statTable[statName].values[level.ToString()] : 0);
+        return statTable[statName].values.ContainsKey(level.ToString()) ? statTable[statName].values[level.ToString()] : 0;
     }
 
     public int GetCost(string statName, int nextLevel)
     {
-        return statTable[statName].costs.ContainsKey(nextLevel) ? statTable[statName].costs[nextLevel] : -1;
+        return statTable[statName].costs.ContainsKey(nextLevel.ToString()) ? statTable[statName].costs[nextLevel.ToString()] : -1;
     }
 
     public bool TryUpgrade(string statName)
@@ -61,7 +87,7 @@ public class StatSystem : MonoBehaviour
         int currentLevel = GetLevel(statName);
         int nextLevel = currentLevel + 1;
 
-        if (!statTable[statName].values.ContainsKey(nextLevel))
+        if (!statTable[statName].values.ContainsKey(nextLevel.ToString()))
             return false;
 
         int cost = GetCost(statName, nextLevel);

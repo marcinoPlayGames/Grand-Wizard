@@ -14,10 +14,10 @@ public class StatCriticals : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Attack_Critical_Hit_Chance = GetStatValues("Attack_Critical_Hit_Chance");
-        Attack_Critical_Hit_Damage = GetStatValues("Attack_Critical_Hit_Damage");
-        Spell_Critical_Hit_Chance = GetStatValues("Spell_Critical_Hit_Chance");
-        Spell_Critical_Hit_Damage = GetStatValues("Spell_Critical_Hit_Damage");
+        Attack_Critical_Hit_Chance = GetStatValues("Critical_Chance_Attack");
+        Attack_Critical_Hit_Damage = GetStatValues("Critical_Damage_Attack");
+        Spell_Critical_Hit_Chance = GetStatValues("Critical_Chance_Spell");
+        Spell_Critical_Hit_Damage = GetStatValues("Critical_Damage_Spell");
     }
 
     // Update is called once per frame

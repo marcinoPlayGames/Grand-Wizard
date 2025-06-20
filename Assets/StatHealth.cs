@@ -16,7 +16,7 @@ public class StatHealth : MonoBehaviour
         Max_Health = GetStatValues("Max_Health");
         Health = GetStatValues("Health");
         Healing_From_Damage_Percent = GetStatValues("Healing_From_Damage_Percent");
-        Health_Regen = GetStatValues("Health_Regen");
+        Health_Regen = GetStatValues("HP_Regen");
 
         StartCoroutine(RegenHealth());
     }
@@ -40,13 +40,13 @@ public class StatHealth : MonoBehaviour
         {
             return Health = StatSystem.Instance.GetStatValue("HP");
         }
-        else if (statName == "Healing_From_Damage_Percent")
+        else if (statName == "Healing")
         {
             return Healing_From_Damage_Percent = StatSystem.Instance.GetStatValue("Healing");
         }
         else if (statName == "Health_Regen")
         {
-            return Health_Regen = StatSystem.Instance.GetStatValue("Health_Regen");
+            return Health_Regen = StatSystem.Instance.GetStatValue("HP_Regen");
         }
         else
         {
