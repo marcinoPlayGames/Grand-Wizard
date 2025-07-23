@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,301 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 1
+        width: 59
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350ca4ce6b550ed48865f832746d4088
+      internalID: 2067934598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1
+        width: 54
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d645279163a53d4087a708efd3b8e48
+      internalID: 1493106526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_2
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 1
+        width: 65
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa34ea7529134f848981270aa3f926ce
+      internalID: -260196366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_3
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 1
+        width: 75
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dc19c56d0e4f23498e81d14e7036dac
+      internalID: -9773132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_4
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 1
+        width: 54
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1ade4e16b39a8440998a4f3a4ba6fd7
+      internalID: -1812424373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_5
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 1
+        width: 78
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1bebb20e0b56241bdac18ad3886eb9
+      internalID: -1796335423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_6
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 1
+        width: 58
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2731e499c48bdc40b7d1b38059687bb
+      internalID: -1264844714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_7
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 1
+        width: 54
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7512bc716c53d9499f12e3bb166e1d4
+      internalID: -1475878570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_8
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1
+        width: 58
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dff1cfe68c5efb44a9482e738246f817
+      internalID: 1047931955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_9
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 1
+        width: 78
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0617906abbb159a4a893530842893367
+      internalID: -485032651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_10
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 1
+        width: 54
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a8b73ce03afe54db7a44e2d7655d2f
+      internalID: -585582967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_11
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 1
+        width: 75
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273f1579dcdab574a812b27e923dd0bd
+      internalID: -668174924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_12
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 1
+        width: 65
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fc9217cba52ed4bbb6534315ec980d
+      internalID: 302221038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EvilBoss-ThrowSwords_13
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1
+        width: 54
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7fce2d1a086f5448bc4ea4f3b1d8373
+      internalID: -1133137552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +413,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EvilBoss-ThrowSwords_0: 2067934598
+      EvilBoss-ThrowSwords_1: 1493106526
+      EvilBoss-ThrowSwords_10: -585582967
+      EvilBoss-ThrowSwords_11: -668174924
+      EvilBoss-ThrowSwords_12: 302221038
+      EvilBoss-ThrowSwords_13: -1133137552
+      EvilBoss-ThrowSwords_2: -260196366
+      EvilBoss-ThrowSwords_3: -9773132
+      EvilBoss-ThrowSwords_4: -1812424373
+      EvilBoss-ThrowSwords_5: -1796335423
+      EvilBoss-ThrowSwords_6: -1264844714
+      EvilBoss-ThrowSwords_7: -1475878570
+      EvilBoss-ThrowSwords_8: 1047931955
+      EvilBoss-ThrowSwords_9: -485032651
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
