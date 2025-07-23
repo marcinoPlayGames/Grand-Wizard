@@ -68,4 +68,11 @@ public class GameManager : MonoBehaviour
     public bool HasEnoughCoins(int amount) => coins >= amount;
     public void SpendCoins(int amount) => coins -= amount;
     public int GetCoins() => coins;
+
+    [ContextMenu("Add 800 Coins")]
+    public void DebugAddCoins()
+    {
+        coins += 800;
+        Debug.Log("Coins: " + coins);
+    }
 }
