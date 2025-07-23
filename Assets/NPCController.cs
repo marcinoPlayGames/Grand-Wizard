@@ -40,6 +40,8 @@ public class NPCController : MonoBehaviour
 
     void Update()
     {
+        isThrowing = npcAI.IsThrowing();
+
         if (!isHit && !isThrowing)
         {
             MoveNPC();
@@ -52,10 +54,11 @@ public class NPCController : MonoBehaviour
         float horX = GetComponent<Rigidbody2D>().velocity.x;
         float verY = GetComponent<Rigidbody2D>().velocity.y; // Get the vertical velocity
 
-        isThrowing = npcAI.IsThrowing();
+        
 
         if (!isHit && !isThrowing)
         {
+            Debug.Log("moveState = " + GetComponent<Animator>().GetInteger("moveStateNPC"));
             if (!isGrounded && verY > 0)
             {
                 GetComponent<Animator>().SetInteger("moveStateNPC", 3); // Set fall animation

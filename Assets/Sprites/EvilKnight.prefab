@@ -179,7 +179,7 @@ MonoBehaviour:
   speed: 3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   npcDeathCounter: {fileID: 0}
   NPC_MaxHealth: 200
   NPC_Damage: 50
@@ -337,6 +337,8 @@ MonoBehaviour:
     m_Bits: 4294967295
   swordDamage: 25
   swordCooldown: 1
+  swordNumber: 1
+  verticalSpacing: -0.5
   swordThrowSound: {fileID: 8917504192721961917}
 --- !u!82 &8917504192721961917
 AudioSource:

@@ -21,8 +21,8 @@ TagManager:
   - MovingTraps
   - Enemy
   - NoCollisions
-  - 
-  - 
+  - Treasures
+  - Player
   - 
   - 
   - 

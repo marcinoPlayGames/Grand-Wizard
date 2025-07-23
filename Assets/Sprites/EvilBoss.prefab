@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 130162033744813733}
   - component: {fileID: 3628919990357275766}
   - component: {fileID: 1469436738414549991}
-  - component: {fileID: 1531472122689653466}
   - component: {fileID: 8917504192721961917}
+  - component: {fileID: -1303941372557918568}
   m_Layer: 11
   m_Name: EvilBoss
   m_TagString: NPC
@@ -179,7 +179,7 @@ MonoBehaviour:
   speed: 3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   npcDeathCounter: {fileID: 0}
   NPC_MaxHealth: 200
   NPC_Damage: 50
@@ -315,29 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainObject: {fileID: 0}
   NPCLeft: {fileID: 0}
---- !u!114 &1531472122689653466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8020805311469291635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7d42f99112754c47b22f3fd8bdd810b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  eyesPosition: {fileID: 8874980590586442325}
-  swordPrefab: {fileID: 5255087296905525315, guid: d1b497cd8a396fc42a9eae38e67fec01, type: 3}
-  detectionRange: 10
-  throwForce: 5
-  visionMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  swordDamage: 25
-  swordCooldown: 1
-  swordThrowSound: {fileID: 8917504192721961917}
 --- !u!82 &8917504192721961917
 AudioSource:
   m_ObjectHideFlags: 0
@@ -434,3 +411,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1303941372557918568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020805311469291635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d42f99112754c47b22f3fd8bdd810b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  eyesPosition: {fileID: 8874980590586442325}
+  swordPrefab: {fileID: 5255087296905525315, guid: bba900b722c56e648865b09f415dbb31, type: 3}
+  detectionRange: 20
+  throwForce: 12
+  visionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  swordDamage: 125
+  swordCooldown: 3
+  npcSize: 2
+  rayHeight: 8
+  swordNumber: 4
+  verticalSpacing: -1
+  swordThrowSound: {fileID: 8917504192721961917}

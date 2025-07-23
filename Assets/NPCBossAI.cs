@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCAI : MonoBehaviour
+public class NPCBossAI : MonoBehaviour
 {
     public Transform player;         // Assign player in the Inspector
     public Transform eyesPosition;   // The point from which the enemy "sees" (set this to the eye level)
@@ -15,14 +15,6 @@ public class NPCAI : MonoBehaviour
     private bool canThrowSword = true;
     private NPCController npcController;
     private bool isFacingRight = true;
-
-    public float npcSize = 1;
-    public float rayHeight = 2.5f;
-
-    public int swordNumber = 1;
-    public float verticalSpacing = -2f; // Odstęp między mieczami w dół
-
-    public float eyesPositionOffset = 0.8f;
 
     bool isThrowing = false;
 
@@ -43,20 +35,26 @@ public class NPCAI : MonoBehaviour
 
     void CheckForPlayer()
     {
+        // Get NPC's facing direction
         isFacingRight = npcController.IsFacingRight();
-        Vector2 direction = isFacingRight ? Vector2.right : Vector2.left;
 
-        float horizontalOffset = isFacingRight ? 1.5f : -1.5f;
-        Vector2 origin = eyesPosition.position + new Vector3(horizontalOffset, 0.8f, 0f);
+        // Set ray direction based on NPC facing direction
+        Vector2 rayDirection = isFacingRight ? Vector2.right : Vector2.left;
 
-        Vector2 boxSize = new Vector2(0.1f, rayHeight); // szerokość i wysokość "promienia"
+        // Offset the ray spawn position based on NPC facing direction
+        float spawnOffset = isFacingRight ? 1.5f : -1.5f;
+        Vector3 spawnPosition = eyesPosition.position + new Vector3(spawnOffset, 0.8f, 0f);
 
-        RaycastHit2D hit = Physics2D.BoxCast(origin, boxSize, 0f, direction, detectionRange, visionMask);
+        // Cast a ray in front of the NPC
+        RaycastHit2D hit = Physics2D.Raycast(spawnPosition, rayDirection, detectionRange, visionMask);
 
-        DebugDrawBoxCast(origin, boxSize, 0f, direction, detectionRange, Color.green);
+        // Debug the ray in Scene view (optional)
+        Debug.DrawRay(spawnPosition, rayDirection * detectionRange, Color.red);
 
+        // Check if the ray hits the player and cooldown is finished
         if (hit.collider != null && hit.collider.CompareTag("Player") && canThrowSword && !isThrowing)
         {
+            // Start the ThrowSwordCooldown if not already throwing
             StartCoroutine(ThrowSwordCooldown());
         }
     }
@@ -143,14 +141,17 @@ public class NPCAI : MonoBehaviour
         Debug.Log("Swords thrown!");
         isFacingRight = npcController.IsFacingRight();
         Vector2 swordDirection = isFacingRight ? Vector2.right : Vector2.left;
-        float spawnOffsetX = isFacingRight ? 2f * npcSize : -2f * npcSize;
+        float spawnOffsetX = isFacingRight ? 2f : -2f;
         Vector2 swordFacing = isFacingRight ? Vector2.right : Vector2.left;
+
+        int swordNumber = 3; // Możesz ustawić dynamicznie
+        float verticalSpacing = -0.5f; // Odstęp między mieczami w dół
 
         swordThrowSound.Play();
 
         for (int i = 0; i < swordNumber; i++)
         {
-            Vector3 spawnPosition = transform.position + new Vector3(spawnOffsetX, eyesPositionOffset + (i * verticalSpacing), 0f);
+            Vector3 spawnPosition = transform.position + new Vector3(spawnOffsetX, 0.8f + (i * verticalSpacing), 0f);
             GameObject sword = Instantiate(swordPrefab, spawnPosition, Quaternion.identity);
 
             if (sword != null)
@@ -217,43 +218,5 @@ public class NPCAI : MonoBehaviour
     public bool IsThrowing()
     {
         return isThrowing;
-    }
-
-    void DebugDrawBoxCast(Vector2 origin, Vector2 size, float angle, Vector2 direction, float distance, Color color)
-    {
-        Quaternion rotation = Quaternion.Euler(0, 0, angle);
-        Vector2 halfSize = size * 0.5f;
-
-        // Oblicz rogi boxa jako Vector2
-        Vector2 topLeft = origin + (Vector2)(rotation * new Vector2(-halfSize.x, halfSize.y));
-        Vector2 topRight = origin + (Vector2)(rotation * new Vector2(halfSize.x, halfSize.y));
-        Vector2 bottomLeft = origin + (Vector2)(rotation * new Vector2(-halfSize.x, -halfSize.y));
-        Vector2 bottomRight = origin + (Vector2)(rotation * new Vector2(halfSize.x, -halfSize.y));
-
-        Vector2 move = direction.normalized * distance;
-
-        // Przesunięte rogi
-        Vector2 tlMoved = topLeft + move;
-        Vector2 trMoved = topRight + move;
-        Vector2 blMoved = bottomLeft + move;
-        Vector2 brMoved = bottomRight + move;
-
-        // Rysuj box przed ruchem
-        Debug.DrawLine((Vector3)topLeft, (Vector3)topRight, color);
-        Debug.DrawLine((Vector3)topRight, (Vector3)bottomRight, color);
-        Debug.DrawLine((Vector3)bottomRight, (Vector3)bottomLeft, color);
-        Debug.DrawLine((Vector3)bottomLeft, (Vector3)topLeft, color);
-
-        // Rysuj box po ruchu
-        Debug.DrawLine((Vector3)tlMoved, (Vector3)trMoved, color);
-        Debug.DrawLine((Vector3)trMoved, (Vector3)brMoved, color);
-        Debug.DrawLine((Vector3)brMoved, (Vector3)blMoved, color);
-        Debug.DrawLine((Vector3)blMoved, (Vector3)tlMoved, color);
-
-        // Rysuj połączenia między boxami (krawędzie "tunelu")
-        Debug.DrawLine((Vector3)topLeft, (Vector3)tlMoved, color);
-        Debug.DrawLine((Vector3)topRight, (Vector3)trMoved, color);
-        Debug.DrawLine((Vector3)bottomLeft, (Vector3)blMoved, color);
-        Debug.DrawLine((Vector3)bottomRight, (Vector3)brMoved, color);
     }
 }
