@@ -26,7 +26,7 @@
 		"9": 245,
 		"10": 270,
 	},
-	"Attack_Damage":
+	"stat.Attack_Damage_modifier":
 	{
 		"0": 0,
 		"1": 15,
@@ -40,7 +40,7 @@
 		"9": 95,
 		"10": 105,
 	},
-	"Magic_Damage":
+	"stat.Magic_Damage_modifier":
 	{
 		"0": 0,
 		"1": 85,

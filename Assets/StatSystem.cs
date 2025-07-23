@@ -144,4 +144,9 @@ public class StatSystem : MonoBehaviour
         // Przełącz scenę, np. do głównego huba/świata
         UnityEngine.SceneManagement.SceneManager.LoadScene("NextLevel"); // lub "LevelSelect", jak wolisz
     }
+
+    public List<string> GetAllStatNames()
+    {
+        return new List<string>(statTable.Keys);
+    }
 }

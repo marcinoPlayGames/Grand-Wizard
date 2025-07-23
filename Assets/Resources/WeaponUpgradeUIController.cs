@@ -38,6 +38,9 @@ public class WeaponUpgradeUIController : MonoBehaviour
         float nextDamage = WeaponUpgradeSystem.Instance.GetNextBaseDamage(currentWeaponId);
         float percent = currentDamage > 0 ? ((nextDamage - currentDamage) / currentDamage) * 100f : 0f;
 
+        string currentLevelIcons = WeaponUpgradeSystem.Instance.GetModifiersIcons(currentWeaponId, false);
+        string nextLevelIcons = WeaponUpgradeSystem.Instance.GetModifiersIcons(currentWeaponId, true);
+
         float atkMod = WeaponUpgradeSystem.Instance.GetModifier(currentWeaponId, "stat.Attack_Damage_modifier");
         float magMod = WeaponUpgradeSystem.Instance.GetModifier(currentWeaponId, "stat.Magic_Damage_modifier");
 
@@ -55,8 +58,8 @@ public class WeaponUpgradeUIController : MonoBehaviour
             nextLevelText.text = $"Level {level + 1}";
         }
 
-        currentValueText.text = $"{currentDamage}";
-        nextValueText.text = $"{nextDamage}"; // <color=green>(+{percent:F1}%)</color>"
+        currentValueText.text = $"{currentDamage} ({currentLevelIcons})";
+        nextValueText.text = $"{nextDamage} ({nextLevelIcons})"; // <color=green>(+{percent:F1}%)</color>"
         costText.text = $"{cost}";
         coinsText.text = $"{coins}";
 

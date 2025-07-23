@@ -133,4 +133,44 @@ public class WeaponUpgradeSystem : MonoBehaviour
             weaponLevels = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
         }
     }
+
+    public string GetModifiersIcons(string weaponId, bool bGetNextLevel)
+    {
+        var data = LoadWeaponData(weaponId);
+        if (data == null || data.StatModifiers == null)
+            return "";
+
+        int currentLevel = GetLevel(weaponId);
+        int maxLevel = GetMaxLevel(weaponId);
+
+        // Jeśli prosimy o next level, ale już jesteśmy na max – to zostajemy przy aktualnym
+        int level = bGetNextLevel && currentLevel < maxLevel ? currentLevel + 1 : currentLevel;
+
+        var sb = new System.Text.StringBuilder();
+
+        // 👇 Dodajemy ikonkę Base_Damage jeśli jej wartość > 0
+        if (data.Base_Damage != null && data.Base_Damage.TryGetValue(level.ToString(), out var baseDamage) && baseDamage > 0f)
+        {
+            sb.Append("<sprite name=\"Base_Damage\">");
+        }
+
+        // Pobieramy wszystkie statystyki z StatSystem
+        var allStats = StatSystem.Instance.GetAllStatNames();
+
+        foreach (var stat in allStats)
+        {
+            string key = $"stat.{stat}_modifier";
+
+            if (data.StatModifiers.TryGetValue(key, out var jToken))
+            {
+                var dict = jToken.ToObject<Dictionary<string, float>>();
+                if (dict != null && dict.TryGetValue(level.ToString(), out var val) && val != 0f)
+                {
+                    sb.Append($"<sprite name=\"{stat}\">");
+                }
+            }
+        }
+
+        return sb.ToString();
+    }
 }
