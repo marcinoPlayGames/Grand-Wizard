@@ -48,11 +48,25 @@ public class WeaponUpgradeSystem : MonoBehaviour
         return weaponLevels.ContainsKey(weaponId) ? weaponLevels[weaponId] : 0;
     }
 
+    public int GetMaxLevel(string weaponId)
+    {
+        var data = LoadWeaponData(weaponId);
+        int maxLevel = 0;
+        foreach (var key in data.Cost.Keys)
+        {
+            if (int.TryParse(key, out int levelNum))
+            {
+                if (levelNum > maxLevel) maxLevel = levelNum;
+            }
+        }
+        return maxLevel;
+    }
+
     public int GetCost(string weaponId)
     {
         var data = LoadWeaponData(weaponId);
         int nextLevel = GetLevel(weaponId) + 1;
-        return data.Cost.ContainsKey(nextLevel.ToString()) ? data.Cost[nextLevel.ToString()] : -1;
+        return data.Cost.ContainsKey(nextLevel.ToString()) ? data.Cost[nextLevel.ToString()] : 0;
     }
 
     public float GetBaseDamage(string weaponId)

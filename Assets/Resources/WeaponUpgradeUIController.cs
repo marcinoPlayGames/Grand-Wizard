@@ -31,6 +31,8 @@ public class WeaponUpgradeUIController : MonoBehaviour
 
     void UpdateUI()
     {
+        int maxLevel = WeaponUpgradeSystem.Instance.GetMaxLevel(currentWeaponId);
+
         int level = WeaponUpgradeSystem.Instance.GetLevel(currentWeaponId);
         float currentDamage = WeaponUpgradeSystem.Instance.GetBaseDamage(currentWeaponId);
         float nextDamage = WeaponUpgradeSystem.Instance.GetNextBaseDamage(currentWeaponId);
@@ -43,7 +45,16 @@ public class WeaponUpgradeUIController : MonoBehaviour
         int coins = GameManager.Instance.GetCoins();
 
         currentLevelText.text = $"Level {level}";
-        nextLevelText.text = $"Level {level + 1}";
+
+        if (level >= maxLevel)
+        {
+            nextLevelText.text = $"Max Level";
+        }
+        else
+        {
+            nextLevelText.text = $"Level {level + 1}";
+        }
+
         currentValueText.text = $"{currentDamage}";
         nextValueText.text = $"{nextDamage}"; // <color=green>(+{percent:F1}%)</color>"
         costText.text = $"{cost}";
