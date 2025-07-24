@@ -40,7 +40,6 @@ public class PlayerAttacks : MonoBehaviour
 
     private StatAttacks statAttacks;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +52,6 @@ public class PlayerAttacks : MonoBehaviour
 
         fireballSpeed = fireballSpeed * (1 + statAttacks.Attack_Speed);
         strongerFireballSpeed = strongerFireballSpeed * (1 + statAttacks.Spell_Speed);
-
     }
 
     // Update is called once per frame
@@ -137,9 +135,13 @@ public class PlayerAttacks : MonoBehaviour
                 rb.velocity = fireballDirection * fireballSpeed;
             }
 
+            float totalDamage = WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
+
+            Debug.Log("Weaker damage = " + totalDamage);
+
             FireballController controller = fireball.GetComponent<FireballController>();
             if (controller != null)
-                controller.SetDamage(fireballDamage);
+                controller.SetDamage(totalDamage);
 
             Destroy(fireball, 2f);
         }
@@ -170,9 +172,13 @@ public class PlayerAttacks : MonoBehaviour
                 rb.velocity = fireballDirection * strongerFireballSpeed;
             }
 
+            float totalDamage = 2 * WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
+
+            Debug.Log("Stronger damage = " + totalDamage);
+
             FireballController controller = strongerFireball.GetComponent<FireballController>();
             if (controller != null)
-                controller.SetDamage(strongerFireballDamage);
+                controller.SetDamage(totalDamage);
 
             if (fireballFacing == new Vector2(-1.00f, 0.00f))
                 strongerFireball.GetComponent<SpriteRenderer>().flipX = true;
