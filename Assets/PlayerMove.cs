@@ -210,6 +210,13 @@ public class PlayerMove : MonoBehaviour
     {
         return Player_Health;
     }
+
+    public void SetMaxHealth()
+    {
+        Player_Health = Player_MaxHealth;
+        healthBar.UpdateHealthBar();
+    }
+
     public void DamagePlayer(float damage, DamageType iDamageType)
     {
         Debug.Log(Player_Health);
@@ -238,12 +245,20 @@ public class PlayerMove : MonoBehaviour
 
         playerHit.Play();
 
+        statHealth.StartHealthRegen();
+        
         Debug.Log(Player_Health);
 
         if (Player_Health <= 0)
         {
             StartCoroutine(GameOver());
         }
+    }
+
+    public void HealPlayer(float heal)
+    {
+        Player_Health += heal;
+        healthBar.UpdateHealthBar();
     }
 
     IEnumerator HitAnimation()

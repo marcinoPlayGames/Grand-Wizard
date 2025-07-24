@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,11 @@ public class StatHealth : MonoBehaviour
     public float Healing_From_Damage_Percent;
 
     public float Health_Regen;
+
+    private bool bIsRegenStarted = false;
+
+    private Coroutine regenCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,16 +22,20 @@ public class StatHealth : MonoBehaviour
         Health = GetStatValues("Health");
         Healing_From_Damage_Percent = GetStatValues("Healing_From_Damage_Percent");
         Health_Regen = GetStatValues("HP_Regen");
-
-        StartCoroutine(RegenHealth());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Max_Health == Health)
+
+    }
+
+    public void StartHealthRegen()
+    {
+        if (regenCoroutine == null)
         {
-            StopCoroutine(RegenHealth());
+            regenCoroutine = StartCoroutine(RegenHealth());
+            Debug.Log("Regen started.");
         }
     }
 
@@ -44,7 +53,7 @@ public class StatHealth : MonoBehaviour
         {
             return Healing_From_Damage_Percent = StatSystem.Instance.GetStatValue("Healing");
         }
-        else if (statName == "Health_Regen")
+        else if (statName == "HP_Regen")
         {
             return Health_Regen = StatSystem.Instance.GetStatValue("HP_Regen");
         }
@@ -66,9 +75,23 @@ public class StatHealth : MonoBehaviour
 
     IEnumerator RegenHealth()
     {
+        PlayerMove playerMove = GetComponent<PlayerMove>();
+
         while (true)
         {
-            Health += Health_Regen;
+            playerMove.HealPlayer(Health_Regen);
+
+            if (playerMove.GetHealth() >= playerMove.Player_MaxHealth)
+            {
+                playerMove.SetMaxHealth();
+                bIsRegenStarted = false;
+
+                // Zatrzymaj coroutine prawidłowo
+                StopCoroutine(regenCoroutine);
+                regenCoroutine = null;
+                yield break; // wyjście z pętli
+            }
+
             yield return new WaitForSeconds(1f);
         }
     }
