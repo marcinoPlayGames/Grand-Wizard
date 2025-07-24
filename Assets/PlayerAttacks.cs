@@ -42,6 +42,8 @@ public class PlayerAttacks : MonoBehaviour
     private StatCriticals statCriticals;
     private StatHealth statHealth;
 
+    private bool isEnoughMana = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,8 +56,8 @@ public class PlayerAttacks : MonoBehaviour
         statCriticals = GetComponent<StatCriticals>();
         statHealth = GetComponent<StatHealth>();
 
-        fireballSpeed = fireballSpeed * (1 + statAttacks.Attack_Speed);
-        strongerFireballSpeed = strongerFireballSpeed * (1 + statAttacks.Spell_Speed);
+        fireballSpeed = fireballSpeed; // * (1 + statAttacks.Attack_Speed);
+        strongerFireballSpeed = strongerFireballSpeed; // * (1 + statAttacks.Spell_Speed);
     }
 
     // Update is called once per frame
@@ -67,11 +69,16 @@ public class PlayerAttacks : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1) && canCastFireball)
         {
+            isEnoughMana = playerMove.IsEnoughMana(WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false));
+
+            Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false));
+            Debug.Log("IsEnoughMana = " + isEnoughMana);
+
             if (!hasPulled && !isPulling)
             {
                 StartCoroutine(PullStaffAnimation());
             }
-            else if (hasPulled && !isPulling && !isCasting)
+            else if (hasPulled && !isPulling && !isCasting && isEnoughMana)
             {
                 StartCoroutine(CastFireballAnimation());
             }
@@ -79,11 +86,16 @@ public class PlayerAttacks : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && canCastStrongerFireball)
         {
+            isEnoughMana = playerMove.IsEnoughMana(WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false));
+
+            Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false));
+            Debug.Log("IsEnoughMana = " + isEnoughMana);
+
             if (!hasPulled && !isPulling)
             {
                 StartCoroutine(PullStaffAnimation());
             }
-            else if (hasPulled && !isPulling && !isCasting)
+            else if (hasPulled && !isPulling && !isCasting && isEnoughMana)
             {
                 StartCoroutine(CastStrongerFireballAnimation());
             }
@@ -160,6 +172,9 @@ public class PlayerAttacks : MonoBehaviour
 
             Debug.Log("Weaker healing = " + healValue);
 
+            float manaCost = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false);
+            playerMove.ReduceMana(manaCost);
+
             FireballController controller = fireball.GetComponent<FireballController>();
             if (controller != null)
                 controller.SetDamage(totalDamage);
@@ -214,6 +229,10 @@ public class PlayerAttacks : MonoBehaviour
             float healValue = statHealth.GetHealingValue(totalDamage);
 
             Debug.Log("Stronger healing = " + healValue);
+
+            float manaCost = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false);
+
+            playerMove.ReduceMana(manaCost);
 
             FireballController controller = strongerFireball.GetComponent<FireballController>();
             if (controller != null)
@@ -274,6 +293,9 @@ public class PlayerAttacks : MonoBehaviour
         // Set canCastFireball to false during the cooldown
         canCastFireball = false;
 
+        fireballCooldown = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Attack_Speed", false);
+
+        Debug.Log("Attack_Speed = " + fireballCooldown);
         // Wait for the cooldown duration
         yield return new WaitForSeconds(fireballCooldown);
 
@@ -378,6 +400,10 @@ public class PlayerAttacks : MonoBehaviour
     {
         // Set canCastFireball to false during the cooldown
         canCastStrongerFireball = false;
+
+        strongerFireballCooldown = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Spell_Speed", false);
+
+        Debug.Log("Spell_Speed = " + strongerFireballCooldown);
 
         // Wait for the cooldown duration
         yield return new WaitForSeconds(strongerFireballCooldown);

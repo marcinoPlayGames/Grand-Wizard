@@ -14,6 +14,11 @@ public class PlayerMove : MonoBehaviour
     private StatHealth statHealth;
     private StatDefenses statDefenses;
     private DamageType damageType;
+
+    StatMana statMana;
+
+    private float Mana;
+    public float MaxMana;
     void Start()
     {
         Debug.Log("Start in PlayerMovement");
@@ -21,12 +26,16 @@ public class PlayerMove : MonoBehaviour
 
         statHealth = GetComponent<StatHealth>();
         statDefenses = GetComponent<StatDefenses>();
+        statMana = GetComponent<StatMana>();
         Player_Health = statHealth.Max_Health;
 
         Player_MaxHealth = statHealth.Max_Health;
         Debug.Log(healthBar.healthBarImage.fillAmount);
 
         playerAttacks = GetComponent<PlayerAttacks>();
+
+        Mana = statMana.Max_Mana;
+        MaxMana = statMana.Max_Mana;
 
         Debug.Log("StatSystem.Instance = " + StatSystem.Instance);
         Debug.Log("Max HP = " + Player_Health);
@@ -295,5 +304,24 @@ public class PlayerMove : MonoBehaviour
     public bool CanObstacleDamage()
     {
         return canObstacleDamage;
+    }
+
+    public bool IsEnoughMana(float manaCost)
+    {
+        return Mana >= manaCost;
+    }
+    
+    public void ReduceMana(float manaCost)
+    {
+        Debug.Log("Mana = " + Mana);
+
+        if (Mana >= manaCost)
+        {
+            Mana -= manaCost;
+        }
+        else
+        {
+            Debug.Log("Masz za mało many!");
+        }
     }
 }

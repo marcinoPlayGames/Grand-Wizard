@@ -11,6 +11,9 @@ public class StatMana : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Max_Mana = GetStatValues("Mana");
+        Mana = GetStatValues("Mana");
+        Mana_Regen = GetStatValues("Mana_Regen");
         StartCoroutine(RegenMana());
     }
 
@@ -25,7 +28,7 @@ public class StatMana : MonoBehaviour
 
     public float GetStatValues(string statName)
     {
-        if (statName == "Max_Mana")
+        if (statName == "Mana")
         {
             return Max_Mana = StatSystem.Instance.GetStatValue(statName);
         }

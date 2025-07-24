@@ -305,6 +305,46 @@ public class WeaponUpgradeSystem : MonoBehaviour
         return sb.ToString();
     }
 
+    public float GetWeaponCostsCalculated(string weaponId, string statKey, bool bGetNextLevel)
+    {
+        float attackRange = GetWeaponStatFloat(weaponId, "Attack_Range", bGetNextLevel);
+        float attackSpeedRaw = GetWeaponStatFloat(weaponId, "Attack_Speed", bGetNextLevel);
+        float spellSpeedRaw = GetWeaponStatFloat(weaponId, "Spell_Speed", bGetNextLevel);
+        float manaBase = GetWeaponStatFloat(weaponId, "Mana_Base", bGetNextLevel);
+        float manaAbility = GetWeaponStatFloat(weaponId, "Mana_Ability", bGetNextLevel);
+
+        float stat_AttackSpeed = StatSystem.Instance.GetStatValue("Attack_Speed");
+        float stat_SpellSpeed = StatSystem.Instance.GetStatValue("Spell_Speed");
+        float stat_Range = StatSystem.Instance.GetStatValue("Attack_Range");
+
+        // Final values
+        float finalRange = attackRange + stat_Range;
+        float finalAttackSpeed = attackSpeedRaw * (1f - stat_AttackSpeed / 100f);
+        float finalSpellSpeed = spellSpeedRaw * (1f - stat_SpellSpeed / 100f);
+
+        if (statKey == "Attack_Speed")
+        {
+            return finalAttackSpeed;
+        }
+        else if (statKey == "Attack_Range")
+        {
+            return finalRange;
+        }
+        else if (statKey == "Spell_Speed")
+        {
+            return finalSpellSpeed;
+        }
+        else if (statKey == "Mana_Base")
+        {
+            return manaBase;
+        }
+        else if (statKey == "Mana_Ability")
+        {
+            return manaAbility;
+        }
+        else return finalAttackSpeed;
+    }
+
     public string GetWeaponBasicAttackDetails(string weaponId, bool bGetNextLevel)
     {
         var data = LoadWeaponData(weaponId);
