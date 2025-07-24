@@ -164,7 +164,7 @@ public class NPCAI : MonoBehaviour
 
                 SwordController6 swordController = sword.GetComponent<SwordController6>();
                 if (swordController != null)
-                    swordController.SetDamage(swordDamage);
+                    swordController.SetDamage(swordDamage, DamageType.Physical);
 
                 SpriteRenderer sr = sword.GetComponent<SpriteRenderer>();
                 if (sr != null)

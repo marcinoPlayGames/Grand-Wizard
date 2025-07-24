@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     private PlayerAttacks playerAttacks;
     private StatHealth statHealth;
     private StatDefenses statDefenses;
+    private DamageType damageType;
     void Start()
     {
         Debug.Log("Start in PlayerMovement");
@@ -167,7 +168,7 @@ public class PlayerMove : MonoBehaviour
         {
             NPCController npcController = collision.gameObject.GetComponent<NPCController>();
 
-            DamagePlayer(npcController.NPC_Damage);
+            DamagePlayer(npcController.NPC_Damage, DamageType.Magic);
         }
         else if (collision.gameObject.CompareTag("Obstacles"))
         {
@@ -207,14 +208,31 @@ public class PlayerMove : MonoBehaviour
     {
         return Player_Health;
     }
-    public void DamagePlayer(float damage)
+    public void DamagePlayer(float damage, DamageType iDamageType)
     {
         Debug.Log(Player_Health);
 
-        Player_Health -= damage - statDefenses.Armor;
+        Debug.Log("Player take damage original = " + damage);
+
+        if (iDamageType == DamageType.Physical)
+        {
+            damage = damage - statDefenses.Armor;
+        }
+        else if (iDamageType == DamageType.Magic)
+        {
+            damage = damage - statDefenses.Magic_Resist;
+        }
+        else
+        {
+            damage = damage;
+        }
+
+        Player_Health -= damage;
         healthBar.UpdateHealthBar();
-        Debug.Log("Damage = " + (damage - statDefenses.Armor));
+        Debug.Log("Damage = " + damage);
         StartCoroutine(HitAnimation());
+
+        Debug.Log("Player take damage defended = " + damage);
 
         playerHit.Play();
 

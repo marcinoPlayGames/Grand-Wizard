@@ -24,7 +24,7 @@ public class LavaDamage : MonoBehaviour
             Debug.Log("Collided with player!");
             PlayerMove playerMove = collision.gameObject.GetComponent<PlayerMove>();
 
-            playerMove.DamagePlayer(200);
+            playerMove.DamagePlayer(200, DamageType.True);
 
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)

@@ -48,7 +48,7 @@ public class ObstaclesDamage : MonoBehaviour
             {
                 Debug.Log("Collided with player!");
 
-                playerMove.DamagePlayer(50);
+                playerMove.DamagePlayer(50, DamageType.Physical);
 
                 Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
                 if (rb != null && collision.contacts.Length > 0)

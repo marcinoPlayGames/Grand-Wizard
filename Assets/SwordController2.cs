@@ -47,7 +47,7 @@ public class SwordController2 : MonoBehaviour
             if (playerMove != null)
             {
                 Debug.Log("Collided!");
-                playerMove.DamagePlayer(swordDamage);
+                playerMove.DamagePlayer(swordDamage, DamageType.Physical);
             }
 
             Debug.Log(gameObject.name);

@@ -9,6 +9,7 @@ public class SwordController6 : MonoBehaviour
     private NPCController npcController;
     private PlayerMove playerMove;
     private float swordDamage;
+    private DamageType damageType;
     void Start()
     {
 
@@ -20,9 +21,10 @@ public class SwordController6 : MonoBehaviour
 
     }
 
-    public void SetDamage(float damage)
+    public void SetDamage(float damage, DamageType iDamageType)
     {
         swordDamage = damage;
+        damageType = iDamageType;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -34,7 +36,8 @@ public class SwordController6 : MonoBehaviour
             if (playerMove != null)
             {
                 Debug.Log("Collided!");
-                playerMove.DamagePlayer(swordDamage);
+
+                playerMove.DamagePlayer(swordDamage, damageType);
             }
 
             Debug.Log(gameObject.name);

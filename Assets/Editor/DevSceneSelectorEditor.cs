@@ -54,6 +54,12 @@ public static class DevSceneSelectorEditor
         OpenSceneByName("UpgradeSystem");
     }
 
+    [MenuItem("Tools/Select Scene/StatisticTree")]
+    public static void LoadStatisticTree()
+    {
+        OpenSceneByName("StatisticTree");
+    }
+
     private static void OpenSceneByName(string sceneName)
     {
         foreach (var scene in EditorBuildSettings.scenes)
