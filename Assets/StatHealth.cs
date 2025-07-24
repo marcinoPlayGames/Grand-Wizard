@@ -20,7 +20,7 @@ public class StatHealth : MonoBehaviour
     {
         Max_Health = GetStatValues("Max_Health");
         Health = GetStatValues("Health");
-        Healing_From_Damage_Percent = GetStatValues("Healing_From_Damage_Percent");
+        Healing_From_Damage_Percent = GetStatValues("Healing");
         Health_Regen = GetStatValues("HP_Regen");
     }
 
@@ -70,7 +70,14 @@ public class StatHealth : MonoBehaviour
 
     public void HealFromDamage(float damage)
     {
-        Health += damage * Healing_From_Damage_Percent;
+        Debug.Log("Healing value = " + Healing_From_Damage_Percent);
+        PlayerMove playerMove = GetComponent<PlayerMove>();
+        playerMove.HealPlayer(Mathf.CeilToInt(damage * (Healing_From_Damage_Percent / 100)));
+    }
+
+    public float GetHealingValue(float damage)
+    {
+        return Mathf.CeilToInt(damage = damage * (Healing_From_Damage_Percent / 100));
     }
 
     IEnumerator RegenHealth()

@@ -40,6 +40,7 @@ public class PlayerAttacks : MonoBehaviour
 
     private StatAttacks statAttacks;
     private StatCriticals statCriticals;
+    private StatHealth statHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,7 @@ public class PlayerAttacks : MonoBehaviour
 
         statAttacks = GetComponent<StatAttacks>();
         statCriticals = GetComponent<StatCriticals>();
+        statHealth = GetComponent<StatHealth>();
 
         fireballSpeed = fireballSpeed * (1 + statAttacks.Attack_Speed);
         strongerFireballSpeed = strongerFireballSpeed * (1 + statAttacks.Spell_Speed);
@@ -152,6 +154,12 @@ public class PlayerAttacks : MonoBehaviour
 
             Debug.Log("Weaker damage = " + totalDamage);
 
+            statHealth.HealFromDamage(totalDamage);
+
+            float healValue = statHealth.GetHealingValue(totalDamage);
+
+            Debug.Log("Weaker healing = " + healValue);
+
             FireballController controller = fireball.GetComponent<FireballController>();
             if (controller != null)
                 controller.SetDamage(totalDamage);
@@ -200,6 +208,12 @@ public class PlayerAttacks : MonoBehaviour
             Debug.Log("Critical Magic Damage = " + totalDamage);
 
             Debug.Log("Stronger damage = " + totalDamage);
+
+            statHealth.HealFromDamage(totalDamage);
+
+            float healValue = statHealth.GetHealingValue(totalDamage);
+
+            Debug.Log("Stronger healing = " + healValue);
 
             FireballController controller = strongerFireball.GetComponent<FireballController>();
             if (controller != null)

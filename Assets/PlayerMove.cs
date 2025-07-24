@@ -259,6 +259,11 @@ public class PlayerMove : MonoBehaviour
     {
         Player_Health += heal;
         healthBar.UpdateHealthBar();
+
+        if (Player_Health >= Player_MaxHealth)
+        {
+            SetMaxHealth();
+        }
     }
 
     IEnumerator HitAnimation()
