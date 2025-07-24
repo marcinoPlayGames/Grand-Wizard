@@ -58,7 +58,7 @@ public class NPCController : MonoBehaviour
 
         if (!isHit && !isThrowing)
         {
-            Debug.Log("moveState = " + GetComponent<Animator>().GetInteger("moveStateNPC"));
+            //Debug.Log("moveState = " + GetComponent<Animator>().GetInteger("moveStateNPC"));
             if (!isGrounded && verY > 0)
             {
                 GetComponent<Animator>().SetInteger("moveStateNPC", 3); // Set fall animation

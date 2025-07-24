@@ -39,6 +39,7 @@ public class PlayerAttacks : MonoBehaviour
     AudioSource StrongerFireball;
 
     private StatAttacks statAttacks;
+    private StatCriticals statCriticals;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class PlayerAttacks : MonoBehaviour
         playerMove = GetComponent<PlayerMove>();
 
         statAttacks = GetComponent<StatAttacks>();
+        statCriticals = GetComponent<StatCriticals>();
 
         fireballSpeed = fireballSpeed * (1 + statAttacks.Attack_Speed);
         strongerFireballSpeed = strongerFireballSpeed * (1 + statAttacks.Spell_Speed);
@@ -136,6 +138,17 @@ public class PlayerAttacks : MonoBehaviour
             }
 
             float totalDamage = WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
+            bool GotCrit = statCriticals.IsAttackCriticalHit();
+
+            Debug.Log("Physical Damage = " + totalDamage);
+
+            if (GotCrit)
+            {
+                Debug.Log("Got Physical Crit!");
+                totalDamage = statCriticals.GetCriticalDamageByAttackType(totalDamage, "Physical");
+            }
+
+            Debug.Log("Critical Physical Damage = " + totalDamage);
 
             Debug.Log("Weaker damage = " + totalDamage);
 
@@ -173,6 +186,18 @@ public class PlayerAttacks : MonoBehaviour
             }
 
             float totalDamage = 2 * WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
+
+            bool GotCrit = statCriticals.IsSpellCriticalHit();
+
+            Debug.Log("Magic Damage = " + totalDamage);
+
+            if (GotCrit)
+            {
+                Debug.Log("Got Magic Crit!");
+                totalDamage = statCriticals.GetCriticalDamageByAttackType(totalDamage, "Ability");
+            }
+
+            Debug.Log("Critical Magic Damage = " + totalDamage);
 
             Debug.Log("Stronger damage = " + totalDamage);
 

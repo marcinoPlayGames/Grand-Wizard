@@ -28,19 +28,19 @@ public class StatCriticals : MonoBehaviour
 
     public float GetStatValues(string statName)
     {
-        if (statName == "Attack_Critical_Hit_Chance")
+        if (statName == "Critical_Chance_Attack")
         {
             return Attack_Critical_Hit_Chance = StatSystem.Instance.GetStatValue(statName);
         }
-        else if (statName == "Attack_Critical_Hit_Damage")
+        else if (statName == "Critical_Damage_Attack")
         {
             return Attack_Critical_Hit_Damage = StatSystem.Instance.GetStatValue(statName);
         }
-        else if (statName == "Spell_Critical_Hit_Chance")
+        else if (statName == "Critical_Chance_Spell")
         {
             return Spell_Critical_Hit_Chance = StatSystem.Instance.GetStatValue(statName);
         }
-        else if (statName == "Spell_Critical_Hit_Damage")
+        else if (statName == "Critical_Damage_Spell")
         {
             return Spell_Critical_Hit_Damage = StatSystem.Instance.GetStatValue(statName);
         }
@@ -68,12 +68,12 @@ public class StatCriticals : MonoBehaviour
     {
         if (attackType == "Physical")
         {
-            return damage * Attack_Critical_Hit_Damage;
+            return Mathf.CeilToInt(damage * (Attack_Critical_Hit_Damage / 100));
         }
         else if (attackType == "Ability" || attackType == "Spell")
         {
-            return damage * Spell_Critical_Hit_Damage;
+            return Mathf.CeilToInt(damage * (Spell_Critical_Hit_Damage / 100));
         }
-        else return damage * Attack_Critical_Hit_Damage;
+        else return damage;
     }
 }
