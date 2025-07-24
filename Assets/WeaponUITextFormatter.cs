@@ -10,7 +10,7 @@ public static class WeaponUITextFormatter
         True // nieuchronne
     }
 
-    public static string GetColoredDamageText(int damageAmount, DamageType type)
+    public static string GetColoredDamageText(string textStart, float damageAmount, string damageIcons, string additionalLabel, DamageType type)
     {
         string colorHex;
         string damageLabel;
@@ -19,22 +19,45 @@ public static class WeaponUITextFormatter
         {
             case DamageType.Physical:
                 colorHex = "8B4513"; // brązowy (saddle brown)
-                damageLabel = "obrażeń fizycznych";
+                damageLabel = "physical damage";
                 break;
             case DamageType.Magic:
                 colorHex = "00CED1"; // morski (dark turquoise)
-                damageLabel = "obrażeń magicznych";
+                damageLabel = "magic damage";
                 break;
             case DamageType.True:
                 colorHex = "FFFFFF"; // biały
-                damageLabel = "obrażeń nieuchronnych";
+                damageLabel = "true damage";
                 break;
             default:
                 colorHex = "000000"; // czarny – fallback
-                damageLabel = "obrażeń";
+                damageLabel = "damage";
                 break;
         }
 
-        return $"<color=black>Zadaje </color><color=#{colorHex}>{damageAmount}</color><color=black> {damageLabel}</color>";
+        return $"<color=black>{textStart} that deals </color><color=#{colorHex}>{damageAmount}</color><color=black> ({damageIcons}){additionalLabel} {damageLabel}</color>";
+    }
+
+    public static string GetColoredRawDamageText(float damageAmount, DamageType type)
+    {
+        string colorHex;
+
+        switch (type)
+        {
+            case DamageType.Physical:
+                colorHex = "8B4513"; // brązowy (saddle brown)
+                break;
+            case DamageType.Magic:
+                colorHex = "00CED1"; // morski (dark turquoise)
+                break;
+            case DamageType.True:
+                colorHex = "FFFFFF"; // biały           
+                break;
+            default:
+                colorHex = "000000"; // czarny – fallback
+                break;
+        }
+
+        return $"<color=#{colorHex}>{damageAmount}</color>";
     }
 }

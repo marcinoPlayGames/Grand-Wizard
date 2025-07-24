@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WeaponUpgradeButton : MonoBehaviour
 {
@@ -7,5 +8,30 @@ public class WeaponUpgradeButton : MonoBehaviour
     public void OnClick()
     {
         WeaponUpgradeUIController.Instance.ShowPanel(weaponId);
+    }
+
+    public void OnClickDetailsCurrent()
+    {
+        WeaponUpgradeUIController.Instance.ShowDetails(weaponId, false); // current level
+    }
+
+    public void OnClickDetailsNext()
+    {
+        WeaponUpgradeUIController.Instance.ShowDetails(weaponId, true); // next level
+    }
+
+    public void LoadNextLevelScene()
+    {
+        SceneManager.LoadScene("NextLevelScene"); // lub inna nazwa Twojej sceny
+    }
+
+    public void OnClickBackToMainPanel()
+    {
+        WeaponUpgradeUIController.Instance.BackToMainPanel();
+    }
+
+    public void OnClickBackToUpgradePanel()
+    {
+        WeaponUpgradeUIController.Instance.BackToUpgrade();
     }
 }
