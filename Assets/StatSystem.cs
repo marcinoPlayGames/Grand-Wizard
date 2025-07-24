@@ -77,9 +77,21 @@ public class StatSystem : MonoBehaviour
         return statTable[statName].values.ContainsKey(level.ToString()) ? statTable[statName].values[level.ToString()] : 0;
     }
 
+    public float GetStatValueByLevel(string statName, int level)
+    {
+        return statTable[statName].values.ContainsKey(level.ToString())
+            ? statTable[statName].values[level.ToString()]
+            : 0;
+    }
+
+    public bool HasNextValue(string statName, int nextLevel)
+    {
+        return statTable.ContainsKey(statName) && statTable[statName].values.ContainsKey(nextLevel.ToString());
+    }
+
     public int GetCost(string statName, int nextLevel)
     {
-        return statTable[statName].costs.ContainsKey(nextLevel.ToString()) ? statTable[statName].costs[nextLevel.ToString()] : -1;
+        return statTable[statName].costs.ContainsKey(nextLevel.ToString()) ? statTable[statName].costs[nextLevel.ToString()] : 0;
     }
 
     public bool TryUpgrade(string statName)
