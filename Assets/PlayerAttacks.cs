@@ -176,10 +176,14 @@ public class PlayerAttacks : MonoBehaviour
             playerMove.ReduceMana(manaCost);
 
             FireballController controller = fireball.GetComponent<FireballController>();
-            if (controller != null)
-                controller.SetDamage(totalDamage);
 
-            Destroy(fireball, 2f);
+            float range = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Attack_Range", false);
+
+            if (controller != null)
+            {
+                controller.SetDamage(totalDamage);
+                controller.SetTracking(spawnPosition, range);
+            }
         }
 
         StartCoroutine(FireballCooldown());
@@ -208,6 +212,8 @@ public class PlayerAttacks : MonoBehaviour
                 rb.velocity = fireballDirection * strongerFireballSpeed;
             }
 
+
+
             float totalDamage = 2 * WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
 
             bool GotCrit = statCriticals.IsSpellCriticalHit();
@@ -235,15 +241,19 @@ public class PlayerAttacks : MonoBehaviour
             playerMove.ReduceMana(manaCost);
 
             FireballController controller = strongerFireball.GetComponent<FireballController>();
+
+            float range = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Attack_Range", false);
+
             if (controller != null)
+            {
                 controller.SetDamage(totalDamage);
+                controller.SetTracking(spawnPosition, range);
+            }
 
             if (fireballFacing == new Vector2(-1.00f, 0.00f))
                 strongerFireball.GetComponent<SpriteRenderer>().flipX = true;
             else
                 strongerFireball.GetComponent<SpriteRenderer>().flipX = false;
-
-            Destroy(strongerFireball, 2f);
         }
 
         StartCoroutine(StrongerFireballCooldown());
