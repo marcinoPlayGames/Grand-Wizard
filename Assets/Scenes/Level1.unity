@@ -766,17 +766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4c76a9c00a03242b1678225688fd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &332136466 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8959209400732679336, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
-  m_PrefabInstance: {fileID: 3264937919567990333}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &332371536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1809,7 +1798,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 6, y: -10, z: 0}
@@ -2688,6 +2677,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf67bc2f702e8834298dcb626708c303, type: 3}
+--- !u!114 &851009896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5544513480888940223, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+  m_PrefabInstance: {fileID: 3264937919567990333}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ab5257003ac0b4e8babcfd86d0ec4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &856151070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23832,11 +23832,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c75c06c791c524fb59c403e0658263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxMana: 0
   playerJump: {fileID: 2030152766}
   playerFall: {fileID: 2030152765}
   playerHit: {fileID: 2030152769}
   Player_MaxHealth: 500
   healthBar: {fileID: 93028039}
+  manaBar: {fileID: 851009896}
 --- !u!82 &2030152765
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25071,13 +25073,9 @@ PrefabInstance:
       propertyPath: playerMove
       value: 
       objectReference: {fileID: 2030152764}
-    - target: {fileID: 3433230021191776749, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
-      propertyPath: terrainObject
-      value: 
-      objectReference: {fileID: 1317993782}
-    - target: {fileID: 3433230021191776749, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
-      propertyPath: deathsThreshold
-      value: 0
+    - target: {fileID: 3068598142851155155, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3750605368295189198, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
       propertyPath: m_Pivot.x
@@ -25163,24 +25161,59 @@ PrefabInstance:
       propertyPath: playerMove
       value: 
       objectReference: {fileID: 2030152764}
+    - target: {fileID: 5308963200933703564, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: playerMove
+      value: 
+      objectReference: {fileID: 2030152764}
     - target: {fileID: 5449121222418016066, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8203366889846473077, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
-      propertyPath: NPCLeft
+    - target: {fileID: 5544513480888940223, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: playerMove
       value: 
-      objectReference: {fileID: 332136466}
+      objectReference: {fileID: 2030152764}
+    - target: {fileID: 5544513480888940223, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: lowManaColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544513480888940223, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: lowManaColor.b
+      value: 0.7264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544513480888940223, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: lowManaColor.g
+      value: 0.02330006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544513480888940223, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: lowManaColor.r
+      value: 0.13536485
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544513480888940223, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: fullManaColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544513480888940223, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: fullManaColor.b
+      value: 0.94509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544513480888940223, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: fullManaColor.g
+      value: 0.37133667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751549145465864576, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8203366889846473077, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
       propertyPath: terrainObject
       value: 
       objectReference: {fileID: 1317993791}
-    - target: {fileID: 8444561678958798725, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
-      propertyPath: terrainObject
-      value: 
+    - target: {fileID: 8672977056313141808, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3433230021191776749, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

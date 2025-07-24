@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,9 @@ public class StatMana : MonoBehaviour
     private float Mana;
 
     public float Mana_Regen;
+
+    private Coroutine regenCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,16 @@ public class StatMana : MonoBehaviour
         if (Max_Mana == Mana)
         {
             StopCoroutine(RegenMana());
+        }
+    }
+
+    public void StartManaRegen()
+    {
+        Debug.Log("Mana Regen = " + Mana_Regen);
+        if (regenCoroutine == null)
+        {
+            regenCoroutine = StartCoroutine(RegenMana());
+            Debug.Log("Regen started.");
         }
     }
 
@@ -49,9 +62,22 @@ public class StatMana : MonoBehaviour
 
     IEnumerator RegenMana()
     {
+        PlayerMove playerMove = GetComponent<PlayerMove>();
+
         while (true)
         {
-            Mana += Mana_Regen;
+            playerMove.RegenMana(Mana_Regen);
+
+            if (playerMove.GetMana() >= playerMove.MaxMana)
+            {
+                playerMove.SetMaxMana();
+
+                // Zatrzymaj coroutine prawidłowo
+                StopCoroutine(regenCoroutine);
+                regenCoroutine = null;
+                yield break; // wyjście z pętli
+            }
+
             yield return new WaitForSeconds(1f);
         }
     }

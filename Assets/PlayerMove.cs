@@ -66,6 +66,7 @@ public class PlayerMove : MonoBehaviour
     bool canObstacleDamage = true;
 
     public HealthBar healthBar;
+    public ManaBar manaBar;
     int collisions = 0;
 
     void Update()
@@ -310,6 +311,16 @@ public class PlayerMove : MonoBehaviour
     {
         return Mana >= manaCost;
     }
+
+    public float GetMana()
+    {
+        return Mana;
+    }
+
+    public void SetMaxMana()
+    {
+        Mana = MaxMana;
+    }
     
     public void ReduceMana(float manaCost)
     {
@@ -318,10 +329,24 @@ public class PlayerMove : MonoBehaviour
         if (Mana >= manaCost)
         {
             Mana -= manaCost;
+            manaBar.UpdateManaBar();
+            statMana.StartManaRegen();
         }
         else
         {
             Debug.Log("Masz za mało many!");
+        }
+    }
+
+    public void RegenMana(float manaRegen)
+    {
+        Mana += manaRegen;
+        manaBar.UpdateManaBar();
+
+        if (Mana >= MaxMana)
+        {
+            Mana = MaxMana;
+            manaBar.UpdateManaBar();
         }
     }
 }

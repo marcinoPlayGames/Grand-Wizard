@@ -53,7 +53,7 @@ public class HealthBar : MonoBehaviour
         // Set the size of the health bar
         s.fillAmount = healthPercent;
 
-        Debug.Log(s.fillAmount);
+        Debug.Log("Health Fill Amount = " + s.fillAmount);
 
         barTransform.sizeDelta = new Vector2(healthPercent * initialWidth, barTransform.sizeDelta.y);
 
