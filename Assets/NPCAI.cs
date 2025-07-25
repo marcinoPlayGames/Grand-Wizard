@@ -26,6 +26,16 @@ public class NPCAI : MonoBehaviour
 
     bool isThrowing = false;
 
+    void Awake()
+    {
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.Find("Player");
+            if (playerObj != null)
+                player = playerObj.GetComponent<Transform>();
+        }
+    }
+
     [SerializeField]
     AudioSource swordThrowSound;
 

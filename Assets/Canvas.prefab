@@ -241,8 +241,8 @@ MonoBehaviour:
   playerMove: {fileID: 0}
   manaBarImage: {fileID: 1739954036098803377}
   Mana_Amount: {fileID: 7296093818662762710}
-  fullManaColor: {r: 0, g: 0.50211537, b: 0.9433962, a: 0}
-  lowManaColor: {r: 0.055405535, g: 0, b: 0.9528302, a: 0}
+  fullManaColor: {r: 0, g: 0.50211537, b: 0.9433962, a: 1}
+  lowManaColor: {r: 0.055405535, g: 0, b: 0.9528302, a: 1}
 --- !u!1 &3223663853319817990
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainObject: {fileID: 0}
-  NPCLeft: {fileID: 0}
+  NPCLeft: {fileID: 8959209400732679336}
 --- !u!114 &5308963200933703564
 MonoBehaviour:
   m_ObjectHideFlags: 0

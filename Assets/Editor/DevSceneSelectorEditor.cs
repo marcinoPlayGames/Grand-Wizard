@@ -60,6 +60,36 @@ public static class DevSceneSelectorEditor
         OpenSceneByName("StatisticTree");
     }
 
+    [MenuItem("Tools/Select Scene/Level1_Demo")]
+    public static void LoadLevel1Demo()
+    {
+        OpenSceneByName("Level1_Demo");
+    }
+
+    [MenuItem("Tools/Select Scene/Level2_Demo")]
+    public static void LoadLevel2Demo()
+    {
+        OpenSceneByName("Level2_Demo");
+    }
+
+    [MenuItem("Tools/Select Scene/Level3")]
+    public static void LoadLevel3()
+    {
+        OpenSceneByName("Level3");
+    }
+
+    [MenuItem("Tools/Select Scene/Level4")]
+    public static void LoadLevel4()
+    {
+        OpenSceneByName("Level4");
+    }
+
+    [MenuItem("Tools/Select Scene/Level5")]
+    public static void LoadLevel5()
+    {
+        OpenSceneByName("Level5");
+    }
+
     private static void OpenSceneByName(string sceneName)
     {
         foreach (var scene in EditorBuildSettings.scenes)

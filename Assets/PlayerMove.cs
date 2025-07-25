@@ -41,6 +41,31 @@ public class PlayerMove : MonoBehaviour
         Debug.Log("Max HP = " + Player_Health);
     }
 
+    void Awake()
+    {
+        if (manaBar == null)
+        {
+            GameObject manaBarObj = GameObject.Find("ManaBar");
+            if (manaBarObj != null)
+            {
+                manaBar = manaBarObj.GetComponent<ManaBar>();
+                Debug.Log("Found manabar!");
+            }
+                
+        }
+
+        if (healthBar == null)
+        {
+            GameObject healthBarObj = GameObject.Find("HealthBar");
+            if (healthBarObj != null)
+            {
+                healthBar = healthBarObj.GetComponent<HealthBar>();
+                Debug.Log("Found healthbar!");
+            }
+                
+        }
+    }
+
     [SerializeField]
     AudioSource playerJump;
 

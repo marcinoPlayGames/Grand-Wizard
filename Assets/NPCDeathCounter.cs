@@ -20,6 +20,16 @@ public class NPCDeathCounter : MonoBehaviour
         NPCLeft.text = $"Enemies left: {deathsThreshold}";
     }
 
+    void Awake()
+    {
+        if (terrainObject == null)
+        {
+            GameObject terrainObj = GameObject.Find("Blokada");
+            if (terrainObj != null)
+                terrainObject = terrainObj.GetComponent<EndingCondition>();
+        }
+    }
+
     // Method to increment the death count
     public void IncrementDeathCount()
     {

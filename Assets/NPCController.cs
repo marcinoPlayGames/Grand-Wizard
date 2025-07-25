@@ -38,6 +38,16 @@ public class NPCController : MonoBehaviour
         npcAI = GetComponent<NPCAI>();
     }
 
+    void Awake()
+    {
+        if (npcDeathCounter == null)
+        {
+            GameObject npcObj = GameObject.Find("NPCDeathCounter");
+            if (npcObj != null)
+                npcDeathCounter = npcObj.GetComponent<NPCDeathCounter>();
+        }
+    }
+
     void Update()
     {
         isThrowing = npcAI.IsThrowing();

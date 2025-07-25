@@ -31,6 +31,16 @@ public class HealthBar : MonoBehaviour
         HP_Amount.text = $"{currentHealth}/{maxHealth}";
     }
 
+    void Awake()
+    {
+        if (playerMove == null)
+        {
+            GameObject playerObj = GameObject.Find("Player");
+            if (playerObj != null)
+                playerMove = playerObj.GetComponent<PlayerMove>();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

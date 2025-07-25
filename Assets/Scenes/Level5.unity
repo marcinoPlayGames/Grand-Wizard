@@ -9337,7 +9337,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 4, y: -10, z: 0}
@@ -9385,7 +9385,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -37, y: 51, z: 0}
@@ -9541,7 +9541,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -24, y: 51, z: 0}
@@ -9553,7 +9553,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -23, y: 51, z: 0}
@@ -9661,7 +9661,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -14, y: 51, z: 0}
@@ -9817,7 +9817,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -1, y: 51, z: 0}
@@ -10016,8 +10016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edca6578d5c117b44b9002c49d0ecfb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainObject: {fileID: 0}
-  deathsThreshold: 34
+  terrainObject: {fileID: 1206493721}
+  deathsThreshold: 1
 --- !u!114 &1206493723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10030,8 +10030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4c76a9c00a03242b1678225688fd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainObject: {fileID: 0}
-  NPCLeft: {fileID: 0}
+  terrainObject: {fileID: 1206493722}
+  NPCLeft: {fileID: 449189734}
 --- !u!66 &1206493724
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -11095,11 +11095,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c75c06c791c524fb59c403e0658263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxMana: 0
   playerJump: {fileID: 1208138400}
   playerFall: {fileID: 1208138399}
   playerHit: {fileID: 1208138397}
   Player_MaxHealth: 500
   healthBar: {fileID: 449189735}
+  manaBar: {fileID: 0}
 --- !u!50 &1208138403
 Rigidbody2D:
   serializedVersion: 4
@@ -12160,7 +12162,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0ad591428b0c18c4da51fe3bf98dbc63, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 89f935015cc98724a862a586326fdf21, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -34906,6 +34908,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 8eee940d7eed9fc4081bf58a6ded1500, type: 2}
+    - target: {fileID: 3220004918531300121, guid: ba6e52befa9940e49937c2e3c61a1663, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 4000
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: ba6e52befa9940e49937c2e3c61a1663, type: 3}
       propertyPath: m_Name
       value: EvilBoss

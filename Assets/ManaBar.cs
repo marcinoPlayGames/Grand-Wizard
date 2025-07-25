@@ -37,6 +37,16 @@ public class ManaBar : MonoBehaviour
         //UpdateHealthBar();
     }
 
+    void Awake()
+    {
+        if (playerMove == null)
+        {
+            GameObject playerObj = GameObject.Find("Player");
+            if (playerObj != null)
+                playerMove = playerObj.GetComponent<PlayerMove>();
+        }
+    }
+
     public void UpdateManaBar()
     {
         currentMana = playerMove.GetMana();
