@@ -38,6 +38,16 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField]
     AudioSource StrongerFireball;
 
+    [SerializeField]
+    AudioSource CantCast;
+
+    [SerializeField]
+    AudioSource CantAttack;
+
+    [SerializeField]
+    AudioSource NotEnoughMana;
+
+
     private StatAttacks statAttacks;
     private StatCriticals statCriticals;
     private StatHealth statHealth;
@@ -67,37 +77,59 @@ public class PlayerAttacks : MonoBehaviour
 
         // Check if the "1" key is pressed and the player can cast a fireball
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && canCastFireball)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            isEnoughMana = playerMove.IsEnoughMana(WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false));
-
-            Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false));
-            Debug.Log("IsEnoughMana = " + isEnoughMana);
-
-            if (!hasPulled && !isPulling)
+            if (canCastFireball)
             {
-                StartCoroutine(PullStaffAnimation());
+                isEnoughMana = playerMove.IsEnoughMana(WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false));
+
+                Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false));
+                Debug.Log("IsEnoughMana = " + isEnoughMana);
+
+                if (!hasPulled && !isPulling)
+                {
+                    StartCoroutine(PullStaffAnimation());
+                }
+                else if (hasPulled && !isPulling && !isCasting && isEnoughMana)
+                {
+                    StartCoroutine(CastFireballAnimation());
+                }
+                else if (!isEnoughMana)
+                {
+                    NotEnoughMana.Play();
+                }
             }
-            else if (hasPulled && !isPulling && !isCasting && isEnoughMana)
+            else
             {
-                StartCoroutine(CastFireballAnimation());
+                CantAttack.Play();
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && canCastStrongerFireball)
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            isEnoughMana = playerMove.IsEnoughMana(WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false));
-
-            Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false));
-            Debug.Log("IsEnoughMana = " + isEnoughMana);
-
-            if (!hasPulled && !isPulling)
+            if (canCastStrongerFireball)
             {
-                StartCoroutine(PullStaffAnimation());
+                isEnoughMana = playerMove.IsEnoughMana(WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false));
+
+                Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false));
+                Debug.Log("IsEnoughMana = " + isEnoughMana);
+
+                if (!hasPulled && !isPulling)
+                {
+                    StartCoroutine(PullStaffAnimation());
+                }
+                else if (hasPulled && !isPulling && !isCasting && isEnoughMana)
+                {
+                    StartCoroutine(CastStrongerFireballAnimation());
+                }
+                else if (!isEnoughMana)
+                {
+                    NotEnoughMana.Play();
+                }
             }
-            else if (hasPulled && !isPulling && !isCasting && isEnoughMana)
+            else
             {
-                StartCoroutine(CastStrongerFireballAnimation());
+                CantCast.Play();
             }
         }
 

@@ -118,14 +118,18 @@ public class PlayerMove : MonoBehaviour
             float airMultiplier = isGrounded ? 1f : 0.5f;
             velocity.x = horInput * moveSpeed * airMultiplier;
             rb.velocity = velocity;
+
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 velocity = rb.velocity;
             float horInput = Input.GetAxisRaw("Horizontal");
-            float airMultiplier = isGrounded ? 1f : 0.6f;
+            float airMultiplier = isGrounded ? 1f : 0.8f;
             velocity.x = horInput * moveSpeed * airMultiplier;
             rb.velocity = velocity;
+
+            GetComponent<SpriteRenderer>().flipX = false;
         }
 
         if (jumpState == true && isGrounded)
@@ -164,12 +168,10 @@ public class PlayerMove : MonoBehaviour
             else if (isGrounded && horX > 0)
             {
                 GetComponent<Animator>().SetInteger("moveState", 1); // Set run animation
-                GetComponent<SpriteRenderer>().flipX = false;
             }
             else if (isGrounded && horX < 0)
             {
                 GetComponent<Animator>().SetInteger("moveState", 1); // Set run animation
-                GetComponent<SpriteRenderer>().flipX = true;
             }
             else
             {
@@ -184,7 +186,7 @@ public class PlayerMove : MonoBehaviour
     {
         foreach (ContactPoint2D contact in collision.contacts)
         {
-            if (contact.normal.y > 0.5f)
+            if (contact.normal.y > 0.8f)
             {
                 isGrounded = true;
             }
