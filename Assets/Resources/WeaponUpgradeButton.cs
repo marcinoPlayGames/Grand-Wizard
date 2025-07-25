@@ -22,7 +22,7 @@ public class WeaponUpgradeButton : MonoBehaviour
 
     public void LoadNextLevelScene()
     {
-        SceneManager.LoadScene("NextLevelScene"); // lub inna nazwa Twojej sceny
+        SceneManager.LoadScene("NextLevel"); // lub inna nazwa Twojej sceny
     }
 
     public void OnClickBackToMainPanel()

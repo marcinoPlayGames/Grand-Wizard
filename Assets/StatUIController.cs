@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StatUIController : MonoBehaviour
 {
@@ -103,5 +104,10 @@ public class StatUIController : MonoBehaviour
     {
         upgradePanel.SetActive(false);
         treePanel.SetActive(true);
+    }
+
+    public void GoBackToNextLevel()
+    {
+        SceneManager.LoadScene("NextLevel");
     }
 }

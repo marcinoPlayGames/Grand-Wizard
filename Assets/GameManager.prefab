@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coins: 0
   coinText: {fileID: 0}
+  unlockedLevel: 8

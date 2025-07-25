@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: Level1_Demo
+  loadLevelManually: 1
 --- !u!114 &358953326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,6 +1179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: LoadGame
+  loadLevelManually: 1
 --- !u!114 &1942954432
 MonoBehaviour:
   m_ObjectHideFlags: 0

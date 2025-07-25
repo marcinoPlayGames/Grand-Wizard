@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public int coins = 0;
     public TMP_Text coinText;
 
-    public int unlockedLevel = 1; // zaczynamy od Level 1
+    public int unlockedLevel = 8; // zaczynamy od Level 1
 
     public int GetUnlockedLevel() => unlockedLevel;
     public void SetUnlockedLevel(int value) => unlockedLevel = value;
