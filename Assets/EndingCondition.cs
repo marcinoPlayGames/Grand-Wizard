@@ -11,9 +11,11 @@ public class EndingCondition : MonoBehaviour
 
     // Number of NPC deaths required to hide the terrain
     public int deathsThreshold = 5;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         CheckAndHideTerrain();
     }
 

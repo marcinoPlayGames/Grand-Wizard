@@ -18,6 +18,7 @@ public class NPCDeathCounter : MonoBehaviour
     {
         deathsThreshold = terrainObject.deathsThreshold;
         NPCLeft.text = $"Enemies left: {deathsThreshold}";
+        ResetDeathCount();
     }
 
     void Awake()

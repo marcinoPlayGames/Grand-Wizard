@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: StartMenu
+  loadLevelManually: 1
 --- !u!114 &72727955
 MonoBehaviour:
   m_ObjectHideFlags: 0
