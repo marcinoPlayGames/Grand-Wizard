@@ -479,4 +479,14 @@ public class WeaponUpgradeSystem : MonoBehaviour
 
         return sb.ToString();
     }
+
+    public Dictionary<string, int> GetWeaponLevels()
+    {
+        return new Dictionary<string, int>(weaponLevels); // zakładam, że masz ten słownik prywatny
+    }
+
+    public void LoadWeaponLevels(Dictionary<string, int> loadedLevels)
+    {
+        weaponLevels = loadedLevels ?? new Dictionary<string, int>();
+    }
 }

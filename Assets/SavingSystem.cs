@@ -29,7 +29,8 @@ public static class SavingSystem
         {
             playerLevels = stats,
             coinCount = coins,
-            unlockedLevel = GameManager.Instance.GetUnlockedLevel()
+            unlockedLevel = GameManager.Instance.GetUnlockedLevel(),
+            weaponLevels = WeaponUpgradeSystem.Instance.GetWeaponLevels() // <-- dodane
         };
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
@@ -57,6 +58,9 @@ public static class SavingSystem
         // Wczytanie danych do StatSystem
         StatSystem.Instance.LoadFromData(data.playerLevels);
 
+        // Wczytanie danych do WeaponUpgradeSystem
+        WeaponUpgradeSystem.Instance.LoadWeaponLevels(data.weaponLevels); // <-- dodane
+
         return data;
     }
 
@@ -66,6 +70,7 @@ public static class SavingSystem
         public Dictionary<string, int> playerLevels;
         public int coinCount;
         public int unlockedLevel;
+        public Dictionary<string, int> weaponLevels;
 
         public void LoadFromSaveFile(string filePath)
         {
@@ -75,9 +80,12 @@ public static class SavingSystem
                 playerLevels = data.playerLevels;
                 GameManager.Instance.coins = data.coinCount;
                 GameManager.Instance.unlockedLevel = data.unlockedLevel;
+
+                // NOWOŚĆ: Załaduj poziomy broni
+                WeaponUpgradeSystem.Instance.LoadWeaponLevels(data.weaponLevels);
             }
         }
-    }  
+    }
 
     public static string[] GetAllSaveFiles()
     {
