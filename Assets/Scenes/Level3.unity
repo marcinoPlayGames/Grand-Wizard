@@ -771,6 +771,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (10)
@@ -1995,6 +1999,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (30)
@@ -2109,6 +2117,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (7)
@@ -6939,7 +6951,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 63
-      m_TileSpriteIndex: 63
+      m_TileSpriteIndex: 78
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7269,7 +7281,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 58
-      m_TileSpriteIndex: 58
+      m_TileSpriteIndex: 77
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7279,7 +7291,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 57
-      m_TileSpriteIndex: 57
+      m_TileSpriteIndex: 76
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7399,7 +7411,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 60
-      m_TileSpriteIndex: 60
+      m_TileSpriteIndex: 75
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7409,7 +7421,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 59
-      m_TileSpriteIndex: 59
+      m_TileSpriteIndex: 73
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -11859,7 +11871,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 61
-      m_TileSpriteIndex: 61
+      m_TileSpriteIndex: 63
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -13444,20 +13456,20 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: -1844818447, guid: 413986c4a668c374d8de72a47621b531, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1744719547, guid: 413986c4a668c374d8de72a47621b531, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -391081037, guid: 413986c4a668c374d8de72a47621b531, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1511966743, guid: 413986c4a668c374d8de72a47621b531, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 2034606001, guid: 413986c4a668c374d8de72a47621b531, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 9
     m_Data: {fileID: -1152811960, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 129303471, guid: 413986c4a668c374d8de72a47621b531, type: 3}
+    m_Data: {fileID: 2034606001, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1738806231, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   - m_RefCount: 1
@@ -13476,18 +13488,18 @@ Tilemap:
     m_Data: {fileID: -822982447, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -651849793, guid: 413986c4a668c374d8de72a47621b531, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -391081037, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -651770531, guid: 413986c4a668c374d8de72a47621b531, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1511966743, guid: 413986c4a668c374d8de72a47621b531, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -1844818447, guid: 413986c4a668c374d8de72a47621b531, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1744719547, guid: 413986c4a668c374d8de72a47621b531, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 129303471, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   - m_RefCount: 624
     m_Data: {fileID: 1171331353, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   - m_RefCount: 33
@@ -13633,11 +13645,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107679617387167225, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7
+      value: 36.6
       objectReference: {fileID: 0}
     - target: {fileID: 9107679617387167225, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.6
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9107679617387167225, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13798,6 +13810,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (16)
@@ -13969,6 +13985,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (8)
@@ -14026,6 +14046,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (22)
@@ -14197,6 +14221,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (25)
@@ -14311,6 +14339,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (32)
@@ -14630,7 +14662,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0ad591428b0c18c4da51fe3bf98dbc63, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 35967e8a4dfb1664e9b066939272c0a4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -14739,6 +14771,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (3)
@@ -14910,6 +14946,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (29)
@@ -31236,6 +31276,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (14)
@@ -31293,6 +31337,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (21)
@@ -31350,6 +31398,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (17)
@@ -32402,6 +32454,26 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 37, y: 28, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 18
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 38, y: 28, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 18
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 68, y: 28, z: 0}
     second:
       serializedVersion: 2
@@ -32582,6 +32654,26 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 61, y: 31, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 18
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 62, y: 31, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 18
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 0
@@ -32620,7 +32712,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: a7568779b4ad182448e4527a85747ebc, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 1d7b87fbb17127e439aab5d3a63ff341, type: 2}
-  - m_RefCount: 18
+  - m_RefCount: 22
     m_Data: {fileID: 11400000, guid: 3425ba36d138ba342bb2b3b7d858b9e2, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -32661,12 +32753,12 @@ Tilemap:
     m_Data: {fileID: -1858897102, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 363506745, guid: 413986c4a668c374d8de72a47621b531, type: 3}
-  - m_RefCount: 18
+  - m_RefCount: 22
     m_Data: {fileID: 78561675, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1635683458, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 85
+  - m_RefCount: 89
     m_Data:
       e00: 1
       e01: 0
@@ -32685,7 +32777,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 85
+  - m_RefCount: 89
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -32776,6 +32868,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (20)
@@ -32947,6 +33043,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (31)
@@ -33289,6 +33389,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (15)
@@ -33346,6 +33450,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (5)
@@ -33403,6 +33511,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (24)
@@ -33505,6 +33617,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (12)
@@ -33790,6 +33906,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (26)
@@ -33904,6 +34024,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (28)
@@ -34018,6 +34142,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (18)
@@ -36611,7 +36739,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 79, y: -5, z: 0}
@@ -36671,7 +36799,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 84, y: -5, z: 0}
@@ -37211,7 +37339,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 129, y: -5, z: 0}
@@ -37295,7 +37423,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 136, y: -5, z: 0}
@@ -37307,7 +37435,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 137, y: -5, z: 0}
@@ -37355,7 +37483,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 141, y: -5, z: 0}
@@ -37523,7 +37651,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 155, y: -5, z: 0}
@@ -37676,7 +37804,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 973947554073448268, guid: 476bbeeaba52f444a96bb1fd8e8cd16f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.1969657
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 973947554073448268, guid: 476bbeeaba52f444a96bb1fd8e8cd16f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -37788,6 +37916,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (6)
@@ -37845,6 +37977,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (4)
@@ -37902,6 +38038,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight
@@ -37959,6 +38099,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (23)
@@ -38016,6 +38160,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (19)
@@ -38073,6 +38221,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (11)
@@ -38289,6 +38441,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (27)
@@ -38505,6 +38661,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (9)
@@ -38733,6 +38893,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (13)
@@ -38949,6 +39113,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (2)
@@ -39120,6 +39288,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (33)
@@ -39291,6 +39463,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: NPC_MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (1)
@@ -39436,7 +39612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainObject: {fileID: 2116160122}
-  deathsThreshold: 0
+  deathsThreshold: 34
 --- !u!114 &2116160125
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -68,14 +68,14 @@ public class MovingObject : MonoBehaviour
             doMove = true;
             activated = true;
         }
-        else
+        /*else
         {
             doMove = true;
             moveCounter = 0;
 
             objectMovingXDistance *= -1;
             objectMovingYDistance *= -1;
-        }
+        }*/
     }
 
     public void Deactivate()

@@ -93,6 +93,8 @@ public class PlayerMove : MonoBehaviour
     public HealthBar healthBar;
     public ManaBar manaBar;
     int collisions = 0;
+    
+    float moveSpeed = 6f;
 
     void Update()
     {
@@ -111,20 +113,19 @@ public class PlayerMove : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-
-            float newYVelocity = rb.velocity.y;
-
-            rb.velocity = new Vector3(-4, newYVelocity, 0);
-
-
+            Vector2 velocity = rb.velocity;
+            float horInput = Input.GetAxisRaw("Horizontal");
+            float airMultiplier = isGrounded ? 1f : 0.5f;
+            velocity.x = horInput * moveSpeed * airMultiplier;
+            rb.velocity = velocity;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            float newYVelocity = rb.velocity.y;
-
-            Debug.Log(newYVelocity);
-
-            rb.velocity = new Vector3(4, newYVelocity, 0);
+            Vector2 velocity = rb.velocity;
+            float horInput = Input.GetAxisRaw("Horizontal");
+            float airMultiplier = isGrounded ? 1f : 0.6f;
+            velocity.x = horInput * moveSpeed * airMultiplier;
+            rb.velocity = velocity;
         }
 
         if (jumpState == true && isGrounded)
@@ -181,7 +182,13 @@ public class PlayerMove : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        isGrounded = true;
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            if (contact.normal.y > 0.5f)
+            {
+                isGrounded = true;
+            }
+        }
 
         //Debug.Log($"Collided with: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
         Debug.Log($"Collided with: {collision.gameObject.name}, Layer: {LayerMask.LayerToName(collision.gameObject.layer)}");
@@ -229,7 +236,13 @@ public class PlayerMove : MonoBehaviour
     }
     void OnCollisionStay2D(Collision2D collision)
     {
-        isGrounded = true;
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            if (contact.normal.y > 0.5f)
+            {
+                isGrounded = true;
+            }
+        }
     }
     void OnCollisionExit2D(Collision2D collision)
     {

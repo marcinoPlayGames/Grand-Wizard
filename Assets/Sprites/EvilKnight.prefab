@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8020805311469291635}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.1, y: 2.64, z: -0.21822126}
   m_LocalScale: {x: 2.6, y: 2.6, z: 2}
   m_ConstrainProportionsScale: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   npcDeathCounter: {fileID: 0}
-  NPC_MaxHealth: 200
+  NPC_MaxHealth: 100
   NPC_Damage: 50
   npcHit: {fileID: 3628919990357275766}
 --- !u!95 &130162033744813733
@@ -337,8 +337,11 @@ MonoBehaviour:
     m_Bits: 4294967295
   swordDamage: 25
   swordCooldown: 1
+  npcSize: 1
+  rayHeight: 2.5
   swordNumber: 1
   verticalSpacing: -0.5
+  eyesPositionOffset: 0.8
   swordThrowSound: {fileID: 8917504192721961917}
 --- !u!82 &8917504192721961917
 AudioSource:
