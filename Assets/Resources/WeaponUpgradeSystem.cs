@@ -10,6 +10,12 @@ public class WeaponUpgradeSystem : MonoBehaviour
     private Dictionary<string, WeaponUpgradeData> weaponDataCache = new Dictionary<string, WeaponUpgradeData>();
     private Dictionary<string, int> weaponLevels = new Dictionary<string, int>();
 
+    public void ResetDictionaries()
+    {
+        weaponDataCache.Clear();
+        weaponLevels.Clear();
+    }
+
     const string SaveKey = "WeaponUpgrades";
 
     private void Awake()

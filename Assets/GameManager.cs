@@ -72,7 +72,17 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Add 800 Coins")]
     public void DebugAddCoins()
     {
-        coins += 800;
+        AddCoin(800);
         Debug.Log("Coins: " + coins);
+    }
+
+    public void ResetCoins()
+    {
+        coins = 0;
+    }
+
+    public void ResetUnlockedLevel()
+    {
+        unlockedLevel = 0;
     }
 }

@@ -94391,6 +94391,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7954414661068780127, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9021912139145541405, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -97849,7 +97853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: NextLevel
-  levelToUnlock: 10
+  levelToUnlock: 11
 --- !u!1001 &1869331918
 PrefabInstance:
   m_ObjectHideFlags: 0

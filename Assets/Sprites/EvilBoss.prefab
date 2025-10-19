@@ -432,9 +432,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   swordDamage: 125
-  swordCooldown: 3
+  swordCooldown: 5
   npcSize: 2
   rayHeight: 8
   swordNumber: 4
   verticalSpacing: -1
+  eyesPositionOffset: 0.8
   swordThrowSound: {fileID: 8917504192721961917}

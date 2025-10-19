@@ -22,6 +22,10 @@ public class PlayerAttacks : MonoBehaviour
 
     private bool canCastStrongerFireball = true;
 
+    float regenDelay = 3f;
+    float timeSinceLastDamage = 0f;
+    bool isInCombat = false;
+
     private PlayerMove playerMove;
 
     bool isCasting = false;
@@ -47,6 +51,9 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField]
     AudioSource NotEnoughMana;
 
+    [SerializeField]
+    AudioSource HidePullStaff;
+
 
     private StatAttacks statAttacks;
     private StatCriticals statCriticals;
@@ -68,6 +75,13 @@ public class PlayerAttacks : MonoBehaviour
 
         fireballSpeed = fireballSpeed; // * (1 + statAttacks.Attack_Speed);
         strongerFireballSpeed = strongerFireballSpeed; // * (1 + statAttacks.Spell_Speed);
+
+    }
+
+    void Awake()
+    {
+        StartCoroutine(PullStaffAnimation());
+        HidePullStaff.Play();
     }
 
     // Update is called once per frame
@@ -77,7 +91,28 @@ public class PlayerAttacks : MonoBehaviour
 
         // Check if the "1" key is pressed and the player can cast a fireball
 
+        timeSinceLastDamage += Time.deltaTime;
+
+        if (timeSinceLastDamage >= regenDelay && !isInCombat)
+        {
+            playerMove.RegenerateHealth();
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (!hasPulled && !isPulling && !playerMove.GetIsHit())
+            {
+                StartCoroutine(PullStaffAnimation());
+                HidePullStaff.Play();
+            }
+            else if (hasPulled && !isPulling && !isHiding && !playerMove.GetIsHit())
+            {
+                StartCoroutine(HideStaffAnimation());
+                HidePullStaff.Play();
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0))
         {
             if (canCastFireball)
             {
@@ -86,11 +121,7 @@ public class PlayerAttacks : MonoBehaviour
                 Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false));
                 Debug.Log("IsEnoughMana = " + isEnoughMana);
 
-                if (!hasPulled && !isPulling)
-                {
-                    StartCoroutine(PullStaffAnimation());
-                }
-                else if (hasPulled && !isPulling && !isCasting && isEnoughMana)
+                if (hasPulled && !isPulling && !isCasting && isEnoughMana && !playerMove.GetIsHit())
                 {
                     StartCoroutine(CastFireballAnimation());
                 }
@@ -105,7 +136,7 @@ public class PlayerAttacks : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetMouseButtonDown(1))
         {
             if (canCastStrongerFireball)
             {
@@ -114,11 +145,7 @@ public class PlayerAttacks : MonoBehaviour
                 Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false));
                 Debug.Log("IsEnoughMana = " + isEnoughMana);
 
-                if (!hasPulled && !isPulling)
-                {
-                    StartCoroutine(PullStaffAnimation());
-                }
-                else if (hasPulled && !isPulling && !isCasting && isEnoughMana)
+                if (hasPulled && !isPulling && !isCasting && isEnoughMana && !playerMove.GetIsHit())
                 {
                     StartCoroutine(CastStrongerFireballAnimation());
                 }
@@ -417,7 +444,6 @@ public class PlayerAttacks : MonoBehaviour
         }
 
         Debug.Log("Możesz ponownie strzelić!");
-        StartCoroutine(HideStaffAnimation());
     }
 
     IEnumerator HideStaffAnimation()
@@ -468,5 +494,17 @@ public class PlayerAttacks : MonoBehaviour
     {
         if (!isPulling && !isCasting && !isHiding) return isCastAnimation = false;
         else return true;
+    }
+
+    public void OnTakeDamage()
+    {
+        timeSinceLastDamage = 0f;
+        isInCombat = true;
+        Invoke("ExitCombat", 5f);
+    }
+
+    void ExitCombat()
+    {
+        isInCombat = false;
     }
 }

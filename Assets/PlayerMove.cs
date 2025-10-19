@@ -15,6 +15,11 @@ public class PlayerMove : MonoBehaviour
     private StatDefenses statDefenses;
     private DamageType damageType;
 
+    public PhysicsMaterial2D groundedMaterial;
+    public PhysicsMaterial2D airMaterial;
+
+    private Collider2D col;
+
     StatMana statMana;
 
     private float Mana;
@@ -39,6 +44,8 @@ public class PlayerMove : MonoBehaviour
 
         Debug.Log("StatSystem.Instance = " + StatSystem.Instance);
         Debug.Log("Max HP = " + Player_Health);
+
+        col = GetComponent<Collider2D>();
     }
 
     void Awake()
@@ -101,17 +108,22 @@ public class PlayerMove : MonoBehaviour
         //Debug.Log("called Update " + count.ToString());
         count++;
 
+        if (isGrounded)
+            col.sharedMaterial = groundedMaterial;
+        else
+            col.sharedMaterial = airMaterial;
+
         if (Input.GetKey(KeyCode.Backspace))
         {
             rb.velocity = new Vector3(rb.velocity.x, 9, 0);
         }
-        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)) && !jumpState)
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) && !jumpState)
         {
             rb.velocity = new Vector3(rb.velocity.x, 10, 0);
             playerJump.Play();
             jumpState = true;
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             Vector2 velocity = rb.velocity;
             float horInput = Input.GetAxisRaw("Horizontal");
@@ -121,7 +133,7 @@ public class PlayerMove : MonoBehaviour
 
             GetComponent<SpriteRenderer>().flipX = true;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             Vector2 velocity = rb.velocity;
             float horInput = Input.GetAxisRaw("Horizontal");
@@ -271,6 +283,8 @@ public class PlayerMove : MonoBehaviour
     {
         Debug.Log(Player_Health);
 
+        playerAttacks.OnTakeDamage();
+
         Debug.Log("Player take damage original = " + damage);
 
         if (iDamageType == DamageType.Physical)
@@ -294,8 +308,6 @@ public class PlayerMove : MonoBehaviour
         Debug.Log("Player take damage defended = " + damage);
 
         playerHit.Play();
-
-        statHealth.StartHealthRegen();
         
         Debug.Log(Player_Health);
 
@@ -303,6 +315,11 @@ public class PlayerMove : MonoBehaviour
         {
             StartCoroutine(GameOver());
         }
+    }
+
+    public void RegenerateHealth()
+    {
+        statHealth.StartHealthRegen();
     }
 
     public void HealPlayer(float heal)
@@ -388,5 +405,10 @@ public class PlayerMove : MonoBehaviour
             Mana = MaxMana;
             manaBar.UpdateManaBar();
         }
+    }
+
+    public bool GetIsHit()
+    {
+        return isHit;
     }
 }

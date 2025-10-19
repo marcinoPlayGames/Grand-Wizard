@@ -212,13 +212,13 @@ public class NPCAI : MonoBehaviour
         GetComponent<Animator>().SetTrigger("ThrowSword");
 
         // Wait for the cooldown duration before throwing the sword
-        yield return new WaitForSeconds(0.1f); // Wait for animation or small delay
+        yield return new WaitForSeconds(1.5f); // Wait for animation or small delay
 
         // Call the ThrowSword function after cooldown
         StartCoroutine(ThrowSword());
 
         // Wait for the sword cooldown to finish before allowing another throw
-        yield return new WaitForSeconds(0.2f); // Cooldown for the next sword throw
+        yield return new WaitForSeconds(0.5f); // Cooldown for the next sword throw
 
         // After cooldown, allow throwing again
         isThrowing = false;

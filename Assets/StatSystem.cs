@@ -11,13 +11,26 @@ public class StatSystem : MonoBehaviour
     {
         public Dictionary<string, float> values;
         public Dictionary<string, int> costs;
+
+        public void ResetDictionaries()
+        {
+            values.Clear();
+            costs.Clear();
+        }
     }
+
+    
 
     // Zawiera wszystkie statystyki np. Attack_Damage, Magic_Attack
     private Dictionary<string, StatData> statTable;
 
     // Przechowuje poziomy gracza
     private Dictionary<string, int> playerLevels = new Dictionary<string, int>();
+
+    public void ResetDictionaries()
+    {
+        playerLevels.Clear();
+    }
 
     private void Awake()
     {
@@ -160,5 +173,13 @@ public class StatSystem : MonoBehaviour
     public List<string> GetAllStatNames()
     {
         return new List<string>(statTable.Keys);
+    }
+
+    public void ResetAllStatData()
+    {
+        foreach (var stat in statTable.Values)
+        {
+            stat.ResetDictionaries();
+        }
     }
 }
