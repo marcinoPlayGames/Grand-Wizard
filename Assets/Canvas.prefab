@@ -867,7 +867,6 @@ GameObject:
   - component: {fileID: 7016166948415571612}
   - component: {fileID: 1677451341329230564}
   - component: {fileID: 8959209400732679336}
-  - component: {fileID: 8203366889846473077}
   m_Layer: 0
   m_Name: NPCDeathCounter
   m_TagString: Untagged
@@ -991,20 +990,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8203366889846473077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6742279212810986545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4c76a9c00a03242b1678225688fd8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrainObject: {fileID: 0}
-  NPCLeft: {fileID: 8959209400732679336}
 --- !u!1 &6747825302310154489
 GameObject:
   m_ObjectHideFlags: 0

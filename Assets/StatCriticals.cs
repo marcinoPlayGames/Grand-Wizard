@@ -10,14 +10,18 @@ public class StatCriticals : MonoBehaviour
     public float Spell_Critical_Hit_Chance;
     public float Spell_Critical_Hit_Damage;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Attack_Critical_Hit_Chance = GetStatValues("Critical_Chance_Attack");
         Attack_Critical_Hit_Damage = GetStatValues("Critical_Damage_Attack");
         Spell_Critical_Hit_Chance = GetStatValues("Critical_Chance_Spell");
         Spell_Critical_Hit_Damage = GetStatValues("Critical_Damage_Spell");
+    }
+
+    // Start is called before the first frame update
+    IEnumerator Start()
+    {
+        yield return new WaitUntil(() => StatSystem.Instance != null && StatSystem.Instance.IsReady);
     }
 
     // Update is called once per frame

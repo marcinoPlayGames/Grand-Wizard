@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -684,7 +683,7 @@ PrefabInstance:
     - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: npcDeathCounter
       value: 
-      objectReference: {fileID: 1789362958}
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight
@@ -89797,17 +89796,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
---- !u!114 &770466256 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8959209400732679336, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
-  m_PrefabInstance: {fileID: 770466255}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &783880783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89937,7 +89925,7 @@ PrefabInstance:
     - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: npcDeathCounter
       value: 
-      objectReference: {fileID: 1789362958}
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (21)
@@ -91168,7 +91156,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -16, y: -37, z: 0}
@@ -97148,17 +97136,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 476bbeeaba52f444a96bb1fd8e8cd16f, type: 3}
---- !u!114 &1789362958 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8203366889846473077, guid: 5e78c6e2dcb0bdc4e9febec66fce14c7, type: 3}
-  m_PrefabInstance: {fileID: 770466255}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4c76a9c00a03242b1678225688fd8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1797991166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97287,7 +97264,6 @@ GameObject:
   - component: {fileID: 1801224418}
   - component: {fileID: 1801224417}
   - component: {fileID: 1801224416}
-  - component: {fileID: 1801224419}
   - component: {fileID: 1801224420}
   m_Layer: 0
   m_Name: Blokada
@@ -97592,20 +97568,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &1801224419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801224412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4c76a9c00a03242b1678225688fd8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrainObject: {fileID: 1801224420}
-  NPCLeft: {fileID: 770466256}
 --- !u!114 &1801224420
 MonoBehaviour:
   m_ObjectHideFlags: 0

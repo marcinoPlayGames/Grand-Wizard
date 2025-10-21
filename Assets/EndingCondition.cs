@@ -13,9 +13,10 @@ public class EndingCondition : MonoBehaviour
     public int deathsThreshold = 5;
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-        
+        yield return new WaitForSeconds(1f);
+
         CheckAndHideTerrain();
     }
 

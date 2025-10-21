@@ -9,14 +9,20 @@ public class StatAttacks : MonoBehaviour
     public float Attack_Speed;
     public float Spell_Speed;
     public float Attack_Range;
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         Attack_Damage = GetStatValues("Attack_Damage");
         Magic_Damage = GetStatValues("Magic_Damage");
         Attack_Speed = GetStatValues("Attack_Speed");
         Spell_Speed = GetStatValues("Spell_Speed");
         Attack_Range = GetStatValues("Attack_Range");
+    }
+
+    // Start is called before the first frame update
+    IEnumerator Start()
+    {
+        yield return new WaitUntil(() => StatSystem.Instance != null && StatSystem.Instance.IsReady);
     }
 
     // Update is called once per frame

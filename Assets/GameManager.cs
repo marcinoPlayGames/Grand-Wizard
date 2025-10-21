@@ -43,11 +43,12 @@ public class GameManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (coinText == null)
+        if (coinText != null)
         {
             coinText = GameObject.Find("CoinText").GetComponent<TMP_Text>();
         }
-        coinText.text = "Coins: " + coins;
+        
+        if (coinText != null) coinText.text = "Coins: " + coins;
     }
 
     private void OnEnable()

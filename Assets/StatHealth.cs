@@ -15,13 +15,23 @@ public class StatHealth : MonoBehaviour
 
     private Coroutine regenCoroutine;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Max_Health = GetStatValues("Max_Health");
         Health = GetStatValues("Health");
         Healing_From_Damage_Percent = GetStatValues("Healing");
         Health_Regen = GetStatValues("HP_Regen");
+
+        UnityEngine.Debug.Log($"[StatHealth] Max_Health is {Max_Health}");
+        UnityEngine.Debug.Log($"[StatHealth] Health is {Health}");
+        UnityEngine.Debug.Log($"[StatHealth] Healing is {Healing_From_Damage_Percent}");
+        UnityEngine.Debug.Log($"[StatHealth] Health_Regen is {Health_Regen}");
+    }
+
+    // Start is called before the first frame update
+    IEnumerator Start()
+    {
+        yield return new WaitUntil(() => StatSystem.Instance != null && StatSystem.Instance.IsReady);
     }
 
     // Update is called once per frame
@@ -94,7 +104,11 @@ public class StatHealth : MonoBehaviour
                 bIsRegenStarted = false;
 
                 // Zatrzymaj coroutine prawidłowo
-                StopCoroutine(regenCoroutine);
+                if (regenCoroutine != null)
+                {
+                    StopCoroutine(regenCoroutine);
+                }
+                
                 regenCoroutine = null;
                 yield break; // wyjście z pętli
             }

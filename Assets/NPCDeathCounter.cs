@@ -14,11 +14,19 @@ public class NPCDeathCounter : MonoBehaviour
     public TMP_Text NPCLeft;
     private static int deathsThreshold = 0;
 
+    
+
     void Start()
     {
-        deathsThreshold = terrainObject.deathsThreshold;
-        NPCLeft.text = $"Enemies left: {deathsThreshold}";
+        deathsThreshold = FindAllEnemies();
+        if (NPCLeft != null) NPCLeft.text = $"Enemies left: {deathsThreshold}";
         ResetDeathCount();
+    }
+
+    int FindAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("NPC");
+        return enemies.Length;
     }
 
     void Awake()

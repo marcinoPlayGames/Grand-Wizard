@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -90131,6 +90130,10 @@ MonoBehaviour:
   strongerFireballPrefab: {fileID: 0}
   Fireball: {fileID: 922871206}
   StrongerFireball: {fileID: 0}
+  CantCast: {fileID: 0}
+  CantAttack: {fileID: 0}
+  NotEnoughMana: {fileID: 0}
+  HidePullStaff: {fileID: 0}
 --- !u!82 &922871209
 AudioSource:
   m_ObjectHideFlags: 0
@@ -90356,11 +90359,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c75c06c791c524fb59c403e0658263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundedMaterial: {fileID: 0}
+  airMaterial: {fileID: 0}
+  MaxMana: 0
   playerJump: {fileID: 922871210}
   playerFall: {fileID: 922871209}
   playerHit: {fileID: 922871207}
   Player_MaxHealth: 500
   healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
 --- !u!50 &922871213
 Rigidbody2D:
   serializedVersion: 4
@@ -96640,7 +96647,6 @@ GameObject:
   - component: {fileID: 1801224418}
   - component: {fileID: 1801224417}
   - component: {fileID: 1801224416}
-  - component: {fileID: 1801224419}
   - component: {fileID: 1801224420}
   m_Layer: 0
   m_Name: Blokada
@@ -96965,20 +96971,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &1801224419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801224412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4c76a9c00a03242b1678225688fd8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrainObject: {fileID: 1801224420}
-  NPCLeft: {fileID: 0}
 --- !u!114 &1801224420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97222,6 +97214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: WinScene
+  levelToUnlock: 4
 --- !u!1001 &1869331918
 PrefabInstance:
   m_ObjectHideFlags: 0

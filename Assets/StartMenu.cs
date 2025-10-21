@@ -7,11 +7,6 @@ public class StartMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    void Awake()
-    {
         PlayerPrefs.DeleteKey("WeaponUpgrades");
         PlayerPrefs.DeleteKey("PlayerStats");
         GameManager.Instance.ResetCoins();
@@ -20,7 +15,11 @@ public class StartMenu : MonoBehaviour
         WeaponUpgradeSystem.Instance.ResetDictionaries();
 
         StatSystem.Instance.ResetDictionaries();
-        StatSystem.Instance.ResetAllStatData();
+    }
+
+    void Awake()
+    {
+        
     }
 
     // Update is called once per frame

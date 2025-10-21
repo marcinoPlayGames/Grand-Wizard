@@ -143,8 +143,7 @@ public class NPCController : MonoBehaviour
         {
             isDead = true;
             Destroy(gameObject, 1f);
-            npcDeathCounter.IncrementDeathCount();
-            npcDeathCounter.CheckEndingCondition();
+            NPCManager.Instance.EnemyDied();
             Debug.Log(NPC_KillCount);
         }
     }

@@ -7,11 +7,16 @@ public class StatDefenses : MonoBehaviour
     public float Armor;
     public float Magic_Resist;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Armor = GetStatValues("Armor");
         Magic_Resist = GetStatValues("Magic_Resist");
+    }
+
+    // Start is called before the first frame update
+    IEnumerator Start()
+    {
+        yield return new WaitUntil(() => StatSystem.Instance != null && StatSystem.Instance.IsReady);
     }
 
     // Update is called once per frame

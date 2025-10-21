@@ -21,11 +21,11 @@ public class CheatManager : MonoBehaviour
         {
             KillPlayer();
         }
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.F3))
         {
             GetCoins();
         }
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.F2) || Input.GetKeyDown(KeyCode.F4))
         {
             CompleteLevel();
         }
@@ -86,6 +86,11 @@ public class CheatManager : MonoBehaviour
         {
             endLevel = trophyObj.GetComponent<EndLevel>();
             Debug.Log("Found trophy and level end!");
+        }
+
+        if (endLevel == null)
+        {
+            Debug.LogError("Trophy not found!");
         }
 
         if (endLevel.levelToUnlock > GameManager.Instance.GetUnlockedLevel())
