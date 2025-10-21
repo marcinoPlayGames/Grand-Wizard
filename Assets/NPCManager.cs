@@ -53,6 +53,8 @@ public class NPCManager : MonoBehaviour
 
     void RecalculateEnemies()
     {
+        ResetEnemies();
+        
         totalEnemies = GameObject.FindGameObjectsWithTag("NPC").Length;
         Debug.Log($"W scenie '{SceneManager.GetActiveScene().name}' jest {totalEnemies} NPC.");
     }
@@ -64,6 +66,8 @@ public class NPCManager : MonoBehaviour
 
         if (deadEnemies >= totalEnemies)
             UnlockTerrain();
+
+        Debug.Log(deadEnemies >= totalEnemies);
     }
 
     void UpdateUI()
@@ -75,6 +79,12 @@ public class NPCManager : MonoBehaviour
     void UnlockTerrain()
     {
         if (terrainBlock != null)
-            terrainBlock.CheckAndHideTerrain();
+            terrainBlock.HideTerrain();
+    }
+
+    void ResetEnemies()
+    {
+        totalEnemies = 0;
+        deadEnemies = 0;
     }
 }

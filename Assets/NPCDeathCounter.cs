@@ -49,7 +49,7 @@ public class NPCDeathCounter : MonoBehaviour
 
     public void CheckEndingCondition()
     {
-        terrainObject.CheckAndHideTerrain();
+        terrainObject.HideTerrain();
     }
 
     // Method to reset the death count
