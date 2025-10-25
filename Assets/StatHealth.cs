@@ -15,6 +15,8 @@ public class StatHealth : MonoBehaviour
 
     private Coroutine regenCoroutine;
 
+    private int increasedRegenCount = 0;
+
     void Awake()
     {
         Max_Health = GetStatValues("Max_Health");
@@ -96,7 +98,17 @@ public class StatHealth : MonoBehaviour
 
         while (true)
         {
-            playerMove.HealPlayer(Health_Regen);
+            playerMove.HealPlayer(Health_Regen * (playerMove.increasedRegen_HP ? 2 : 1));
+
+            if (playerMove.increasedRegen_HP)
+            {
+                increasedRegenCount++;
+
+                if (increasedRegenCount >= 5)
+                {
+                    playerMove.increasedRegen_HP = false;
+                }
+            }
 
             if (playerMove.GetHealth() >= playerMove.Player_MaxHealth)
             {

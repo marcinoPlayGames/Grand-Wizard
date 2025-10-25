@@ -24,6 +24,9 @@ public class PlayerMove : MonoBehaviour
 
     private float Mana;
     public float MaxMana;
+
+    public bool increasedRegen_HP;
+
     void Start()
     {
         Debug.Log("Start in PlayerMovement");

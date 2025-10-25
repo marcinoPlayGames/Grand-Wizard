@@ -73,7 +73,7 @@ public class NPCManager : MonoBehaviour
     void UpdateUI()
     {
         if (NPCLeft != null)
-            NPCLeft.text = $"Enemies left: {totalEnemies - deadEnemies}";
+            NPCLeft.text = $"{totalEnemies - deadEnemies}";
     }
 
     void UnlockTerrain()

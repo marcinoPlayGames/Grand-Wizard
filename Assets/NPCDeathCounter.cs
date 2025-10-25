@@ -19,7 +19,7 @@ public class NPCDeathCounter : MonoBehaviour
     void Start()
     {
         deathsThreshold = FindAllEnemies();
-        if (NPCLeft != null) NPCLeft.text = $"Enemies left: {deathsThreshold}";
+        if (NPCLeft != null) NPCLeft.text = $"{deathsThreshold}";
         ResetDeathCount();
     }
 
@@ -43,7 +43,7 @@ public class NPCDeathCounter : MonoBehaviour
     public void IncrementDeathCount()
     {
         TotalDeaths++;
-        NPCLeft.text = $"Enemies left: {deathsThreshold - NPCDeathCounter.TotalDeaths}";
+        NPCLeft.text = $"{deathsThreshold - NPCDeathCounter.TotalDeaths}";
         Debug.Log(TotalDeaths);
     }
 
