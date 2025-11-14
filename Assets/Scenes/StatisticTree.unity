@@ -4544,20 +4544,16 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4586,10 +4582,6 @@ PrefabInstance:
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899614461860621125, guid: 35b242414c61aab4182aaace5f283806, type: 3}
-      propertyPath: orthographic size
-      value: 185.3727
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

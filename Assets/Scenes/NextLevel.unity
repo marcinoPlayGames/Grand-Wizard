@@ -1578,7 +1578,6 @@ RectTransform:
   - {fileID: 564237444}
   - {fileID: 391062825}
   - {fileID: 1491702976}
-  - {fileID: 1931991243}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1592,7 +1591,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1771217251}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1212611065471597532, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_Name
@@ -1600,15 +1599,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1646,11 +1645,6 @@ PrefabInstance:
 --- !u!20 &1931991242 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1899614461860621125, guid: 35b242414c61aab4182aaace5f283806, type: 3}
-  m_PrefabInstance: {fileID: 1931991241}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1931991243 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
   m_PrefabInstance: {fileID: 1931991241}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1956117741
@@ -1929,3 +1923,4 @@ SceneRoots:
   - {fileID: 630604421}
   - {fileID: 1345299372}
   - {fileID: 1274269136}
+  - {fileID: 1931991241}

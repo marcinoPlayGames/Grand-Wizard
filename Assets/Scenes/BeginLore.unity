@@ -539,28 +539,16 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5182127
-      objectReference: {fileID: 0}
-    - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5182127
-      objectReference: {fileID: 0}
-    - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5182127
-      objectReference: {fileID: 0}
-    - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 183.51822
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 100.73179
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.182127
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507804961390644712, guid: 35b242414c61aab4182aaace5f283806, type: 3}
       propertyPath: m_LocalRotation.w
