@@ -14,7 +14,7 @@ public class WorldMapGoBackButton : MonoBehaviour
 
         Debug.Log("World Map loaded level: " + level);
 
-        if (level != 8)
+        if (level != 8 && level != 9)
         {
             SceneManager.LoadScene(nextLevelScene);
         }
