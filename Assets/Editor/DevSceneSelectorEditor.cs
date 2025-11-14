@@ -90,6 +90,12 @@ public static class DevSceneSelectorEditor
         OpenSceneByName("Level5");
     }
 
+    [MenuItem("Tools/Select Scene/World Map")]
+    public static void LoadWorldMap()
+    {
+        OpenSceneByName("WorldMap");
+    }
+
     private static void OpenSceneByName(string sceneName)
     {
         foreach (var scene in EditorBuildSettings.scenes)

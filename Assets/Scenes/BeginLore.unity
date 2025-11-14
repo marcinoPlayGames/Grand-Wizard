@@ -1178,8 +1178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae42153cb8b2274c97720aa7a450c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: StartMenu
+  levelToLoad: WorldMap
   loadLevelManually: 1
+  unlockLevelOnClick: 0
+  levelToUnlock: 0
 --- !u!1 &1889003399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,8 +1302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae42153cb8b2274c97720aa7a450c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Level1_Demo
+  levelToLoad: WorldMap
   loadLevelManually: 1
+  unlockLevelOnClick: 1
+  levelToUnlock: 9
 --- !u!114 &2082279204
 MonoBehaviour:
   m_ObjectHideFlags: 0

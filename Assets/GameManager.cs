@@ -84,6 +84,6 @@ public class GameManager : MonoBehaviour
 
     public void ResetUnlockedLevel()
     {
-        unlockedLevel = 0;
+        unlockedLevel = 8;
     }
 }
