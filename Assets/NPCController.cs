@@ -2,6 +2,7 @@ using Unity.Burst.CompilerServices;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class NPCController : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class NPCController : MonoBehaviour
 
     [SerializeField]
     AudioSource npcHit;
+
+    public event Action OnNPCHealthChange;
 
     void Start()
     {
@@ -146,6 +149,15 @@ public class NPCController : MonoBehaviour
             NPCManager.Instance.EnemyDied();
             Debug.Log(NPC_KillCount);
         }
+
+        Debug.Log($"[NPCController] NPC HP: {NPC_Health}");
+
+        OnNPCHealthChange?.Invoke();
+    }
+
+    public float GetNPCHealth()
+    {
+        return NPC_Health;
     }
 
     IEnumerator HitAnimation()
