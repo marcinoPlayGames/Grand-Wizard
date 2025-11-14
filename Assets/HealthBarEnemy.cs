@@ -19,6 +19,7 @@ public class HealthBarEnemy : MonoBehaviour
     private float initialWidth;
 
     public bool showHealthBarOnlyOnDamage = false;
+    public bool showHealthTriggered = false;
 
     NPCController npcController;
 
@@ -43,7 +44,7 @@ public class HealthBarEnemy : MonoBehaviour
 
         healthBarObject.SetActive(true);
 
-        if (showHealthBarOnlyOnDamage)
+        if (showHealthBarOnlyOnDamage || showHealthTriggered)
         {
             healthBarObject.SetActive(false);
         }
