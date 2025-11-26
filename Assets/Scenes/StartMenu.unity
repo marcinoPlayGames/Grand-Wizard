@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 1049473473}
   - component: {fileID: 1049473472}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: LoadGameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -792,8 +792,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 2147483648
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1624,6 +1624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57164f65847fea748b85f26180959bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadGameButtonImage: {fileID: 1942954435}
+  loadGameButtonText: {fileID: 1049473472}
+  loadGameButtonButton: {fileID: 1942954434}
 --- !u!1 &1914339596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,7 +2010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.88235295, g: 0.69411767, b: 0.17254902, a: 1}
+  m_Color: {r: 0.88235295, g: 0.69411767, b: 0.17254902, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

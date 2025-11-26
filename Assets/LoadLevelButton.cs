@@ -23,7 +23,7 @@ public class LoadLevelButton : MonoBehaviour
             if (levelToUnlock > GameManager.Instance.GetUnlockedLevel())
             {
                 GameManager.Instance.SetUnlockedLevel(levelToUnlock);
-                StatSystem.Instance.SaveGame(); // zapis statystyk
+                StatSystem.Instance.SaveGameRuntime(); // zapis statystyk
             }
         }
 

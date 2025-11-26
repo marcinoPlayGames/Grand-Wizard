@@ -604,7 +604,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: INK_RUNTIME;INK_EDITOR
+    Standalone: INK_RUNTIME;INK_EDITOR;USE_ANALYTICS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

@@ -390,6 +390,7 @@ public class PlayerMove : MonoBehaviour
         {
             Mana -= manaCost;
             manaBar.UpdateManaBar();
+            
             statMana.StartManaRegen();
         }
         else

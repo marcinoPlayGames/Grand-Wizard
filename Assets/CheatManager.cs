@@ -97,7 +97,7 @@ public class CheatManager : MonoBehaviour
         {
             GameManager.Instance.SetUnlockedLevel(endLevel.levelToUnlock);
             Debug.Log("levelToUnlock = " + endLevel.levelToUnlock);
-            StatSystem.Instance.SaveGame(); // zapis statystyk
+            StatSystem.Instance.SaveGameRuntime(); // zapis statystyk
         }
 
         SceneManager.LoadScene(endLevel.sceneToLoad);

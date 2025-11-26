@@ -6,7 +6,6 @@ public class WeaponUpgradeUIController : MonoBehaviour
 {
     public static WeaponUpgradeUIController Instance;
 
-    public GameObject panel;
     public TextMeshProUGUI weaponNameText;
     public TextMeshProUGUI currentValueText;
     public TextMeshProUGUI nextValueText;
@@ -32,7 +31,6 @@ public class WeaponUpgradeUIController : MonoBehaviour
 
     private void Start()
     {
-        panel.SetActive(false);
         upgradePanel.SetActive(false);
         detailsPanel.SetActive(false);
     }
@@ -40,7 +38,9 @@ public class WeaponUpgradeUIController : MonoBehaviour
     public void ShowPanel(string weaponId)
     {
         currentWeaponId = weaponId;
-        panel.SetActive(true);
+        upgradePanel.SetActive(true);
+        mainPanel.SetActive(false);
+        detailsPanel.SetActive(false);
         UpdateUI();
     }
 
@@ -120,7 +120,7 @@ public class WeaponUpgradeUIController : MonoBehaviour
 
     public void ClosePanel()
     {
-        panel.SetActive(false);
+        upgradePanel.SetActive(false);
     }
 
     [Header("UI Panels")]
@@ -133,6 +133,7 @@ public class WeaponUpgradeUIController : MonoBehaviour
 
         // Ukryj upgrade, pokaż details
         upgradePanel.SetActive(false);
+        mainPanel.SetActive(false);
         detailsPanel.SetActive(true);
 
         // Zaktualizuj teksty w Details Panelu
@@ -143,6 +144,7 @@ public class WeaponUpgradeUIController : MonoBehaviour
     {
         upgradePanel.SetActive(true);
         detailsPanel.SetActive(false);
+        mainPanel.SetActive(false);
     }
 
     private void UpdateDetailsUI(string weaponId, bool isNextLevel)
@@ -157,7 +159,8 @@ public class WeaponUpgradeUIController : MonoBehaviour
 
     public void BackToMainPanel()
     {
-        panel.SetActive(false); // wyłącza cały WeaponUpgradeUI
+        detailsPanel.SetActive(false);
+        upgradePanel.SetActive(false); // wyłącza cały WeaponUpgradeUI
         mainPanel.SetActive(true); // aktywuje panel z listą dostępnych broni
     }
 }

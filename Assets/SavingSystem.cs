@@ -3,10 +3,14 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class SavingSystem
 {
     private static string gameName = "GrandWizard"; // Zmień na swoją nazwę gry
+
+    private static string runtimeDataName = "data_runtime";
+    private static string saveDataName = "player_save_data";
 
     public static string GetSaveDirectory()
     {
@@ -17,13 +21,17 @@ public static class SavingSystem
         return path;
     }
 
-    public static string GetSaveFilePath()
+    public static string GetSaveFilePathRuntime()
     {
-        string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-        return Path.Combine(GetSaveDirectory(), $"{timestamp}.json");
+        return Path.Combine(GetSaveDirectory(), $"{runtimeDataName}.json");
     }
 
-    public static void SaveGame(Dictionary<string, int> stats, int coins)
+    public static string GetSaveFilePathPlayerSave()
+    {
+        return Path.Combine(GetSaveDirectory(), $"{saveDataName}.json");
+    }
+
+    public static void SaveGameRuntime(Dictionary<string, int> stats, int coins)
     {
         SaveData data = new SaveData
         {
@@ -34,7 +42,18 @@ public static class SavingSystem
         };
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
-        string filePath = GetSaveFilePath();
+        string filePath = GetSaveFilePathRuntime();
+        File.WriteAllText(filePath, json);
+
+        Debug.Log($"Zapisano grę do pliku: {filePath}");
+    }
+
+    public static void SavePlayerGame(Dictionary<string, int> stats, int coins)
+    {
+        SaveData data = LoadGame(GetSaveFilePathRuntime());
+
+        string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+        string filePath = GetSaveFilePathPlayerSave();
         File.WriteAllText(filePath, json);
 
         Debug.Log($"Zapisano grę do pliku: {filePath}");
@@ -87,25 +106,32 @@ public static class SavingSystem
         }
     }
 
-    public static string[] GetAllSaveFiles()
+    public static string GetPlayerSaveGameFile()
     {
-        return Directory.GetFiles(SavingSystem.GetSaveDirectory(), "*.json");
+        return Directory.GetFiles(SavingSystem.GetSaveDirectory(), $"{saveDataName}.json").FirstOrDefault();
     }
-
-    public static void LoadLatestGame()
+    public static void LoadPlayerGame()
     {
-        string[] files = GetAllSaveFiles();
-        if (files.Length == 0)
+        string file = GetPlayerSaveGameFile();
+        if (string.IsNullOrEmpty(file))
         {
-            Debug.LogWarning("Brak zapisanych plików.");
+            Debug.LogWarning("Nie znaleziono pliku.");
             return;
         }
 
-        // Posortuj pliki według daty (najbardziej aktualny jako ostatni)
-        Array.Sort(files);
-        string latestFile = files[files.Length - 1];
+        Debug.Log($"Ładowanie zapisu z pliku: {file}");
+        LoadGame(file);
+    }
 
-        Debug.Log($"Ładowanie zapisu z pliku: {latestFile}");
-        LoadGame(latestFile);
+    public static bool DoesSaveGameFileExist()
+    {
+        string file = GetPlayerSaveGameFile();
+        if (string.IsNullOrEmpty(file))
+        {
+            Debug.LogWarning("Nie znaleziono pliku.");
+            return false;
+        }
+
+        return true;
     }
 }

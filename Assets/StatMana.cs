@@ -74,6 +74,8 @@ public class StatMana : MonoBehaviour
     {
         PlayerMove playerMove = GetComponent<PlayerMove>();
 
+        yield return new WaitForSeconds(3f);
+
         while (true)
         {
             playerMove.RegenMana(Mana_Regen);

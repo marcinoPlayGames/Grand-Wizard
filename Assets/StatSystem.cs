@@ -180,14 +180,19 @@ public class StatSystem : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void SaveGame()
+    public void SaveGameRuntime()
     {
         SavePlayerProgressToFile();
     }
     
-    void SavePlayerProgressToFile()
+    public void SavePlayerGame()
     {
-        SavingSystem.SaveGame(playerLevels, GameManager.Instance.GetCoins());
+        SavePlayerProgressToFile(false);
+    }
+    void SavePlayerProgressToFile(bool runtime = true)
+    {
+        if (runtime) SavingSystem.SaveGameRuntime(playerLevels, GameManager.Instance.GetCoins());
+        else SavingSystem.SavePlayerGame(playerLevels, GameManager.Instance.GetCoins());
     }
 
     void LoadPlayerProgress()
@@ -206,7 +211,7 @@ public class StatSystem : MonoBehaviour
 
     public void LoadGameButton()
     {
-        SavingSystem.LoadLatestGame();
+        SavingSystem.LoadPlayerGame();
 
         // Przełącz scenę, np. do głównego huba/świata
         UnityEngine.SceneManagement.SceneManager.LoadScene("NextLevel"); // lub "LevelSelect", jak wolisz

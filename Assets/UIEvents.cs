@@ -4,7 +4,7 @@ public class UIEvents : MonoBehaviour
 {
     public void OnClick_SaveGame()
     {
-        StatSystem.Instance.SaveGame();
+        StatSystem.Instance.SavePlayerGame();
     }
 
     public void OnClick_LoadGame()
