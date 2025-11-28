@@ -48,6 +48,8 @@ public class NPCAI : MonoBehaviour
 
     private void Update()
     {
+        if (CutsceneManager.cutscenePlaying) return;
+
         CheckForPlayer();
     }
 

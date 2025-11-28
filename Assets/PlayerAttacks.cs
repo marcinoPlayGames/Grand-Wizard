@@ -88,6 +88,7 @@ public class PlayerAttacks : MonoBehaviour
 
     void Update()
     {
+        if (CutsceneManager.cutscenePlaying) return;
 
         // Check if the "1" key is pressed and the player can cast a fireball
 

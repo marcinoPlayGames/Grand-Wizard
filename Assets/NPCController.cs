@@ -2,6 +2,7 @@ using Unity.Burst.CompilerServices;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class NPCController : MonoBehaviour
@@ -33,6 +34,9 @@ public class NPCController : MonoBehaviour
 
     public event Action OnNPCHealthChange;
 
+    [SerializeField]
+    private string loreSceneName;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,6 +57,8 @@ public class NPCController : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == loreSceneName) return;
+
         isThrowing = npcAI.IsThrowing();
 
         if (!isHit && !isThrowing)
@@ -136,6 +142,7 @@ public class NPCController : MonoBehaviour
 
     public void DamageNPC(float damage)
     {
+        if (CutsceneManager.cutscenePlaying) return;
         if (isDead) return;
         
         NPC_Health -= damage;

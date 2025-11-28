@@ -38,7 +38,8 @@ public class PlayerMove : MonoBehaviour
         Player_Health = statHealth.Max_Health;
 
         Player_MaxHealth = statHealth.Max_Health;
-        Debug.Log(healthBar.healthBarImage.fillAmount);
+
+        if (healthBar != null) Debug.Log(healthBar?.healthBarImage.fillAmount);
 
         playerAttacks = GetComponent<PlayerAttacks>();
 
@@ -108,6 +109,8 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        if (CutsceneManager.cutscenePlaying) return;
+
         //Debug.Log("called Update " + count.ToString());
         count++;
 
@@ -279,11 +282,13 @@ public class PlayerMove : MonoBehaviour
     public void SetMaxHealth()
     {
         Player_Health = Player_MaxHealth;
-        healthBar.UpdateHealthBar();
+        healthBar?.UpdateHealthBar();
     }
 
     public void DamagePlayer(float damage, DamageType iDamageType)
     {
+        if (CutsceneManager.cutscenePlaying) return;
+
         Debug.Log(Player_Health);
 
         playerAttacks.OnTakeDamage();
@@ -304,7 +309,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         Player_Health -= damage;
-        healthBar.UpdateHealthBar();
+        healthBar?.UpdateHealthBar();
         Debug.Log("Damage = " + damage);
         StartCoroutine(HitAnimation());
 
@@ -328,7 +333,7 @@ public class PlayerMove : MonoBehaviour
     public void HealPlayer(float heal)
     {
         Player_Health += heal;
-        healthBar.UpdateHealthBar();
+        healthBar?.UpdateHealthBar();
 
         if (Player_Health >= Player_MaxHealth)
         {
@@ -402,12 +407,12 @@ public class PlayerMove : MonoBehaviour
     public void RegenMana(float manaRegen)
     {
         Mana += manaRegen;
-        manaBar.UpdateManaBar();
+        manaBar?.UpdateManaBar();
 
         if (Mana >= MaxMana)
         {
             Mana = MaxMana;
-            manaBar.UpdateManaBar();
+            manaBar?.UpdateManaBar();
         }
     }
 

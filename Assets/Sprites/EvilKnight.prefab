@@ -649,6 +649,7 @@ MonoBehaviour:
   NPC_MaxHealth: 100
   NPC_Damage: 15
   npcHit: {fileID: 3628919990357275766}
+  loreSceneName: LoreLevel
 --- !u!95 &130162033744813733
 Animator:
   serializedVersion: 5
@@ -907,4 +908,5 @@ MonoBehaviour:
   fullHealthColor: {r: 0.09019608, g: 0.8392157, b: 0.17254902, a: 1}
   lowHealthColor: {r: 0.9529412, g: 0.011764706, b: 0.011764706, a: 1}
   showHealthBarOnlyOnDamage: 1
+  showHealthTriggered: 0
   healthBarObject: {fileID: 252100203117592485}
