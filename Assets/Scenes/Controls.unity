@@ -188,20 +188,7 @@ MonoBehaviour:
 
     PPM - Ability Attack
 
-    1 - Hide/Pull staff
-
-
-    Cheat
-    Keys:
-
-    F1 - Add 800 Coins
-
-    F2 - Complete Level
-
-    F7 - Kill All Enemies
-
-    F8
-    -  Kill Player'
+    1 - Hide/Pull staff'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
   m_sharedMaterial: {fileID: 8868885459469295816, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
@@ -945,6 +932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: StartMenu
   loadLevelManually: 1
+  unlockLevelOnClick: 0
+  levelToUnlock: 0
 --- !u!1 &1889003399
 GameObject:
   m_ObjectHideFlags: 0

@@ -179,9 +179,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your village got attacked! You and the knights tried to defend, but evil
-    army killed them and then every enemy has sorrouned you and put you into sleep!
-    Your task now is to find the Evil Boss castle and kill him and all of his guardians.
+  m_text: 'Hey! This game will gain some data! Do you agree?
+
+
+    If no then click
+    exit!
+
+
+    If yes click continue!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
   m_sharedMaterial: {fileID: 8868885459469295816, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
@@ -449,7 +454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Retrieve!
+  m_text: Exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
   m_sharedMaterial: {fileID: 8868885459469295816, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
@@ -645,9 +650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Revenge!
-
-'
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
   m_sharedMaterial: {fileID: 8868885459469295816, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
@@ -1045,6 +1048,7 @@ GameObject:
   - component: {fileID: 1656399403}
   - component: {fileID: 1656399402}
   - component: {fileID: 1656399405}
+  - component: {fileID: 1656399406}
   m_Layer: 5
   m_Name: Retrieve
   m_TagString: Untagged
@@ -1116,9 +1120,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1656399405}
-        m_TargetAssemblyTypeName: LoadLevelButton, Assembly-CSharp
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1656399406}
+        m_TargetAssemblyTypeName: Exit, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1182,6 +1186,18 @@ MonoBehaviour:
   loadLevelManually: 1
   unlockLevelOnClick: 0
   levelToUnlock: 0
+--- !u!114 &1656399406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656399400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f740b5e6668104c93190644fe2025e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1889003399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: WorldMap
   loadLevelManually: 1
-  unlockLevelOnClick: 1
+  unlockLevelOnClick: 0
   levelToUnlock: 9
 --- !u!114 &2082279204
 MonoBehaviour:

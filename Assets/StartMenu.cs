@@ -14,8 +14,21 @@ public class StartMenu : MonoBehaviour
     Button loadGameButtonButton;
     void Start()
     {
+        StartSession();
+
         ResetDataOnStart();
         TransformLoadGameButton();
+    }
+
+    void StartSession()
+    {
+        var data = new Dictionary<string, object>
+        {
+            { "device", Application.platform.ToString() },
+            { "version", Application.version }
+        };
+
+        AnalyticsManager.Instance.SendEvent(AnalyticsEvents.SessionStart, data);
     }
 
     private void TransformLoadGameButton()

@@ -12,6 +12,8 @@ public static class SavingSystem
     private static string runtimeDataName = "data_runtime";
     private static string saveDataName = "player_save_data";
 
+    private static string levelDataName = "level_data";
+
     public static string GetSaveDirectory()
     {
         string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), gameName, "Saves");

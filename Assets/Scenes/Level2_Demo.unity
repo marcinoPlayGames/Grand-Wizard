@@ -91156,7 +91156,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -16, y: -37, z: 0}
@@ -97581,7 +97581,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainObject: {fileID: 1801224412}
-  deathsThreshold: 24
 --- !u!1001 &1858536903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97816,6 +97815,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: NextLevel
   levelToUnlock: 11
+  levelID: Level2
+  completedLevelToSet: 2
 --- !u!1001 &1869331918
 PrefabInstance:
   m_ObjectHideFlags: 0

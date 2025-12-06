@@ -16,6 +16,17 @@ public class GameManager : MonoBehaviour
     public int GetUnlockedLevel() => unlockedLevel;
     public void SetUnlockedLevel(int value) => unlockedLevel = value;
 
+    public int coinsCollected = 0;
+
+    public int diamondsCollected = 0;
+
+    public int treasuresCollected = 0;
+
+    public int levelsCompleted = 0;
+
+    public float boss_hp_left = 0;
+
+    public float boss_duration = 0;
 
     private void Awake()
     {
@@ -47,7 +58,7 @@ public class GameManager : MonoBehaviour
         {
             coinText = GameObject.Find("CoinText").GetComponent<TMP_Text>();
         }
-        
+
         if (coinText != null) coinText.text = "" + coins;
     }
 
@@ -85,5 +96,25 @@ public class GameManager : MonoBehaviour
     public void ResetUnlockedLevel()
     {
         unlockedLevel = 8;
+    }
+
+    public void SetLevelCompleted(int level)
+    {
+        levelsCompleted = level;
+    }
+
+    public void ResetAnalytics()
+    {
+        coinsCollected = 0;
+
+        diamondsCollected = 0;
+
+        treasuresCollected = 0;
+
+        levelsCompleted = 0;
+
+        boss_hp_left = 0;
+
+        boss_duration = 0;
     }
 }

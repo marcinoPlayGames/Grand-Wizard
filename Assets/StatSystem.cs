@@ -165,6 +165,39 @@ public class StatSystem : MonoBehaviour
             GameManager.Instance.SpendCoins(cost);
             playerLevels[statName] = nextLevel;
             SavePlayerProgress();
+
+            LevelAnalytics.upgradesData newUpgrade = new LevelAnalytics.upgradesData();
+            newUpgrade.upgrade_id = statName;
+
+            if (statName == "Attack_Speed" || statName == "Spell_Speed")
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.speed;
+            }
+            
+            else if (statName == "HP" || statName == "HP_Regen")
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.health;
+            }
+            else if (statName == "Mana" || statName == "Mana_Regen")
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.mana;
+            }
+            else if (statName == "Armor" || statName == "Magic_Resist")
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.resistances;
+            }
+            else
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.damage;
+            }
+
+
+            newUpgrade.total_cost += GetCost(statName, currentLevel);
+            newUpgrade.level_after_purchase = currentLevel;
+            newUpgrade.total_spent_treasures += GetCost(statName, currentLevel);
+
+            LevelAnalytics.Instance.upgradesDatas.Add(newUpgrade);
+
             return true;
         }
 

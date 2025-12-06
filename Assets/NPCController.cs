@@ -37,6 +37,13 @@ public class NPCController : MonoBehaviour
     [SerializeField]
     private string loreSceneName;
 
+    [SerializeField]
+    private string enemyId;
+
+    private bool durationStart;
+
+    private float duration;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -73,7 +80,7 @@ public class NPCController : MonoBehaviour
         float horX = GetComponent<Rigidbody2D>().velocity.x;
         float verY = GetComponent<Rigidbody2D>().velocity.y; // Get the vertical velocity
 
-        
+        if (durationStart) duration += Time.time;
 
         if (!isHit && !isThrowing)
         {
@@ -144,15 +151,32 @@ public class NPCController : MonoBehaviour
     {
         if (CutsceneManager.cutscenePlaying) return;
         if (isDead) return;
-        
+
+        durationStart = true;
+
         NPC_Health -= damage;
         npcHit.Play();
         StartCoroutine(HitAnimation());
+
+        if (enemyId == "boss")
+        {
+            LevelAnalytics.Instance.boss_damage_taken += damage;
+            GameManager.Instance.boss_hp_left = NPC_Health;
+            GameManager.Instance.boss_duration = duration;
+        }
+        else
+        {
+            LevelAnalytics.Instance.enemy_damage_taken += damage;
+            LevelAnalytics.Instance.enemy_attempts += 1;
+        }
 
         if (NPC_Health <= 0)
         {
             isDead = true;
             Destroy(gameObject, 1f);
+
+            LevelAnalytics.Instance.kill_count += 1;
+            LevelAnalytics.Instance.enemy_duration += duration;
             NPCManager.Instance.EnemyDied();
             Debug.Log(NPC_KillCount);
         }
