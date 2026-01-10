@@ -48,14 +48,17 @@ public class GameManager : MonoBehaviour
 
     public void AddCoin(int coin)
     {
+        Debug.Log("Added coin!");
+        
         coins = coins + coin;
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        if (coinText != null)
+        if (coinText == null)
         {
+            Debug.LogError("Coin UI ref was null!");
             coinText = GameObject.Find("CoinText").GetComponent<TMP_Text>();
         }
 

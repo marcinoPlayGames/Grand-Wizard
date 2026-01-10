@@ -13,6 +13,8 @@ public class Coin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Collected coin!");
+            
             coinCollect.Play();
             GameManager.Instance.AddCoin(coinAmount);
 
