@@ -471,13 +471,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504f8c1d45cd57840a4ecb02726ec869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballSpeed: 5
+  fireballSpeed: 15
   fireballPrefab: {fileID: 2162139648471965464, guid: 255dfa21b636c824783edc510f74994e, type: 3}
   fireballCooldown: 1.5
   fireballDamage: 100
   strongerFireballDamage: 200
   strongerFireballCooldown: 2.5
-  strongerFireballSpeed: 10
+  strongerFireballSpeed: 20
   strongerFireballPrefab: {fileID: 2162139648471965464, guid: 8df9ed2bf813bca47859c0abe5a42006, type: 3}
   Fireball: {fileID: 5789835508243357191}
   StrongerFireball: {fileID: 8630251904517269660}
