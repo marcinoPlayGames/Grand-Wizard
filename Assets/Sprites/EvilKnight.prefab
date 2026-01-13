@@ -39,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 104.8, y: 68.503845}
+  m_AnchoredPosition: {x: 104.8, y: 70}
   m_SizeDelta: {x: 643, y: 361.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1682646433319038685
@@ -499,7 +499,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.1, y: 2.64, z: -0.21822126}
-  m_LocalScale: {x: 2.6, y: 2.6, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6576686212265167139}
@@ -616,18 +616,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01367119, y: -0.002006054}
+  m_Offset: {x: 0.064266205, y: 0.010642886}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 1.07}
+    oldSize: {x: 2, y: 3.34375}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6449192, y: 1.1063409}
+  m_Size: {x: 1.90979, y: 3.408407}
   m_EdgeRadius: 0
 --- !u!114 &3220004918531300121
 MonoBehaviour:
