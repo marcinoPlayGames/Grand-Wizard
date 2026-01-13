@@ -1734,7 +1734,7 @@ AudioSource:
   m_GameObject: {fileID: 262036722}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7376577554271122857, guid: 89fd400d3fce5f64c9d16a10ed4b3909, type: 2}
   m_audioClip: {fileID: 8300000, guid: 06906d718be5b6a4cb2df8732bf39832, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -7117,7 +7117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c693581d365d2b4ba990742627f6123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 1403863917}
   weaponNameText: {fileID: 113802882}
   currentValueText: {fileID: 1945308203}
   nextValueText: {fileID: 173535291}

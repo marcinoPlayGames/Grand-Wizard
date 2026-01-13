@@ -328,6 +328,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Player_Health <= 0)
         {
+            Player_Health = 0;
 
             StartCoroutine(GameOver());
         }

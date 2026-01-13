@@ -503,7 +503,7 @@ AudioSource:
   m_GameObject: {fileID: 160567059}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7376577554271122857, guid: 89fd400d3fce5f64c9d16a10ed4b3909, type: 2}
   m_audioClip: {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1050,6 +1050,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: StartMenu
   loadLevelManually: 1
+  unlockLevelOnClick: 0
+  levelToUnlock: 0
 --- !u!1001 &1555039989
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -89639,7 +89639,7 @@ AudioSource:
   m_GameObject: {fileID: 897017581}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7376577554271122857, guid: 89fd400d3fce5f64c9d16a10ed4b3909, type: 2}
   m_audioClip: {fileID: 8300000, guid: 0ad591428b0c18c4da51fe3bf98dbc63, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -90362,6 +90362,7 @@ MonoBehaviour:
   groundedMaterial: {fileID: 0}
   airMaterial: {fileID: 0}
   MaxMana: 0
+  increasedRegen_HP: 0
   playerJump: {fileID: 922871210}
   playerFall: {fileID: 922871209}
   playerHit: {fileID: 922871207}
@@ -90767,7 +90768,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -18, y: -37, z: 0}
@@ -96984,7 +96985,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainObject: {fileID: 1801224412}
-  deathsThreshold: 6
 --- !u!1001 &1858536903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97215,6 +97215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: WinScene
   levelToUnlock: 4
+  levelID: Level1
+  completedLevelToSet: 1
 --- !u!1001 &1869331918
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -564,7 +564,7 @@ AudioSource:
   m_GameObject: {fileID: 358412264}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7376577554271122857, guid: 89fd400d3fce5f64c9d16a10ed4b3909, type: 2}
   m_audioClip: {fileID: 8300000, guid: 559c232a43caebe41870ce54786f604e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -993,6 +993,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: NextLevel
   loadLevelManually: 1
+  unlockLevelOnClick: 0
+  levelToUnlock: 0
 --- !u!20 &1660255067 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1899614461860621125, guid: 35b242414c61aab4182aaace5f283806, type: 3}
