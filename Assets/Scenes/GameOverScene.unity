@@ -178,6 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: StartMenu
   loadLevelManually: 1
+  unlockLevelOnClick: 0
+  levelToUnlock: 0
 --- !u!114 &72727955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,7 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 32
+  m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 960, y: 540}
   m_ScreenMatchMode: 0
