@@ -21763,6 +21763,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableKerning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: checkPaddingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (4)
@@ -23124,6 +23136,18 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableKerning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: checkPaddingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (3)
@@ -23783,6 +23807,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6212566846147277045, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableKerning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: checkPaddingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableExtraPadding
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
@@ -24937,6 +24973,18 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableKerning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: checkPaddingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight
@@ -25179,6 +25227,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6212566846147277045, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableKerning
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: checkPaddingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512971273189226472, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_enableExtraPadding
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
