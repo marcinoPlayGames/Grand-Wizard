@@ -476,15 +476,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20023,11 +20023,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: 6deb8c99a31548f4f981de28b68e95af, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: 6deb8c99a31548f4f981de28b68e95af, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: 6deb8c99a31548f4f981de28b68e95af, type: 3}
       propertyPath: m_LocalScale.z
@@ -21755,6 +21755,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.09375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.09375
+      objectReference: {fileID: 0}
     - target: {fileID: 6212566846147277045, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -21778,6 +21786,18 @@ PrefabInstance:
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21847,15 +21867,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22050,11 +22070,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: 6deb8c99a31548f4f981de28b68e95af, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: 6deb8c99a31548f4f981de28b68e95af, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: 6deb8c99a31548f4f981de28b68e95af, type: 3}
       propertyPath: m_LocalScale.z
@@ -23132,6 +23152,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.96875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.40625
+      objectReference: {fileID: 0}
     - target: {fileID: 6212566846147277045, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -23151,6 +23179,18 @@ PrefabInstance:
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23220,11 +23260,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: 6deb8c99a31548f4f981de28b68e95af, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: 6deb8c99a31548f4f981de28b68e95af, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: 6deb8c99a31548f4f981de28b68e95af, type: 3}
       propertyPath: m_LocalScale.z
@@ -23290,15 +23330,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5251501624970095, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.5
+      value: 88.33333
       objectReference: {fileID: 0}
     - target: {fileID: 5251501624970095, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6999998
+      value: 8.999999
       objectReference: {fileID: 0}
     - target: {fileID: 5251501624970095, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.6521254
+      value: -15.507084
       objectReference: {fileID: 0}
     - target: {fileID: 1979842705063891857, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: field of view
@@ -23323,6 +23363,18 @@ PrefabInstance:
     - target: {fileID: 9021912139145541405, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107679617387167225, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107679617387167225, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107679617387167225, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 9107679617387167225, guid: 4280048a47ddd8c4da56b1b909e8571c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23805,6 +23857,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.96875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.40625
+      objectReference: {fileID: 0}
     - target: {fileID: 6212566846147277045, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -23824,6 +23884,18 @@ PrefabInstance:
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24547,15 +24619,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: deb08a52b12d56843b8444183fd19697, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24969,6 +25041,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.09375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.09375
+      objectReference: {fileID: 0}
     - target: {fileID: 6212566846147277045, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -24988,6 +25068,18 @@ PrefabInstance:
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25225,6 +25317,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.09375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357246321081219452, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.09375
+      objectReference: {fileID: 0}
     - target: {fileID: 6212566846147277045, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -25244,6 +25344,18 @@ PrefabInstance:
     - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_Name
       value: EvilKnight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
       propertyPath: m_LocalPosition.x
