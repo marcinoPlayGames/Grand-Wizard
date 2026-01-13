@@ -239,6 +239,7 @@ MonoBehaviour:
   groundedMaterial: {fileID: 6200000, guid: 8b6fddafefdf8df42a10c193c7d627f9, type: 2}
   airMaterial: {fileID: 6200000, guid: 9c497a4ce1f356b448c0dd3eca091d35, type: 2}
   MaxMana: 0
+  increasedRegen_HP: 0
   playerJump: {fileID: 2607462999101729418}
   playerFall: {fileID: 4298770930702226185}
   playerHit: {fileID: 6371814085024174686}
@@ -708,8 +709,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1431582, y: -0.009888768}
-  m_Size: {x: 0.6931977, y: 1.13567}
+  m_Offset: {x: 0.17199612, y: 0.014263153}
+  m_Size: {x: 0.6467552, y: 1.2088547}
   m_Direction: 0
 --- !u!82 &8630251904517269660
 AudioSource:
