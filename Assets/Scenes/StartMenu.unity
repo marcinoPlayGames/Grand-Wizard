@@ -418,6 +418,9 @@ MonoBehaviour:
   levelToLoad: AnalyticsAgree
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 1
+  otherLevelToLoad: WorldMap
   levelToUnlock: 0
 --- !u!114 &358953326
 MonoBehaviour:
@@ -917,6 +920,9 @@ MonoBehaviour:
   levelToLoad: Controls
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
 --- !u!114 &1067254568
 MonoBehaviour:
@@ -1777,6 +1783,9 @@ MonoBehaviour:
   levelToLoad: Controls
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
 --- !u!114 &1931773069
 MonoBehaviour:
@@ -1971,6 +1980,9 @@ MonoBehaviour:
   levelToLoad: LoadGame
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
 --- !u!114 &1942954432
 MonoBehaviour:
