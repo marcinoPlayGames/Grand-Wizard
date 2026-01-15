@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPCAI : MonoBehaviour
@@ -49,6 +50,7 @@ public class NPCAI : MonoBehaviour
     private void Update()
     {
         if (CutsceneManager.cutscenePlaying) return;
+        if (npcController.IsDead) return;
 
         CheckForPlayer();
     }
@@ -152,6 +154,8 @@ public class NPCAI : MonoBehaviour
 
     IEnumerator ThrowSword()
     {
+        if (npcController.IsDead) yield break;
+        
         Debug.Log("Swords thrown!");
         isFacingRight = npcController.IsFacingRight();
         Vector2 swordDirection = isFacingRight ? Vector2.right : Vector2.left;

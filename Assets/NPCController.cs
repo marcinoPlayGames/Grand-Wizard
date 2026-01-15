@@ -29,6 +29,8 @@ public class NPCController : MonoBehaviour
 
     private bool isDead = false;
 
+    public bool IsDead {get {return isDead;}}
+
     [SerializeField]
     AudioSource npcHit;
 
