@@ -50,6 +50,8 @@ public class PlayerMove : MonoBehaviour
         Debug.Log("Max HP = " + Player_Health);
 
         col = GetComponent<Collider2D>();
+
+        isPlayerDead = false;
     }
 
     void Awake()
@@ -106,6 +108,8 @@ public class PlayerMove : MonoBehaviour
     int collisions = 0;
     
     float moveSpeed = 6f;
+
+    public bool isPlayerDead = false;
 
     void Update()
     {
@@ -311,6 +315,9 @@ public class PlayerMove : MonoBehaviour
         }
 
         Player_Health -= damage;
+
+        if (Player_Health <= 0) Player_Health = 0;
+
         healthBar?.UpdateHealthBar();
         Debug.Log("Damage = " + damage);
         StartCoroutine(HitAnimation());
@@ -328,8 +335,8 @@ public class PlayerMove : MonoBehaviour
 
         if (Player_Health <= 0)
         {
-            Player_Health = 0;
-
+            isPlayerDead = true;
+            
             StartCoroutine(GameOver());
         }
     }

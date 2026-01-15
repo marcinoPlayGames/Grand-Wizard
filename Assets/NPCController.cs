@@ -172,6 +172,8 @@ public class NPCController : MonoBehaviour
 
         if (NPC_Health <= 0)
         {
+            NPC_Health = 0;
+            
             isDead = true;
             Destroy(gameObject, 1f);
 
