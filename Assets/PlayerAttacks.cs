@@ -64,6 +64,9 @@ public class PlayerAttacks : MonoBehaviour
     CooldownDisplay normalAttackCooldownDisplay;
     CooldownDisplay strongerAttackCooldownDisplay;
 
+    [SerializeField]
+    LayerMask fireballSpawnMask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -220,9 +223,29 @@ public class PlayerAttacks : MonoBehaviour
         
         Debug.Log("Fire casted!");
         isFacingRight = playerMove.IsFacingRight();
-        Vector2 fireballDirection = isFacingRight ? Vector2.right : Vector2.left;
-        float spawnOffset = isFacingRight ? 2f : -2f;
-        Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.3f, 0f);
+
+        Vector2 dir = isFacingRight ? Vector2.right : Vector2.left;
+        float maxSpawnDistance = 2f;
+        float safeMargin = 0.1f;
+
+        RaycastHit2D hit = Physics2D.Raycast(
+            transform.position,
+            dir,
+            maxSpawnDistance,
+            fireballSpawnMask
+        );
+
+        float spawnDistance = maxSpawnDistance;
+
+        if (hit.collider != null)
+        {
+            spawnDistance = Mathf.Max(hit.distance - safeMargin, 0.3f);
+        }
+
+        Vector3 spawnPosition =
+            transform.position +
+            (Vector3)(dir * spawnDistance) +
+            new Vector3(0f, 0.3f, 0f);
 
         GameObject fireball = Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
         Fireball.Play();
@@ -235,7 +258,7 @@ public class PlayerAttacks : MonoBehaviour
             if (rb != null)
             {
                 rb.gravityScale = 0f;
-                rb.velocity = fireballDirection * fireballSpeed;
+                rb.velocity = dir * fireballSpeed;
             }
 
             float totalDamage = WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
@@ -282,10 +305,31 @@ public class PlayerAttacks : MonoBehaviour
 
         Debug.Log("Fire casted!");
         isFacingRight = playerMove.IsFacingRight();
-        Vector2 fireballDirection = isFacingRight ? Vector2.right : Vector2.left;
-        float spawnOffset = isFacingRight ? 2f : -2f;
-        Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.3f, 0f);
+
         Vector2 fireballFacing = isFacingRight ? Vector2.right : Vector2.left;
+
+        Vector2 dir = isFacingRight ? Vector2.right : Vector2.left;
+        float maxSpawnDistance = 2f;
+        float safeMargin = 0.1f;
+
+        RaycastHit2D hit = Physics2D.Raycast(
+            transform.position,
+            dir,
+            maxSpawnDistance,
+            fireballSpawnMask
+        );
+
+        float spawnDistance = maxSpawnDistance;
+
+        if (hit.collider != null)
+        {
+            spawnDistance = Mathf.Max(hit.distance - safeMargin, 0.3f);
+        }
+
+        Vector3 spawnPosition =
+            transform.position +
+            (Vector3)(dir * spawnDistance) +
+            new Vector3(0f, 0.3f, 0f);
 
         GameObject strongerFireball = Instantiate(strongerFireballPrefab, spawnPosition, Quaternion.identity);
         Fireball.Play();
@@ -298,7 +342,7 @@ public class PlayerAttacks : MonoBehaviour
             if (rb != null)
             {
                 rb.gravityScale = 0f;
-                rb.velocity = fireballDirection * strongerFireballSpeed;
+                rb.velocity = dir * strongerFireballSpeed;
             }
 
 

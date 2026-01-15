@@ -246,6 +246,7 @@ MonoBehaviour:
   Player_MaxHealth: 500
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
+  isPlayerDead: 0
 --- !u!95 &7168238075172706654
 Animator:
   serializedVersion: 5
@@ -485,6 +486,9 @@ MonoBehaviour:
   CantAttack: {fileID: 5322882188236259460}
   NotEnoughMana: {fileID: 8856070251682958346}
   HidePullStaff: {fileID: 5583514127534136847}
+  fireballSpawnMask:
+    serializedVersion: 2
+    m_Bits: 4032
 --- !u!82 &6371814085024174686
 AudioSource:
   m_ObjectHideFlags: 0
