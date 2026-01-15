@@ -61,6 +61,9 @@ public class PlayerAttacks : MonoBehaviour
 
     private bool isEnoughMana = true;
 
+    CooldownDisplay normalAttackCooldownDisplay;
+    CooldownDisplay strongerAttackCooldownDisplay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +85,28 @@ public class PlayerAttacks : MonoBehaviour
     {
         StartCoroutine(PullStaffAnimation());
         HidePullStaff.Play();
+
+        if (normalAttackCooldownDisplay == null)
+        {
+            GameObject normalAttackCooldownDisplayObj = GameObject.Find("NormalAttackCooldown");
+            if (normalAttackCooldownDisplayObj != null)
+            {
+                normalAttackCooldownDisplay = normalAttackCooldownDisplayObj.GetComponent<CooldownDisplay>();
+                Debug.Log("Found normal attack cooldown display for UI!");
+            }
+
+        }
+
+        if (strongerAttackCooldownDisplay == null)
+        {
+            GameObject strongerAttackCooldownDisplayObj = GameObject.Find("StrongerAttackCooldown");
+            if (strongerAttackCooldownDisplayObj != null)
+            {
+                strongerAttackCooldownDisplay = strongerAttackCooldownDisplayObj.GetComponent<CooldownDisplay>();
+                Debug.Log("Found stronger attack cooldown display for UI!");
+            }
+
+        }
     }
 
     // Update is called once per frame
@@ -369,6 +394,8 @@ public class PlayerAttacks : MonoBehaviour
 
         fireballCooldown = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Attack_Speed", false);
 
+        normalAttackCooldownDisplay.StartUIAttackCooldown(fireballCooldown);
+
         Debug.Log("Attack_Speed = " + fireballCooldown);
         // Wait for the cooldown duration
         yield return new WaitForSeconds(fireballCooldown);
@@ -475,6 +502,8 @@ public class PlayerAttacks : MonoBehaviour
         canCastStrongerFireball = false;
 
         strongerFireballCooldown = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Spell_Speed", false);
+
+        strongerAttackCooldownDisplay.StartUIAttackCooldown(strongerFireballCooldown);
 
         Debug.Log("Spell_Speed = " + strongerFireballCooldown);
 
