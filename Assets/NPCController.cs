@@ -213,14 +213,18 @@ public class NPCController : MonoBehaviour
 
     void CheckForEdge()
     {
+        float size = transform.localScale.x;
+        
         float edgeCheckDistance = 1.0f; // Distance to check ahead of NPC
         Vector2 rayOrigin = new Vector2(transform.position.x + (isFacingRight ? edgeCheckDistance : -edgeCheckDistance), transform.position.y);
 
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3.0f, groundLayer);
-        Debug.DrawRay(rayOrigin, Vector2.down * 3.0f, Color.blue);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3.0f * size, groundLayer);
+        Debug.DrawRay(rayOrigin, Vector2.down * 3.0f * size, Color.blue);
 
         if (hit.collider == null)
         {
+            Debug.Log("No ground: hit someting!");
+            
             // No ground detected, turn around
             isFacingRight = !isFacingRight;
             Flip();
