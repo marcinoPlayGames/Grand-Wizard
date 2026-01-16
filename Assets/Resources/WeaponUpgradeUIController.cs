@@ -17,6 +17,7 @@ public class WeaponUpgradeUIController : MonoBehaviour
     public TextMeshProUGUI coinsText;
     public TMP_Text damageText;
     public Button upgradeButton;
+    public UIButtonInfoHandler uiButtonInfoHandler;
 
     // Podpięte z Inspectora
     public TMPro.TextMeshProUGUI basicDetailsText;
@@ -113,9 +114,11 @@ public class WeaponUpgradeUIController : MonoBehaviour
 
     public void OnUpgradeClick()
     {
-        bool success = WeaponUpgradeSystem.Instance.TryUpgrade(currentWeaponId);
-        if (success)
+        UpgradeResult upgradeResult = WeaponUpgradeSystem.Instance.TryUpgrade(currentWeaponId);
+        if (upgradeResult == UpgradeResult.Success)
             UpdateUI();
+
+        ShowWeaponUpgradeUIInfo(upgradeResult);
     }
 
     public void ClosePanel()
@@ -162,5 +165,24 @@ public class WeaponUpgradeUIController : MonoBehaviour
         detailsPanel.SetActive(false);
         upgradePanel.SetActive(false); // wyłącza cały WeaponUpgradeUI
         mainPanel.SetActive(true); // aktywuje panel z listą dostępnych broni
+    }
+
+
+    private void ShowWeaponUpgradeUIInfo(UpgradeResult upgradeResult)
+    {
+        switch (upgradeResult)
+        {
+            case UpgradeResult.Success:
+                uiButtonInfoHandler.ShowInfoUI("Upgrade was successful!");
+                break;
+
+            case UpgradeResult.NotEnoughCoins:
+                uiButtonInfoHandler.ShowInfoUI("Not enough coins!", InfoType.Error);
+                break;
+
+            case UpgradeResult.NoNextLevel:
+                uiButtonInfoHandler.ShowInfoUI("Upgrade already maxed!", InfoType.Warning);
+                break;
+        }
     }
 }

@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public float boss_duration = 0;
 
+    public bool gamePaused = false;
+
     private void Awake()
     {
         if (Instance == null)

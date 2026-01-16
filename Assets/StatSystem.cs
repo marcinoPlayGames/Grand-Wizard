@@ -149,16 +149,19 @@ public class StatSystem : MonoBehaviour
         return statTable[statName].costs.ContainsKey(nextLevel.ToString()) ? statTable[statName].costs[nextLevel.ToString()] : 0;
     }
 
-    public bool TryUpgrade(string statName)
+    public UpgradeResult TryUpgrade(string statName)
     {
+        if (!statTable.ContainsKey(statName))
+            return UpgradeResult.InvalidStat;
+
         int currentLevel = GetLevel(statName);
         int nextLevel = currentLevel + 1;
 
         if (!statTable[statName].values.ContainsKey(nextLevel.ToString()))
-            return false;
+            return UpgradeResult.NoNextLevel;
 
         int cost = GetCost(statName, nextLevel);
-        if (cost < 0) return false;
+        if (cost < 0) return UpgradeResult.InvalidStat;
 
         if (GameManager.Instance.HasEnoughCoins(cost))
         {
@@ -198,10 +201,10 @@ public class StatSystem : MonoBehaviour
 
             LevelAnalytics.Instance.upgradesDatas.Add(newUpgrade);
 
-            return true;
+            return UpgradeResult.Success;
         }
 
-        return false;
+        return UpgradeResult.NotEnoughCoins;
     }
 
     const string SaveKey = "PlayerStats";

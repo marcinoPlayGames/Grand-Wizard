@@ -43,10 +43,14 @@ public class LoadLevelButton : MonoBehaviour
             if (loadOtherLevelIfAnalyticsAgree)
             {
                 if (PlayerPrefs.GetFloat("AnalyticsAgree") == 1) SceneManager.LoadScene(otherLevelToLoad);
+                if (PlayerPrefs.GetFloat("AnalyticsAgree") != 1) SceneManager.LoadScene(levelToLoad);
+
+
             }
-
-
-            if (PlayerPrefs.GetFloat("AnalyticsAgree") != 1) SceneManager.LoadScene(levelToLoad);
+            else
+            {
+                SceneManager.LoadScene(levelToLoad);
+            }  
         }
 
         if (saveAnalyticsDecisionOnClick) PlayerPrefs.SetFloat("AnalyticsAgree", 1);
