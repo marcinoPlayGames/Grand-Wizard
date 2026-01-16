@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 111869887}
   - component: {fileID: 111869886}
   - component: {fileID: 111869889}
+  - component: {fileID: 111869890}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -395,6 +396,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 652eebd3dda357643b75b06332fb890a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIButtonInfoHandler: {fileID: 0}
+--- !u!114 &111869890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111869884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &303429515
@@ -1049,6 +1063,7 @@ GameObject:
   - component: {fileID: 1656399402}
   - component: {fileID: 1656399405}
   - component: {fileID: 1656399406}
+  - component: {fileID: 1656399407}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1186,6 +1201,8 @@ MonoBehaviour:
   loadLevelManually: 1
   unlockLevelOnClick: 0
   saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
 --- !u!114 &1656399406
 MonoBehaviour:
@@ -1197,6 +1214,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5f740b5e6668104c93190644fe2025e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1656399407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656399400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1889003399
@@ -1280,6 +1309,7 @@ GameObject:
   - component: {fileID: 2082279205}
   - component: {fileID: 2082279204}
   - component: {fileID: 2082279203}
+  - component: {fileID: 2082279207}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -1323,6 +1353,8 @@ MonoBehaviour:
   loadLevelManually: 1
   unlockLevelOnClick: 0
   saveAnalyticsDecisionOnClick: 1
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 9
 --- !u!114 &2082279204
 MonoBehaviour:
@@ -1418,6 +1450,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082279201}
   m_CullTransparentMesh: 1
+--- !u!114 &2082279207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082279201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2099392275
 PrefabInstance:
   m_ObjectHideFlags: 0

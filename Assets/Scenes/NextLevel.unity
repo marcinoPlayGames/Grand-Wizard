@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 391062828}
   - component: {fileID: 391062827}
   - component: {fileID: 391062826}
+  - component: {fileID: 391062830}
   m_Layer: 5
   m_Name: Save Game
   m_TagString: Untagged
@@ -177,6 +178,9 @@ MonoBehaviour:
   levelToLoad: SaveGame
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
 --- !u!114 &391062827
 MonoBehaviour:
@@ -272,6 +276,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391062824}
   m_CullTransparentMesh: 1
+--- !u!114 &391062830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391062824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &489888905
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +435,7 @@ GameObject:
   - component: {fileID: 564237447}
   - component: {fileID: 564237446}
   - component: {fileID: 564237445}
+  - component: {fileID: 564237449}
   m_Layer: 5
   m_Name: Statistics
   m_TagString: Untagged
@@ -461,6 +478,9 @@ MonoBehaviour:
   levelToLoad: StatisticTree
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
 --- !u!114 &564237446
 MonoBehaviour:
@@ -556,6 +576,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564237443}
   m_CullTransparentMesh: 1
+--- !u!114 &564237449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564237443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &590314841
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +603,7 @@ GameObject:
   - component: {fileID: 590314845}
   - component: {fileID: 590314844}
   - component: {fileID: 590314843}
+  - component: {fileID: 590314849}
   m_Layer: 5
   m_Name: NextLevel
   m_TagString: Untagged
@@ -613,6 +646,9 @@ MonoBehaviour:
   levelToLoad: WorldMap
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
 --- !u!114 &590314844
 MonoBehaviour:
@@ -738,6 +774,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590314841}
   m_CullTransparentMesh: 1
+--- !u!114 &590314849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590314841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &630604418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1397,7 @@ GameObject:
   - component: {fileID: 1491702979}
   - component: {fileID: 1491702978}
   - component: {fileID: 1491702977}
+  - component: {fileID: 1491702981}
   m_Layer: 5
   m_Name: Upgrade System
   m_TagString: Untagged
@@ -1391,6 +1440,9 @@ MonoBehaviour:
   levelToLoad: UpgradeSystem
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
 --- !u!114 &1491702978
 MonoBehaviour:
@@ -1486,6 +1538,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491702975}
   m_CullTransparentMesh: 1
+--- !u!114 &1491702981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491702975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1769420054
 GameObject:
   m_ObjectHideFlags: 0

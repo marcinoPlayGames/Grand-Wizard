@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 111869887}
   - component: {fileID: 111869886}
   - component: {fileID: 111869889}
+  - component: {fileID: 111869890}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -475,6 +476,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 652eebd3dda357643b75b06332fb890a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIButtonInfoHandler: {fileID: 0}
+--- !u!114 &111869890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111869884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &160567059
@@ -915,6 +929,7 @@ GameObject:
   - component: {fileID: 1347887833}
   - component: {fileID: 1347887832}
   - component: {fileID: 1347887835}
+  - component: {fileID: 1347887836}
   m_Layer: 5
   m_Name: GoBack
   m_TagString: Untagged
@@ -1051,7 +1066,22 @@ MonoBehaviour:
   levelToLoad: StartMenu
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
+--- !u!114 &1347887836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347887830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1555039989
 PrefabInstance:
   m_ObjectHideFlags: 0
