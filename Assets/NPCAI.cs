@@ -178,7 +178,7 @@ public class NPCAI : MonoBehaviour
                     rb.velocity = swordDirection * throwForce;
                 }
 
-                SwordController6 swordController = sword.GetComponent<SwordController6>();
+                SwordController swordController = sword.GetComponent<SwordController>();
                 if (swordController != null)
                     swordController.SetDamage(swordDamage, DamageType.Physical);
 

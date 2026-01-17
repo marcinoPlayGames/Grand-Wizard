@@ -9,6 +9,7 @@ public class SwordController : MonoBehaviour
     private NPCController npcController;
     private PlayerMove playerMove;
     private float swordDamage;
+    private DamageType damageType;
     void Start()
     {
 
@@ -20,34 +21,23 @@ public class SwordController : MonoBehaviour
 
     }
 
-    public void SetDamage(float damage)
+    public void SetDamage(float damage, DamageType iDamageType)
     {
         swordDamage = damage;
+        damageType = iDamageType;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("NPC"))
-        {
-            NPCController npcController = collision.gameObject.GetComponent<NPCController>();
-
-            if (npcController != null)
-            {
-                Debug.Log("Collided!");
-                npcController.DamageNPC(swordDamage);
-            }
-
-            Debug.Log(gameObject.name);
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerMove playerMove = collision.gameObject.GetComponent<PlayerMove>();
 
             if (playerMove != null)
             {
                 Debug.Log("Collided!");
-                playerMove.DamagePlayer(swordDamage, DamageType.Magic);
+
+                playerMove.DamagePlayer(swordDamage, damageType);
             }
 
             Debug.Log(gameObject.name);

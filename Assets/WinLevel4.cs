@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class WinLevel3 : MonoBehaviour
+public class WinLevel4 : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class WinLevel3 : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("WinScene");
         Debug.Log("Level Loaded!");
     }
 }
