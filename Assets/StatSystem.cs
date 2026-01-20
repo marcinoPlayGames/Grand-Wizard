@@ -149,26 +149,62 @@ public class StatSystem : MonoBehaviour
         return statTable[statName].costs.ContainsKey(nextLevel.ToString()) ? statTable[statName].costs[nextLevel.ToString()] : 0;
     }
 
-    public bool TryUpgrade(string statName)
+    public UpgradeResult TryUpgrade(string statName)
     {
+        if (!statTable.ContainsKey(statName))
+            return UpgradeResult.InvalidStat;
+
         int currentLevel = GetLevel(statName);
         int nextLevel = currentLevel + 1;
 
         if (!statTable[statName].values.ContainsKey(nextLevel.ToString()))
-            return false;
+            return UpgradeResult.NoNextLevel;
 
         int cost = GetCost(statName, nextLevel);
-        if (cost < 0) return false;
+        if (cost < 0) return UpgradeResult.InvalidStat;
 
         if (GameManager.Instance.HasEnoughCoins(cost))
         {
             GameManager.Instance.SpendCoins(cost);
             playerLevels[statName] = nextLevel;
             SavePlayerProgress();
-            return true;
+
+            LevelAnalytics.upgradesData newUpgrade = new LevelAnalytics.upgradesData();
+            newUpgrade.upgrade_id = statName;
+
+            if (statName == "Attack_Speed" || statName == "Spell_Speed")
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.speed;
+            }
+            
+            else if (statName == "HP" || statName == "HP_Regen")
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.health;
+            }
+            else if (statName == "Mana" || statName == "Mana_Regen")
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.mana;
+            }
+            else if (statName == "Armor" || statName == "Magic_Resist")
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.resistances;
+            }
+            else
+            {
+                newUpgrade.category = LevelAnalytics.upgradesData.upgradeCategory.damage;
+            }
+
+
+            newUpgrade.total_cost += GetCost(statName, currentLevel);
+            newUpgrade.level_after_purchase = currentLevel;
+            newUpgrade.total_spent_treasures += GetCost(statName, currentLevel);
+
+            LevelAnalytics.Instance.upgradesDatas.Add(newUpgrade);
+
+            return UpgradeResult.Success;
         }
 
-        return false;
+        return UpgradeResult.NotEnoughCoins;
     }
 
     const string SaveKey = "PlayerStats";

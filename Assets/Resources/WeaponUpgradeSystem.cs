@@ -110,19 +110,19 @@ public class WeaponUpgradeSystem : MonoBehaviour
         return 0f;
     }
 
-    public bool TryUpgrade(string weaponId)
+    public UpgradeResult TryUpgrade(string weaponId)
     {
         int nextLevel = GetLevel(weaponId) + 1;
         var data = LoadWeaponData(weaponId);
-        if (!data.Base_Damage.ContainsKey(nextLevel.ToString())) return false;
+        if (!data.Base_Damage.ContainsKey(nextLevel.ToString())) return UpgradeResult.NoNextLevel;
 
         int cost = GetCost(weaponId);
-        if (!GameManager.Instance.HasEnoughCoins(cost)) return false;
+        if (!GameManager.Instance.HasEnoughCoins(cost)) return UpgradeResult.NotEnoughCoins;
 
         GameManager.Instance.SpendCoins(cost);
         weaponLevels[weaponId] = nextLevel;
         SaveProgress();
-        return true;
+        return UpgradeResult.Success;
     }
 
     void SaveProgress()

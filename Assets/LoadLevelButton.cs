@@ -10,6 +10,13 @@ public class LoadLevelButton : MonoBehaviour
 
     public bool unlockLevelOnClick = false;
 
+    public bool saveAnalyticsDecisionOnClick = false;
+
+    public bool loadOtherLevelIfAnalyticsAgree = false;
+
+    [ShowIf("loadOtherLevelIfAnalyticsAgree")]
+    public string otherLevelToLoad = "SampleScene";
+
     [ShowIf("unlockLevelOnClick")]
     public int levelToUnlock;
     public void LoadLevel()
@@ -33,8 +40,20 @@ public class LoadLevelButton : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(levelToLoad);
+            if (loadOtherLevelIfAnalyticsAgree)
+            {
+                if (PlayerPrefs.GetFloat("AnalyticsAgree") == 1) SceneManager.LoadScene(otherLevelToLoad);
+                if (PlayerPrefs.GetFloat("AnalyticsAgree") != 1) SceneManager.LoadScene(levelToLoad);
+
+
+            }
+            else
+            {
+                SceneManager.LoadScene(levelToLoad);
+            }  
         }
+
+        if (saveAnalyticsDecisionOnClick) PlayerPrefs.SetFloat("AnalyticsAgree", 1);
 
         Debug.Log("Level Loaded!");
     }

@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -218,8 +218,8 @@ MonoBehaviour:
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
+  m_enableKerning: 0
+  m_enableExtraPadding: 1
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
@@ -325,13 +325,13 @@ GameObject:
   - component: {fileID: 8874980590586442325}
   - component: {fileID: 6212566846147277045}
   - component: {fileID: 2021384378815862032}
-  - component: {fileID: 3357246321081219452}
   - component: {fileID: 3220004918531300121}
   - component: {fileID: 130162033744813733}
   - component: {fileID: 3628919990357275766}
   - component: {fileID: 8917504192721961917}
   - component: {fileID: -1303941372557918568}
   - component: {fileID: 4963099892675880227}
+  - component: {fileID: 6335278434443251629}
   m_Layer: 11
   m_Name: EvilBoss
   m_TagString: NPC
@@ -349,7 +349,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8.1, y: 2.64, z: -0.21822126}
-  m_LocalScale: {x: 2.6, y: 2.6, z: 2}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9151989591856860936}
@@ -434,51 +434,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &3357246321081219452
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8020805311469291635}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.01367119, y: -0.002006054}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.7, y: 1.07}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6449192, y: 1.1063409}
-  m_EdgeRadius: 0
 --- !u!114 &3220004918531300121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +454,8 @@ MonoBehaviour:
   NPC_MaxHealth: 200
   NPC_Damage: 50
   npcHit: {fileID: 3628919990357275766}
+  loreSceneName: 
+  enemyId: boss
 --- !u!95 &130162033744813733
 Animator:
   serializedVersion: 5
@@ -529,7 +486,7 @@ AudioSource:
   m_GameObject: {fileID: 8020805311469291635}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1903006050820765902, guid: 89fd400d3fce5f64c9d16a10ed4b3909, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -625,7 +582,7 @@ AudioSource:
   m_GameObject: {fileID: 8020805311469291635}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1903006050820765902, guid: 89fd400d3fce5f64c9d16a10ed4b3909, type: 2}
   m_audioClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -757,7 +714,53 @@ MonoBehaviour:
   fullHealthColor: {r: 0.09019608, g: 0.8392157, b: 0.17254902, a: 1}
   lowHealthColor: {r: 0.9529412, g: 0.011764706, b: 0.011764706, a: 1}
   showHealthBarOnlyOnDamage: 0
+  showHealthTriggered: 0
   healthBarObject: {fileID: 1453227226135416951}
+--- !u!61 &6335278434443251629
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020805311469291635}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.13816392, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.1875, y: 3.34375}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9111722, y: 3.34375}
+  m_EdgeRadius: 0
 --- !u!1 &8839387278871527800
 GameObject:
   m_ObjectHideFlags: 0

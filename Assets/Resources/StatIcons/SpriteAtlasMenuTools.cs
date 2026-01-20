@@ -4,7 +4,7 @@ using UnityEngine.U2D;
 using UnityEditor;
 using System.IO;
 
-public class SpriteAtlasExample
+public class SpriteAtlasMenuTools
 {
     [MenuItem("Tools/List Sprites In Atlas")]
     public static void ListSprites()

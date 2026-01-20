@@ -179,9 +179,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your village got attacked! You and the knights tried to defend, but evil
-    army killed them and then every enemy has sorrouned you and put you into sleep!
-    Your task now is to find the Evil Boss castle and kill him and all of his guardians.
+  m_text: 'Hey! This game will gain some data! Do you agree?
+
+
+    If no then click
+    exit!
+
+
+    If yes click continue!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
   m_sharedMaterial: {fileID: 8868885459469295816, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
@@ -229,8 +234,8 @@ MonoBehaviour:
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
+  m_enableKerning: 0
+  m_enableExtraPadding: 1
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
@@ -269,8 +274,8 @@ GameObject:
   - component: {fileID: 111869885}
   - component: {fileID: 111869888}
   - component: {fileID: 111869887}
-  - component: {fileID: 111869886}
   - component: {fileID: 111869889}
+  - component: {fileID: 111869890}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -298,50 +303,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 52}
   m_SizeDelta: {x: 600, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &111869886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111869884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 111869887}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &111869887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,6 +351,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 652eebd3dda357643b75b06332fb890a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIButtonInfoHandler: {fileID: 0}
+--- !u!114 &111869890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111869884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &303429515
@@ -449,7 +423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Retrieve!
+  m_text: Exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
   m_sharedMaterial: {fileID: 8868885459469295816, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
@@ -497,8 +471,8 @@ MonoBehaviour:
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
+  m_enableKerning: 0
+  m_enableExtraPadding: 1
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
@@ -645,9 +619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Revenge!
-
-'
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
   m_sharedMaterial: {fileID: 8868885459469295816, guid: 61dc13ce30a05b342b05a9db83f45e9e, type: 2}
@@ -695,8 +667,8 @@ MonoBehaviour:
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
+  m_enableKerning: 0
+  m_enableExtraPadding: 1
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
@@ -945,7 +917,7 @@ AudioSource:
   m_GameObject: {fileID: 1195708795}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7376577554271122857, guid: 89fd400d3fce5f64c9d16a10ed4b3909, type: 2}
   m_audioClip: {fileID: 8300000, guid: 89f935015cc98724a862a586326fdf21, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1045,8 +1017,10 @@ GameObject:
   - component: {fileID: 1656399403}
   - component: {fileID: 1656399402}
   - component: {fileID: 1656399405}
+  - component: {fileID: 1656399406}
+  - component: {fileID: 1656399407}
   m_Layer: 5
-  m_Name: Retrieve
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1116,9 +1090,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1656399405}
-        m_TargetAssemblyTypeName: LoadLevelButton, Assembly-CSharp
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1656399406}
+        m_TargetAssemblyTypeName: Exit, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1181,7 +1155,34 @@ MonoBehaviour:
   levelToLoad: WorldMap
   loadLevelManually: 1
   unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 0
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 0
+--- !u!114 &1656399406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656399400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f740b5e6668104c93190644fe2025e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1656399407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656399400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1889003399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,8 +1264,9 @@ GameObject:
   - component: {fileID: 2082279205}
   - component: {fileID: 2082279204}
   - component: {fileID: 2082279203}
+  - component: {fileID: 2082279207}
   m_Layer: 5
-  m_Name: Revenge
+  m_Name: Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1304,7 +1306,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: WorldMap
   loadLevelManually: 1
-  unlockLevelOnClick: 1
+  unlockLevelOnClick: 0
+  saveAnalyticsDecisionOnClick: 1
+  loadOtherLevelIfAnalyticsAgree: 0
+  otherLevelToLoad: SampleScene
   levelToUnlock: 9
 --- !u!114 &2082279204
 MonoBehaviour:
@@ -1400,6 +1405,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082279201}
   m_CullTransparentMesh: 1
+--- !u!114 &2082279207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082279201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab79071dea97a3498b66882a95286db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2099392275
 PrefabInstance:
   m_ObjectHideFlags: 0

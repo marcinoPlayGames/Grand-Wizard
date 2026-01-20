@@ -50,6 +50,8 @@ public class PlayerMove : MonoBehaviour
         Debug.Log("Max HP = " + Player_Health);
 
         col = GetComponent<Collider2D>();
+
+        isPlayerDead = false;
     }
 
     void Awake()
@@ -106,6 +108,8 @@ public class PlayerMove : MonoBehaviour
     int collisions = 0;
     
     float moveSpeed = 6f;
+
+    public bool isPlayerDead = false;
 
     void Update()
     {
@@ -289,6 +293,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (CutsceneManager.cutscenePlaying) return;
 
+        LevelAnalytics.Instance.damageTaken += damage;
+
         Debug.Log(Player_Health);
 
         playerAttacks.OnTakeDamage();
@@ -309,9 +315,17 @@ public class PlayerMove : MonoBehaviour
         }
 
         Player_Health -= damage;
+
+        if (Player_Health <= 0) Player_Health = 0;
+
         healthBar?.UpdateHealthBar();
         Debug.Log("Damage = " + damage);
         StartCoroutine(HitAnimation());
+
+        LevelAnalytics.Instance.hp_at_death += Player_Health;
+        LevelAnalytics.Instance.mana_at_death += Mana;
+
+        if (SceneManager.GetActiveScene().name == "Level5") LevelAnalytics.Instance.boss_attempts += 1;
 
         Debug.Log("Player take damage defended = " + damage);
 
@@ -321,6 +335,8 @@ public class PlayerMove : MonoBehaviour
 
         if (Player_Health <= 0)
         {
+            isPlayerDead = true;
+            
             StartCoroutine(GameOver());
         }
     }
@@ -358,7 +374,16 @@ public class PlayerMove : MonoBehaviour
         // Wait for the cooldown duration
         yield return new WaitForSeconds(1f);
 
+        LevelAnalytics.Instance.tryNumber += 1;
+        LevelAnalytics.Instance.deaths += 1;
+        LevelAnalytics.Instance.posX += this.gameObject.GetComponent<Transform>().position.x;
+        LevelAnalytics.Instance.posY += this.gameObject.GetComponent<Transform>().position.x;
+
+        if (SceneManager.GetActiveScene().name == "Level5") LevelAnalytics.Instance.boss_hp_left += GameManager.Instance.boss_hp_left;
+
         Destroy(gameObject, 1f);
+
+
         SceneManager.LoadScene("GameOverScene");
     }
 

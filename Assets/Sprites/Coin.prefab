@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.93, y: 4.14, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,9 +147,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.027071, y: 0.04444647}
+  m_Offset: {x: -0.06727219, y: 0.14016211}
   serializedVersion: 2
-  m_Radius: 0.18630219
+  m_Radius: 0.52130735
 --- !u!114 &6773551855379121763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ AudioSource:
   m_GameObject: {fileID: 8623136389505803637}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1903006050820765902, guid: 89fd400d3fce5f64c9d16a10ed4b3909, type: 2}
   m_audioClip: {fileID: 8300000, guid: 79180f511d89441b9aa23ccae1992fe0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

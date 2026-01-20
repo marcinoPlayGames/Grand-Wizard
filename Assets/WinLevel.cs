@@ -19,7 +19,7 @@ public class WinLevel : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene("WinScene");
+        SceneManager.LoadScene("StartMenu");
         Debug.Log("Level Loaded!");
     }
 }

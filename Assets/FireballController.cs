@@ -41,11 +41,11 @@ public class FireballController : MonoBehaviour
         fireballDamage = damage;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("NPC"))
+        if (collision.CompareTag("NPC"))
         {
-            NPCController npcController = collision.gameObject.GetComponent<NPCController>();
+            NPCController npcController = collision.GetComponent<NPCController>();
 
             if (npcController != null)
             {

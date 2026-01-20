@@ -21,6 +21,7 @@ public class StatUIController : MonoBehaviour
     public TextMeshProUGUI nextValueText;
     public Image statIconImage;
     private string currentStat;
+    public UIButtonInfoHandler uiButtonInfoHandler;
 
     private void Awake() => Instance = this;
 
@@ -96,8 +97,10 @@ public class StatUIController : MonoBehaviour
 
     public void OnUpgradeButton()
     {
-        StatSystem.Instance.TryUpgrade(currentStat);
+        UpgradeResult upgradeResult = StatSystem.Instance.TryUpgrade(currentStat);
         UpdateUpgradeUI();
+
+        ShowStatisticUpgradeUIInfo(upgradeResult);
     }
 
     public void CloseUpgradeWindow()
@@ -109,5 +112,27 @@ public class StatUIController : MonoBehaviour
     public void GoBackToNextLevel()
     {
         SceneManager.LoadScene("NextLevel");
+    }
+
+    private void ShowStatisticUpgradeUIInfo(UpgradeResult upgradeResult)
+    {
+        switch (upgradeResult)
+        {
+            case UpgradeResult.Success:
+                uiButtonInfoHandler.ShowInfoUI("Upgrade was successful!");
+                break;
+
+            case UpgradeResult.NotEnoughCoins:
+                uiButtonInfoHandler.ShowInfoUI("Not enough coins!", InfoType.Error);
+                break;
+
+            case UpgradeResult.NoNextLevel:
+                uiButtonInfoHandler.ShowInfoUI("Upgrade already maxed!", InfoType.Warning);
+                break;
+
+            case UpgradeResult.InvalidStat:
+                uiButtonInfoHandler.ShowInfoUI("Upgrade error!", InfoType.Error);
+                break;
+        }
     }
 }
