@@ -61,7 +61,7 @@ public class StatSystem : MonoBehaviour
     {
         Debug.Log($"[StatSystemLoad] Awake on {gameObject.name} (ID={GetInstanceID()})");
 
-        TextAsset json = Resources.Load<TextAsset>("stats");
+        TextAsset json = Resources.Load<TextAsset>("JSON Files/StatisticsData/stats");
 
         Debug.Log("Stats file loaded: " + (json != null));
         Debug.Log(json.text);

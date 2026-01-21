@@ -37,7 +37,7 @@ public class WeaponUpgradeSystem : MonoBehaviour
         if (weaponDataCache.ContainsKey(weaponId))
             return weaponDataCache[weaponId];
 
-        TextAsset json = Resources.Load<TextAsset>(weaponId); // np. "Staff"
+        TextAsset json = Resources.Load<TextAsset>("JSON Files/WeaponsData/" + weaponId); // np. "Staff"
         if (json == null)
         {
             Debug.LogError("Nie znaleziono pliku JSON dla broni: " + weaponId);
