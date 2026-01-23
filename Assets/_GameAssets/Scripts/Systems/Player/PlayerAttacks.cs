@@ -67,6 +67,8 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField]
     LayerMask fireballSpawnMask;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,13 +84,14 @@ public class PlayerAttacks : MonoBehaviour
         fireballSpeed = fireballSpeed; // * (1 + statAttacks.Attack_Speed);
         strongerFireballSpeed = strongerFireballSpeed; // * (1 + statAttacks.Spell_Speed);
 
+        animator = GetComponent<Animator>();
+
+        StartCoroutine(PullStaffAnimation());
+        HidePullStaff.Play();
     }
 
     void Awake()
     {
-        StartCoroutine(PullStaffAnimation());
-        HidePullStaff.Play();
-
         if (normalAttackCooldownDisplay == null)
         {
             GameObject normalAttackCooldownDisplayObj = GameObject.Find("NormalAttackCooldown");
@@ -132,11 +135,13 @@ public class PlayerAttacks : MonoBehaviour
         {
             if (!hasPulled && !isPulling && !playerMove.GetIsHit())
             {
+                animator.SetTrigger("PullStaff");
                 StartCoroutine(PullStaffAnimation());
                 HidePullStaff.Play();
             }
             else if (hasPulled && !isPulling && !isHiding && !playerMove.GetIsHit())
             {
+                animator.SetTrigger("HideStaff");
                 StartCoroutine(HideStaffAnimation());
                 HidePullStaff.Play();
             }
@@ -454,8 +459,11 @@ public class PlayerAttacks : MonoBehaviour
         isPulling = true;
 
         Debug.Log("Staff pulled!");
-        GetComponent<Animator>().SetInteger("moveState", 6);
+        animator.SetBool("HasStaff", true);
 
+        //animator.SetTrigger("PullStaff");
+
+        animator.SetTrigger("OpenCombat");
 
         // Wait for the cooldown duration
 
@@ -471,7 +479,7 @@ public class PlayerAttacks : MonoBehaviour
     {
         isCasting = true;
 
-        GetComponent<Animator>().SetTrigger("PlayerCastFireballs");
+        animator.SetTrigger("Cast");
 
         // Wait for the cooldown duration
         yield return new WaitForSeconds(5f / 20f);
@@ -487,7 +495,7 @@ public class PlayerAttacks : MonoBehaviour
         isCasting = true;
 
 
-        GetComponent<Animator>().SetTrigger("PlayerCastFireballs");
+        animator.SetTrigger("Cast");
 
         // Wait for the cooldown duration
         yield return new WaitForSeconds(5f / 20f);
@@ -528,7 +536,12 @@ public class PlayerAttacks : MonoBehaviour
         isHiding = true;
 
         Debug.Log("Staff hidden!");
-        GetComponent<Animator>().SetInteger("moveState", 7);
+
+        animator.SetBool("HasStaff", false);
+
+        //animator.SetTrigger("OpenCombat");
+
+        animator.SetTrigger("OpenCombat");
 
         yield return new WaitForSeconds(9f / 10f);
 

@@ -27,6 +27,8 @@ public class PlayerMove : MonoBehaviour
 
     public bool increasedRegen_HP;
 
+    private Animator animator;
+
     void Start()
     {
         Debug.Log("Start in PlayerMovement");
@@ -52,6 +54,8 @@ public class PlayerMove : MonoBehaviour
         col = GetComponent<Collider2D>();
 
         isPlayerDead = false;
+
+        animator = GetComponent<Animator>();
     }
 
     void Awake()
@@ -167,7 +171,7 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        float horX = Input.GetAxisRaw("Horizontal");
+        float horX = Mathf.Abs(Input.GetAxisRaw("Horizontal"));
         float veloY = rb.velocity.y;
         float verY = Input.GetAxisRaw("Vertical");
 
@@ -177,29 +181,23 @@ public class PlayerMove : MonoBehaviour
         isCasting = GetIsCasting();
         isCastAnimation = playerAttacks.IsCastAnimation();
 
+        Debug.Log("[animation] isHit: " + isHit);
+        Debug.Log("[animation] isCastAnimation: " + isCastAnimation);
+        Debug.Log("[animation] isCasting: " + isCastAnimation);
+
         if (!isHit && !isCastAnimation && !isCasting)
         {
-            if (!isGrounded && veloY > 0) // If moving upward (jumping)
-            {
-                GetComponent<Animator>().SetInteger("moveState", 2); // Set jump animation
-            }
-            else if (!isGrounded && veloY < 0)
-            {
-                GetComponent<Animator>().SetInteger("moveState", 3); // Set fall animation
-            }
-            else if (isGrounded && horX > 0)
-            {
-                GetComponent<Animator>().SetInteger("moveState", 1); // Set run animation
-            }
-            else if (isGrounded && horX < 0)
-            {
-                GetComponent<Animator>().SetInteger("moveState", 1); // Set run animation
-            }
-            else
-            {
-                GetComponent<Animator>().SetInteger("moveState", 0); // Set idle animation
-            }
-            //Debug.Log("isCastAnimation: " + isCastAnimation);  // Dodaj to do debugowania
+            Debug.Log("[animation] isGrounded: " + isGrounded);
+            Debug.Log("[animation] speed: " + horX);
+            Debug.Log("[animation] verticalVelocity: " + veloY);
+
+            animator.SetBool("IsGrounded", isGrounded);
+            animator.SetFloat("Speed", horX);
+            animator.SetFloat("VerticalVelocity", veloY);
+
+            Debug.Log("[animator] speed: " + animator.GetFloat("Speed"));
+            Debug.Log("[animator] isGrounded: " + animator.GetFloat("IsGrounded"));
+            Debug.Log("[animator] verticalVelocity: " + animator.GetFloat("VerticalVelocity"));
         }
         
     }
@@ -360,7 +358,7 @@ public class PlayerMove : MonoBehaviour
     IEnumerator HitAnimation()
     {
         isHit = true;
-        GetComponent<Animator>().SetInteger("moveState", 4);
+        animator.SetTrigger("Hit");
 
         // Wait for the cooldown duration
         yield return new WaitForSeconds(1f);
