@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5370c8dcc46285b469b5d48307701f52, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6645ce56522a0674e97f6dbb540267ff, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -48,7 +48,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: bcebfa4c9b347d64c9f7266c0e408c35, type: 2}
+  m_Motion: {fileID: 7400000, guid: 19a314325d5564d4c92b77a092ed9871, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -153,7 +153,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ceab812eff7efff45839ee566498a363, type: 2}
+  m_Motion: {fileID: 7400000, guid: ee924bf71a9b9ff47b4ee3172d78bbb8, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -308,7 +308,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NPCBoss
+  m_Name: NPCEvilWizard
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: NPCHit
@@ -380,7 +380,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7f6bbd2d513f53f4ba33185ce56edde5, type: 2}
+  m_Motion: {fileID: 7400000, guid: ada8eb8340d7b1640bb18620728f14d5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -407,7 +407,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 22f24b67e3ac5a5459c175f5ffadcfde, type: 2}
+  m_Motion: {fileID: 7400000, guid: 30ab273e7108eb440a77a35340fe78dd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -502,7 +502,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6645ce56522a0674e97f6dbb540267ff, type: 2}
+  m_Motion: {fileID: 7400000, guid: 957543ccb07cb8c45b9473adc0c2330b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

@@ -31695,67 +31695,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
---- !u!1001 &1063577864
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3220004918531300121, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: NPC_MaxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8020805311469291635, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_Name
-      value: EvilKnight (21)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15.069209
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 39.421993
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.21822126
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874980590586442325, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: aae9079e949c9d64694bf54d721c42ad, type: 3}
 --- !u!1001 &1096964458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36856,7 +36795,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 82, y: -5, z: 0}
@@ -36940,7 +36879,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 89, y: -5, z: 0}
@@ -37060,7 +36999,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 99, y: -5, z: 0}
@@ -37072,7 +37011,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 100, y: -5, z: 0}
@@ -40307,7 +40246,6 @@ SceneRoots:
   - {fileID: 1507252209}
   - {fileID: 1622498557}
   - {fileID: 1184081370}
-  - {fileID: 1063577864}
   - {fileID: 510977479}
   - {fileID: 1619579140}
   - {fileID: 1365577067}

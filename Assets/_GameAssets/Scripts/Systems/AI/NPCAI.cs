@@ -27,6 +27,8 @@ public class NPCAI : MonoBehaviour
 
     bool isThrowing = false;
 
+    private Animator animator;
+
     void Awake()
     {
         if (player == null)
@@ -45,6 +47,7 @@ public class NPCAI : MonoBehaviour
         // Find the PlayerMove script attached to the same GameObject
         npcController = GetComponent<NPCController>();
 
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -215,7 +218,7 @@ public class NPCAI : MonoBehaviour
         isThrowing = true;
 
         // Play sword throwing animation
-        GetComponent<Animator>().SetTrigger("ThrowSword");
+        animator.SetTrigger("NPCOpenCombat");
 
         // Wait for the cooldown duration before throwing the sword
         yield return new WaitForSeconds(1.5f); // Wait for animation or small delay

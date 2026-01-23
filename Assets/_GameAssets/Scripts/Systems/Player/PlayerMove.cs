@@ -196,7 +196,7 @@ public class PlayerMove : MonoBehaviour
             animator.SetFloat("VerticalVelocity", veloY);
 
             Debug.Log("[animator] speed: " + animator.GetFloat("Speed"));
-            Debug.Log("[animator] isGrounded: " + animator.GetFloat("IsGrounded"));
+            Debug.Log("[animator] isGrounded: " + animator.GetBool("IsGrounded"));
             Debug.Log("[animator] verticalVelocity: " + animator.GetFloat("VerticalVelocity"));
         }
         

@@ -644,13 +644,19 @@ MonoBehaviour:
   speed: 3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 33344
   npcDeathCounter: {fileID: 0}
   NPC_MaxHealth: 100
   NPC_Damage: 15
   npcHit: {fileID: 3628919990357275766}
   loreSceneName: LoreLevel
   enemyId: 
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 53056
+  wallLayers:
+    serializedVersion: 2
+    m_Bits: 34624
 --- !u!95 &130162033744813733
 Animator:
   serializedVersion: 5

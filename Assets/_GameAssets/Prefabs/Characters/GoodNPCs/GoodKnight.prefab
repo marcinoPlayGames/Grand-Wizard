@@ -179,13 +179,19 @@ MonoBehaviour:
   speed: 3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 33344
   npcDeathCounter: {fileID: 0}
   NPC_MaxHealth: 100
   NPC_Damage: 15
   npcHit: {fileID: 3628919990357275766}
   loreSceneName: 
   enemyId: 
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 53056
+  wallLayers:
+    serializedVersion: 2
+    m_Bits: 51008
 --- !u!95 &130162033744813733
 Animator:
   serializedVersion: 5
@@ -196,7 +202,7 @@ Animator:
   m_GameObject: {fileID: 8020805311469291635}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a4a3c37a63189a94781d69265acef507, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8f16d19f9799339499ccbd74139eb3c3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

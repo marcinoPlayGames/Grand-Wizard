@@ -69,6 +69,8 @@ public class PlayerAttacks : MonoBehaviour
 
     private Animator animator;
 
+    private bool strongerFireballShoot = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -136,13 +138,13 @@ public class PlayerAttacks : MonoBehaviour
             if (!hasPulled && !isPulling && !playerMove.GetIsHit())
             {
                 animator.SetTrigger("PullStaff");
-                StartCoroutine(PullStaffAnimation());
+                PullStaffAnimation();
                 HidePullStaff.Play();
             }
             else if (hasPulled && !isPulling && !isHiding && !playerMove.GetIsHit())
             {
                 animator.SetTrigger("HideStaff");
-                StartCoroutine(HideStaffAnimation());
+                HideStaffAnimation();
                 HidePullStaff.Play();
             }
         }
@@ -158,7 +160,7 @@ public class PlayerAttacks : MonoBehaviour
 
                 if (hasPulled && !isPulling && !isCasting && isEnoughMana && !playerMove.GetIsHit())
                 {
-                    StartCoroutine(CastFireballAnimation());
+                    CastFireballAnimation();
                 }
                 else if (!isEnoughMana)
                 {
@@ -182,7 +184,7 @@ public class PlayerAttacks : MonoBehaviour
 
                 if (hasPulled && !isPulling && !isCasting && isEnoughMana && !playerMove.GetIsHit())
                 {
-                    StartCoroutine(CastStrongerFireballAnimation());
+                    CastStrongerFireballAnimation();
                 }
                 else if (!isEnoughMana)
                 {
@@ -225,6 +227,8 @@ public class PlayerAttacks : MonoBehaviour
 
     IEnumerator SpawnAndShootFireball()
     {
+        Debug.Log("[Spawn] Shoot fireball!");
+        
         LevelAnalytics.Instance.attacks_in_level += 1;
         
         Debug.Log("Fire casted!");
@@ -307,6 +311,8 @@ public class PlayerAttacks : MonoBehaviour
 
     IEnumerator SpawnAndShootStrongerFireball()
     {
+        Debug.Log("[Spawn] Shoot stronger fireball!");
+
         LevelAnalytics.Instance.abilities_in_level += 1;
 
         Debug.Log("Fire casted!");
@@ -475,35 +481,38 @@ public class PlayerAttacks : MonoBehaviour
         isPulling = false;
     }
 
-    IEnumerator CastFireballAnimation()
+    void CastFireballAnimation()
     {
         isCasting = true;
 
         animator.SetTrigger("Cast");
 
-        // Wait for the cooldown duration
-        yield return new WaitForSeconds(5f / 20f);
-
-        Debug.Log(IsCastAnimation());
-        isCasting = false;
-        
-        StartCoroutine(SpawnAndShootFireball());
+        strongerFireballShoot = false;   
     }
 
-    IEnumerator CastStrongerFireballAnimation()
+    public void OnFireballSpawn()
+    {
+        if (!isCasting) return;
+        
+        isCasting = false;
+
+        Debug.Log("[Cast] Event cast!");
+
+        if (strongerFireballShoot) StartCoroutine(SpawnAndShootStrongerFireball());
+        else
+        {
+            Debug.Log("[Cast] Event cast for normal fireball!");
+            StartCoroutine(SpawnAndShootFireball());
+        }        
+    }
+
+    void CastStrongerFireballAnimation()
     {
         isCasting = true;
 
-
         animator.SetTrigger("Cast");
 
-        // Wait for the cooldown duration
-        yield return new WaitForSeconds(5f / 20f);
-
-        Debug.Log(IsCastAnimation());
-        isCasting = false;
-
-        StartCoroutine(SpawnAndShootStrongerFireball());
+        strongerFireballShoot = true;
     }
 
     IEnumerator CastFireballsAnimationCooldown()

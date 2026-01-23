@@ -2954,7 +2954,7 @@ GameObject:
   - component: {fileID: 767636533}
   - component: {fileID: 767636532}
   - component: {fileID: 767636531}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: GoldDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3573,7 +3573,7 @@ GameObject:
   - component: {fileID: 874677943}
   - component: {fileID: 874677942}
   - component: {fileID: 874677941}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: OrangeDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3853,8 +3853,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -7, y: -16, z: 0}
-  m_Size: {x: 23, y: 50, z: 1}
+  m_Origin: {x: -7, y: -17, z: 0}
+  m_Size: {x: 23, y: 51, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:

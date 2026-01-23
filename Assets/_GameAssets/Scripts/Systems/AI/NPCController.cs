@@ -46,12 +46,20 @@ public class NPCController : MonoBehaviour
 
     private float duration;
 
+    private Animator animator;
+
+    [SerializeField] private LayerMask collisionLayers;
+
+    [SerializeField] private LayerMask wallLayers;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         NPC_Health = NPC_MaxHealth;
 
         npcAI = GetComponent<NPCAI>();
+
+        animator = GetComponent<Animator>();
     }
 
     void Awake()
@@ -67,6 +75,7 @@ public class NPCController : MonoBehaviour
     void Update()
     {
         if (SceneManager.GetActiveScene().name == loreSceneName) return;
+        if (CutsceneManager.cutscenePlaying) return;
 
         isThrowing = npcAI.IsThrowing();
 
@@ -75,42 +84,23 @@ public class NPCController : MonoBehaviour
             MoveNPC();
         }
 
-        CheckForEdge();
-
-        //CheckGround();
-
         float horX = GetComponent<Rigidbody2D>().velocity.x;
         float verY = GetComponent<Rigidbody2D>().velocity.y; // Get the vertical velocity
+
+        CheckForEdge();
+
+        horX = Mathf.Abs(horX);
+
+        //CheckGround();
 
         if (durationStart) duration += Time.time;
 
         if (!isHit && !isThrowing)
         {
-            //Debug.Log("moveState = " + GetComponent<Animator>().GetInteger("moveStateNPC"));
-            if (!isGrounded && verY > 0)
-            {
-                GetComponent<Animator>().SetInteger("moveStateNPC", 3); // Set fall animation
-            }
-            else if (!isGrounded && verY < 0)
-            {
-                GetComponent<Animator>().SetInteger("moveStateNPC", 3); // Set fall animation
-            }
-            else if (isGrounded && horX > 0)
-            {
-                GetComponent<Animator>().SetInteger("moveStateNPC", 1); // Set run animation
-                GetComponent<SpriteRenderer>().flipX = false;
-            }
-            else if (isGrounded && horX < 0)
-            {
-                GetComponent<Animator>().SetInteger("moveStateNPC", 1); // Set run animation
-                GetComponent<SpriteRenderer>().flipX = true;
-            }
-            else
-            {
-                GetComponent<Animator>().SetInteger("moveStateNPC", 0); // Set idle animation
-            }
+            animator.SetFloat("VelocityVertical", verY);
+            animator.SetFloat("Speed", horX);
+            animator.SetBool("IsGrounded", isGrounded);
         }
-        
     }
 
     void MoveNPC()
@@ -121,26 +111,35 @@ public class NPCController : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            isGrounded = true;
-        }
+        if (SceneManager.GetActiveScene().name == loreSceneName) return;
+        if (CutsceneManager.cutscenePlaying) return;
 
-        Vector3 velocity2 = rb.velocity;
-        Vector3 velocity3 = new Vector3(0, 0, 0);
-        if (velocity2 == velocity3)
+        if (((1 << collision.gameObject.layer) & wallLayers) != 0)
         {
-            direction *= -1;
-            isFacingRight = !isFacingRight;
+            Debug.Log($"[Stay] as {gameObject.name} collided with: {collision.gameObject.layer.ToString()}");
+            
+            isGrounded = true;
+
+            Vector3 velocity2 = rb.velocity;
+            Vector3 velocity3 = new Vector3(0, 0, 0);
+            if (velocity2 == velocity3)
+            {
+                Flip();
+            }
         }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (SceneManager.GetActiveScene().name == loreSceneName) return;
+        if (CutsceneManager.cutscenePlaying) return;
+
+        if (((1 << collision.gameObject.layer) & collisionLayers) != 0)
         {
-            direction *= -1;
-            isFacingRight = !isFacingRight;
+            Debug.Log($"[Enter] as {gameObject.name} collided with: {collision.gameObject.layer.ToString()}");
+
+            Flip();
         }
+
         isGrounded = true;
     }
 
@@ -198,7 +197,7 @@ public class NPCController : MonoBehaviour
     IEnumerator HitAnimation()
     {
         isHit = true;
-        GetComponent<Animator>().SetInteger("moveStateNPC", 4);
+        animator.SetTrigger("NPCHit");
 
         // Wait for the cooldown duration
         yield return new WaitForSeconds(1f);
@@ -213,6 +212,9 @@ public class NPCController : MonoBehaviour
 
     void CheckForEdge()
     {
+        if (SceneManager.GetActiveScene().name == loreSceneName) return;
+        if (CutsceneManager.cutscenePlaying) return;
+
         float size = transform.localScale.x;
         
         float edgeCheckDistance = 1.0f; // Distance to check ahead of NPC
@@ -226,18 +228,25 @@ public class NPCController : MonoBehaviour
             Debug.Log("No ground: hit someting!");
             
             // No ground detected, turn around
-            isFacingRight = !isFacingRight;
             Flip();
         }
     }
 
     void Flip()
     {
+        if (SceneManager.GetActiveScene().name == loreSceneName) return;
+        if (CutsceneManager.cutscenePlaying) return;
+
         //Vector3 localScale = transform.localScale;
         //localScale.x *= -1;
         //transform.localScale = localScale;
 
+        Debug.Log($"Flipped as {gameObject.name}!");
+
         direction *= -1;
+        isFacingRight = !isFacingRight;
+
+        GetComponent<SpriteRenderer>().flipX = !isFacingRight;
     }
 
 
