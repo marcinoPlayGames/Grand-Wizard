@@ -12,6 +12,8 @@ public class MovingObject : MonoBehaviour
     private bool doMove = false;
     private int finishCount = 0;
 
+    private bool wasFirstTime = false;
+
     private bool activated = false;
     void Start()
     {
@@ -63,19 +65,15 @@ public class MovingObject : MonoBehaviour
 
     public void Activate()
     {
-        if (!activated)
-        {
-            doMove = true;
-            activated = true;
-        }
-        /*else
-        {
-            doMove = true;
-            moveCounter = 0;
+        doMove = true;
 
+        moveCounter = 0;
+
+        if (wasFirstTime)
+        {
             objectMovingXDistance *= -1;
             objectMovingYDistance *= -1;
-        }*/
+        }
     }
 
     public void Deactivate()
@@ -85,5 +83,7 @@ public class MovingObject : MonoBehaviour
 
         objectMovingXDistance *= -1;
         objectMovingYDistance *= -1;
+
+        wasFirstTime = true;
     }
 }
