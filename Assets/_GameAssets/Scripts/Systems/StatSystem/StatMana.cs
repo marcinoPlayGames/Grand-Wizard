@@ -33,15 +33,6 @@ public class StatMana : MonoBehaviour
         StartCoroutine(RegenMana());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Max_Mana == Mana)
-        {
-            StopCoroutine(RegenMana());
-        }
-    }
-
     public void StartManaRegen()
     {
         UnityEngine.Debug.Log("Mana Regen = " + Mana_Regen);

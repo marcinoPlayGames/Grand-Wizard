@@ -8,6 +8,10 @@ public class HealingPlus : MonoBehaviour
 
     [SerializeField]
     AudioSource healSound;
+    [SerializeField]
+    SpriteRenderer spriteRenderer;
+    [SerializeField]
+    Collider2D collider2D;
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other)
@@ -35,18 +39,12 @@ public class HealingPlus : MonoBehaviour
 
     IEnumerator StartPlusTimer()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
+        spriteRenderer.enabled = false;
+        collider2D.enabled = false;
 
         yield return new WaitForSeconds(20f);
 
-        GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<Collider2D>().enabled = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        spriteRenderer.enabled = true;
+        collider2D.enabled = true;
     }
 }

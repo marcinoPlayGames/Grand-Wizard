@@ -12,11 +12,6 @@ public class FireballController : MonoBehaviour
     private Vector3 spawnPosition;
     private float maxDistance = 0f; // nadpisywana z zewnątrz
 
-    void Start()
-    {
-       
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -60,10 +55,5 @@ public class FireballController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void Damage(float damage)
-    {
-
     }
 }

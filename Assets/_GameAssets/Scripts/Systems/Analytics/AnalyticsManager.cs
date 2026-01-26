@@ -50,8 +50,16 @@ public class AnalyticsManager : MonoBehaviour
     void Update()
     {
 #if USE_ANALYTICS
-        float fps = 1f / Time.unscaledDeltaTime;
-        fpsMin = Mathf.Min(fpsMin, 1f / Time.unscaledDeltaTime);
+        float dt = Time.unscaledDeltaTime;
+        if (dt <= 0f) return;
+
+        float fps = 1f / dt;
+
+        if (fpsSamples == 0)
+            fpsMin = fps;
+        else
+            fpsMin = Mathf.Min(fpsMin, fps);
+
         fpsSum += fps;
         fpsSamples++;
 #endif
@@ -65,6 +73,12 @@ public class AnalyticsManager : MonoBehaviour
 
     public void SendEvent(string eventName, Dictionary<string, object> parameters)
     {
+        if (Instance == null)
+        {
+            Debug.LogError("AnalyticsManager not initialized");
+            return;
+        }
+
         try
         {
             var ev = new CustomEvent(eventName);

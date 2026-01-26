@@ -10,17 +10,6 @@ public class SwordController : MonoBehaviour
     private PlayerMove playerMove;
     private float swordDamage;
     private DamageType damageType;
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SetDamage(float damage, DamageType iDamageType)
     {
         swordDamage = damage;

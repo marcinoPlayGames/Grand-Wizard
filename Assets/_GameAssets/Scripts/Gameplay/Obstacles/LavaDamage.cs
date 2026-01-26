@@ -10,12 +10,6 @@ public class LavaDamage : MonoBehaviour
         Debug.Log("LavaDamage script loaded on: " + gameObject.name);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collided with something!");

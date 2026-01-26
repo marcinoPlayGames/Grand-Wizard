@@ -9,6 +9,9 @@ public class OrbitMovement : MonoBehaviour
     [HideInInspector]
     public Vector2 center;
 
+    [SerializeField]
+    RectTransform rectTransform;
+
     public float radius = 50f;
     public float speed = 1f;
 
@@ -23,6 +26,6 @@ public class OrbitMovement : MonoBehaviour
         float x = center.x + Mathf.Cos(angle) * radius;
         float y = center.y + Mathf.Sin(angle) * radius;
 
-        transform.localPosition = new Vector2(x, y);
+        rectTransform.anchoredPosition = new Vector2(x, y);
     }
 }

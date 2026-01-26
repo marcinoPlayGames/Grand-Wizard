@@ -11,7 +11,10 @@ public class ManaBar : MonoBehaviour
     public Image manaBarImage;
     private float maxMana;
     private float currentMana;
+
+    [SerializeField]
     private RectTransform barTransform;
+
     public TMP_Text Mana_Amount;
 
     // Optionally, define colors for different health states
@@ -26,15 +29,8 @@ public class ManaBar : MonoBehaviour
         currentMana = playerMove.MaxMana;
         Debug.Log("Mana Bar Max Mana = " + maxMana);
         Debug.Log(manaBarImage.color);
-        barTransform = GetComponent<RectTransform>();
         initialWidth = barTransform.rect.width;
         Mana_Amount.text = $"{currentMana}/{maxMana}";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //UpdateHealthBar();
     }
 
     void Awake()

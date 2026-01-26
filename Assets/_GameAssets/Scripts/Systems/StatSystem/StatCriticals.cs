@@ -24,12 +24,6 @@ public class StatCriticals : MonoBehaviour
         yield return new WaitUntil(() => StatSystem.Instance != null && StatSystem.Instance.IsReady);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public float GetStatValues(string statName)
     {
         if (statName == "Critical_Chance_Attack")

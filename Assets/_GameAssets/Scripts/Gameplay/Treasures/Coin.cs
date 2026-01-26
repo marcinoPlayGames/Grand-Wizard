@@ -9,6 +9,12 @@ public class Coin : MonoBehaviour
     [SerializeField]
     AudioSource coinCollect;
 
+    [SerializeField]
+    Collider2D colliders2D;
+
+    [SerializeField]
+    SpriteRenderer spriteRenderer;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -18,8 +24,8 @@ public class Coin : MonoBehaviour
             coinCollect.Play();
             GameManager.Instance.AddCoin(coinAmount);
 
-            GetComponent<SpriteRenderer>().enabled = false; // Hide the coin
-            GetComponent<Collider2D>().enabled = false; // Disable collision
+            spriteRenderer.enabled = false; // Hide the coin
+            colliders2D.enabled = false; // Disable collision
 
             Destroy(gameObject, coinCollect.clip.length);
 

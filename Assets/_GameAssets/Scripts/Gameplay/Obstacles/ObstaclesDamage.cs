@@ -6,16 +6,9 @@ public class ObstaclesDamage : MonoBehaviour
 {
     bool canDamage = true;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private Rigidbody2D rb;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -50,7 +43,6 @@ public class ObstaclesDamage : MonoBehaviour
 
                 playerMove.DamagePlayer(50, DamageType.Physical);
 
-                Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
                 if (rb != null && collision.contacts.Length > 0)
                 {
                     // Pobierz normalną pierwszego kontaktu

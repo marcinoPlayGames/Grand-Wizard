@@ -25,12 +25,6 @@ public class StatAttacks : MonoBehaviour
         yield return new WaitUntil(() => StatSystem.Instance != null && StatSystem.Instance.IsReady);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public float GetStatValues(string statName)
     {
         if (statName == "Attack_Damage")

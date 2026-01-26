@@ -11,7 +11,10 @@ public class HealthBar : MonoBehaviour
     public Image healthBarImage;
     private float maxHealth;
     private float currentHealth;
+
+    [SerializeField]
     private RectTransform barTransform;
+
     public TMP_Text HP_Amount;
 
     // Optionally, define colors for different health states
@@ -26,7 +29,6 @@ public class HealthBar : MonoBehaviour
         currentHealth = playerMove.Player_MaxHealth;
         Debug.Log(maxHealth);
         Debug.Log(healthBarImage.color);
-        barTransform = GetComponent<RectTransform>();
         initialWidth = barTransform.rect.width;
         HP_Amount.text = $"{currentHealth}/{maxHealth}";
     }
@@ -39,12 +41,6 @@ public class HealthBar : MonoBehaviour
             if (playerObj != null)
                 playerMove = playerObj.GetComponent<PlayerMove>();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //UpdateHealthBar();
     }
 
     public void UpdateHealthBar()

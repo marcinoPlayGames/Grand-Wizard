@@ -162,6 +162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healSound: {fileID: 7357055720051923600}
+  spriteRenderer: {fileID: 7271819638997064499}
+  collider2D: {fileID: 7934824495007358629}
 --- !u!1 &5886022316193584823
 GameObject:
   m_ObjectHideFlags: 0
