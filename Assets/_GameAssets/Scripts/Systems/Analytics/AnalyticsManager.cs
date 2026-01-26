@@ -33,11 +33,12 @@ public class AnalyticsManager : MonoBehaviour
         {
             await UnityServices.InitializeAsync();
             AnalyticsService.Instance.StartDataCollection();
-            Debug.Log("[Analytics] Initialized");
         }
         catch (Exception e)
         {
+#if UNITY_EDITOR
             Debug.LogException(e);
+#endif
         }
 #endif
     }
@@ -75,7 +76,9 @@ public class AnalyticsManager : MonoBehaviour
     {
         if (Instance == null)
         {
+#if UNITY_EDITOR
             Debug.LogError("AnalyticsManager not initialized");
+#endif
             return;
         }
 
@@ -94,7 +97,9 @@ public class AnalyticsManager : MonoBehaviour
         }
         catch (Exception e)
         {
+#if UNITY_EDITOR
             Debug.LogWarning($"[Analytics] Failed to send event '{eventName}': {e.Message}");
+#endif
         }
     }
 

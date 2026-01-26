@@ -35,8 +35,6 @@ public class HealthBarEnemy : MonoBehaviour
     {   
         maxHealth = npcController.NPC_MaxHealth;
         currentHealth = npcController.NPC_MaxHealth;
-        Debug.Log(maxHealth);
-        Debug.Log(healthBarImage.color);
         initialWidth = barTransform.rect.width;
         HP_Amount.text = $"{currentHealth}/{maxHealth}";
 
@@ -72,28 +70,14 @@ public class HealthBarEnemy : MonoBehaviour
 
         HP_Amount.text = $"{currentHealth}/{maxHealth}";
 
-        Image s;
-
-        s = healthBarImage;
-
-        Debug.Log($"[HealthBarEnemy] currentHealth = {currentHealth}");
-        Debug.Log($"[HealthBarEnemy] maxHealth = {maxHealth}");
-        Debug.Log($"[HealthBarEnemy] healthPercent = {healthPercent}");
-
-        Debug.Log(s.color);
-
         // Set the size of the health bar
-        s.fillAmount = healthPercent;
-
-        Debug.Log("Health Fill Amount = " + s.fillAmount);
-        Debug.Log($"[HealthBarEnemy] initialWidth = {initialWidth}");
-        Debug.Log($"[HealthBarEnemy] percent = {initialWidth * healthPercent}");
+        healthBarImage.fillAmount = healthPercent;
 
         barTransform.sizeDelta = new Vector2(healthPercent * initialWidth, barTransform.sizeDelta.y);
 
         // Optionally, change the color based on health state
         //healthBarImage.color = Color.Lerp(lowHealthColor, fullHealthColor, healthPercent);
-        s.color = Color.Lerp(lowHealthColor, fullHealthColor, healthPercent);
+        healthBarImage.color = Color.Lerp(lowHealthColor, fullHealthColor, healthPercent);
     }
 
     IEnumerator HideHealthBar()

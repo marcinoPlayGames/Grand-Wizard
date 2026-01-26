@@ -8,6 +8,5 @@ public class WinLevel : MonoBehaviour
     public void LoadLevel()
     {
         SceneManager.LoadScene("StartMenu");
-        Debug.Log("Level Loaded!");
     }
 }

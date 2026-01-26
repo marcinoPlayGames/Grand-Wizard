@@ -27,8 +27,6 @@ public class ManaBar : MonoBehaviour
     {
         maxMana = playerMove.MaxMana;
         currentMana = playerMove.MaxMana;
-        Debug.Log("Mana Bar Max Mana = " + maxMana);
-        Debug.Log(manaBarImage.color);
         initialWidth = barTransform.rect.width;
         Mana_Amount.text = $"{currentMana}/{maxMana}";
     }
@@ -54,10 +52,7 @@ public class ManaBar : MonoBehaviour
 
         manaBarImage.fillAmount = manaPercent;
 
-        Debug.Log("Mana Fill amount = " + manaBarImage.fillAmount);
         manaBarImage.color = Color.Lerp(lowManaColor, fullManaColor, manaPercent);
-
-        Debug.Log("Mana Fill color = " + manaBarImage.color);
 
         // Optionally, change the color based on health state
         //healthBarImage.color = Color.Lerp(lowHealthColor, fullHealthColor, healthPercent);

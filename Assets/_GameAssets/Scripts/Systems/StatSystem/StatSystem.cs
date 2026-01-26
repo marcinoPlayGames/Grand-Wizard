@@ -34,10 +34,6 @@ public class StatSystem : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log($"[StatSystem] Awake on {gameObject.name} (ID={GetInstanceID()})"); 
-
-
-
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -54,81 +50,34 @@ public class StatSystem : MonoBehaviour
     private void Start()
     {
         IsReady = true;
-        Debug.Log("[StatSystem] Stats fully loaded.");
     }
 
     void LoadStatsTable()
     {
-        Debug.Log($"[StatSystemLoad] Awake on {gameObject.name} (ID={GetInstanceID()})");
-
         TextAsset json = Resources.Load<TextAsset>("JSON Files/StatisticsData/stats");
 
-        Debug.Log("Stats file loaded: " + (json != null));
-        Debug.Log(json.text);
-
         statTable = JsonConvert.DeserializeObject<Dictionary<string, StatData>>(json.text);
-
-        if (statTable.ContainsKey("HP"))
-        {
-            Debug.Log("HP stat loaded.");
-            foreach (var kvp in statTable["HP"].values)
-            {
-                Debug.Log($"Level {kvp.Key}: Value {kvp.Value}");
-            }
-        }
-
-        foreach (var kvp in statTable)
-        {
-            var stat = kvp.Key;
-            var values = kvp.Value.values;
-            var costs = kvp.Value.costs;
-
-            Debug.Log($"{stat}: values={values.Count}, costs={costs.Count}, has0={values.ContainsKey("0")}, level0={values["0"]}");
-        }
     }
 
     public int GetLevel(string statName)
-    {
-        if (statName == "HP")
-        {
-            Debug.Log("[HP] HP lvl = ");
-            Debug.Log("[HP] " + playerLevels.ContainsKey(statName));
-            Debug.Log("[HP] " + statTable[statName].values.ContainsKey(0.ToString()));
-            //Debug.Log("[HP] " + statTable[statName].values[0.ToString()]);
-        }
+    { 
         return playerLevels.ContainsKey(statName) ? playerLevels[statName] : 0;
     }
 
     public float GetStatValue(string statName)
     {
-        Debug.Log($"[StatSystem-GetStatValue] Current Instance ID={StatSystem.Instance.GetInstanceID()}, statTable={(StatSystem.Instance.statTable != null ? StatSystem.Instance.statTable.Count.ToString() : "null")}");
-
-        Debug.Log($"[GetStatValue] statName = '{statName}'");
-        Debug.Log($"[GetStatValue] Keys in statTable: {string.Join(", ", statTable.Keys)}");
-
         if (statTable == null)
         {
-            Debug.LogWarning("StatSystem not initialized yet, returning 0 for " + statName);
             return 0;
         }
 
         if (!statTable.ContainsKey(statName))
         {
-            Debug.LogError($"Stat '{statName}' not found in statTable!");
             return 0;
         }
 
         int level = GetLevel(statName);
 
-        Debug.Log("[GetStatValue] " + statName);
-        Debug.Log("level = " + level);
-        Debug.Log("[GetStatValue] stat value = " + statTable[statName].values["0"]);
-
-        Debug.Log($"[HP-v] Keys in statTable for HP: {string.Join(", ", statTable["HP"].values.Keys)}");
-
-        Debug.Log(statTable[statName].values.ContainsKey(level.ToString()));
-        Debug.Log(statTable[statName].values[level.ToString()]);
-        Debug.Log(statTable[statName].values.ContainsKey(level.ToString()) ? statTable[statName].values[level.ToString()] : 0);
         return statTable[statName].values.ContainsKey(level.ToString()) ? statTable[statName].values[level.ToString()] : 0;
     }
 

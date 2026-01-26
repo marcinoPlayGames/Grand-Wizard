@@ -42,7 +42,6 @@ public class WorldMapPointersManager : MonoBehaviour
 
         if (indexInList == -1)
         {
-            Debug.LogError($"Nie znaleziono obiektu dla levelu {level}");
             wizardHead.center = transform.localPosition;
             return;
         }

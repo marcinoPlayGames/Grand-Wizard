@@ -56,6 +56,15 @@ public class NPCController : MonoBehaviour
 
     [SerializeField] private SpriteRenderer sr;
 
+    float lastSpeed;
+
+    float lastVelocity;
+
+    bool wasGrounded;
+
+    private float detectionTimer = 0f;
+    private float detectionInterval = 0.1f;
+
     void Start()
     {
         NPC_Health = NPC_MaxHealth;
@@ -86,26 +95,40 @@ public class NPCController : MonoBehaviour
         float horX = rb.velocity.x;
         float verY = rb.velocity.y; // Get the vertical velocity
 
-        CheckForEdge();
+        detectionTimer += Time.deltaTime;
+        if (detectionTimer >= detectionInterval)
+        {
+            CheckForEdge();
+            detectionTimer = 0f;
+        }
 
         horX = Mathf.Abs(horX);
 
-        //CheckGround();
-
-        if (durationStart) duration += Time.time;
+        if (durationStart) duration += Time.deltaTime;
 
         if (!isHit && !isThrowing)
         {
-            animator.SetFloat("VelocityVertical", verY);
-            animator.SetFloat("Speed", horX);
-            animator.SetBool("IsGrounded", isGrounded);
+            if (lastVelocity != verY)
+            {
+                lastVelocity = verY;
+                animator.SetFloat("VelocityVertical", lastVelocity);
+            }
+            if (lastSpeed != horX)
+            {
+                lastSpeed = horX;
+                animator.SetFloat("Speed", lastSpeed);
+            }
+            if (wasGrounded != isGrounded)
+            {
+                wasGrounded = isGrounded;
+                animator.SetBool("IsGrounded", wasGrounded);
+            }
         }
     }
 
     void MoveNPC()
     {
-        Vector3 movement = new Vector3(speed * direction, rb.velocity.y, 0);
-        rb.velocity = movement;
+        rb.velocity = new Vector2(speed * direction, rb.velocity.y);
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -115,7 +138,6 @@ public class NPCController : MonoBehaviour
 
         if (((1 << collision.gameObject.layer) & wallLayers) != 0)
         {
-            Debug.Log($"[Stay] as {gameObject.name} collided with: {collision.gameObject.layer.ToString()}");
             
             isGrounded = true;
 
@@ -134,8 +156,6 @@ public class NPCController : MonoBehaviour
 
         if (((1 << collision.gameObject.layer) & collisionLayers) != 0)
         {
-            Debug.Log($"[Enter] as {gameObject.name} collided with: {collision.gameObject.layer.ToString()}");
-
             Flip();
         }
 
@@ -180,10 +200,7 @@ public class NPCController : MonoBehaviour
             LevelAnalytics.Instance.kill_count += 1;
             LevelAnalytics.Instance.enemy_duration += duration;
             NPCManager.Instance.EnemyDied();
-            Debug.Log(NPC_KillCount);
         }
-
-        Debug.Log($"[NPCController] NPC HP: {NPC_Health}");
 
         OnNPCHealthChange?.Invoke();
     }
@@ -220,11 +237,13 @@ public class NPCController : MonoBehaviour
         Vector2 rayOrigin = new Vector2(transform.position.x + (isFacingRight ? edgeCheckDistance : -edgeCheckDistance), transform.position.y);
 
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3.0f * size, groundLayer);
+
+#if UNITY_EDITOR
         Debug.DrawRay(rayOrigin, Vector2.down * 3.0f * size, Color.blue);
+#endif
 
         if (hit.collider == null)
         {
-            Debug.Log("No ground: hit someting!");
             
             // No ground detected, turn around
             Flip();
@@ -235,8 +254,6 @@ public class NPCController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == loreSceneName) return;
         if (CutsceneManager.cutscenePlaying) return;
-
-        Debug.Log($"Flipped as {gameObject.name}!");
 
         direction *= -1;
         isFacingRight = !isFacingRight;

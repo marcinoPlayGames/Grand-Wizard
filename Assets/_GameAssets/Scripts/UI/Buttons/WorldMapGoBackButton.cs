@@ -12,8 +12,6 @@ public class WorldMapGoBackButton : MonoBehaviour
     {
         int level = GameManager.Instance.GetUnlockedLevel();
 
-        Debug.Log("World Map loaded level: " + level);
-
         if (level != 8 && level != 9)
         {
             SceneManager.LoadScene(nextLevelScene);
@@ -22,7 +20,5 @@ public class WorldMapGoBackButton : MonoBehaviour
         {
             SceneManager.LoadScene(startMenuScene);
         }
-
-        Debug.Log("Level Loaded!");
     }
 }

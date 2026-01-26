@@ -50,8 +50,6 @@ public class GameManager : MonoBehaviour
 
     public void AddCoin(int coin)
     {
-        Debug.Log("Added coin!");
-        
         coins = coins + coin;
         UpdateUI();
     }
@@ -60,7 +58,6 @@ public class GameManager : MonoBehaviour
     {
         if (coinText == null)
         {
-            Debug.LogError("Coin UI ref was null!");
             coinText = GameObject.Find("CoinText").GetComponent<TMP_Text>();
         }
 
@@ -90,7 +87,6 @@ public class GameManager : MonoBehaviour
     public void DebugAddCoins()
     {
         AddCoin(800);
-        Debug.Log("Coins: " + coins);
     }
 
     public void ResetCoins()

@@ -34,7 +34,6 @@ public class NPCManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log($"Nowa scena załadowana: {scene.name}");
         // np. przelicz NPC w tej scenie:
         RecalculateEnemies();
         FindBlockageAndDeathCounterText();
@@ -56,7 +55,6 @@ public class NPCManager : MonoBehaviour
         ResetEnemies();
         
         totalEnemies = GameObject.FindGameObjectsWithTag("NPC").Length;
-        Debug.Log($"W scenie '{SceneManager.GetActiveScene().name}' jest {totalEnemies} NPC.");
     }
 
     public void EnemyDied()
@@ -66,8 +64,6 @@ public class NPCManager : MonoBehaviour
 
         if (deadEnemies >= totalEnemies)
             UnlockTerrain();
-
-        Debug.Log(deadEnemies >= totalEnemies);
     }
 
     void UpdateUI()

@@ -27,8 +27,6 @@ public class HealthBar : MonoBehaviour
     {
         maxHealth = playerMove.Player_MaxHealth;
         currentHealth = playerMove.Player_MaxHealth;
-        Debug.Log(maxHealth);
-        Debug.Log(healthBarImage.color);
         initialWidth = barTransform.rect.width;
         HP_Amount.text = $"{currentHealth}/{maxHealth}";
     }
@@ -54,12 +52,8 @@ public class HealthBar : MonoBehaviour
 
         s = GetComponent<Image>();
 
-        Debug.Log(s.color);
-
         // Set the size of the health bar
         s.fillAmount = healthPercent;
-
-        Debug.Log("Health Fill Amount = " + s.fillAmount);
 
         barTransform.sizeDelta = new Vector2(healthPercent * initialWidth, barTransform.sizeDelta.y);
 

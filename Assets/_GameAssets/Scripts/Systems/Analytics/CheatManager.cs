@@ -59,7 +59,9 @@ public class CheatManager : MonoBehaviour
             }
         }
 
+#if UNITY_EDITOR
         Debug.Log($"[CHEAT] Zabito {count} przeciwników typu EvilKnight");
+#endif
     }
 
     void KillPlayer()
@@ -68,7 +70,9 @@ public class CheatManager : MonoBehaviour
         if (playerObj != null)
         {
             playerMove = playerObj.GetComponent<PlayerMove>();
+#if UNITY_EDITOR
             Debug.Log("Found player!");
+#endif
         }
 
         playerMove.DamagePlayer(88888, DamageType.True);
@@ -85,18 +89,24 @@ public class CheatManager : MonoBehaviour
         if (trophyObj != null)
         {
             endLevel = trophyObj.GetComponent<EndLevel>();
+#if UNITY_EDITOR
             Debug.Log("Found trophy and level end!");
+#endif
         }
 
         if (endLevel == null)
         {
+#if UNITY_EDITOR
             Debug.LogError("Trophy not found!");
+#endif
         }
 
         if (endLevel.levelToUnlock > GameManager.Instance.GetUnlockedLevel())
         {
             GameManager.Instance.SetUnlockedLevel(endLevel.levelToUnlock);
+#if UNITY_EDITOR
             Debug.Log("levelToUnlock = " + endLevel.levelToUnlock);
+#endif
             StatSystem.Instance.SaveGameRuntime(); // zapis statystyk
         }
 

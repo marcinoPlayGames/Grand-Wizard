@@ -44,7 +44,6 @@ public class NPCDeathCounter : MonoBehaviour
     {
         TotalDeaths++;
         NPCLeft.text = $"{deathsThreshold - NPCDeathCounter.TotalDeaths}";
-        Debug.Log(TotalDeaths);
     }
 
     public void CheckEndingCondition()

@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class LavaDamage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("LavaDamage script loaded on: " + gameObject.name);
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided with something!");
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Collided with player!");
             PlayerMove playerMove = collision.gameObject.GetComponent<PlayerMove>();
 
             playerMove.DamagePlayer(200, DamageType.True);
@@ -28,14 +20,11 @@ public class LavaDamage : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("NPC"))
         {
-            Debug.Log("Collided with enemy!");
             NPCController nPCController = collision.gameObject.GetComponent<NPCController>();
 
             nPCController.DamageNPC(5000);
 
             collision.gameObject.layer = LayerMask.NameToLayer("NoCollisions");
-
-            Debug.Log("Layer = "+ collision.gameObject.layer);
 
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)

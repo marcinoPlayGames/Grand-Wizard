@@ -23,8 +23,6 @@ public class LoadLevelButton : MonoBehaviour
     {
         int level = GameManager.Instance.GetUnlockedLevel();
 
-        Debug.Log("[LoadLevelButton] level number loaded is: " + level);
-
         if (unlockLevelOnClick)
         {
             if (levelToUnlock > GameManager.Instance.GetUnlockedLevel())
@@ -54,7 +52,5 @@ public class LoadLevelButton : MonoBehaviour
         }
 
         if (saveAnalyticsDecisionOnClick) PlayerPrefs.SetFloat("AnalyticsAgree", 1);
-
-        Debug.Log("Level Loaded!");
     }
 }

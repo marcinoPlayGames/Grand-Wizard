@@ -26,11 +26,6 @@ public class StatHealth : MonoBehaviour
         Health = GetStatValues("Health");
         Healing_From_Damage_Percent = GetStatValues("Healing");
         Health_Regen = GetStatValues("HP_Regen");
-
-        UnityEngine.Debug.Log($"[StatHealth] Max_Health is {Max_Health}");
-        UnityEngine.Debug.Log($"[StatHealth] Health is {Health}");
-        UnityEngine.Debug.Log($"[StatHealth] Healing is {Healing_From_Damage_Percent}");
-        UnityEngine.Debug.Log($"[StatHealth] Health_Regen is {Health_Regen}");
     }
 
     // Start is called before the first frame update
@@ -44,7 +39,6 @@ public class StatHealth : MonoBehaviour
         if (regenCoroutine == null)
         {
             regenCoroutine = StartCoroutine(RegenHealth());
-            Debug.Log("Regen started.");
         }
     }
 
@@ -79,7 +73,6 @@ public class StatHealth : MonoBehaviour
 
     public void HealFromDamage(float damage)
     {
-        Debug.Log("Healing value = " + Healing_From_Damage_Percent);
         playerMove.HealPlayer(Mathf.CeilToInt(damage * (Healing_From_Damage_Percent / 100)));
     }
 

@@ -85,7 +85,6 @@ public class NPCAI : MonoBehaviour
     {
         if (npcController.IsDead) yield break;
         
-        Debug.Log("Swords thrown!");
         isFacingRight = npcController.IsFacingRight();
         Vector2 swordDirection = isFacingRight ? Vector2.right : Vector2.left;
         float spawnOffsetX = isFacingRight ? 2f * npcSize : -2f * npcSize;
@@ -166,6 +165,8 @@ public class NPCAI : MonoBehaviour
 
     void DebugDrawBoxCast(Vector2 origin, Vector2 size, float angle, Vector2 direction, float distance, Color color)
     {
+#if UNITY_EDITOR
+
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
         Vector2 halfSize = size * 0.5f;
 
@@ -200,5 +201,7 @@ public class NPCAI : MonoBehaviour
         Debug.DrawLine((Vector3)topRight, (Vector3)trMoved, color);
         Debug.DrawLine((Vector3)bottomLeft, (Vector3)blMoved, color);
         Debug.DrawLine((Vector3)bottomRight, (Vector3)brMoved, color);
+
+#endif
     }
 }

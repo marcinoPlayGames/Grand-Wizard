@@ -46,8 +46,6 @@ public static class SavingSystem
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
         string filePath = GetSaveFilePathRuntime();
         File.WriteAllText(filePath, json);
-
-        Debug.Log($"Zapisano grę do pliku: {filePath}");
     }
 
     public static void SavePlayerGame(Dictionary<string, int> stats, int coins)
@@ -57,15 +55,12 @@ public static class SavingSystem
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
         string filePath = GetSaveFilePathPlayerSave();
         File.WriteAllText(filePath, json);
-
-        Debug.Log($"Zapisano grę do pliku: {filePath}");
     }
 
     public static SaveData LoadGame(string filePath)
     {
         if (!File.Exists(filePath))
         {
-            Debug.LogError($"Plik zapisu nie istnieje: {filePath}");
             return null;
         }
 
@@ -117,11 +112,9 @@ public static class SavingSystem
         string file = GetPlayerSaveGameFile();
         if (string.IsNullOrEmpty(file))
         {
-            Debug.LogWarning("Nie znaleziono pliku.");
             return;
         }
 
-        Debug.Log($"Ładowanie zapisu z pliku: {file}");
         LoadGame(file);
     }
 
@@ -130,7 +123,6 @@ public static class SavingSystem
         string file = GetPlayerSaveGameFile();
         if (string.IsNullOrEmpty(file))
         {
-            Debug.LogWarning("Nie znaleziono pliku.");
             return false;
         }
 

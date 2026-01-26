@@ -45,7 +45,9 @@ public class LevelAnalytics : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+#if UNITY_EDITOR
         Debug.Log("Za³adowano scenê: " + scene.name);
+#endif
 
         string sceneName_local = scene.name;
 

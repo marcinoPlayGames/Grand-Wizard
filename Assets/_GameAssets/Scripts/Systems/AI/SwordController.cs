@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
 
 public class SwordController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private NPCAI npcAI;
-    private NPCController npcController;
-    private PlayerMove playerMove;
     private float swordDamage;
     private DamageType damageType;
+
+    bool hasHit = false;
     public void SetDamage(float damage, DamageType iDamageType)
     {
         swordDamage = damage;
@@ -18,28 +18,19 @@ public class SwordController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (hasHit) return;
+        
+        hasHit = true;
+
+        if (collision.gameObject.TryGetComponent(out PlayerMove player))
         {
-            PlayerMove playerMove = collision.gameObject.GetComponent<PlayerMove>();
+            player.DamagePlayer(swordDamage, damageType);
 
-            if (playerMove != null)
-            {
-                Debug.Log("Collided!");
-
-                playerMove.DamagePlayer(swordDamage, damageType);
-            }
-
-            Debug.Log(gameObject.name);
             Destroy(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-
-    void Damage(float damage)
-    {
-
     }
 }

@@ -20,9 +20,6 @@ public class StatMana : MonoBehaviour
         Max_Mana = GetStatValues("Mana");
         Mana = GetStatValues("Mana");
         Mana_Regen = GetStatValues("Mana_Regen");
-
-        UnityEngine.Debug.Log($"[StatMana] Mana is {Max_Mana}");
-        UnityEngine.Debug.Log($"[StatMana] Mana_Regen is {Mana_Regen}");
     }
 
     // Start is called before the first frame update
@@ -35,11 +32,9 @@ public class StatMana : MonoBehaviour
 
     public void StartManaRegen()
     {
-        UnityEngine.Debug.Log("Mana Regen = " + Mana_Regen);
         if (regenCoroutine == null)
         {
             regenCoroutine = StartCoroutine(RegenMana());
-            UnityEngine.Debug.Log("Regen started.");
         }
     }
 

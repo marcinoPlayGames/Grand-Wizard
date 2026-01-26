@@ -24,12 +24,8 @@ public class HealingPlus : MonoBehaviour
 
             if (playerMove != null)
             {
-                Debug.Log("Collided!");
-
                 playerMove.HealPlayer(50f + 0.05f * playerMove.Player_MaxHealth);
             }
-
-            Debug.Log(gameObject.name);
 
             playerMove.increasedRegen_HP = true;
 

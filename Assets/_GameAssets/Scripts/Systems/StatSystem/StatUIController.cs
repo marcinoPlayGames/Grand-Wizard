@@ -89,10 +89,6 @@ public class StatUIController : MonoBehaviour
         {
             statIconImage.sprite = icon;
         }
-        else
-        {
-            Debug.LogWarning($"Brak ikony dla: {currentStat}");
-        }
     }
 
     public void OnUpgradeButton()
