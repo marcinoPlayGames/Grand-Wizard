@@ -17,6 +17,9 @@ public class StatHealth : MonoBehaviour
 
     private int increasedRegenCount = 0;
 
+    [SerializeField]
+    PlayerMove playerMove;
+
     void Awake()
     {
         Max_Health = GetStatValues("Max_Health");
@@ -34,12 +37,6 @@ public class StatHealth : MonoBehaviour
     IEnumerator Start()
     {
         yield return new WaitUntil(() => StatSystem.Instance != null && StatSystem.Instance.IsReady);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void StartHealthRegen()
@@ -83,7 +80,6 @@ public class StatHealth : MonoBehaviour
     public void HealFromDamage(float damage)
     {
         Debug.Log("Healing value = " + Healing_From_Damage_Percent);
-        PlayerMove playerMove = GetComponent<PlayerMove>();
         playerMove.HealPlayer(Mathf.CeilToInt(damage * (Healing_From_Damage_Percent / 100)));
     }
 
@@ -94,8 +90,6 @@ public class StatHealth : MonoBehaviour
 
     IEnumerator RegenHealth()
     {
-        PlayerMove playerMove = GetComponent<PlayerMove>();
-
         while (true)
         {
             playerMove.HealPlayer(Health_Regen * (playerMove.increasedRegen_HP ? 2 : 1));

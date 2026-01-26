@@ -9,79 +9,40 @@ public class PlayerMove : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    [SerializeField]
     private Rigidbody2D rb;
+    [SerializeField]
     private PlayerAttacks playerAttacks;
+    [SerializeField]
     private StatHealth statHealth;
+    [SerializeField]
     private StatDefenses statDefenses;
+    [SerializeField]
+    private Collider2D col;
+    [SerializeField]
+    private StatMana statMana;
+    [SerializeField]
+    private Animator animator;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private Transform transformPlayer;
+
     private DamageType damageType;
 
     public PhysicsMaterial2D groundedMaterial;
     public PhysicsMaterial2D airMaterial;
-
-    private Collider2D col;
-
-    StatMana statMana;
 
     private float Mana;
     public float MaxMana;
 
     public bool increasedRegen_HP;
 
-    private Animator animator;
-
-    void Start()
-    {
-        Debug.Log("Start in PlayerMovement");
-        rb = GetComponent<Rigidbody2D>();
-
-        statHealth = GetComponent<StatHealth>();
-        statDefenses = GetComponent<StatDefenses>();
-        statMana = GetComponent<StatMana>();
-        Player_Health = statHealth.Max_Health;
-
-        Player_MaxHealth = statHealth.Max_Health;
-
-        if (healthBar != null) Debug.Log(healthBar?.healthBarImage.fillAmount);
-
-        playerAttacks = GetComponent<PlayerAttacks>();
-
-        Mana = statMana.Max_Mana;
-        MaxMana = statMana.Max_Mana;
-
-        Debug.Log("StatSystem.Instance = " + StatSystem.Instance);
-        Debug.Log("Max HP = " + Player_Health);
-
-        col = GetComponent<Collider2D>();
-
-        isPlayerDead = false;
-
-        animator = GetComponent<Animator>();
-    }
-
-    void Awake()
-    {
-        if (manaBar == null)
-        {
-            GameObject manaBarObj = GameObject.Find("ManaBar");
-            if (manaBarObj != null)
-            {
-                manaBar = manaBarObj.GetComponent<ManaBar>();
-                Debug.Log("Found manabar!");
-            }
-                
-        }
-
-        if (healthBar == null)
-        {
-            GameObject healthBarObj = GameObject.Find("HealthBar");
-            if (healthBarObj != null)
-            {
-                healthBar = healthBarObj.GetComponent<HealthBar>();
-                Debug.Log("Found healthbar!");
-            }
-                
-        }
-    }
+    [SerializeField] float maxSpeed = 6f;            // maksymalna prędkość pozioma
+    [SerializeField] float groundAcceleration = 50f; // przyspieszenie na ziemi
+    [SerializeField] float airAcceleration = 20f;    // przyspieszenie w powietrzu
+    [SerializeField] float groundDeceleration = 30f; // hamowanie na ziemi
+    [SerializeField] float airDeceleration = 5f;     // hamowanie w powietrzu  
 
     [SerializeField]
     AudioSource playerJump;
@@ -110,14 +71,64 @@ public class PlayerMove : MonoBehaviour
     public HealthBar healthBar;
     public ManaBar manaBar;
     int collisions = 0;
-    
-    float moveSpeed = 6f;
 
     public bool isPlayerDead = false;
+
+    float horizontalInput;
+
+    void Start()
+    {
+        Debug.Log("Start in PlayerMovement");
+
+        Player_Health = statHealth.Max_Health;
+
+        Player_MaxHealth = statHealth.Max_Health;
+
+        if (healthBar != null) Debug.Log(healthBar?.healthBarImage.fillAmount);
+
+        Mana = statMana.Max_Mana;
+        MaxMana = statMana.Max_Mana;
+
+        Debug.Log("StatSystem.Instance = " + StatSystem.Instance);
+        Debug.Log("Max HP = " + Player_Health);
+
+        isPlayerDead = false;
+    }
+
+    void Awake()
+    {
+        if (manaBar == null)
+        {
+            GameObject manaBarObj = GameObject.Find("ManaBar");
+            if (manaBarObj != null)
+            {
+                manaBar = manaBarObj.GetComponent<ManaBar>();
+                Debug.Log("Found manabar!");
+            }
+
+        }
+
+        if (healthBar == null)
+        {
+            GameObject healthBarObj = GameObject.Find("HealthBar");
+            if (healthBarObj != null)
+            {
+                healthBar = healthBarObj.GetComponent<HealthBar>();
+                Debug.Log("Found healthbar!");
+            }
+
+        }
+    }
 
     void Update()
     {
         if (CutsceneManager.cutscenePlaying) return;
+
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        // Flip sprite
+        if (horizontalInput < 0) spriteRenderer.flipX = true;
+        else if (horizontalInput > 0) spriteRenderer.flipX = false;
 
         //Debug.Log("called Update " + count.ToString());
         count++;
@@ -136,26 +147,6 @@ public class PlayerMove : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 10, 0);
             playerJump.Play();
             jumpState = true;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            Vector2 velocity = rb.velocity;
-            float horInput = Input.GetAxisRaw("Horizontal");
-            float airMultiplier = isGrounded ? 1f : 0.5f;
-            velocity.x = horInput * moveSpeed * airMultiplier;
-            rb.velocity = velocity;
-
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            Vector2 velocity = rb.velocity;
-            float horInput = Input.GetAxisRaw("Horizontal");
-            float airMultiplier = isGrounded ? 1f : 0.8f;
-            velocity.x = horInput * moveSpeed * airMultiplier;
-            rb.velocity = velocity;
-
-            GetComponent<SpriteRenderer>().flipX = false;
         }
 
         if (jumpState == true && isGrounded)
@@ -200,6 +191,24 @@ public class PlayerMove : MonoBehaviour
             Debug.Log("[animator] verticalVelocity: " + animator.GetFloat("VerticalVelocity"));
         }
         
+    }
+
+    void FixedUpdate()
+    {
+        Debug.Log("Fixed update!");
+
+        // Ruch poziomy
+        float targetSpeed = horizontalInput * maxSpeed;
+        float speedDiff = targetSpeed - rb.velocity.x;
+
+        float accelRate;
+        if (isGrounded)
+            accelRate = Mathf.Abs(horizontalInput) > 0.01f ? groundAcceleration : groundDeceleration;
+        else
+            accelRate = Mathf.Abs(horizontalInput) > 0.01f ? airAcceleration : airDeceleration;
+
+        float movement = speedDiff * accelRate * Time.fixedDeltaTime;
+        rb.AddForce(Vector2.right * movement, ForceMode2D.Force);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -273,7 +282,7 @@ public class PlayerMove : MonoBehaviour
 
     public bool IsFacingRight()
     {
-        return GetComponent<SpriteRenderer>().flipX == false;
+        return spriteRenderer.flipX == false;
     }
 
     public float GetHealth()
@@ -374,8 +383,8 @@ public class PlayerMove : MonoBehaviour
 
         LevelAnalytics.Instance.tryNumber += 1;
         LevelAnalytics.Instance.deaths += 1;
-        LevelAnalytics.Instance.posX += this.gameObject.GetComponent<Transform>().position.x;
-        LevelAnalytics.Instance.posY += this.gameObject.GetComponent<Transform>().position.x;
+        LevelAnalytics.Instance.posX += transformPlayer.position.x;
+        LevelAnalytics.Instance.posY += transformPlayer.position.y;
 
         if (SceneManager.GetActiveScene().name == "Level5") LevelAnalytics.Instance.boss_hp_left += GameManager.Instance.boss_hp_left;
 

@@ -12,6 +12,9 @@ public class StatMana : MonoBehaviour
 
     private Coroutine regenCoroutine;
 
+    [SerializeField]
+    PlayerMove playerMove;
+
     void Awake()
     {
         Max_Mana = GetStatValues("Mana");
@@ -72,9 +75,21 @@ public class StatMana : MonoBehaviour
 
     IEnumerator RegenMana()
     {
-        PlayerMove playerMove = GetComponent<PlayerMove>();
+        yield return new WaitForSeconds(4f);
 
-        yield return new WaitForSeconds(3f);
+        if (playerMove.GetMana() >= playerMove.MaxMana)
+        {
+            playerMove.SetMaxMana();
+
+            // Zatrzymaj coroutine prawidłowo
+            if (regenCoroutine != null)
+            {
+                StopCoroutine(regenCoroutine);
+            }
+
+            regenCoroutine = null;
+            yield break; // wyjście z pętli
+        }
 
         while (true)
         {

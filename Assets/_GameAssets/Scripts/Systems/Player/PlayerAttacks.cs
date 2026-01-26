@@ -26,6 +26,7 @@ public class PlayerAttacks : MonoBehaviour
     float timeSinceLastDamage = 0f;
     bool isInCombat = false;
 
+    [SerializeField]
     private PlayerMove playerMove;
 
     bool isCasting = false;
@@ -54,10 +55,14 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField]
     AudioSource HidePullStaff;
 
-
+    [SerializeField]
     private StatAttacks statAttacks;
+    [SerializeField]
     private StatCriticals statCriticals;
+    [SerializeField]
     private StatHealth statHealth;
+    [SerializeField]
+    private Animator animator;
 
     private bool isEnoughMana = true;
 
@@ -67,26 +72,15 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField]
     LayerMask fireballSpawnMask;
 
-    private Animator animator;
-
     private bool strongerFireballShoot = false;
 
     // Start is called before the first frame update
     void Start()
     {
         // Find the PlayerMove script attached to the same GameObject
-        
-        
-        playerMove = GetComponent<PlayerMove>();
-
-        statAttacks = GetComponent<StatAttacks>();
-        statCriticals = GetComponent<StatCriticals>();
-        statHealth = GetComponent<StatHealth>();
 
         fireballSpeed = fireballSpeed; // * (1 + statAttacks.Attack_Speed);
         strongerFireballSpeed = strongerFireballSpeed; // * (1 + statAttacks.Spell_Speed);
-
-        animator = GetComponent<Animator>();
 
         StartCoroutine(PullStaffAnimation());
         HidePullStaff.Play();
@@ -403,45 +397,6 @@ public class PlayerAttacks : MonoBehaviour
 
         StartCoroutine(StrongerFireballCooldown());
     }
-
-    /*void CastStrongerFireball()
-    {
-        // Determine the direction to cast the fireball
-        isFacingRight = playerMove.IsFacingRight();
-        Vector2 fireballDirection = isFacingRight ? Vector2.right : Vector2.left;
-        Vector2 fireballFacing = isFacingRight ? Vector2.right : Vector2.left;
-
-        Debug.Log("fireballFacing = " + fireballFacing);
-
-        // Adjust the instantiation position based on the player's facing direction
-        float spawnOffset = isFacingRight ? 2f : -2f;
-        Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.8f, 0f);
-
-        // Create a new fireball instance using the actual fireball prefab
-        lastSpawnedStrongerFireball = Instantiate(strongerFireballPrefab, spawnPosition, Quaternion.identity);
-
-        StrongerFireball.Play();
-
-        // Set the fireball's velocity based on the direction and speed
-        Rigidbody2D fireballRb = lastSpawnedStrongerFireball.GetComponent<Rigidbody2D>();
-        fireballRb.velocity = fireballDirection * fireballSpeed;
-        fireballRb.gravityScale = 0f;
-        FireballController fireballController = lastSpawnedStrongerFireball.GetComponent<FireballController>();
-
-        if (fireballFacing == new Vector2(-1.00f, 0.00f))
-            lastSpawnedStrongerFireball.GetComponent<SpriteRenderer>().flipX = true;
-        else
-            lastSpawnedStrongerFireball.GetComponent<SpriteRenderer>().flipX = false;
-        // Destroy the fireball after a certain time to prevent cluttering the scene
-        if (fireballController != null)
-        {
-            fireballController.SetDamage(strongerFireballDamage);
-        }
-
-        Destroy(lastSpawnedStrongerFireball, 2f);
-
-        StartCoroutine(StrongerFireballCooldown());
-    }*/
 
     IEnumerator FireballCooldown()
     {

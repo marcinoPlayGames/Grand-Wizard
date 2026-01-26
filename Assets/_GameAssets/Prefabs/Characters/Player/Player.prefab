@@ -236,10 +236,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c75c06c791c524fb59c403e0658263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 6805018012902538240}
+  playerAttacks: {fileID: 8308265032356928753}
+  statHealth: {fileID: 7370054419045623624}
+  statDefenses: {fileID: 9030949140230081163}
+  col: {fileID: 3838889008793727890}
+  statMana: {fileID: 7922525031974756821}
+  animator: {fileID: 7168238075172706654}
+  spriteRenderer: {fileID: 7954414661068780127}
+  transformPlayer: {fileID: 9107679617387167225}
   groundedMaterial: {fileID: 6200000, guid: 8b6fddafefdf8df42a10c193c7d627f9, type: 2}
   airMaterial: {fileID: 6200000, guid: 9c497a4ce1f356b448c0dd3eca091d35, type: 2}
   MaxMana: 0
   increasedRegen_HP: 0
+  maxSpeed: 6
+  groundAcceleration: 130
+  airAcceleration: 60
+  groundDeceleration: 150
+  airDeceleration: 80
   playerJump: {fileID: 2607462999101729418}
   playerFall: {fileID: 4298770930702226185}
   playerHit: {fileID: 6371814085024174686}
@@ -480,12 +494,17 @@ MonoBehaviour:
   strongerFireballCooldown: 2.5
   strongerFireballSpeed: 20
   strongerFireballPrefab: {fileID: 2162139648471965464, guid: 8df9ed2bf813bca47859c0abe5a42006, type: 3}
+  playerMove: {fileID: 8091180529701181416}
   Fireball: {fileID: 5789835508243357191}
   StrongerFireball: {fileID: 8630251904517269660}
   CantCast: {fileID: 3604707506833493170}
   CantAttack: {fileID: 5322882188236259460}
   NotEnoughMana: {fileID: 8856070251682958346}
   HidePullStaff: {fileID: 5583514127534136847}
+  statAttacks: {fileID: 2771636291550107609}
+  statCriticals: {fileID: 5008224643940158765}
+  statHealth: {fileID: 7370054419045623624}
+  animator: {fileID: 7168238075172706654}
   fireballSpawnMask:
     serializedVersion: 2
     m_Bits: 4032
@@ -953,6 +972,7 @@ MonoBehaviour:
   Max_Health: 0
   Healing_From_Damage_Percent: 0
   Health_Regen: 0
+  playerMove: {fileID: 8091180529701181416}
 --- !u!114 &2771636291550107609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -984,6 +1004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Max_Mana: 0
   Mana_Regen: 0
+  playerMove: {fileID: 8091180529701181416}
 --- !u!82 &3604707506833493170
 AudioSource:
   m_ObjectHideFlags: 0
