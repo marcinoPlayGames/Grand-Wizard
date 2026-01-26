@@ -4,42 +4,30 @@ using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public int platformMovingDistance = 3;
-    public float platformMovingSpeed = 0.1f;
-    Transform platform;
-    private int moveCounter = 0;
-    void Start()
+    [SerializeField] Transform platform;
+
+    public float distance = 3f;
+    public float speed = 1f;
+
+    private Vector3 startPos;
+    private float direction = 1f;
+    private float moved = 0f;
+
+    void Awake()
     {
-        platform = GetComponent<Transform>();
-        platform.position = new Vector3(0, 0, 0);
-        Debug.Log($"rect y is {platform.position.y}");
-        
+        startPos = platform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        float delta = speed * Time.deltaTime * direction;
+        platform.position += Vector3.up * delta;
+        moved += Mathf.Abs(delta);
 
-        moveCounter++;
-
-        //Debug.Log(moveCounter);
-
-        if (moveCounter >= 2 * platformMovingDistance * (1 / platformMovingSpeed))
+        if (moved >= distance)
         {
-            moveCounter = 0;
-        }
-
-        if (moveCounter < platformMovingDistance * (1 / platformMovingSpeed))
-        {
-            float newY = (float)platform.position.y + platformMovingSpeed;
-            platform.position = new Vector3(platform.position.x, (float)newY, 0);
-        }
-
-        if (moveCounter >= platformMovingDistance * (1 / platformMovingSpeed))
-        {
-            float newY = (float)platform.position.y - platformMovingSpeed;
-            platform.position = new Vector3(platform.position.x, (float)newY, 0);
+            direction *= -1f;
+            moved = 0f;
         }
     }
 }

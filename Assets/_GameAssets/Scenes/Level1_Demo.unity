@@ -2591,9 +2591,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: -1
-  objectMovingSpeed: 0.1
+  platform: {fileID: 729786564}
+  moveOffset: {x: 0, y: -1}
+  speed: 0.1
 --- !u!114 &729786566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2606,7 +2606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a0ebb0660780b4c9c89d1945505447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeredObject: {fileID: 874677940}
+  movingObject: {fileID: 874677941}
+  movingButton: {fileID: 729786565}
   activationTime: 35
 --- !u!19719996 &729786567
 TilemapCollider2D:
@@ -2942,9 +2943,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: 4
-  objectMovingSpeed: 0.1
+  platform: {fileID: 767636537}
+  moveOffset: {x: 0, y: 4}
+  speed: 0.1
 --- !u!19719996 &767636532
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -3561,9 +3562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: 4
-  objectMovingSpeed: 0.1
+  platform: {fileID: 874677947}
+  moveOffset: {x: 0, y: 4}
+  speed: 0.1
 --- !u!19719996 &874677942
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -4396,6 +4397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3359e78bbf5c384fb781d95edd383c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
 --- !u!19719996 &942163211
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -5509,8 +5511,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0f197eae0431a4ab23d9c0982bdb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformMovingDistance: 3
-  platformMovingSpeed: 0.01
+  platform: {fileID: 0}
+  distance: 3
+  speed: 1
 --- !u!1001 &1008190306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25167,7 +25170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a0ebb0660780b4c9c89d1945505447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeredObject: {fileID: 767636530}
+  movingObject: {fileID: 767636531}
+  movingButton: {fileID: 2066657831}
   activationTime: 70
 --- !u!114 &2066657831
 MonoBehaviour:
@@ -25181,9 +25185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: -1
-  objectMovingSpeed: 0.1
+  platform: {fileID: 2066657829}
+  moveOffset: {x: 0, y: -1}
+  speed: 0.1
 --- !u!483693784 &2066657832
 TilemapRenderer:
   m_ObjectHideFlags: 0

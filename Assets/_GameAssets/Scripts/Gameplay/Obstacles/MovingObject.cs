@@ -1,89 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-    public int objectMovingXDistance = -15;
-    public int objectMovingYDistance = 0;
-    public float objectMovingSpeed = 0.1f;
-    Transform platform;
-    private int moveCounter = 0;
-    private bool doMove = false;
-    private int finishCount = 0;
+    [SerializeField] Transform platform;
+    public Vector2 moveOffset;
+    public float speed = 2f;
 
-    private bool wasFirstTime = false;
+    private Vector3 closedPos;
+    private Vector3 openPos;
+    private bool moving;
+    private bool isOpen;
 
-    private bool activated = false;
-    void Start()
+    void Awake()
     {
-        platform = GetComponent<Transform>();
-        platform.position = new Vector3(0, 0, 0);
-        Debug.Log($"rect y is {platform.position.y}");
-
-        if (objectMovingYDistance != 0  && objectMovingXDistance != 0)
-        {
-            finishCount = (int)Mathf.Abs((objectMovingXDistance * objectMovingYDistance) / objectMovingSpeed);
-        }
-        else if (objectMovingYDistance == 0)
-        {
-            finishCount = (int)Mathf.Abs(objectMovingXDistance / objectMovingSpeed);
-        }
-        else
-        {
-            finishCount = (int)Mathf.Abs(objectMovingYDistance / objectMovingSpeed);
-        }
+        closedPos = platform.position;
+        openPos = closedPos + (Vector3)moveOffset;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Debug.Log(moveCounter);
+        if (!moving) return;
 
-        if (doMove)
-        {
-            if (moveCounter != finishCount)
-            {
-                moveCounter++;
+        Vector3 target = isOpen ? openPos : closedPos;
 
-                float newY = 0;
-                float newX = 0;
+        platform.position = Vector3.MoveTowards(
+            platform.position,
+            target,
+            speed * Time.deltaTime
+        );
 
-                if (objectMovingYDistance != 0)
-                {
-                    newY = (float)platform.position.y + objectMovingSpeed * Mathf.Sign(objectMovingYDistance);
-                }
-                if (objectMovingXDistance != 0)
-                {
-                    newX = (float)platform.position.x + objectMovingSpeed * Mathf.Sign(objectMovingXDistance);
-                }
-
-                platform.position = new Vector3((float)newX, (float)newY, 0);
-            }
-        }
+        if (platform.position == target)
+            moving = false;
     }
 
-    public void Activate()
+    public void Activate()   // Open
     {
-        doMove = true;
-
-        moveCounter = 0;
-
-        if (wasFirstTime)
-        {
-            objectMovingXDistance *= -1;
-            objectMovingYDistance *= -1;
-        }
+        isOpen = true;
+        moving = true;
     }
 
-    public void Deactivate()
+    public void Deactivate() // Close
     {
-        doMove = true;
-        moveCounter = 0;
-
-        objectMovingXDistance *= -1;
-        objectMovingYDistance *= -1;
-
-        wasFirstTime = true;
+        isOpen = false;
+        moving = true;
     }
 }

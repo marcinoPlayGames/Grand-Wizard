@@ -331,9 +331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: 10
-  objectMovingSpeed: 0.1
+  platform: {fileID: 74740484}
+  moveOffset: {x: 0, y: 10}
+  speed: 0.1
 --- !u!19719996 &74740479
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -89446,7 +89446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a0ebb0660780b4c9c89d1945505447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeredObject: {fileID: 74740477}
+  movingObject: {fileID: 74740478}
+  movingButton: {fileID: 640630105}
   activationTime: 90
 --- !u!114 &640630105
 MonoBehaviour:
@@ -89460,9 +89461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: -1
-  objectMovingSpeed: 0.1
+  platform: {fileID: 640630103}
+  moveOffset: {x: 0, y: -1}
+  speed: 0.1
 --- !u!483693784 &640630106
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -93969,9 +93970,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: 10
-  objectMovingSpeed: 0.1
+  platform: {fileID: 1244722685}
+  moveOffset: {x: 0, y: 10}
+  speed: 0.1
 --- !u!19719996 &1244722680
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -95698,6 +95699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3359e78bbf5c384fb781d95edd383c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 1483750910}
 --- !u!66 &1483750909
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -99096,9 +99098,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: -1
-  objectMovingSpeed: 0.1
+  platform: {fileID: 2020295245}
+  moveOffset: {x: 0, y: -1}
+  speed: 0.1
 --- !u!114 &2020295247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99111,7 +99113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a0ebb0660780b4c9c89d1945505447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeredObject: {fileID: 1244722678}
+  movingObject: {fileID: 1244722679}
+  movingButton: {fileID: 2020295246}
   activationTime: 88
 --- !u!19719996 &2020295248
 TilemapCollider2D:

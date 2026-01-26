@@ -2025,9 +2025,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: 4
-  objectMovingSpeed: 0.1
+  platform: {fileID: 328051314}
+  moveOffset: {x: 0, y: 4}
+  speed: 0.1
 --- !u!1001 &339134880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2951,8 +2951,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0f197eae0431a4ab23d9c0982bdb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformMovingDistance: 3
-  platformMovingSpeed: 0.0165
+  platform: {fileID: 476982948}
+  distance: 3
+  speed: 1
 --- !u!66 &476982950
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -17724,7 +17725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7398903de2105949b682512ffc73efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeredObject: {fileID: 805197168}
+  movingObject: {fileID: 805197175}
 --- !u!61 &773686365
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18349,9 +18350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: -80
-  objectMovingYDistance: 0
-  objectMovingSpeed: 0.033
+  platform: {fileID: 805197169}
+  moveOffset: {x: -80, y: 0}
+  speed: 0.033
 --- !u!114 &805197176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18364,6 +18365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3359e78bbf5c384fb781d95edd383c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 805197174}
 --- !u!1001 &817426205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20171,7 +20173,7 @@ Tilemap:
       - {fileID: -574628122, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: -675595698, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
       - {fileID: 603260418, guid: 140312a9c9f055f43a98bc5d75bb705e, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -17, y: 11, z: 0}
@@ -22445,9 +22447,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: 4
-  objectMovingSpeed: 0.1
+  platform: {fileID: 1290918720}
+  moveOffset: {x: 0, y: 4}
+  speed: 0.1
 --- !u!1 &1292985470
 GameObject:
   m_ObjectHideFlags: 0
@@ -22524,7 +22526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7398903de2105949b682512ffc73efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeredObject: {fileID: 1531750956}
+  movingObject: {fileID: 1531750964}
 --- !u!4 &1292985473
 Transform:
   m_ObjectHideFlags: 0
@@ -23484,9 +23486,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: -1
-  objectMovingSpeed: 0.1
+  platform: {fileID: 1455437330}
+  moveOffset: {x: 0, y: -1}
+  speed: 0.1
 --- !u!114 &1455437334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23499,7 +23501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a0ebb0660780b4c9c89d1945505447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeredObject: {fileID: 328051313}
+  movingObject: {fileID: 328051320}
+  movingButton: {fileID: 1455437333}
   activationTime: 50
 --- !u!66 &1455437335
 CompositeCollider2D:
@@ -23926,7 +23929,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a0ebb0660780b4c9c89d1945505447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeredObject: {fileID: 1290918719}
+  movingObject: {fileID: 1290918726}
+  movingButton: {fileID: 1460992905}
   activationTime: 80
 --- !u!114 &1460992905
 MonoBehaviour:
@@ -23940,9 +23944,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: -1
-  objectMovingSpeed: 0.1
+  platform: {fileID: 1460992898}
+  moveOffset: {x: 0, y: -1}
+  speed: 0.1
 --- !u!1 &1462950385
 GameObject:
   m_ObjectHideFlags: 0
@@ -74371,9 +74375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d91140d1fc2b54db7af6d79f19a4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMovingXDistance: 0
-  objectMovingYDistance: 29
-  objectMovingSpeed: 0.001833333
+  platform: {fileID: 1531750957}
+  moveOffset: {x: 0, y: 29}
+  speed: 0.001833333
 --- !u!1001 &1542266846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74768,6 +74772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3359e78bbf5c384fb781d95edd383c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 1660404816}
 --- !u!19719996 &1660404814
 TilemapCollider2D:
   m_ObjectHideFlags: 0
