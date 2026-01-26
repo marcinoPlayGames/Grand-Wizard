@@ -83,9 +83,11 @@ public class NPCAI : MonoBehaviour
 
     IEnumerator ThrowSword()
     {
-        if (npcController.IsDead) yield break;
-        
+        if (npcController.IsDead)
+            yield break;
+
         isFacingRight = npcController.IsFacingRight();
+
         Vector2 swordDirection = isFacingRight ? Vector2.right : Vector2.left;
         float spawnOffsetX = isFacingRight ? 2f * npcSize : -2f * npcSize;
         Vector2 swordFacing = isFacingRight ? Vector2.right : Vector2.left;
@@ -94,37 +96,51 @@ public class NPCAI : MonoBehaviour
 
         for (int i = 0; i < swordNumber; i++)
         {
-            Vector3 spawnPosition = transform.position + new Vector3(spawnOffsetX, eyesPositionOffset + (i * verticalSpacing), 0f);
-            GameObject sword = Instantiate(swordPrefab, spawnPosition, Quaternion.identity);
+            Vector3 spawnPosition = transform.position +
+                new Vector3(spawnOffsetX, eyesPositionOffset + (i * verticalSpacing), 0f);
 
-            if (sword != null)
+            // 🔁 ZAMIANA Instantiate → Object Pool
+            GameObject sword = SwordPool.Instance.GetSword();
+
+            sword.transform.position = spawnPosition;
+            sword.transform.rotation = Quaternion.identity;
+
+            Rigidbody2D rb = sword.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                Rigidbody2D rb = sword.GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    rb.gravityScale = 0f;
-                    rb.velocity = swordDirection * throwForce;
-                }
-
-                SwordController swordController = sword.GetComponent<SwordController>();
-                if (swordController != null)
-                    swordController.SetDamage(swordDamage, DamageType.Physical);
-
-                SpriteRenderer sr = sword.GetComponent<SpriteRenderer>();
-                if (sr != null)
-                    sr.flipX = swordFacing == Vector2.left;
-
-                Destroy(sword, 2f);
+                rb.gravityScale = 0f;
+                rb.velocity = swordDirection * throwForce;
             }
 
-            // Możesz dodać delikatne opóźnienie między spawnami, np.:
-            // yield return new WaitForSeconds(0.05f);
+            SwordController swordController = sword.GetComponent<SwordController>();
+            if (swordController != null)
+            {
+                swordController.SetDamage(swordDamage, DamageType.Physical);
+            }
+
+            SpriteRenderer sr = sword.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.flipX = swordFacing == Vector2.left;
+            }
+
+            // ⏱ Zamiast Destroy(sword, 2f)
+            StartCoroutine(ReturnSwordAfterTime(sword, 2f));
         }
 
         yield return null;
         StartCoroutine(SwordCooldown());
     }
 
+    IEnumerator ReturnSwordAfterTime(GameObject sword, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        if (sword.activeInHierarchy)
+        {
+            SwordPool.Instance.ReturnSword(sword);
+        }
+    }
     IEnumerator SwordCooldown()
     {
         // Set canCastFireball to false during the cooldown

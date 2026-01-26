@@ -26,11 +26,16 @@ public class SwordController : MonoBehaviour
         {
             player.DamagePlayer(swordDamage, damageType);
 
-            Destroy(gameObject);
+            SwordPool.Instance.ReturnSword(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            SwordPool.Instance.ReturnSword(gameObject);
         }
+    }
+
+    public void ResetSword()
+    {
+        hasHit = false;
     }
 }

@@ -25,7 +25,7 @@ public class Coin : MonoBehaviour
             spriteRenderer.enabled = false; // Hide the coin
             colliders2D.enabled = false; // Disable collision
 
-            Destroy(gameObject, coinCollect.clip.length);
+            DeactivateCoinAfterTime(coinCollect.clip.length);
 
             LevelAnalytics.Instance.treasuresTotal += coinAmount;
             GameManager.Instance.treasuresCollected += coinAmount;
@@ -36,5 +36,12 @@ public class Coin : MonoBehaviour
             if (coinAmount > 1) GameManager.Instance.diamondsCollected += coinAmount;
             else GameManager.Instance.coinsCollected += coinAmount;
         }
+    }
+
+    IEnumerator DeactivateCoinAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        gameObject.SetActive(false);
     }
 }
