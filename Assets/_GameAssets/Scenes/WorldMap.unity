@@ -724,16 +724,22 @@ MonoBehaviour:
   wizardHead: {fileID: 1819749017}
   objectsForPositions:
   - gameObject: {fileID: 0}
+    image: {fileID: 0}
     levelIndex: 8
   - gameObject: {fileID: 0}
+    image: {fileID: 0}
     levelIndex: 9
   - gameObject: {fileID: 0}
+    image: {fileID: 0}
     levelIndex: 10
   - gameObject: {fileID: 0}
+    image: {fileID: 0}
     levelIndex: 11
   - gameObject: {fileID: 0}
+    image: {fileID: 0}
     levelIndex: 12
   - gameObject: {fileID: 0}
+    image: {fileID: 0}
     levelIndex: 13
 --- !u!114 &864709578
 MonoBehaviour:
@@ -796,7 +802,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &864709581
 RectTransform:
@@ -1756,16 +1762,22 @@ MonoBehaviour:
   wizardHead: {fileID: 1819749017}
   objectsForPositions:
   - gameObject: {fileID: 1162825990}
+    image: {fileID: 1162825992}
     levelIndex: 8
   - gameObject: {fileID: 1622914560}
+    image: {fileID: 1622914562}
     levelIndex: 9
   - gameObject: {fileID: 402016212}
+    image: {fileID: 402016214}
     levelIndex: 10
   - gameObject: {fileID: 1221950158}
+    image: {fileID: 1221950160}
     levelIndex: 11
   - gameObject: {fileID: 1800576321}
+    image: {fileID: 1800576323}
     levelIndex: 12
   - gameObject: {fileID: 2100384099}
+    image: {fileID: 2100384101}
     levelIndex: 13
 --- !u!1 &1995616083
 GameObject:

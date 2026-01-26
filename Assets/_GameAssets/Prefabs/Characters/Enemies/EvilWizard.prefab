@@ -190,7 +190,7 @@ MonoBehaviour:
     m_Bits: 53056
   wallLayers:
     serializedVersion: 2
-    m_Bits: 34624
+    m_Bits: 64
   rb: {fileID: 2021384378815862032}
   npcAI: {fileID: 1531472122689653466}
   animator: {fileID: 130162033744813733}

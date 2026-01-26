@@ -252,10 +252,15 @@ public class PlayerAttacks : MonoBehaviour
 
             if (controller != null)
             {
+                Debug.Log($"spawnPos: {spawnPosition}");
+                Debug.Log($"range: {attackRange}");
+
                 controller.SetDamage(totalDamage);
                 controller.SetTracking(spawnPosition, attackRange);
             }
         }
+
+        Debug.Log("Fireball spawned!");
 
         StartCoroutine(FireballCooldown());
     }
