@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3220004918531300121}
   - component: {fileID: 130162033744813733}
   - component: {fileID: 3628919990357275766}
-  - component: {fileID: 1469436738414549991}
   - component: {fileID: 1531472122689653466}
   - component: {fileID: 8917504192721961917}
   m_Layer: 11
@@ -192,6 +191,10 @@ MonoBehaviour:
   wallLayers:
     serializedVersion: 2
     m_Bits: 34624
+  rb: {fileID: 2021384378815862032}
+  npcAI: {fileID: 1531472122689653466}
+  animator: {fileID: 130162033744813733}
+  sr: {fileID: 6212566846147277045}
 --- !u!95 &130162033744813733
 Animator:
   serializedVersion: 5
@@ -309,20 +312,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1469436738414549991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8020805311469291635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4c76a9c00a03242b1678225688fd8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrainObject: {fileID: 0}
-  NPCLeft: {fileID: 0}
 --- !u!114 &1531472122689653466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +339,8 @@ MonoBehaviour:
   swordNumber: 1
   verticalSpacing: -0.5
   eyesPositionOffset: 0.8
+  animator: {fileID: 130162033744813733}
+  npcController: {fileID: 3220004918531300121}
   swordThrowSound: {fileID: 8917504192721961917}
 --- !u!82 &8917504192721961917
 AudioSource:

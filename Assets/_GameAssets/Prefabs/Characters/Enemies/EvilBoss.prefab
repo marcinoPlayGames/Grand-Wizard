@@ -462,6 +462,10 @@ MonoBehaviour:
   wallLayers:
     serializedVersion: 2
     m_Bits: 34624
+  rb: {fileID: 2021384378815862032}
+  npcAI: {fileID: -1303941372557918568}
+  animator: {fileID: 130162033744813733}
+  sr: {fileID: 6212566846147277045}
 --- !u!95 &130162033744813733
 Animator:
   serializedVersion: 5
@@ -702,6 +706,8 @@ MonoBehaviour:
   swordNumber: 4
   verticalSpacing: -1
   eyesPositionOffset: 0.8
+  animator: {fileID: 130162033744813733}
+  npcController: {fileID: 3220004918531300121}
   swordThrowSound: {fileID: 8917504192721961917}
 --- !u!114 &4963099892675880227
 MonoBehaviour:
@@ -722,6 +728,8 @@ MonoBehaviour:
   showHealthBarOnlyOnDamage: 0
   showHealthTriggered: 0
   healthBarObject: {fileID: 1453227226135416951}
+  npcController: {fileID: 3220004918531300121}
+  barTransform: {fileID: 7520069156189230265}
 --- !u!61 &6335278434443251629
 BoxCollider2D:
   m_ObjectHideFlags: 0
