@@ -1,25 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
 
 public class FireballController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private PlayerAttacks playerAttacks;
-    private NPCController npcController;
     private float fireballDamage;
 
     private Vector3 spawnPosition;
     private float maxDistance = 0f; // nadpisywana z zewnątrz
 
+    bool hasHit = false;
+
     // Update is called once per frame
     void Update()
     {
-        float traveled = Vector3.Distance(transform.position, spawnPosition);
+        float traveledSqr = (transform.position - spawnPosition).sqrMagnitude;
 
-        //Debug.Log("traveled = " + traveled);
-        Debug.Log("maxDistance = " + maxDistance);
-        if (traveled >= maxDistance && maxDistance != 0 && maxDistance != null)
+        if (traveledSqr >= maxDistance * maxDistance)
         {
             Destroy(gameObject);
         }
@@ -38,17 +36,13 @@ public class FireballController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("NPC"))
+        if (hasHit) return;
+
+        hasHit = true;
+
+        if (collision.TryGetComponent(out NPCController npc))
         {
-            NPCController npcController = collision.GetComponent<NPCController>();
-
-            if (npcController != null)
-            {
-                Debug.Log("Collided!");
-                npcController.DamageNPC(fireballDamage);
-            }
-
-            Debug.Log(gameObject.name);
+            npc.DamageNPC(fireballDamage);
             Destroy(gameObject);
         }
         else

@@ -76,21 +76,20 @@ public class PlayerMove : MonoBehaviour
 
     float horizontalInput;
 
+    float lastSpeed;
+
+    bool wasGrounded;
+
+    float lastVelocity;
+
     void Start()
     {
-        Debug.Log("Start in PlayerMovement");
-
         Player_Health = statHealth.Max_Health;
 
         Player_MaxHealth = statHealth.Max_Health;
 
-        if (healthBar != null) Debug.Log(healthBar?.healthBarImage.fillAmount);
-
         Mana = statMana.Max_Mana;
         MaxMana = statMana.Max_Mana;
-
-        Debug.Log("StatSystem.Instance = " + StatSystem.Instance);
-        Debug.Log("Max HP = " + Player_Health);
 
         isPlayerDead = false;
     }
@@ -103,7 +102,6 @@ public class PlayerMove : MonoBehaviour
             if (manaBarObj != null)
             {
                 manaBar = manaBarObj.GetComponent<ManaBar>();
-                Debug.Log("Found manabar!");
             }
 
         }
@@ -114,7 +112,6 @@ public class PlayerMove : MonoBehaviour
             if (healthBarObj != null)
             {
                 healthBar = healthBarObj.GetComponent<HealthBar>();
-                Debug.Log("Found healthbar!");
             }
 
         }
@@ -130,13 +127,7 @@ public class PlayerMove : MonoBehaviour
         if (horizontalInput < 0) spriteRenderer.flipX = true;
         else if (horizontalInput > 0) spriteRenderer.flipX = false;
 
-        //Debug.Log("called Update " + count.ToString());
         count++;
-
-        if (isGrounded)
-            col.sharedMaterial = groundedMaterial;
-        else
-            col.sharedMaterial = airMaterial;
 
         if (Input.GetKey(KeyCode.Backspace))
         {
@@ -166,37 +157,31 @@ public class PlayerMove : MonoBehaviour
         float veloY = rb.velocity.y;
         float verY = Input.GetAxisRaw("Vertical");
 
-        //Debug.Log($"horY = {rb.velocity.y}, horX = {rb.velocity.x}");
-        //Debug.Log($"positionY = {rb.position.y}, horY = {Input.GetAxisRaw("Vertical")}");
-        //Debug.Log($"Is grounded? {isGrounded}");
         isCasting = GetIsCasting();
         isCastAnimation = playerAttacks.IsCastAnimation();
 
-        Debug.Log("[animation] isHit: " + isHit);
-        Debug.Log("[animation] isCastAnimation: " + isCastAnimation);
-        Debug.Log("[animation] isCasting: " + isCastAnimation);
-
         if (!isHit && !isCastAnimation && !isCasting)
         {
-            Debug.Log("[animation] isGrounded: " + isGrounded);
-            Debug.Log("[animation] speed: " + horX);
-            Debug.Log("[animation] verticalVelocity: " + veloY);
-
-            animator.SetBool("IsGrounded", isGrounded);
-            animator.SetFloat("Speed", horX);
-            animator.SetFloat("VerticalVelocity", veloY);
-
-            Debug.Log("[animator] speed: " + animator.GetFloat("Speed"));
-            Debug.Log("[animator] isGrounded: " + animator.GetBool("IsGrounded"));
-            Debug.Log("[animator] verticalVelocity: " + animator.GetFloat("VerticalVelocity"));
+            if (lastSpeed != horX)
+            {
+                lastSpeed = horX;
+                animator.SetFloat("Speed", lastSpeed);
+            }
+            if (wasGrounded != isGrounded)
+            {
+                wasGrounded = isGrounded;
+                animator.SetBool("IsGrounded", wasGrounded);
+            }
+            if (lastVelocity != veloY)
+            {
+                lastVelocity = veloY;
+                animator.SetFloat("VerticalVelocity", lastVelocity);
+            }  
         }
-        
     }
 
     void FixedUpdate()
     {
-        Debug.Log("Fixed update!");
-
         // Ruch poziomy
         float targetSpeed = horizontalInput * maxSpeed;
         float speedDiff = targetSpeed - rb.velocity.x;
@@ -217,25 +202,20 @@ public class PlayerMove : MonoBehaviour
         {
             if (contact.normal.y > 0.8f)
             {
-                isGrounded = true;
+                SetGrounded(true);
             }
         }
-
-        //Debug.Log($"Collided with: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
-        Debug.Log($"Collided with: {collision.gameObject.name}, Layer: {LayerMask.LayerToName(collision.gameObject.layer)}");
 
         foreach (ContactPoint2D contact in collision.contacts)
         {
             if (contact.normal.y > 0) // Normalna wskazuje na górną część obiektu
             {
-                Debug.Log("Collided with top side of the platform!");
                 // Zastosuj logikę tylko wtedy, gdy gracz dotyka góry platformy
             }
         }
 
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Collided with Wall!");
 
             //canObstacleDamage = false;
         }
@@ -247,12 +227,9 @@ public class PlayerMove : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Obstacles"))
         {
-            Debug.Log("Collided with Obstacles!");
-
             //canObstacleDamage = false;
         }
 
-        Debug.Log("Collidian = " + collision.gameObject.name);
         if (collision.gameObject.name == "Teren")
         {
             foreach (ContactPoint2D contact in collision.contacts)
@@ -260,7 +237,7 @@ public class PlayerMove : MonoBehaviour
                 // Sprawdzamy, czy normalna wskazuje w górę (czyli uderzamy od góry w coś)
                 if (contact.normal.y > 0)
                 {
-                    Debug.Log("Stoi na czymś (np. na terenie)");
+
                 }
             }
         }
@@ -271,13 +248,13 @@ public class PlayerMove : MonoBehaviour
         {
             if (contact.normal.y > 0.5f)
             {
-                isGrounded = true;
+                SetGrounded(true);
             }
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        isGrounded = false;
+        SetGrounded(false);
     }
 
     public bool IsFacingRight()
@@ -302,11 +279,7 @@ public class PlayerMove : MonoBehaviour
 
         LevelAnalytics.Instance.damageTaken += damage;
 
-        Debug.Log(Player_Health);
-
         playerAttacks.OnTakeDamage();
-
-        Debug.Log("Player take damage original = " + damage);
 
         if (iDamageType == DamageType.Physical)
         {
@@ -326,7 +299,7 @@ public class PlayerMove : MonoBehaviour
         if (Player_Health <= 0) Player_Health = 0;
 
         healthBar?.UpdateHealthBar();
-        Debug.Log("Damage = " + damage);
+
         StartCoroutine(HitAnimation());
 
         LevelAnalytics.Instance.hp_at_death += Player_Health;
@@ -334,11 +307,7 @@ public class PlayerMove : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level5") LevelAnalytics.Instance.boss_attempts += 1;
 
-        Debug.Log("Player take damage defended = " + damage);
-
         playerHit.Play();
-        
-        Debug.Log(Player_Health);
 
         if (Player_Health <= 0)
         {
@@ -421,18 +390,12 @@ public class PlayerMove : MonoBehaviour
     
     public void ReduceMana(float manaCost)
     {
-        Debug.Log("Mana = " + Mana);
-
         if (Mana >= manaCost)
         {
             Mana -= manaCost;
             manaBar.UpdateManaBar();
             
             statMana.StartManaRegen();
-        }
-        else
-        {
-            Debug.Log("Masz za mało many!");
         }
     }
 
@@ -451,5 +414,15 @@ public class PlayerMove : MonoBehaviour
     public bool GetIsHit()
     {
         return isHit;
+    }
+
+    public void SetGrounded(bool state)
+    {
+        isGrounded = state;
+
+        if (isGrounded)
+            col.sharedMaterial = groundedMaterial;
+        else
+            col.sharedMaterial = airMaterial;
     }
 }

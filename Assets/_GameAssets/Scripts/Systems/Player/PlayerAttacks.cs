@@ -74,6 +74,11 @@ public class PlayerAttacks : MonoBehaviour
 
     private bool strongerFireballShoot = false;
 
+    float manaBase;
+    float manaAbility;
+
+    float attackRange;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +89,10 @@ public class PlayerAttacks : MonoBehaviour
 
         StartCoroutine(PullStaffAnimation());
         HidePullStaff.Play();
+
+        manaBase = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false);
+        attackRange = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Attack_Range", false);
+        manaAbility = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false);
     }
 
     void Awake()
@@ -94,7 +103,6 @@ public class PlayerAttacks : MonoBehaviour
             if (normalAttackCooldownDisplayObj != null)
             {
                 normalAttackCooldownDisplay = normalAttackCooldownDisplayObj.GetComponent<CooldownDisplay>();
-                Debug.Log("Found normal attack cooldown display for UI!");
             }
 
         }
@@ -105,7 +113,6 @@ public class PlayerAttacks : MonoBehaviour
             if (strongerAttackCooldownDisplayObj != null)
             {
                 strongerAttackCooldownDisplay = strongerAttackCooldownDisplayObj.GetComponent<CooldownDisplay>();
-                Debug.Log("Found stronger attack cooldown display for UI!");
             }
 
         }
@@ -149,9 +156,6 @@ public class PlayerAttacks : MonoBehaviour
             {
                 isEnoughMana = playerMove.IsEnoughMana(WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false));
 
-                Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false));
-                Debug.Log("IsEnoughMana = " + isEnoughMana);
-
                 if (hasPulled && !isPulling && !isCasting && isEnoughMana && !playerMove.GetIsHit())
                 {
                     CastFireballAnimation();
@@ -173,9 +177,6 @@ public class PlayerAttacks : MonoBehaviour
             {
                 isEnoughMana = playerMove.IsEnoughMana(WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false));
 
-                Debug.Log("Mana needed = " + WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false));
-                Debug.Log("IsEnoughMana = " + isEnoughMana);
-
                 if (hasPulled && !isPulling && !isCasting && isEnoughMana && !playerMove.GetIsHit())
                 {
                     CastStrongerFireballAnimation();
@@ -190,42 +191,12 @@ public class PlayerAttacks : MonoBehaviour
                 CantCast.Play();
             }
         }
-
-        /*if (lastSpawnedFireball != null)
-        {
-            Vector2 rayOrigin = lastSpawnedFireball.transform.position; // Use player's position as the origin
-            Vector2 rayDirection = isFacingRight ? lastSpawnedFireball.transform.right : -lastSpawnedFireball.transform.right;
-
-            // Use a LayerMask to ignore the "Fireball" layer
-            LayerMask layerMask = ~LayerMask.GetMask("Fireball");
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, 0.2f, layerMask);
-
-            // Debugging information
-            Debug.DrawRay(rayOrigin, rayDirection * 0.2f, Color.red); // Draw the ray in the Scene view
-
-            if (hit.collider != null)
-            {
-                // Destroy the fireball if it hits terrain or an NPC
-                Destroy(lastSpawnedFireball);
-                Debug.Log("Fireball Collided with: " + hit.collider.gameObject.name);
-            }
-
-            if (hit.collider != null && (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("NPC")))
-            {
-                // Destroy the fireball if it hits terrain or an NPC
-                Destroy(lastSpawnedFireball);
-                Debug.Log("Fireball Collided with: " + hit.collider.gameObject.name);
-            }
-        }*/
     }
 
     IEnumerator SpawnAndShootFireball()
-    {
-        Debug.Log("[Spawn] Shoot fireball!");
-        
+    {    
         LevelAnalytics.Instance.attacks_in_level += 1;
         
-        Debug.Log("Fire casted!");
         isFacingRight = playerMove.IsFacingRight();
 
         Vector2 dir = isFacingRight ? Vector2.right : Vector2.left;
@@ -268,35 +239,21 @@ public class PlayerAttacks : MonoBehaviour
             float totalDamage = WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
             bool GotCrit = statCriticals.IsAttackCriticalHit();
 
-            Debug.Log("Physical Damage = " + totalDamage);
-
             if (GotCrit)
             {
-                Debug.Log("Got Physical Crit!");
                 totalDamage = statCriticals.GetCriticalDamageByAttackType(totalDamage, "Physical");
             }
 
-            Debug.Log("Critical Physical Damage = " + totalDamage);
-
-            Debug.Log("Weaker damage = " + totalDamage);
-
             statHealth.HealFromDamage(totalDamage);
 
-            float healValue = statHealth.GetHealingValue(totalDamage);
-
-            Debug.Log("Weaker healing = " + healValue);
-
-            float manaCost = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false);
-            playerMove.ReduceMana(manaCost);
+            playerMove.ReduceMana(manaBase);
 
             FireballController controller = fireball.GetComponent<FireballController>();
-
-            float range = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Attack_Range", false);
 
             if (controller != null)
             {
                 controller.SetDamage(totalDamage);
-                controller.SetTracking(spawnPosition, range);
+                controller.SetTracking(spawnPosition, attackRange);
             }
         }
 
@@ -305,11 +262,8 @@ public class PlayerAttacks : MonoBehaviour
 
     IEnumerator SpawnAndShootStrongerFireball()
     {
-        Debug.Log("[Spawn] Shoot stronger fireball!");
-
         LevelAnalytics.Instance.abilities_in_level += 1;
 
-        Debug.Log("Fire casted!");
         isFacingRight = playerMove.IsFacingRight();
 
         Vector2 fireballFacing = isFacingRight ? Vector2.right : Vector2.left;
@@ -357,36 +311,21 @@ public class PlayerAttacks : MonoBehaviour
 
             bool GotCrit = statCriticals.IsSpellCriticalHit();
 
-            Debug.Log("Magic Damage = " + totalDamage);
-
             if (GotCrit)
             {
-                Debug.Log("Got Magic Crit!");
                 totalDamage = statCriticals.GetCriticalDamageByAttackType(totalDamage, "Ability");
             }
 
-            Debug.Log("Critical Magic Damage = " + totalDamage);
-
-            Debug.Log("Stronger damage = " + totalDamage);
-
             statHealth.HealFromDamage(totalDamage);
 
-            float healValue = statHealth.GetHealingValue(totalDamage);
-
-            Debug.Log("Stronger healing = " + healValue);
-
-            float manaCost = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Ability", false);
-
-            playerMove.ReduceMana(manaCost);
+            playerMove.ReduceMana(manaAbility);
 
             FireballController controller = strongerFireball.GetComponent<FireballController>();
-
-            float range = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Attack_Range", false);
 
             if (controller != null)
             {
                 controller.SetDamage(totalDamage);
-                controller.SetTracking(spawnPosition, range);
+                controller.SetTracking(spawnPosition, attackRange);
             }
 
             if (fireballFacing == new Vector2(-1.00f, 0.00f))
@@ -407,7 +346,6 @@ public class PlayerAttacks : MonoBehaviour
 
         normalAttackCooldownDisplay.StartUIAttackCooldown(fireballCooldown);
 
-        Debug.Log("Attack_Speed = " + fireballCooldown);
         // Wait for the cooldown duration
         yield return new WaitForSeconds(fireballCooldown);
 
@@ -419,7 +357,6 @@ public class PlayerAttacks : MonoBehaviour
     {
         isPulling = true;
 
-        Debug.Log("Staff pulled!");
         animator.SetBool("HasStaff", true);
 
         //animator.SetTrigger("PullStaff");
@@ -451,12 +388,9 @@ public class PlayerAttacks : MonoBehaviour
         
         isCasting = false;
 
-        Debug.Log("[Cast] Event cast!");
-
         if (strongerFireballShoot) StartCoroutine(SpawnAndShootStrongerFireball());
         else
         {
-            Debug.Log("[Cast] Event cast for normal fireball!");
             StartCoroutine(SpawnAndShootFireball());
         }        
     }
@@ -474,7 +408,6 @@ public class PlayerAttacks : MonoBehaviour
     {
         float cooldownTime = 5f; // Czas oczekiwania przed możliwością ponownego strzału
         float timeRemaining = cooldownTime;
-        Debug.Log("Cooldown animation!");
 
         while (timeRemaining > 0)
         {
@@ -488,22 +421,15 @@ public class PlayerAttacks : MonoBehaviour
             {
                 // Resetuj czas oczekiwania
                 timeRemaining = cooldownTime;
-                Debug.Log("Czas oczekiwania zresetowany!");
             }
         }
-
-        Debug.Log("Możesz ponownie strzelić!");
     }
 
     IEnumerator HideStaffAnimation()
     {
         isHiding = true;
 
-        Debug.Log("Staff hidden!");
-
         animator.SetBool("HasStaff", false);
-
-        //animator.SetTrigger("OpenCombat");
 
         animator.SetTrigger("OpenCombat");
 
@@ -526,8 +452,6 @@ public class PlayerAttacks : MonoBehaviour
         strongerFireballCooldown = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Spell_Speed", false);
 
         strongerAttackCooldownDisplay.StartUIAttackCooldown(strongerFireballCooldown);
-
-        Debug.Log("Spell_Speed = " + strongerFireballCooldown);
 
         // Wait for the cooldown duration
         yield return new WaitForSeconds(strongerFireballCooldown);
