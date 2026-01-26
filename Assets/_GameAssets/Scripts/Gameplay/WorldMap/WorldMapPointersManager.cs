@@ -9,6 +9,7 @@ public class WorldMapPointersManager : MonoBehaviour
     public class GameObjectLevelIndex
     {
         public GameObject gameObject;
+        public Image image;
         public int levelIndex;
     }
 
@@ -27,38 +28,37 @@ public class WorldMapPointersManager : MonoBehaviour
     {
         int level = GameManager.Instance.GetUnlockedLevel();
 
-        var target = objectsForPositions
-        .FirstOrDefault(o => o.levelIndex == level);
+        int indexInList = -1;
 
-        if (target == null)
+        for (int i = 0; i < objectsForPositions.Length; i++)
         {
-            Debug.LogError("Nie znaleziono obiektu dla levelu " + level);
+            if (objectsForPositions[i].levelIndex == level)
+            {
+                indexInList = i;
+                wizardHead.center = objectsForPositions[i].gameObject.transform.localPosition;
+                break;
+            }
+        }
+
+        if (indexInList == -1)
+        {
+            Debug.LogError($"Nie znaleziono obiektu dla levelu {level}");
             wizardHead.center = transform.localPosition;
             return;
         }
 
-        int indexInList = Array.IndexOf(objectsForPositions, target);
-
-        wizardHead.center = target.gameObject.GetComponent<Transform>().localPosition;
-
         for (int i = 0; i < objectsForPositions.Length; i++)
         {
+            var image = objectsForPositions[i].image;
+
             if (i < indexInList)
-            {
-                objectsForPositions[i].gameObject.GetComponent<Image>().color = colorForFinishedLevels;
-            }
+                image.color = colorForFinishedLevels;
             else if (i == indexInList)
-            {
-                objectsForPositions[i].gameObject.GetComponent<Image>().color = colorForCurrentLevel;
-            }
+                image.color = colorForCurrentLevel;
             else if (i == indexInList + 1)
-            {
-                objectsForPositions[i].gameObject.GetComponent<Image>().color = colorForNextLevel;
-            }
+                image.color = colorForNextLevel;
             else
-            {
-                objectsForPositions[i].gameObject.GetComponent<Image>().color = colorForBlockedLevels;
-            }
+                image.color = colorForBlockedLevels;
         }
     }
 }
