@@ -21,8 +21,6 @@ public class FireballController : MonoBehaviour
 
         if (traveledSqr >= maxDistance * maxDistance)
         {
-            Debug.Log($"Distance was {maxDistance}!");
-            Debug.Log("Destroyed by distance!");
             Destroy(gameObject);
         }
     }
@@ -46,15 +44,11 @@ public class FireballController : MonoBehaviour
 
         if (collision.TryGetComponent(out NPCController npc))
         {
-            Debug.Log($"Destroyed by: NPC!");
-
             npc.DamageNPC(fireballDamage);
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log($"Destroyed by: {collision.gameObject.name}!");
-
             Destroy(gameObject);
         }
     }
