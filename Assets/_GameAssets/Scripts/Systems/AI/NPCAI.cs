@@ -14,7 +14,7 @@ public class NPCAI : MonoBehaviour
     public float swordDamage = 100;
     public float swordCooldown = 1f;
     private bool canThrowSword = true;
-    private NPCController npcController;
+    
     private bool isFacingRight = true;
 
     public float npcSize = 1;
@@ -27,7 +27,10 @@ public class NPCAI : MonoBehaviour
 
     bool isThrowing = false;
 
+    [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private NPCController npcController;
 
     void Awake()
     {
@@ -42,20 +45,20 @@ public class NPCAI : MonoBehaviour
     [SerializeField]
     AudioSource swordThrowSound;
 
-    void Start()
-    {
-        // Find the PlayerMove script attached to the same GameObject
-        npcController = GetComponent<NPCController>();
-
-        animator = GetComponent<Animator>();
-    }
+    private float detectionTimer = 0f;
+    private float detectionInterval = 0.1f; // sprawdz co 0.1s
 
     private void Update()
     {
         if (CutsceneManager.cutscenePlaying) return;
         if (npcController.IsDead) return;
 
-        CheckForPlayer();
+        detectionTimer += Time.deltaTime;
+        if (detectionTimer >= detectionInterval)
+        {
+            CheckForPlayer();
+            detectionTimer = 0f;
+        }
     }
 
     void CheckForPlayer()
@@ -77,83 +80,6 @@ public class NPCAI : MonoBehaviour
             StartCoroutine(ThrowSwordCooldown());
         }
     }
-
-    /*void ThrowSword(Vector2 direction)
-    {
-        // Instantiate the sword at enemy's position
-        float spawnOffset = isFacingRight ? 1.8f : -1.8f;
-        Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.8f, 0f);
-        Vector2 swordFacing = isFacingRight ? Vector2.right : Vector2.left;
-
-        GameObject sword = Instantiate(swordPrefab, spawnPosition, Quaternion.identity);
-        Debug.Log("Sword throwed");
-
-        
-
-        swordThrowSound.Play();
-
-        // Add force to make it move toward the player
-        Rigidbody2D rb = sword.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.velocity = direction * throwForce;
-        }
-
-        SwordController6 swordController6 = sword.GetComponent<SwordController6>();
-
-        // Destroy the fireball after a certain time to prevent cluttering the scene
-        if (swordController6 != null)
-        {
-            swordController6.SetDamage(swordDamage);
-        }
-
-        if (swordFacing == new Vector2(-1.00f, 0.00f))
-            sword.GetComponent<SpriteRenderer>().flipX = true;
-        else
-            sword.GetComponent<SpriteRenderer>().flipX = false;
-
-        Destroy(sword, 2f);
-
-        StartCoroutine(SwordCooldown());
-    }*/
-
-    /*void ThrowSword(Vector2 direction)
-    {
-        // Zmień pozycję w zależności od kierunku
-        float spawnOffset = isFacingRight ? 3f : -3f;
-        Vector3 spawnPosition = transform.position + new Vector3(spawnOffset, 0.8f, 0f);
-
-        // Instancjonowanie miecza
-        GameObject sword = Instantiate(swordPrefab, spawnPosition, Quaternion.identity);
-        Debug.Log("Sword thrown");
-
-        // Dźwięk rzutu miecza
-        swordThrowSound.Play();
-
-        // Dodaj siłę do ruchu miecza
-        Rigidbody2D rb = sword.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.velocity = direction * throwForce;
-        }
-
-        // Przypisanie obrażeń do miecza
-        SwordController6 swordController6 = sword.GetComponent<SwordController6>();
-        if (swordController6 != null)
-        {
-            swordController6.SetDamage(swordDamage);
-        }
-
-        // Zmiana kierunku sprite'a, jeśli jest to konieczne
-        if (direction == new Vector2(-1.00f, 0.00f))
-            sword.GetComponent<SpriteRenderer>().flipX = true;
-        else
-            sword.GetComponent<SpriteRenderer>().flipX = false;
-
-        // Zniszczenie miecza po 2 sekundach
-        Destroy(sword, 2f);
-        StartCoroutine(SwordCooldown());
-    }*/
 
     IEnumerator ThrowSword()
     {

@@ -9,7 +9,7 @@ public class HealthBarEnemy : MonoBehaviour
     public Image healthBarImage;
     private float maxHealth;
     private float currentHealth;
-    private RectTransform barTransform;
+    
     public TMP_Text HP_Amount;
 
     // Optionally, define colors for different health states
@@ -21,16 +21,15 @@ public class HealthBarEnemy : MonoBehaviour
     public bool showHealthBarOnlyOnDamage = false;
     public bool showHealthTriggered = false;
 
-    NPCController npcController;
-
     public GameObject healthBarObject;
 
     private Coroutine hideCoroutine;
 
-    void Awake()
-    {
-        npcController = gameObject.GetComponent<NPCController>();
-    }
+    [SerializeField]
+    NPCController npcController;
+
+    [SerializeField]
+    private RectTransform barTransform;
 
     void Start()
     {   
@@ -38,7 +37,6 @@ public class HealthBarEnemy : MonoBehaviour
         currentHealth = npcController.NPC_MaxHealth;
         Debug.Log(maxHealth);
         Debug.Log(healthBarImage.color);
-        barTransform = healthBarImage.GetComponent<RectTransform>();
         initialWidth = barTransform.rect.width;
         HP_Amount.text = $"{currentHealth}/{maxHealth}";
 
@@ -63,8 +61,6 @@ public class HealthBarEnemy : MonoBehaviour
     {
         if (showHealthBarOnlyOnDamage)
         {
-            StartCoroutine(HideHealthBar());
-
             if (hideCoroutine != null)
                 StopCoroutine(hideCoroutine);
 

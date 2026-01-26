@@ -190,7 +190,7 @@ MonoBehaviour:
     m_Bits: 53056
   wallLayers:
     serializedVersion: 2
-    m_Bits: 51008
+    m_Bits: 34624
 --- !u!95 &130162033744813733
 Animator:
   serializedVersion: 5

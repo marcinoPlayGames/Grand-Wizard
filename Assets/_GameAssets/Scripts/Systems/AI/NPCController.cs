@@ -8,7 +8,7 @@ using System;
 public class NPCController : MonoBehaviour
 {
     public float speed = 1f;
-    private Rigidbody2D rb;
+    
     private int direction = 1;
     public LayerMask groundLayer;
     public NPCDeathCounter npcDeathCounter;
@@ -24,8 +24,6 @@ public class NPCController : MonoBehaviour
 
     bool isHit = false;
     bool isThrowing = false;
-
-    private NPCAI npcAI;
 
     private bool isDead = false;
 
@@ -44,22 +42,23 @@ public class NPCController : MonoBehaviour
 
     private bool durationStart;
 
-    private float duration;
-
-    private Animator animator;
+    private float duration; 
 
     [SerializeField] private LayerMask collisionLayers;
 
     [SerializeField] private LayerMask wallLayers;
 
+    [SerializeField] private Rigidbody2D rb;
+
+    [SerializeField] private NPCAI npcAI;
+
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private SpriteRenderer sr;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         NPC_Health = NPC_MaxHealth;
-
-        npcAI = GetComponent<NPCAI>();
-
-        animator = GetComponent<Animator>();
     }
 
     void Awake()
@@ -84,8 +83,8 @@ public class NPCController : MonoBehaviour
             MoveNPC();
         }
 
-        float horX = GetComponent<Rigidbody2D>().velocity.x;
-        float verY = GetComponent<Rigidbody2D>().velocity.y; // Get the vertical velocity
+        float horX = rb.velocity.x;
+        float verY = rb.velocity.y; // Get the vertical velocity
 
         CheckForEdge();
 
@@ -207,7 +206,7 @@ public class NPCController : MonoBehaviour
 
     public bool IsFacingRight()
     {
-        return GetComponent<SpriteRenderer>().flipX == false;
+        return sr.flipX == false;
     }
 
     void CheckForEdge()
@@ -237,16 +236,12 @@ public class NPCController : MonoBehaviour
         if (SceneManager.GetActiveScene().name == loreSceneName) return;
         if (CutsceneManager.cutscenePlaying) return;
 
-        //Vector3 localScale = transform.localScale;
-        //localScale.x *= -1;
-        //transform.localScale = localScale;
-
         Debug.Log($"Flipped as {gameObject.name}!");
 
         direction *= -1;
         isFacingRight = !isFacingRight;
 
-        GetComponent<SpriteRenderer>().flipX = !isFacingRight;
+        sr.flipX = !isFacingRight;
     }
 
 
