@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
             coinText = GameObject.Find("CoinText").GetComponent<TMP_Text>();
         }
 
-        if (coinText != null) coinText.text = "" + coins;
+        if (coinText != null) coinText.text = coins.ToString();
     }
 
     private void OnEnable()

@@ -20,6 +20,8 @@ public class StatHealth : MonoBehaviour
     [SerializeField]
     PlayerMove playerMove;
 
+    private static readonly WaitForSeconds oneSecond = new WaitForSeconds(1f);
+
     void Awake()
     {
         Max_Health = GetStatValues("Max_Health");
@@ -112,7 +114,7 @@ public class StatHealth : MonoBehaviour
                 yield break; // wyjście z pętli
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return oneSecond;
         }
     }
 }

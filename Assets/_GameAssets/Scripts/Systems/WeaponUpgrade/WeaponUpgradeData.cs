@@ -15,5 +15,5 @@ public class WeaponUpgradeData
     public Dictionary<string, float> Attack_Range { get; set; }
 
     [JsonExtensionData]
-    public IDictionary<string, JToken> StatModifiers { get; set; }
+    public Dictionary<string, Dictionary<string, float>> StatModifiers;
 }

@@ -57,6 +57,8 @@ public class StatSystem : MonoBehaviour
         TextAsset json = Resources.Load<TextAsset>("JSON Files/StatisticsData/stats");
 
         statTable = JsonConvert.DeserializeObject<Dictionary<string, StatData>>(json.text);
+
+        InitializeStats();
     }
 
     public int GetLevel(string statName)
@@ -202,9 +204,17 @@ public class StatSystem : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("NextLevel"); // lub "LevelSelect", jak wolisz
     }
 
-    public List<string> GetAllStatNames()
+    private List<string> cachedStatNames;
+
+    void InitializeStats()
     {
-        return new List<string>(statTable.Keys);
+        // po wczytaniu JSON
+        cachedStatNames = new List<string>(statTable.Keys);
+    }
+
+    public IReadOnlyList<string> GetAllStatNames()
+    {
+        return cachedStatNames;
     }
 
     public void ResetAllStatData()

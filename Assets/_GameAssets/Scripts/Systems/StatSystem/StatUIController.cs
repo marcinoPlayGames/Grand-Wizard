@@ -84,11 +84,7 @@ public class StatUIController : MonoBehaviour
         currentValueText.text = $"{currentValue}{additionalSign}";
         nextValueText.text = $"{nextValue}{additionalSign}";
 
-        Sprite icon = Resources.Load<Sprite>($"StatIcons/{currentStat}");
-        if (icon != null)
-        {
-            statIconImage.sprite = icon;
-        }
+        statIconImage.sprite = StatIconCache.Instance.GetIcon(currentStat);
     }
 
     public void OnUpgradeButton()

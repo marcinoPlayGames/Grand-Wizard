@@ -15,6 +15,7 @@ public class StatMana : MonoBehaviour
     [SerializeField]
     PlayerMove playerMove;
 
+    private static readonly WaitForSeconds oneSecond = new WaitForSeconds(1f);
     void Awake()
     {
         Max_Mana = GetStatValues("Mana");
@@ -95,7 +96,7 @@ public class StatMana : MonoBehaviour
                 yield break; // wyjście z pętli
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return oneSecond;
         }
     }
 }

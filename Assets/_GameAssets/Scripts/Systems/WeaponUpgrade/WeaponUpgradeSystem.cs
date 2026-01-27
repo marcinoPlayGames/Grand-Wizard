@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 public class WeaponUpgradeSystem : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class WeaponUpgradeSystem : MonoBehaviour
 
     private Dictionary<string, WeaponUpgradeData> weaponDataCache = new Dictionary<string, WeaponUpgradeData>();
     private Dictionary<string, int> weaponLevels = new Dictionary<string, int>();
+
+    private readonly List<string> modifierBuffer = new();
 
     public void ResetDictionaries()
     {
@@ -34,17 +37,42 @@ public class WeaponUpgradeSystem : MonoBehaviour
 
     public WeaponUpgradeData LoadWeaponData(string weaponId)
     {
-        if (weaponDataCache.ContainsKey(weaponId))
-            return weaponDataCache[weaponId];
+        if (weaponDataCache.TryGetValue(weaponId, out var cached))
+            return cached;
 
-        TextAsset json = Resources.Load<TextAsset>("JSON Files/WeaponsData/" + weaponId); // np. "Staff"
+        TextAsset json = Resources.Load<TextAsset>("JSON Files/WeaponsData/" + weaponId);
         if (json == null)
-        {
             return null;
+
+        WeaponUpgradeData data = ParseWeaponData(json.text);
+        weaponDataCache[weaponId] = data;
+        return data;
+    }
+
+    private WeaponUpgradeData ParseWeaponData(string jsonText)
+    {
+        var root = Newtonsoft.Json.Linq.JObject.Parse(jsonText);
+
+        WeaponUpgradeData data = root.ToObject<WeaponUpgradeData>();
+
+        data.StatModifiers = new Dictionary<string, Dictionary<string, float>>();
+
+        var modifiersJson = root["StatModifiers"] as Newtonsoft.Json.Linq.JObject;
+        if (modifiersJson != null)
+        {
+            foreach (var modifier in modifiersJson)
+            {
+                var levelDict = new Dictionary<string, float>();
+
+                foreach (var lvl in (Newtonsoft.Json.Linq.JObject)modifier.Value)
+                {
+                    levelDict[lvl.Key] = lvl.Value.Value<float>();
+                }
+
+                data.StatModifiers[modifier.Key] = levelDict;
+            }
         }
 
-        WeaponUpgradeData data = JsonConvert.DeserializeObject<WeaponUpgradeData>(json.text);
-        weaponDataCache[weaponId] = data;
         return data;
     }
 
@@ -95,15 +123,10 @@ public class WeaponUpgradeSystem : MonoBehaviour
 
         string key = $"stat.{statName}_modifier";
 
-        if (data.StatModifiers.TryGetValue(key, out var jToken))
+        if (data.StatModifiers.TryGetValue(key, out var levels) &&
+            levels.TryGetValue(level.ToString(), out var value))
         {
-            // Konwertujemy JToken na słownik
-            var dict = jToken.ToObject<Dictionary<string, float>>();
-
-            if (dict != null && dict.TryGetValue(level.ToString(), out var value))
-            {
-                return value;
-            }
+            return value;
         }
 
         return 0f;
@@ -142,37 +165,26 @@ public class WeaponUpgradeSystem : MonoBehaviour
     public string GetModifiersIcons(string weaponId, bool bGetNextLevel)
     {
         var data = LoadWeaponData(weaponId);
-        if (data == null || data.StatModifiers == null)
-            return "";
+        if (data == null) return "";
 
         int currentLevel = GetLevel(weaponId);
         int maxLevel = GetMaxLevel(weaponId);
-
-        // Jeśli prosimy o next level, ale już jesteśmy na max – to zostajemy przy aktualnym
         int level = bGetNextLevel && currentLevel < maxLevel ? currentLevel + 1 : currentLevel;
 
         var sb = new System.Text.StringBuilder();
 
-        // 👇 Dodajemy ikonkę Base_Damage jeśli jej wartość > 0
-        if (data.Base_Damage != null && data.Base_Damage.TryGetValue(level.ToString(), out var baseDamage) && baseDamage > 0f)
-        {
+        if (data.Base_Damage.TryGetValue(level.ToString(), out var baseDamage) && baseDamage > 0)
             sb.Append("<sprite name=\"Base_Damage\">");
-        }
 
-        // Pobieramy wszystkie statystyki z StatSystem
-        var allStats = StatSystem.Instance.GetAllStatNames();
-
-        foreach (var stat in allStats)
+        foreach (var stat in StatSystem.Instance.GetAllStatNames())
         {
             string key = $"stat.{stat}_modifier";
 
-            if (data.StatModifiers.TryGetValue(key, out var jToken))
+            if (data.StatModifiers.TryGetValue(key, out var levels) &&
+                levels.TryGetValue(level.ToString(), out var val) &&
+                val != 0f)
             {
-                var dict = jToken.ToObject<Dictionary<string, float>>();
-                if (dict != null && dict.TryGetValue(level.ToString(), out var val) && val != 0f)
-                {
-                    sb.Append($"<sprite name=\"{stat}\">");
-                }
+                sb.Append($"<sprite name=\"{stat}\">");
             }
         }
 
@@ -202,16 +214,10 @@ public class WeaponUpgradeSystem : MonoBehaviour
         {
             string modifierKey = $"stat.{statName}_modifier";
 
-            if (data.StatModifiers.TryGetValue(modifierKey, out var jToken))
+            if (data.StatModifiers.TryGetValue(modifierKey, out var levels) && levels.TryGetValue(level.ToString(), out var weaponMod))
             {
-                var dict = jToken.ToObject<Dictionary<string, float>>();
-                if (dict != null && dict.TryGetValue(level.ToString(), out var weaponMod))
-                {
-                    int statLevel = StatSystem.Instance.GetLevel(statName);
-                    float statValue = StatSystem.Instance.GetStatValue(statName);
-
-                    total += statValue * (weaponMod / 100);
-                }
+                float statValue = StatSystem.Instance.GetStatValue(statName);
+                total += statValue * (weaponMod / 100f);
             }
         }
 
@@ -281,30 +287,26 @@ public class WeaponUpgradeSystem : MonoBehaviour
 
         // Modyfikatory (jak poprzednio)
         float totalModifiers = totalDamage - baseDamage;
-        var modifierList = new List<string>();
+
+        modifierBuffer.Clear();
 
         foreach (var stat in StatSystem.Instance.GetAllStatNames())
         {
             string key = $"stat.{stat}_modifier";
-            if (data.StatModifiers.TryGetValue(key, out var jToken))
+
+            if (data.StatModifiers.TryGetValue(key, out var levels) &&
+                levels.TryGetValue(level.ToString(), out var modValue) &&
+                modValue != 0f)
             {
-                var dict = jToken.ToObject<Dictionary<string, float>>();
-                if (dict != null && dict.TryGetValue(level.ToString(), out var modValue) && modValue != 0f)
-                {
-                    float statVal = StatSystem.Instance.GetStatValue(stat);
-                    float contribution = statVal * modValue;
-                    if (totalModifiers > 0f)
-                    {
-                        float percent = (contribution / totalModifiers) * 100f;
-                        modifierList.Add($"{percent:F0}% <sprite name=\"{stat}\">");
-                    }
-                }
+                float statVal = StatSystem.Instance.GetStatValue(stat);
+                float contribution = statVal * (modValue / 100f);
+                modifierBuffer.Add($"{modValue:F0}% ({contribution:F0}) <sprite name=\"{stat}\">");
             }
         }
 
-        if (modifierList.Count > 0)
+        if (modifierBuffer.Count > 0)
         {
-            sb.AppendLine("Modifiers: " + string.Join(", ", modifierList));
+            sb.AppendLine("Modifiers: " + string.Join(", ", modifierBuffer));
         }
 
         return sb.ToString();
@@ -395,10 +397,8 @@ public class WeaponUpgradeSystem : MonoBehaviour
         foreach (var stat in StatSystem.Instance.GetAllStatNames())
         {
             string key = $"stat.{stat}_modifier";
-            if (data.StatModifiers.TryGetValue(key, out var jToken))
+            if (data.StatModifiers.TryGetValue(key, out var levels) && levels.TryGetValue(level.ToString(), out var modValue))
             {
-                var dict = jToken.ToObject<Dictionary<string, float>>();
-                if (dict != null && dict.TryGetValue(level.ToString(), out var modValue) && modValue != 0f)
                 {
                     float statVal = StatSystem.Instance.GetStatValue(stat);
                     float contribution = statVal * (modValue / 100f);
@@ -463,17 +463,11 @@ public class WeaponUpgradeSystem : MonoBehaviour
         foreach (var stat in StatSystem.Instance.GetAllStatNames())
         {
             string key = $"stat.{stat}_modifier";
-            if (data.StatModifiers.TryGetValue(key, out var jToken))
+            if (data.StatModifiers.TryGetValue(key, out var levels) && levels.TryGetValue(level.ToString(), out var modValue) && modValue != 0f)
             {
-                var dict = jToken.ToObject<Dictionary<string, float>>();
-                if (dict != null && dict.TryGetValue(level.ToString(), out var modValue) && modValue != 0f)
-                {
-                    float statVal = StatSystem.Instance.GetStatValue(stat);
-                    float contribution = statVal * (modValue / 100f);
-
-                    // Tu zamiast wyliczać % udziału, pokazujemy wizualny % i wkład
-                    modifierList.Add($"{modValue:F0}% ({contribution:F0}) <sprite name=\"{stat}\">");
-                }
+                float statVal = StatSystem.Instance.GetStatValue(stat);
+                float contribution = statVal * (modValue / 100f);
+                modifierList.Add($"{modValue:F0}% ({contribution:F0}) <sprite name=\"{stat}\">");
             }
         }
 
