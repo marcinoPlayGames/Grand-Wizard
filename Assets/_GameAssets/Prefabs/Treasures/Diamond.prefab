@@ -164,6 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinAmount: 5
   coinCollect: {fileID: 4451527427473006303}
+  colliders2D: {fileID: 4339240049566827684}
+  spriteRenderer: {fileID: 2987104564751989286}
 --- !u!82 &4451527427473006303
 AudioSource:
   m_ObjectHideFlags: 0

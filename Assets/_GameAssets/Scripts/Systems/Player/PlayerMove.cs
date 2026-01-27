@@ -294,6 +294,8 @@ public class PlayerMove : MonoBehaviour
             damage = damage;
         }
 
+        if (damage <= 0) return;
+
         Player_Health -= damage;
 
         if (Player_Health <= 0) Player_Health = 0;

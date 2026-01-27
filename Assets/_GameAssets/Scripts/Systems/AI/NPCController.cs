@@ -123,7 +123,7 @@ public class NPCController : MonoBehaviour
             }
             if (lastSpeed != horX)
             {
-                lastSpeed = horX;
+                lastSpeed = Math.Abs(horX);
                 animator.SetFloat("Speed", lastSpeed);
             }
             if (wasGrounded != isGrounded)
@@ -143,6 +143,7 @@ public class NPCController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == loreSceneName) return;
         if (CutsceneManager.cutscenePlaying) return;
+        if (isHit || isThrowing) return;
 
         if (((1 << collision.gameObject.layer) & wallLayers) != 0)
         {

@@ -352,7 +352,7 @@ public class PlayerAttacks : MonoBehaviour
     {
         isCasting = true;
 
-        animator.SetTrigger("Cast");
+        animator.SetBool("IsCasting", true);
 
         strongerFireballShoot = false;   
     }
@@ -362,6 +362,8 @@ public class PlayerAttacks : MonoBehaviour
         if (!isCasting) return;
         
         isCasting = false;
+
+        animator.SetBool("IsCasting", false);
 
         if (strongerFireballShoot) StartCoroutine(SpawnAndShootStrongerFireball());
         else
@@ -374,7 +376,7 @@ public class PlayerAttacks : MonoBehaviour
     {
         isCasting = true;
 
-        animator.SetTrigger("Cast");
+        animator.SetBool("IsCasting", true);
 
         strongerFireballShoot = true;
     }
@@ -455,6 +457,11 @@ public class PlayerAttacks : MonoBehaviour
     {
         timeSinceLastDamage = 0f;
         isInCombat = true;
+
+        // FAIL-SAFE: Jeśli oberwaliśmy, przerywamy rzucanie czaru
+        isCasting = false;
+        strongerFireballShoot = false;
+
         Invoke("ExitCombat", 5f);
     }
 
