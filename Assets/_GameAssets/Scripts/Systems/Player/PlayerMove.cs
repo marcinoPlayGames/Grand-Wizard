@@ -45,14 +45,16 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float airDeceleration = 5f;     // hamowanie w powietrzu  
 
     [SerializeField]
-    AudioSource playerJump;
+    AudioSource playerAudioSource;
 
     [SerializeField]
-    AudioSource playerFall;
+    AudioClip playerJump;
 
     [SerializeField]
-    AudioSource playerHit;
+    AudioClip playerHit;
 
+    [SerializeField]
+    AudioClip playerFall;
 
     int count = 0;
     // Update is called once per frame
@@ -136,14 +138,14 @@ public class PlayerMove : MonoBehaviour
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) && !jumpState)
         {
             rb.velocity = new Vector3(rb.velocity.x, 10, 0);
-            playerJump.Play();
+            playerAudioSource.PlayOneShot(playerJump);
             jumpState = true;
         }
 
         if (jumpState == true && isGrounded)
         {
             jumpState = false;
-            playerFall.Play();
+            playerAudioSource.PlayOneShot(playerFall);
         }
 
         if (Input.GetKey("n"))
@@ -309,7 +311,7 @@ public class PlayerMove : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level5") LevelAnalytics.Instance.boss_attempts += 1;
 
-        playerHit.Play();
+        playerAudioSource.PlayOneShot(playerHit);
 
         if (Player_Health <= 0)
         {

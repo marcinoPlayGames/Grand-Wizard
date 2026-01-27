@@ -38,22 +38,25 @@ public class PlayerAttacks : MonoBehaviour
     private Coroutine castCoroutine;
 
     [SerializeField]
-    AudioSource Fireball;
+    AudioSource playerAudioSource;
 
     [SerializeField]
-    AudioSource StrongerFireball;
+    AudioClip Fireball;
 
     [SerializeField]
-    AudioSource CantCast;
+    AudioClip StrongerFireball;
 
     [SerializeField]
-    AudioSource CantAttack;
+    AudioClip CantCast;
 
     [SerializeField]
-    AudioSource NotEnoughMana;
+    AudioClip CantAttack;
 
     [SerializeField]
-    AudioSource HidePullStaff;
+    AudioClip NotEnoughMana;
+
+    [SerializeField]
+    AudioClip HidePullStaff;
 
     [SerializeField]
     private StatAttacks statAttacks;
@@ -88,7 +91,7 @@ public class PlayerAttacks : MonoBehaviour
         strongerFireballSpeed = strongerFireballSpeed; // * (1 + statAttacks.Spell_Speed);
 
         StartCoroutine(PullStaffAnimation());
-        HidePullStaff.Play();
+        playerAudioSource.PlayOneShot(HidePullStaff);
 
         manaBase = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Mana_Base", false);
         attackRange = WeaponUpgradeSystem.Instance.GetWeaponCostsCalculated("Staff", "Attack_Range", false);
@@ -140,13 +143,13 @@ public class PlayerAttacks : MonoBehaviour
             {
                 animator.SetTrigger("PullStaff");
                 PullStaffAnimation();
-                HidePullStaff.Play();
+                playerAudioSource.PlayOneShot(HidePullStaff);
             }
             else if (hasPulled && !isPulling && !isHiding && !playerMove.GetIsHit())
             {
                 animator.SetTrigger("HideStaff");
                 HideStaffAnimation();
-                HidePullStaff.Play();
+                playerAudioSource.PlayOneShot(HidePullStaff);
             }
         }
 
@@ -162,12 +165,12 @@ public class PlayerAttacks : MonoBehaviour
                 }
                 else if (!isEnoughMana)
                 {
-                    NotEnoughMana.Play();
+                    playerAudioSource.PlayOneShot(NotEnoughMana);
                 }
             }
             else
             {
-                CantAttack.Play();
+                playerAudioSource.PlayOneShot(CantAttack);
             }
         }
 
@@ -183,12 +186,12 @@ public class PlayerAttacks : MonoBehaviour
                 }
                 else if (!isEnoughMana)
                 {
-                    NotEnoughMana.Play();
+                    playerAudioSource.PlayOneShot(NotEnoughMana);
                 }
             }
             else
             {
-                CantCast.Play();
+                playerAudioSource.PlayOneShot(CantCast);
             }
         }
     }
@@ -224,7 +227,7 @@ public class PlayerAttacks : MonoBehaviour
         fireball.transform.position = spawnPosition;
         fireball.transform.rotation = Quaternion.identity;
 
-        Fireball.Play();
+        playerAudioSource.PlayOneShot(Fireball);
 
         yield return null; // zostawiamy – fizyka zaskoczy poprawnie
 
@@ -282,7 +285,7 @@ public class PlayerAttacks : MonoBehaviour
         strongerFireball.transform.position = spawnPosition;
         strongerFireball.transform.rotation = Quaternion.identity;
 
-        Fireball.Play();
+        playerAudioSource.PlayOneShot(Fireball);
 
         yield return null;
 
