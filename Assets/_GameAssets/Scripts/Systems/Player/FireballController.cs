@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class FireballController : MonoBehaviour
 {
+
+    [SerializeField]
+    private FireballType fireballType;
+
     private float fireballDamage;
 
     private Vector3 spawnPosition;
@@ -21,7 +25,7 @@ public class FireballController : MonoBehaviour
 
         if (traveledSqr >= maxDistance * maxDistance)
         {
-            FireballPool.Instance.ReturnFireball(gameObject);
+            FireballPool.Instance.ReturnFireball(fireballType, gameObject);
         }
     }
 
@@ -46,11 +50,11 @@ public class FireballController : MonoBehaviour
         {
             npc.DamageNPC(fireballDamage);
 
-            FireballPool.Instance.ReturnFireball(gameObject);
+            FireballPool.Instance.ReturnFireball(fireballType, gameObject);
         }
         else
         {
-            FireballPool.Instance.ReturnFireball(gameObject);
+            FireballPool.Instance.ReturnFireball(fireballType, gameObject);
         }
     }
     public void ResetFireball()

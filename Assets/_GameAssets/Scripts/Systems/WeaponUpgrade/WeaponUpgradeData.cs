@@ -13,7 +13,5 @@ public class WeaponUpgradeData
     public Dictionary<string, float> Attack_Speed { get; set; }
     public Dictionary<string, float> Spell_Speed { get; set; }
     public Dictionary<string, float> Attack_Range { get; set; }
-
-    [JsonExtensionData]
-    public Dictionary<string, Dictionary<string, float>> StatModifiers;
+    public Dictionary<string, Dictionary<string, float>> StatModifiers { get; set; }
 }

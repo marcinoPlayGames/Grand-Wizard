@@ -65,6 +65,14 @@ public class NPCController : MonoBehaviour
     private float detectionTimer = 0f;
     private float detectionInterval = 0.1f;
 
+    private EnemyHealthBarUI healthBar;
+
+    void OnEnable()
+    {
+        healthBar = EnemyHealthBarPool.Instance.Get();
+        healthBar.Bind(this);
+    }
+
     void Start()
     {
         NPC_Health = NPC_MaxHealth;
@@ -208,6 +216,12 @@ public class NPCController : MonoBehaviour
 
     IEnumerator DeactiveNPCS()
     {
+        if (healthBar != null)
+        {
+            EnemyHealthBarPool.Instance.Return(healthBar);
+            healthBar = null;
+        }
+
         yield return new WaitForSeconds(1f);
 
         gameObject.SetActive(false);

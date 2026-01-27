@@ -220,7 +220,7 @@ public class PlayerAttacks : MonoBehaviour
             new Vector3(0f, 0.3f, 0f);
 
         // 🔁 POOL
-        GameObject fireball = FireballPool.Instance.GetFireball();
+        GameObject fireball = FireballPool.Instance.GetFireball(FireballType.Normal);
         fireball.transform.position = spawnPosition;
         fireball.transform.rotation = Quaternion.identity;
 
@@ -278,7 +278,7 @@ public class PlayerAttacks : MonoBehaviour
             new Vector3(0f, 0.3f, 0f);
 
         // 🔁 POOL
-        GameObject strongerFireball = FireballPool.Instance.GetFireball();
+        GameObject strongerFireball = FireballPool.Instance.GetFireball(FireballType.Strong);
         strongerFireball.transform.position = spawnPosition;
         strongerFireball.transform.rotation = Quaternion.identity;
 

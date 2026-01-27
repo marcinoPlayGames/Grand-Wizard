@@ -5,10 +5,10 @@ public class FireballPool : MonoBehaviour
 {
     public static FireballPool Instance;
 
-    public GameObject fireballPrefab;
-    public int poolSize = 8;
+    [SerializeField]
+    private List<FireballPoolConfig> fireballConfigs;
 
-    private List<GameObject> pool;
+    private Dictionary<FireballType, List<GameObject>> pools;
 
     void Awake()
     {
@@ -20,19 +20,32 @@ public class FireballPool : MonoBehaviour
             return;
         }
 
-        pool = new List<GameObject>();
+        pools = new Dictionary<FireballType, List<GameObject>>();
 
-        for (int i = 0; i < poolSize; i++)
+        foreach (var config in fireballConfigs)
         {
-            GameObject obj = Instantiate(fireballPrefab);
-            obj.SetActive(false);
-            pool.Add(obj);
+            List<GameObject> pool = new List<GameObject>();
+
+            for (int i = 0; i < config.poolSize; i++)
+            {
+                GameObject obj = Instantiate(config.prefab);
+                obj.SetActive(false);
+                pool.Add(obj);
+            }
+
+            pools.Add(config.type, pool);
         }
     }
 
-    public GameObject GetFireball()
+    public GameObject GetFireball(FireballType type)
     {
-        foreach (var fireball in pool)
+        if (!pools.ContainsKey(type))
+        {
+            Debug.LogError($"No pool for FireballType: {type}");
+            return null;
+        }
+
+        foreach (var fireball in pools[type])
         {
             if (!fireball.activeInHierarchy)
             {
@@ -41,28 +54,28 @@ public class FireballPool : MonoBehaviour
             }
         }
 
-        Debug.LogWarning("FireballPool exhausted");
+        Debug.LogWarning($"FireballPool exhausted for type {type}");
 
-        GameObject obj = Instantiate(fireballPrefab);
+        var prefab = fireballConfigs.Find(c => c.type == type).prefab;
+        GameObject obj = Instantiate(prefab);
         obj.SetActive(false);
-        pool.Add(obj);
+        pools[type].Add(obj);
         obj.SetActive(true);
+
         return obj;
     }
 
-    public void ReturnFireball(GameObject fireball)
+    public void ReturnFireball(FireballType type, GameObject fireball)
     {
         fireball.SetActive(false);
 
-        Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        if (fireball.TryGetComponent(out Rigidbody2D rb))
         {
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
 
-        FireballController fc = fireball.GetComponent<FireballController>();
-        if (fc != null)
+        if (fireball.TryGetComponent(out FireballController fc))
             fc.ResetFireball();
     }
 }
