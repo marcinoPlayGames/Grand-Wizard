@@ -195,7 +195,8 @@ public class NPCController : MonoBehaviour
             NPC_Health = 0;
             
             isDead = true;
-            Destroy(gameObject, 1f);
+
+            StartCoroutine(DeactiveNPCS());
 
             LevelAnalytics.Instance.kill_count += 1;
             LevelAnalytics.Instance.enemy_duration += duration;
@@ -203,6 +204,13 @@ public class NPCController : MonoBehaviour
         }
 
         OnNPCHealthChange?.Invoke();
+    }
+
+    IEnumerator DeactiveNPCS()
+    {
+        yield return new WaitForSeconds(1f);
+
+        gameObject.SetActive(false);
     }
 
     public float GetNPCHealth()

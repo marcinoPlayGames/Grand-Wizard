@@ -21,7 +21,7 @@ public class FireballController : MonoBehaviour
 
         if (traveledSqr >= maxDistance * maxDistance)
         {
-            Destroy(gameObject);
+            FireballPool.Instance.ReturnFireball(gameObject);
         }
     }
 
@@ -45,11 +45,16 @@ public class FireballController : MonoBehaviour
         if (collision.TryGetComponent(out NPCController npc))
         {
             npc.DamageNPC(fireballDamage);
-            Destroy(gameObject);
+
+            FireballPool.Instance.ReturnFireball(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            FireballPool.Instance.ReturnFireball(gameObject);
         }
+    }
+    public void ResetFireball()
+    {
+        hasHit = false;
     }
 }

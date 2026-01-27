@@ -194,12 +194,12 @@ public class PlayerAttacks : MonoBehaviour
     }
 
     IEnumerator SpawnAndShootFireball()
-    {    
-        LevelAnalytics.Instance.attacks_in_level += 1;
-        
-        isFacingRight = playerMove.IsFacingRight();
+    {
+        LevelAnalytics.Instance.attacks_in_level++;
 
+        bool isFacingRight = playerMove.IsFacingRight();
         Vector2 dir = isFacingRight ? Vector2.right : Vector2.left;
+
         float maxSpawnDistance = 2f;
         float safeMargin = 0.1f;
 
@@ -210,65 +210,54 @@ public class PlayerAttacks : MonoBehaviour
             fireballSpawnMask
         );
 
-        float spawnDistance = maxSpawnDistance;
-
-        if (hit.collider != null)
-        {
-            spawnDistance = Mathf.Max(hit.distance - safeMargin, 0.3f);
-        }
+        float spawnDistance = hit.collider != null
+            ? Mathf.Max(hit.distance - safeMargin, 0.3f)
+            : maxSpawnDistance;
 
         Vector3 spawnPosition =
             transform.position +
             (Vector3)(dir * spawnDistance) +
             new Vector3(0f, 0.3f, 0f);
 
-        GameObject fireball = Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
+        // 🔁 POOL
+        GameObject fireball = FireballPool.Instance.GetFireball();
+        fireball.transform.position = spawnPosition;
+        fireball.transform.rotation = Quaternion.identity;
+
         Fireball.Play();
 
-        yield return null;
+        yield return null; // zostawiamy – fizyka zaskoczy poprawnie
 
-        if (fireball != null)
+        Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0f;
+        rb.velocity = dir * fireballSpeed;
+
+        float totalDamage = WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
+
+        if (statCriticals.IsAttackCriticalHit())
         {
-            Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.gravityScale = 0f;
-                rb.velocity = dir * fireballSpeed;
-            }
-
-            float totalDamage = WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
-            bool GotCrit = statCriticals.IsAttackCriticalHit();
-
-            if (GotCrit)
-            {
-                totalDamage = statCriticals.GetCriticalDamageByAttackType(totalDamage, "Physical");
-            }
-
-            statHealth.HealFromDamage(totalDamage);
-
-            playerMove.ReduceMana(manaBase);
-
-            FireballController controller = fireball.GetComponent<FireballController>();
-
-            if (controller != null)
-            {
-                controller.SetDamage(totalDamage);
-                controller.SetTracking(spawnPosition, attackRange);
-            }
+            totalDamage = statCriticals.GetCriticalDamageByAttackType(
+                totalDamage, "Physical"
+            );
         }
+
+        statHealth.HealFromDamage(totalDamage);
+        playerMove.ReduceMana(manaBase);
+
+        FireballController controller = fireball.GetComponent<FireballController>();
+        controller.SetDamage(totalDamage);
+        controller.SetTracking(spawnPosition, attackRange);
 
         StartCoroutine(FireballCooldown());
     }
 
     IEnumerator SpawnAndShootStrongerFireball()
     {
-        LevelAnalytics.Instance.abilities_in_level += 1;
+        LevelAnalytics.Instance.abilities_in_level++;
 
-        isFacingRight = playerMove.IsFacingRight();
-
-        Vector2 fireballFacing = isFacingRight ? Vector2.right : Vector2.left;
-
+        bool isFacingRight = playerMove.IsFacingRight();
         Vector2 dir = isFacingRight ? Vector2.right : Vector2.left;
+
         float maxSpawnDistance = 2f;
         float safeMargin = 0.1f;
 
@@ -279,60 +268,46 @@ public class PlayerAttacks : MonoBehaviour
             fireballSpawnMask
         );
 
-        float spawnDistance = maxSpawnDistance;
-
-        if (hit.collider != null)
-        {
-            spawnDistance = Mathf.Max(hit.distance - safeMargin, 0.3f);
-        }
+        float spawnDistance = hit.collider != null
+            ? Mathf.Max(hit.distance - safeMargin, 0.3f)
+            : maxSpawnDistance;
 
         Vector3 spawnPosition =
             transform.position +
             (Vector3)(dir * spawnDistance) +
             new Vector3(0f, 0.3f, 0f);
 
-        GameObject strongerFireball = Instantiate(strongerFireballPrefab, spawnPosition, Quaternion.identity);
+        // 🔁 POOL
+        GameObject strongerFireball = FireballPool.Instance.GetFireball();
+        strongerFireball.transform.position = spawnPosition;
+        strongerFireball.transform.rotation = Quaternion.identity;
+
         Fireball.Play();
 
         yield return null;
 
-        if (strongerFireball != null)
+        Rigidbody2D rb = strongerFireball.GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0f;
+        rb.velocity = dir * strongerFireballSpeed;
+
+        float totalDamage = 2f * WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
+
+        if (statCriticals.IsSpellCriticalHit())
         {
-            Rigidbody2D rb = strongerFireball.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.gravityScale = 0f;
-                rb.velocity = dir * strongerFireballSpeed;
-            }
-
-
-
-            float totalDamage = 2 * WeaponUpgradeSystem.Instance.GetTotalDamage("Staff", false);
-
-            bool GotCrit = statCriticals.IsSpellCriticalHit();
-
-            if (GotCrit)
-            {
-                totalDamage = statCriticals.GetCriticalDamageByAttackType(totalDamage, "Ability");
-            }
-
-            statHealth.HealFromDamage(totalDamage);
-
-            playerMove.ReduceMana(manaAbility);
-
-            FireballController controller = strongerFireball.GetComponent<FireballController>();
-
-            if (controller != null)
-            {
-                controller.SetDamage(totalDamage);
-                controller.SetTracking(spawnPosition, attackRange);
-            }
-
-            if (fireballFacing == new Vector2(-1.00f, 0.00f))
-                strongerFireball.GetComponent<SpriteRenderer>().flipX = true;
-            else
-                strongerFireball.GetComponent<SpriteRenderer>().flipX = false;
+            totalDamage = statCriticals.GetCriticalDamageByAttackType(
+                totalDamage, "Ability"
+            );
         }
+
+        statHealth.HealFromDamage(totalDamage);
+        playerMove.ReduceMana(manaAbility);
+
+        FireballController controller = strongerFireball.GetComponent<FireballController>();
+        controller.SetDamage(totalDamage);
+        controller.SetTracking(spawnPosition, attackRange);
+
+        SpriteRenderer sr = strongerFireball.GetComponent<SpriteRenderer>();
+        sr.flipX = !isFacingRight;
 
         StartCoroutine(StrongerFireballCooldown());
     }

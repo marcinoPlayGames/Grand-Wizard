@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SwordPool : MonoBehaviour
 {
-    public static SwordPool Instance; // ⬅️ TO BYŁO BRAKUJĄCE
+    public static SwordPool Instance;
 
     public GameObject swordPrefab;
     public int poolSize = 20;
