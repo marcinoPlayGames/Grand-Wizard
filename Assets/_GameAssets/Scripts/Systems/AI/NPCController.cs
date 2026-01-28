@@ -30,7 +30,10 @@ public class NPCController : MonoBehaviour
     public bool IsDead {get {return isDead;}}
 
     [SerializeField]
-    AudioSource npcHit;
+    AudioSource npcAudioSource;
+
+    [SerializeField]
+    AudioClip npcHit;
 
     public event Action OnNPCHealthChange;
 
@@ -184,7 +187,7 @@ public class NPCController : MonoBehaviour
         durationStart = true;
 
         NPC_Health -= damage;
-        npcHit.Play();
+        npcAudioSource.PlayOneShot(npcHit);
         StartCoroutine(HitAnimation());
 
         if (enemyId == "boss")

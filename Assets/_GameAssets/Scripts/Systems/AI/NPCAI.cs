@@ -43,7 +43,9 @@ public class NPCAI : MonoBehaviour
     }
 
     [SerializeField]
-    AudioSource swordThrowSound;
+    AudioSource npcAudioSource;
+    [SerializeField]
+    AudioClip swordThrowSound;
 
     private float detectionTimer = 0f;
     private float detectionInterval = 0.1f; // sprawdz co 0.1s
@@ -92,7 +94,7 @@ public class NPCAI : MonoBehaviour
         float spawnOffsetX = isFacingRight ? 2f * npcSize : -2f * npcSize;
         Vector2 swordFacing = isFacingRight ? Vector2.right : Vector2.left;
 
-        swordThrowSound.Play();
+        npcAudioSource.PlayOneShot(swordThrowSound);
 
         for (int i = 0; i < swordNumber; i++)
         {
