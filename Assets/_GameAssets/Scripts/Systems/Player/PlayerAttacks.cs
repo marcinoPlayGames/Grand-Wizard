@@ -200,6 +200,8 @@ public class PlayerAttacks : MonoBehaviour
     {
         LevelAnalytics.Instance.attacks_in_level++;
 
+        Debug.Log("Spawned fireball!");
+
         bool isFacingRight = playerMove.IsFacingRight();
         Vector2 dir = isFacingRight ? Vector2.right : Vector2.left;
 
@@ -257,6 +259,8 @@ public class PlayerAttacks : MonoBehaviour
     IEnumerator SpawnAndShootStrongerFireball()
     {
         LevelAnalytics.Instance.abilities_in_level++;
+
+        Debug.Log("Spawned stronger fireball!");
 
         bool isFacingRight = playerMove.IsFacingRight();
         Vector2 dir = isFacingRight ? Vector2.right : Vector2.left;
@@ -355,6 +359,8 @@ public class PlayerAttacks : MonoBehaviour
     {
         isCasting = true;
 
+        Debug.Log("Casting fireball!");
+
         animator.SetBool("IsCasting", true);
 
         strongerFireballShoot = false;   
@@ -380,6 +386,8 @@ public class PlayerAttacks : MonoBehaviour
         isCasting = true;
 
         animator.SetBool("IsCasting", true);
+
+        Debug.Log("Casting stronger fireball!");
 
         strongerFireballShoot = true;
     }

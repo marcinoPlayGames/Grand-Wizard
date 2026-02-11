@@ -139,6 +139,8 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, 10, 0);
             playerAudioSource.PlayOneShot(playerJump);
+
+            Debug.Log("Played jump!");
             jumpState = true;
         }
 
@@ -146,6 +148,8 @@ public class PlayerMove : MonoBehaviour
         {
             jumpState = false;
             playerAudioSource.PlayOneShot(playerFall);
+
+            Debug.Log("Played fall!");
         }
 
         if (Input.GetKey("n"))
@@ -312,6 +316,8 @@ public class PlayerMove : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level5") LevelAnalytics.Instance.boss_attempts += 1;
 
         playerAudioSource.PlayOneShot(playerHit);
+
+        Debug.Log("Played hit!");
 
         if (Player_Health <= 0)
         {

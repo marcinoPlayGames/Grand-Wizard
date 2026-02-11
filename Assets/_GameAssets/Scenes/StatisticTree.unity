@@ -1742,7 +1742,6 @@ RectTransform:
   - {fileID: 1099836837}
   - {fileID: 967081791}
   - {fileID: 276440593}
-  - {fileID: 911508234}
   m_Father: {fileID: 691075108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3830,7 +3829,7 @@ MonoBehaviour:
   coinAmount: {fileID: 1137938846}
   currentValueText: {fileID: 1277175752}
   nextValueText: {fileID: 1543790674}
-  statIconImage: {fileID: 911508235}
+  statIconImage: {fileID: 2061353186}
   uiButtonInfoHandler: {fileID: 350489534}
 --- !u!1 &691075107
 GameObject:
@@ -4596,7 +4595,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2061353185}
-  m_Father: {fileID: 324486161}
+  m_Father: {fileID: 1591002216}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4623,7 +4622,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 306e1acebbe4e224686b8c07f258d85e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a525f8145f48f144d8478dcaf091df62, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6918,7 +6917,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1329859492
 RectTransform:
@@ -8493,7 +8492,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1591002216
 RectTransform:
@@ -8514,6 +8513,7 @@ RectTransform:
   - {fileID: 1140566787}
   - {fileID: 71965770}
   - {fileID: 901433004}
+  - {fileID: 911508234}
   m_Father: {fileID: 691075108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
